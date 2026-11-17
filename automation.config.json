@@ -1,0 +1,25 @@
+{
+  "runBy": "23120031",
+  "minAssertionKinds": 3,
+  "spec": "README.md của SUT (Đặc tả Yêu cầu Hệ thống)",
+  "sut": {
+    "dir": "/home/npdinh/study/Homeworks/eshop-sut-main",
+    "resetCommand": ["scripts/sut.sh", "reset"],
+    "startHint": "scripts/sut.sh start   (xem trạng thái: scripts/sut.sh status)",
+    "services": [
+      { "name": "Backend API", "url": "api", "path": "/products" },
+      { "name": "Web Admin (frontend-admin)", "url": "admin" },
+      { "name": "Web khách hàng (frontend-web)", "url": "web" }
+    ]
+  },
+  "urls": {
+    "api": "http://localhost:3000/api",
+    "admin": "http://localhost:5174",
+    "web": "http://localhost:5173"
+  },
+  "accounts": {
+    "admin": { "email": "admin@eshop.com", "password": "Admin123!" },
+    "user": { "email": "test@eshop.com", "password": "Test1234!" }
+  },
+  "bugTracker": "d1nhnguyen/eshop-sut"
+}

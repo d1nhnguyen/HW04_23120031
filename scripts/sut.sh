@@ -5,11 +5,13 @@
 #   scripts/sut.sh reset    dừng backend, nạp lại seed bằng `node database.js`, bật lại backend
 #   scripts/sut.sh status   xem tiến trình và cổng
 # Biến môi trường:
-#   SUT_DIR        thư mục SUT (mặc định /home/npdinh/study/Homeworks/eshop-sut-main)
+#   SUT_DIR        thư mục SUT (mặc định: sut.dir trong automation.config.json)
 #   SUT_STATE_DIR  nơi ghi log và PID (mặc định $TMPDIR/eshop-sut-<uid>)
 set -u
 
-SUT_DIR="${SUT_DIR:-/home/npdinh/study/Homeworks/eshop-sut-main}"
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# Thư mục SUT: biến môi trường SUT_DIR; nếu không có thì lấy sut.dir trong automation.config.json
+SUT_DIR="${SUT_DIR:-$(node -p "require('$ROOT/automation.config.json').sut.dir" 2>/dev/null)}"
 STATE_DIR="${SUT_STATE_DIR:-${TMPDIR:-/tmp}/eshop-sut-$(id -u)}"
 API="http://localhost:3000/api"
 

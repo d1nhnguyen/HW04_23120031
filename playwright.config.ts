@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { config as automation } from './support/env';
 
 /**
  * Read environment variables from file.
@@ -12,7 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 /* Mỗi lượt chạy (feature × browser) xuất một report riêng: REPORT_DIR=reports/fr01-firefox */
-const RUN_BY = process.env.RUN_BY ?? '23120031';
+const RUN_BY = automation.runBy; // từ automation.config.json; ghi đè bằng biến môi trường RUN_BY
 const RUN_AT = new Date().toISOString();
 const REPORT_DIR = process.env.REPORT_DIR ?? 'playwright-report';
 

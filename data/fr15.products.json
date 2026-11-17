@@ -2,7 +2,6 @@
   "meta": {
     "feature": "FR-15 Quản lý sản phẩm (Web Admin)",
     "source": "report/fr15_testcases.md – 15 test case lấy từ HW02, giữ nguyên ID",
-    "admin": { "email": "admin@eshop.com", "password": "Admin123!" },
     "conventions": {
       "name.text + unique": "Script nối một hậu tố duy nhất của lượt chạy vào sau text, cách nhau một dấu cách.",
       "name.length": "Script sinh tên dài ĐÚNG số ký tự này bằng ký tự fill; hậu tố duy nhất nằm TRONG tổng độ dài.",

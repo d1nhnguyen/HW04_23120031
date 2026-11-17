@@ -1,7 +1,10 @@
 import { test as base, expect, type Page, type Request, type Response, type TestInfo } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { AdminProductsPage, type FormProbe, type TableRow } from '../../pages/admin-products.page';
+import { AdminProductsPage, type TableRow } from '../../pages/admin-products.page';
+import { cleanupNewRecords } from '../../support/api-client';
+import { account, config } from '../../support/env';
+import type { FormProbe } from '../../support/form-probe';
 import { ProductsApi, type Product } from '../../support/products-api';
 
 // ---------- Dữ liệu test: toàn bộ nằm trong data/fr15.products.json ----------
@@ -36,9 +39,11 @@ type Case = {
 
 const data = JSON.parse(
   readFileSync(path.join(__dirname, '..', '..', 'data', 'fr15.products.json'), 'utf8'),
-) as { meta: { admin: { email: string; password: string } }; cases: Case[] };
+) as { cases: Case[] };
 
-const RUN_BY = process.env.RUN_BY ?? '23120031';
+// Giá trị riêng của dự án (mã người chạy, tài khoản) lấy từ automation.config.json.
+const RUN_BY = config.runBy;
+const ADMIN = account('admin');
 
 /**
  * Thời gian thử lại của assertion giao diện SAU khi trang đã xong việc với server và đã vẽ lại
@@ -54,15 +59,17 @@ const soft = expect.configure({ soft: true });
 const test = base.extend<{ api: ProductsApi }>({
   api: async ({ request }, use) => {
     const api = new ProductsApi(request);
-    await api.login(data.meta.admin.email, data.meta.admin.password);
+    await api.login(ADMIN);
     const idsBefore = new Set((await api.list()).map((p) => p.id));
 
     await use(api);
 
     // Xóa mọi sản phẩm có id mới sinh trong test (kể cả sản phẩm tên rỗng / chỉ có khoảng trắng).
-    for (const p of await api.list()) {
-      if (!idsBefore.has(p.id)) await api.remove(p.id);
-    }
+    await cleanupNewRecords(
+      idsBefore,
+      () => api.list(),
+      (id) => api.remove(id),
+    );
   },
 });
 
@@ -158,7 +165,7 @@ async function arrange(c: Case, page: Page, api: ProductsApi, testInfo: TestInfo
   const serverBefore = await api.list();
 
   const admin = new AdminProductsPage(page);
-  await admin.login(data.meta.admin.email, data.meta.admin.password);
+  await admin.login(ADMIN);
   await admin.openProducts();
   await expect(admin.rows, 'bảng phải tải đủ sản phẩm trước khi thao tác').toHaveCount(serverBefore.length);
   const tableBefore = await admin.readTable();
