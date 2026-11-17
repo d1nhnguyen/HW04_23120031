@@ -369,6 +369,12 @@ test.describe('FR-15 Quản lý sản phẩm – Web Admin', () => {
 
       const ctx = await arrange(c, page, api, testInfo);
       const result = await act(ctx);
+
+      // Bằng chứng: chụp riêng bảng sản phẩm ngay sau thao tác. Ảnh tự động lúc fail chỉ chụp khung nhìn,
+      // trong khi dòng lỗi thường nằm cuối bảng, phải cuộn mới thấy.
+      const tableShot = testInfo.outputPath('bang-san-pham-sau-thao-tac.png');
+      await ctx.admin.table.screenshot({ path: tableShot });
+      await testInfo.attach('Bảng sản phẩm sau thao tác', { path: tableShot, contentType: 'image/png' });
       await assertUi(ctx, result);
       await assertServer(ctx, result);
     });

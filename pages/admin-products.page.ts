@@ -71,6 +71,8 @@ export class AdminProductsPage {
   readonly addModeHeading: Locator;
   readonly editModeHeading: Locator;
 
+  /** Bảng sản phẩm (không phải bảng xem trước của phần Import CSV). */
+  readonly table: Locator;
   readonly rows: Locator;
   readonly nameCells: Locator;
   readonly priceCells: Locator;
@@ -100,6 +102,7 @@ export class AdminProductsPage {
     this.editModeHeading = page.getByRole('heading', { name: 'Sửa sản phẩm' });
 
     // Bảng sản phẩm: Ảnh | Tên SP | Giá | Hành động
+    this.table = page.locator('table').filter({ has: page.getByRole('columnheader', { name: 'Tên SP' }) });
     this.rows = page.locator('tbody tr');
     this.nameCells = page.locator('tbody tr td:nth-child(2)');
     this.priceCells = page.locator('tbody tr td:nth-child(3)');
