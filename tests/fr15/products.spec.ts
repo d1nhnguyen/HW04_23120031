@@ -1,4 +1,4 @@
-import { test as base, expect, type Response } from '@playwright/test';
+import { test as base, expect, type Request } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { AdminProductsPage, type TableRow } from '../../pages/admin-products.page';
@@ -39,8 +39,12 @@ const data = JSON.parse(
 ) as { meta: { admin: { email: string; password: string } }; cases: Case[] };
 
 const RUN_BY = process.env.RUN_BY ?? '23120031';
-/** Thời gian tối đa chờ giao diện gửi yêu cầu lưu / xóa sau khi bấm nút. */
-const SETTLE_MS = 3000;
+/**
+ * Thời gian thử lại của assertion giao diện SAU khi trang đã xong việc với server và đã vẽ lại
+ * (xem AdminProductsPage.waitUntilSettled). Lúc đó DOM đã ở trạng thái cuối, nên assertion nào sai
+ * thì chờ thêm cũng không đúng lên; không cần chờ đủ 5 giây mặc định.
+ */
+const UI_AFTER_SETTLED = { timeout: 1000 };
 
 // ---------- Fixture: API + dọn dữ liệu theo id, chạy cả khi test fail ----------
 
@@ -89,13 +93,9 @@ function escapeRegExp(text: string): string {
 }
 
 /** Yêu cầu ghi (POST / PUT / DELETE) tới /api/products. */
-function isProductMutation(res: Response): boolean {
-  const { pathname } = new URL(res.url());
-  return /\/api\/products(\/[^/]+)?$/.test(pathname) && res.request().method() !== 'GET';
-}
-
-function isProductListRefresh(res: Response): boolean {
-  return new URL(res.url()).pathname.endsWith('/api/products') && res.request().method() === 'GET';
+function isProductWrite(req: Request): boolean {
+  const { pathname } = new URL(req.url());
+  return /\/api\/products(\/[^/]+)?$/.test(pathname) && req.method() !== 'GET';
 }
 
 // ---------- 15 test sinh từ file dữ liệu ----------
@@ -109,6 +109,12 @@ test.describe('FR-15 Quản lý sản phẩm – Web Admin', () => {
       );
       const soft = expect.configure({ soft: true });
       const uid = `${testInfo.project.name.slice(0, 2)}${Date.now().toString(36)}`;
+
+      // Ghi mọi yêu cầu ghi tới /api/products ngay từ đầu test.
+      const writes: Request[] = [];
+      page.on('request', (req) => {
+        if (isProductWrite(req)) writes.push(req);
+      });
 
       // ===== Arrange =====
       const categories = await api.categories();
@@ -150,9 +156,6 @@ test.describe('FR-15 Quản lý sản phẩm – Web Admin', () => {
       }
 
       // ===== Act =====
-      const mutation = page.waitForResponse(isProductMutation, { timeout: SETTLE_MS }).catch(() => null);
-      const refresh = page.waitForResponse(isProductListRefresh, { timeout: SETTLE_MS * 2 }).catch(() => null);
-
       if (c.op === 'add') {
         await expect(admin.addModeHeading).toBeVisible();
         await admin.fillForm({ name: refs.input, price: c.input.price, category: c.input.category });
@@ -182,9 +185,15 @@ test.describe('FR-15 Quản lý sản phẩm – Web Admin', () => {
         await admin.saveButton.click();
       }
 
-      // Chờ giao diện gửi yêu cầu (nếu có). Thêm / Xóa thành công KHÔNG có alert nên không chờ dialog.
-      const mutationResponse = await mutation;
-      if (mutationResponse && c.op !== 'edit') await refresh; // Thêm / Xóa: giao diện tải lại danh sách
+      // Chờ trang xong việc với server (trả về ngay nếu không có yêu cầu nào). Không chờ dialog:
+      // Thêm / Xóa thành công KHÔNG có alert.
+      await admin.waitUntilSettled();
+      const probeAfterAct = await admin.readProbe();
+      // Hai nguồn ghi nhận phải khớp nhau: trong trang (XHR) và phía Playwright (page.on('request')).
+      await expect
+        .poll(() => writes.length, { message: 'số yêu cầu ghi Playwright thấy phải khớp số trang đã gửi' })
+        .toBe(probeAfterAct.sent);
+      const mutationResponse = writes.length > 0 ? await writes[writes.length - 1].response() : null;
 
       // ===== Assert =====
 
@@ -206,14 +215,14 @@ test.describe('FR-15 Quản lý sản phẩm – Web Admin', () => {
       if (c.expected.validation) {
         // Trình duyệt đã chặn: ô bắt buộc nhận sự kiện `invalid`, form không được submit, không có yêu cầu ghi.
         const blockedField = await admin.nameInput.getAttribute('placeholder');
-        const probe = await admin.readProbe();
+        const probe = probeAfterAct;
         expect(probe.invalid, 'trình duyệt phải báo ô Tên bỏ trống là không hợp lệ').toEqual([blockedField]);
         expect(probe.submit, 'form không được submit khi ô bắt buộc bỏ trống').toBe(0);
         expect(mutationResponse, 'không được gửi yêu cầu ghi khi ô bắt buộc bỏ trống').toBeNull();
         // Form giữ nguyên trạng thái: ô Tên vẫn rỗng, ô Giá còn giá trị, vẫn ở đúng chế độ.
-        await soft(admin.nameInput).toHaveValue('');
-        await soft(admin.priceInput).toHaveValue(c.input.price ?? String(c.setup!.price));
-        await soft(c.op === 'edit' ? admin.editModeHeading : admin.addModeHeading).toBeVisible();
+        await soft(admin.nameInput).toHaveValue('', UI_AFTER_SETTLED);
+        await soft(admin.priceInput).toHaveValue(c.input.price ?? String(c.setup!.price), UI_AFTER_SETTLED);
+        await soft(c.op === 'edit' ? admin.editModeHeading : admin.addModeHeading).toBeVisible(UI_AFTER_SETTLED);
       }
       if (c.input.name?.length !== undefined && mutationResponse) {
         const sent = mutationResponse.request().postDataJSON() as { name: string };
@@ -239,17 +248,17 @@ test.describe('FR-15 Quản lý sản phẩm – Web Admin', () => {
           expectedTable.splice(targetIndex, 1);
         }
       }
-      await soft(admin.rows).toHaveCount(tableBefore.length + c.expected.ui.rowCountDelta);
-      await soft(admin.nameCells).toHaveText(expectedTable.map((r) => r.name));
-      await soft(admin.priceCells).toHaveText(expectedTable.map((r) => r.price));
+      await soft(admin.rows).toHaveCount(tableBefore.length + c.expected.ui.rowCountDelta, UI_AFTER_SETTLED);
+      await soft(admin.nameCells).toHaveText(expectedTable.map((r) => r.name), UI_AFTER_SETTLED);
+      await soft(admin.priceCells).toHaveText(expectedTable.map((r) => r.price), UI_AFTER_SETTLED);
       if (uiRow?.noHtmlElementInName) {
         const index = expectedTable.length - 1;
-        await soft(admin.nameCell(index).locator(uiRow.noHtmlElementInName)).toHaveCount(0);
+        await soft(admin.nameCell(index).locator(uiRow.noHtmlElementInName)).toHaveCount(0, UI_AFTER_SETTLED);
       }
 
       // 3. Alert
       if (c.expected.alert.shown === true) {
-        await soft.poll(() => admin.dialogs).toEqual([c.expected.alert.text]);
+        await soft.poll(() => admin.dialogs, UI_AFTER_SETTLED).toEqual([c.expected.alert.text]);
       }
       if (c.expected.alert.shown === false) {
         soft(admin.dialogs, 'không được có alert').toEqual([]);

@@ -10,6 +10,10 @@ export type FormProbe = {
   invalid: string[];
   /** số lần form thực sự được submit (sự kiện `submit`). */
   submit: number;
+  /** số yêu cầu ghi (không phải GET) tới /api/products mà trang đã gửi. */
+  sent: number;
+  /** số XHR đang chờ phản hồi; 0 nghĩa là trang không còn chờ server. */
+  pending: number;
 };
 
 /** Page Object của Web Admin – mục Sản phẩm. Locator lấy theo bảng khảo sát B2. */
@@ -47,8 +51,24 @@ export class AdminProductsPage {
     // Ghi sự kiện `invalid` và `submit` ngay trong trang (đã kiểm trên Chromium, Firefox, WebKit ở B6):
     // khi ô bắt buộc bỏ trống, trình duyệt bắn `invalid` vào ô đó và KHÔNG bắn `submit`.
     void page.addInitScript(() => {
-      const probe = { invalid: [] as string[], submit: 0 };
+      const probe = { invalid: [] as string[], submit: 0, sent: 0, pending: 0 };
       (window as unknown as { __formProbe: typeof probe }).__formProbe = probe;
+      // Trang gọi server bằng XHR (axios). Đếm yêu cầu ghi và số XHR còn đang chờ.
+      type TrackedXhr = XMLHttpRequest & { __method?: string; __url?: string };
+      const open = XMLHttpRequest.prototype.open;
+      const send = XMLHttpRequest.prototype.send;
+      XMLHttpRequest.prototype.open = function (this: TrackedXhr, method: string, url: string | URL) {
+        this.__method = method.toUpperCase();
+        this.__url = String(url);
+        // eslint-disable-next-line prefer-rest-params
+        return open.apply(this, arguments as unknown as Parameters<typeof open>);
+      } as typeof open;
+      XMLHttpRequest.prototype.send = function (this: TrackedXhr, body?: Document | XMLHttpRequestBodyInit | null) {
+        probe.pending++;
+        if (this.__method !== 'GET' && /\/api\/products(\/|$)/.test(this.__url ?? '')) probe.sent++;
+        this.addEventListener('loadend', () => probe.pending--);
+        return send.call(this, body);
+      };
       document.addEventListener(
         'invalid',
         (event) => probe.invalid.push((event.target as HTMLInputElement).placeholder),
@@ -129,13 +149,29 @@ export class AdminProductsPage {
       const probe = (window as unknown as { __formProbe: FormProbe }).__formProbe;
       probe.invalid = [];
       probe.submit = 0;
+      probe.sent = 0;
     });
+  }
+
+  /**
+   * Chờ trang nói chuyện xong với server rồi vẽ lại. Không dùng thời gian cố định:
+   * - Yêu cầu lưu / xóa được gửi ngay trong lượt xử lý cú click, nên sau click `pending` đã > 0 nếu có gửi.
+   * - Các lệnh tải lại danh sách nối tiếp nhau trong cùng chuỗi promise, nên `pending` chỉ về 0 khi xong hết.
+   * - Nếu trình duyệt chặn form thì `pending` vẫn là 0 và hàm trả về ngay.
+   */
+  async waitUntilSettled() {
+    await this.page.waitForFunction(
+      () => (window as unknown as { __formProbe: FormProbe }).__formProbe.pending === 0,
+    );
+    await this.page.evaluate(
+      () => new Promise<void>((done) => requestAnimationFrame(() => requestAnimationFrame(() => done()))),
+    );
   }
 
   async readProbe(): Promise<FormProbe> {
     return this.page.evaluate(() => {
       const probe = (window as unknown as { __formProbe: FormProbe }).__formProbe;
-      return { invalid: [...probe.invalid], submit: probe.submit };
+      return { invalid: [...probe.invalid], submit: probe.submit, sent: probe.sent, pending: probe.pending };
     });
   }
 }
