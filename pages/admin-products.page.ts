@@ -4,6 +4,14 @@ export const ADMIN_URL = process.env.ADMIN_URL ?? 'http://localhost:5174';
 
 export type TableRow = { name: string; price: string };
 
+/** Dấu vết ghi trong trang: trình duyệt có chặn form hay form đã được submit. */
+export type FormProbe = {
+  /** placeholder của các ô bị trình duyệt báo không hợp lệ (sự kiện `invalid`). */
+  invalid: string[];
+  /** số lần form thực sự được submit (sự kiện `submit`). */
+  submit: number;
+};
+
 /** Page Object của Web Admin – mục Sản phẩm. Locator lấy theo bảng khảo sát B2. */
 export class AdminProductsPage {
   /** Nguyên văn mọi alert / confirm đã bật, theo thứ tự. */
@@ -34,6 +42,19 @@ export class AdminProductsPage {
     page.on('dialog', async (dialog) => {
       this.dialogs.push(dialog.message());
       await dialog.accept();
+    });
+
+    // Ghi sự kiện `invalid` và `submit` ngay trong trang (đã kiểm trên Chromium, Firefox, WebKit ở B6):
+    // khi ô bắt buộc bỏ trống, trình duyệt bắn `invalid` vào ô đó và KHÔNG bắn `submit`.
+    void page.addInitScript(() => {
+      const probe = { invalid: [] as string[], submit: 0 };
+      (window as unknown as { __formProbe: typeof probe }).__formProbe = probe;
+      document.addEventListener(
+        'invalid',
+        (event) => probe.invalid.push((event.target as HTMLInputElement).placeholder),
+        true,
+      );
+      document.addEventListener('submit', () => probe.submit++, true);
     });
 
     this.emailInput = page.getByPlaceholder('Email');
@@ -102,7 +123,19 @@ export class AdminProductsPage {
     if (fields.category !== undefined) await this.categorySelect.selectOption({ label: fields.category });
   }
 
-  async nameValueMissing(): Promise<boolean> {
-    return this.nameInput.evaluate((el: HTMLInputElement) => el.validity.valueMissing);
+  /** Xóa dấu vết cũ (ví dụ lần submit của form đăng nhập) ngay trước thao tác cần kiểm. */
+  async resetProbe() {
+    await this.page.evaluate(() => {
+      const probe = (window as unknown as { __formProbe: FormProbe }).__formProbe;
+      probe.invalid = [];
+      probe.submit = 0;
+    });
+  }
+
+  async readProbe(): Promise<FormProbe> {
+    return this.page.evaluate(() => {
+      const probe = (window as unknown as { __formProbe: FormProbe }).__formProbe;
+      return { invalid: [...probe.invalid], submit: probe.submit };
+    });
   }
 }

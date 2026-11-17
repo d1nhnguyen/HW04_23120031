@@ -175,6 +175,7 @@ test.describe('FR-15 Quản lý sản phẩm – Web Admin', () => {
         await expect(admin.nameInput).toHaveValue(refs.input!);
       }
 
+      await admin.resetProbe();
       if (c.op === 'delete') {
         await admin.deleteButton(targetIndex).click();
       } else {
@@ -190,10 +191,29 @@ test.describe('FR-15 Quản lý sản phẩm – Web Admin', () => {
       // 1. Yêu cầu thực gửi đi
       if (c.expected.outcome === 'accept') {
         expect(mutationResponse, 'giao diện phải gửi yêu cầu lưu / xóa').not.toBeNull();
+        soft(
+          mutationResponse!.ok(),
+          `yêu cầu hợp lệ phải được server chấp nhận (2xx), thực tế trả ${mutationResponse!.status()}`,
+        ).toBe(true);
+      }
+      if (c.expected.outcome === 'reject' && mutationResponse) {
+        soft(
+          mutationResponse.status(),
+          `SUT đã NHẬN dữ liệu sai: ${mutationResponse.request().method()} /api/products trả ` +
+            `${mutationResponse.status()}, theo đặc tả phải từ chối (4xx)`,
+        ).toBeGreaterThanOrEqual(400);
       }
       if (c.expected.validation) {
-        await expect.poll(() => admin.nameValueMissing(), { message: 'ô Tên bị chặn vì bỏ trống' }).toBe(true);
-        expect(mutationResponse, 'không được gửi yêu cầu khi ô bắt buộc bỏ trống').toBeNull();
+        // Trình duyệt đã chặn: ô bắt buộc nhận sự kiện `invalid`, form không được submit, không có yêu cầu ghi.
+        const blockedField = await admin.nameInput.getAttribute('placeholder');
+        const probe = await admin.readProbe();
+        expect(probe.invalid, 'trình duyệt phải báo ô Tên bỏ trống là không hợp lệ').toEqual([blockedField]);
+        expect(probe.submit, 'form không được submit khi ô bắt buộc bỏ trống').toBe(0);
+        expect(mutationResponse, 'không được gửi yêu cầu ghi khi ô bắt buộc bỏ trống').toBeNull();
+        // Form giữ nguyên trạng thái: ô Tên vẫn rỗng, ô Giá còn giá trị, vẫn ở đúng chế độ.
+        await soft(admin.nameInput).toHaveValue('');
+        await soft(admin.priceInput).toHaveValue(c.input.price ?? String(c.setup!.price));
+        await soft(c.op === 'edit' ? admin.editModeHeading : admin.addModeHeading).toBeVisible();
       }
       if (c.input.name?.length !== undefined && mutationResponse) {
         const sent = mutationResponse.request().postDataJSON() as { name: string };
