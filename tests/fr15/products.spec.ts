@@ -30,7 +30,7 @@ type Case = {
       othersUnchanged?: boolean;
     };
     alert: { shown: boolean | 'unspecified'; text?: string };
-    validation?: { field: 'name'; state: 'valueMissing' };
+    validation?: { field: 'name'; blockedBy: 'browser-required' };
   };
 };
 

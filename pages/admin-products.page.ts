@@ -17,6 +17,39 @@ export type FormProbe = {
   pending: number;
 };
 
+/**
+ * Chạy TRONG trang trước mọi script của SUT. Ghi lại:
+ * - sự kiện `invalid` và `submit` (đã kiểm trên Chromium, Firefox, WebKit ở B6: khi ô bắt buộc bỏ trống,
+ *   trình duyệt bắn `invalid` vào ô đó và KHÔNG bắn `submit`);
+ * - số yêu cầu ghi tới /api/products và số XHR còn đang chờ.
+ */
+function installFormProbe() {
+  const probe = { invalid: [] as string[], submit: 0, sent: 0, pending: 0 };
+  (window as unknown as { __formProbe: typeof probe }).__formProbe = probe;
+  // Trang gọi server bằng XHR (axios). Đếm yêu cầu ghi và số XHR còn đang chờ.
+  type TrackedXhr = XMLHttpRequest & { __method?: string; __url?: string };
+  const open = XMLHttpRequest.prototype.open;
+  const send = XMLHttpRequest.prototype.send;
+  XMLHttpRequest.prototype.open = function (this: TrackedXhr, method: string, url: string | URL) {
+    this.__method = method.toUpperCase();
+    this.__url = String(url);
+    // eslint-disable-next-line prefer-rest-params
+    return open.apply(this, arguments as unknown as Parameters<typeof open>);
+  } as typeof open;
+  XMLHttpRequest.prototype.send = function (this: TrackedXhr, body?: Document | XMLHttpRequestBodyInit | null) {
+    probe.pending++;
+    if (this.__method !== 'GET' && /\/api\/products(\/|$)/.test(this.__url ?? '')) probe.sent++;
+    this.addEventListener('loadend', () => probe.pending--);
+    return send.call(this, body);
+  };
+  document.addEventListener(
+    'invalid',
+    (event) => probe.invalid.push((event.target as HTMLInputElement).placeholder),
+    true,
+  );
+  document.addEventListener('submit', () => probe.submit++, true);
+}
+
 /** Page Object của Web Admin – mục Sản phẩm. Locator lấy theo bảng khảo sát B2. */
 export class AdminProductsPage {
   /** Nguyên văn mọi alert / confirm đã bật, theo thứ tự. */
@@ -49,35 +82,6 @@ export class AdminProductsPage {
       await dialog.accept();
     });
 
-    // Ghi sự kiện `invalid` và `submit` ngay trong trang (đã kiểm trên Chromium, Firefox, WebKit ở B6):
-    // khi ô bắt buộc bỏ trống, trình duyệt bắn `invalid` vào ô đó và KHÔNG bắn `submit`.
-    void page.addInitScript(() => {
-      const probe = { invalid: [] as string[], submit: 0, sent: 0, pending: 0 };
-      (window as unknown as { __formProbe: typeof probe }).__formProbe = probe;
-      // Trang gọi server bằng XHR (axios). Đếm yêu cầu ghi và số XHR còn đang chờ.
-      type TrackedXhr = XMLHttpRequest & { __method?: string; __url?: string };
-      const open = XMLHttpRequest.prototype.open;
-      const send = XMLHttpRequest.prototype.send;
-      XMLHttpRequest.prototype.open = function (this: TrackedXhr, method: string, url: string | URL) {
-        this.__method = method.toUpperCase();
-        this.__url = String(url);
-        // eslint-disable-next-line prefer-rest-params
-        return open.apply(this, arguments as unknown as Parameters<typeof open>);
-      } as typeof open;
-      XMLHttpRequest.prototype.send = function (this: TrackedXhr, body?: Document | XMLHttpRequestBodyInit | null) {
-        probe.pending++;
-        if (this.__method !== 'GET' && /\/api\/products(\/|$)/.test(this.__url ?? '')) probe.sent++;
-        this.addEventListener('loadend', () => probe.pending--);
-        return send.call(this, body);
-      };
-      document.addEventListener(
-        'invalid',
-        (event) => probe.invalid.push((event.target as HTMLInputElement).placeholder),
-        true,
-      );
-      document.addEventListener('submit', () => probe.submit++, true);
-    });
-
     this.emailInput = page.getByPlaceholder('Email');
     this.passwordInput = page.getByPlaceholder('Password');
     this.loginButton = page.getByRole('button', { name: 'Login' });
@@ -101,7 +105,17 @@ export class AdminProductsPage {
     this.priceCells = page.locator('tbody tr td:nth-child(3)');
   }
 
+  private probeInstalled = false;
+
+  /** Cài bộ ghi dấu vết vào trang. Phải xong TRƯỚC khi mở trang, nên được await ở đầu login(). */
+  private async installProbe() {
+    if (this.probeInstalled) return;
+    await this.page.addInitScript(installFormProbe);
+    this.probeInstalled = true;
+  }
+
   async login(email: string, password: string) {
+    await this.installProbe();
     await this.page.goto(ADMIN_URL);
     await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
