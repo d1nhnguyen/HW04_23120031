@@ -101,11 +101,20 @@ def check_waits(path, raw, code):
 # 2. Dữ liệu ghi cứng trong script
 # --------------------------------------------------------------------------- #
 
+# Khóa mà giá trị là TỪ KHÓA của cấu trúc dữ liệu chứ không phải giá trị test.
+# {"ref": "setup"} nghĩa là "lấy giá trị đã tạo ở setup": "setup" là tên một phần của test case,
+# script được phép viết nó ra (ví dụ trong kiểu `{ ref: 'setup' }`).
+STRUCTURAL_KEYS = ("ref",)
+
+
 def data_leaves(node, under=None, out=None):
-    """Thu các giá trị test trong file dữ liệu: mọi giá trị dưới input / setup, và chuỗi dài, số lớn dưới expected."""
+    """Thu các giá trị test trong file dữ liệu: mọi giá trị dưới input / setup, và chuỗi dài, số lớn dưới expected.
+    Bỏ qua giá trị của các khóa trong STRUCTURAL_KEYS."""
     out = out if out is not None else set()
     if isinstance(node, dict):
         for key, value in node.items():
+            if key in STRUCTURAL_KEYS:
+                continue
             data_leaves(value, key if key in ("input", "setup", "expected") else under, out)
     elif isinstance(node, list):
         for value in node:
