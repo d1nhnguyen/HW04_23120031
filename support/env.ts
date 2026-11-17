@@ -6,6 +6,8 @@ export type Account = { email: string; password: string };
 export type AutomationConfig = {
   /** Mã người chạy, hiện trong tiêu đề report và annotation "Run by". */
   runBy: string;
+  /** Số test case tối thiểu của một feature. */
+  minTestCases: number;
   /** Số kiểu assertion khác nhau tối thiểu mà suite của một feature phải dùng. */
   minAssertionKinds: number;
   /** File đặc tả dùng làm nguồn của kết quả mong đợi. */

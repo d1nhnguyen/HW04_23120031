@@ -30,6 +30,8 @@ export default defineConfig({
   reporter: [
     ['list'],
     ['html', { outputFolder: REPORT_DIR, open: 'never', title: `Run by: ${RUN_BY} · ${RUN_AT}` }],
+    // Kết quả dạng máy đọc, chỉ bật khi có JSON_REPORT (dùng bởi scripts/run_matrix của skill).
+    ...(process.env.JSON_REPORT ? [['json', { outputFile: process.env.JSON_REPORT }] as ['json', { outputFile: string }]] : []),
   ],
   metadata: { 'Run by': RUN_BY, 'Run at': RUN_AT },
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */

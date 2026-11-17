@@ -1,5 +1,6 @@
 {
   "runBy": "23120031",
+  "minTestCases": 12,
   "minAssertionKinds": 3,
   "spec": "README.md của SUT (Đặc tả Yêu cầu Hệ thống)",
   "sut": {

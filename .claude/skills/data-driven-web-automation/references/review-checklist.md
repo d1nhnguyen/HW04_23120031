@@ -2,6 +2,21 @@
 
 Tám mục dưới đây đến từ những lỗi đã gặp thật khi tự động hóa một feature CRUD trên trang quản trị. Mỗi mục có: vì sao quan trọng, cách kiểm, và lỗi đã gặp. Ở bước B6, đi qua từng mục và ghi đạt / chưa đạt kèm file và dòng.
 
+`scripts/lint_suite.py` kiểm được phần cơ học của các mục dưới đây. Cột "Máy kiểm" cho biết phần nào; phần còn lại phải tự review.
+
+| Mục | Máy kiểm (lint_suite) | Phải tự review |
+| --- | --- | --- |
+| 1. Expected theo đặc tả | Mỗi test case có `expected` | Expected có đúng với câu đặc tả không |
+| 2. Assertion đỏ được khi SUT sai | Số kiểu assertion so với ngưỡng | Từng assertion có fail khi SUT làm sai không |
+| 3. Giao diện lẫn server | Có tải lại trang trong test không | Mỗi case có đủ hai tầng không |
+| 4. Không chờ cố định | `waitForTimeout`, `setTimeout`, `sleep`, `waitFor…().catch()`, timeout ghi số không có chú thích | Căn cứ của chú thích có thật không |
+| 5. Dọn theo id trong fixture | Có fixture (`await use`) | Việc dọn có theo id và có trả SUT về như cũ không |
+| 6. Kiểm môi trường | `globalSetup` được khai báo và có kiểm dịch vụ | Thử làm sai một địa chỉ để thấy nó dừng thật |
+| 7. Tìm trên tracker | – | Toàn bộ |
+| 8. Ảnh bằng chứng | Test có tự chụp / đính ảnh | Mở ảnh ra xem |
+
+Ngoài tám mục, linter còn kiểm: giá trị test và giá trị riêng của dự án ghi cứng trong script, số test case so với `minTestCases`, đủ ba browser, annotation và tiêu đề report có "Run by", `test.only` / `test.fail`.
+
 ## 1. Kết quả mong đợi theo đặc tả
 
 **Vì sao:** test mà expected được suy từ hành vi của SUT thì luôn xanh, kể cả khi SUT sai.
