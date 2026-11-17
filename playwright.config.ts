@@ -18,6 +18,7 @@ const REPORT_DIR = process.env.REPORT_DIR ?? 'playwright-report';
 
 export default defineConfig({
   testDir: './tests',
+  globalSetup: './global-setup.ts',
   /* Các test dùng chung một backend nên chạy tuần tự */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

@@ -1,0 +1,423 @@
+{
+  "meta": {
+    "feature": "FR-15 Quản lý sản phẩm (Web Admin)",
+    "source": "report/fr15_testcases.md – 15 test case lấy từ HW02, giữ nguyên ID",
+    "admin": { "email": "admin@eshop.com", "password": "Admin123!" },
+    "conventions": {
+      "name.text + unique": "Script nối một hậu tố duy nhất của lượt chạy vào sau text, cách nhau một dấu cách.",
+      "name.length": "Script sinh tên dài ĐÚNG số ký tự này bằng ký tự fill; hậu tố duy nhất nằm TRONG tổng độ dài.",
+      "name.ref": "\"input\" = tên đã nhập ở input; \"setup\" = tên sản phẩm tạo ở setup.",
+      "input": "Chỉ liệt kê các ô mà test chạm vào. Giá là chuỗi đúng như gõ vào ô.",
+      "category": "Ghi theo nhãn hiển thị trong danh sách chọn; script tra id qua GET /api/categories.",
+      "setup": "Sản phẩm tạo trước qua API cho case Sửa / Xóa.",
+      "expected.ui.rowCountDelta": "Số dòng của bảng sau thao tác trừ số dòng trước thao tác.",
+      "expected.ui.row.price": "So phần số của ô Giá, bỏ qua ký hiệu ₫ và dấu phân cách (định dạng tiền thuộc FR-21, ngoài phạm vi FR-15).",
+      "expected.ui.othersUnchanged": "Tên và Giá của mọi dòng khác trên bảng giống trước thao tác, không tải lại trang.",
+      "expected.server": "Kiểm qua GET /api/products sau thao tác.",
+      "expected.server.othersUnchanged": "Mọi sản phẩm khác (toàn bộ các trường) giống hệt bản chụp GET /api/products trước thao tác.",
+      "expected.alert.shown": "false = không được có alert; true = phải có alert với đúng text; \"unspecified\" = đặc tả không quy định cách báo lỗi, không assert.",
+      "expected.validation": "Ô bị trình duyệt chặn bằng kiểm tra bắt buộc (không assert nguyên văn bong bóng vì mỗi browser một khác).",
+      "bug": "Issue ở d1nhnguyen/eshop-sut mà case này được kỳ vọng fail; \"NEW-UI-EDIT\" = bug mới phát hiện ở B2 (bảng hiển thị sai sau khi Sửa); null = kỳ vọng pass."
+    },
+    "observedNotSpecified": "Việc Thêm / Xóa thành công không có alert và Sửa thành công có alert \"Cập nhật thành công!\" là hành vi quan sát ở B2, đặc tả không quy định."
+  },
+  "cases": [
+    {
+      "id": "FR15-DT-01",
+      "title": "Thêm sản phẩm thành công với dữ liệu hợp lệ điển hình, Danh mục khác mặc định",
+      "op": "add",
+      "bug": null,
+      "setup": null,
+      "input": {
+        "name": { "text": "Sac nhanh USB-C 20W", "unique": true },
+        "price": "350000",
+        "category": "Phụ kiện"
+      },
+      "expected": {
+        "outcome": "accept",
+        "ui": {
+          "rowCountDelta": 1,
+          "row": { "present": true, "name": { "ref": "input" }, "price": 350000 },
+          "othersUnchanged": true
+        },
+        "server": {
+          "countDelta": 1,
+          "othersUnchanged": true,
+          "product": { "name": { "ref": "input" }, "price": 350000, "category": "Phụ kiện" }
+        },
+        "alert": { "shown": false }
+      }
+    },
+    {
+      "id": "FR15-DT-03",
+      "title": "Thêm sản phẩm thành công và Tên hiển thị nguyên văn khi Tên có ký tự HTML",
+      "op": "add",
+      "bug": null,
+      "setup": null,
+      "input": {
+        "name": { "text": "<b>Loa Bluetooth</b> Mini", "unique": true },
+        "price": "500000",
+        "category": "Phụ kiện"
+      },
+      "expected": {
+        "outcome": "accept",
+        "ui": {
+          "rowCountDelta": 1,
+          "row": {
+            "present": true,
+            "name": { "ref": "input" },
+            "price": 500000,
+            "noHtmlElementInName": "b"
+          },
+          "othersUnchanged": true
+        },
+        "server": {
+          "countDelta": 1,
+          "othersUnchanged": true,
+          "product": { "name": { "ref": "input" }, "price": 500000, "category": "Phụ kiện" }
+        },
+        "alert": { "shown": false }
+      }
+    },
+    {
+      "id": "FR15-BV-04",
+      "title": "Thêm sản phẩm thành công khi Tên dài 255 ký tự",
+      "op": "add",
+      "bug": null,
+      "setup": null,
+      "input": {
+        "name": { "length": 255, "fill": "A" },
+        "price": "350000",
+        "category": "Phụ kiện"
+      },
+      "expected": {
+        "outcome": "accept",
+        "ui": {
+          "rowCountDelta": 1,
+          "row": { "present": true, "name": { "ref": "input" }, "price": 350000 },
+          "othersUnchanged": true
+        },
+        "server": {
+          "countDelta": 1,
+          "othersUnchanged": true,
+          "product": {
+            "name": { "ref": "input" },
+            "nameLength": 255,
+            "price": 350000,
+            "category": "Phụ kiện"
+          }
+        },
+        "alert": { "shown": false }
+      }
+    },
+    {
+      "id": "FR15-BV-05",
+      "title": "Thêm sản phẩm bị từ chối khi Tên dài 256 ký tự",
+      "op": "add",
+      "bug": "BUG-26",
+      "setup": null,
+      "input": {
+        "name": { "length": 256, "fill": "A" },
+        "price": "350000",
+        "category": "Phụ kiện"
+      },
+      "expected": {
+        "outcome": "reject",
+        "ui": {
+          "rowCountDelta": 0,
+          "row": { "present": false, "name": { "ref": "input" } },
+          "othersUnchanged": true
+        },
+        "server": { "countDelta": 0, "othersUnchanged": true },
+        "alert": { "shown": "unspecified" }
+      }
+    },
+    {
+      "id": "FR15-DT-05",
+      "title": "Thêm sản phẩm bị từ chối khi bỏ trống Tên",
+      "op": "add",
+      "bug": null,
+      "setup": null,
+      "input": {
+        "name": { "text": "" },
+        "price": "350000",
+        "category": "Phụ kiện"
+      },
+      "expected": {
+        "outcome": "reject",
+        "ui": { "rowCountDelta": 0, "othersUnchanged": true },
+        "server": { "countDelta": 0, "othersUnchanged": true },
+        "alert": { "shown": false },
+        "validation": { "field": "name", "state": "valueMissing" }
+      }
+    },
+    {
+      "id": "FR15-DT-06",
+      "title": "Thêm sản phẩm bị từ chối khi Tên chỉ gồm khoảng trắng",
+      "op": "add",
+      "bug": "BUG-27",
+      "setup": null,
+      "input": {
+        "name": { "text": "   " },
+        "price": "350000",
+        "category": "Phụ kiện"
+      },
+      "expected": {
+        "outcome": "reject",
+        "ui": { "rowCountDelta": 0, "othersUnchanged": true },
+        "server": { "countDelta": 0, "othersUnchanged": true },
+        "alert": { "shown": "unspecified" }
+      }
+    },
+    {
+      "id": "FR15-BV-14",
+      "title": "Thêm sản phẩm thành công khi Giá bằng 1",
+      "op": "add",
+      "bug": null,
+      "setup": null,
+      "input": {
+        "name": { "text": "Sac nhanh USB-C 20W", "unique": true },
+        "price": "1",
+        "category": "Phụ kiện"
+      },
+      "expected": {
+        "outcome": "accept",
+        "ui": {
+          "rowCountDelta": 1,
+          "row": { "present": true, "name": { "ref": "input" }, "price": 1 },
+          "othersUnchanged": true
+        },
+        "server": {
+          "countDelta": 1,
+          "othersUnchanged": true,
+          "product": { "name": { "ref": "input" }, "price": 1, "category": "Phụ kiện" }
+        },
+        "alert": { "shown": false }
+      }
+    },
+    {
+      "id": "FR15-DT-08",
+      "title": "Thêm sản phẩm bị từ chối khi Giá bằng 0",
+      "op": "add",
+      "bug": "BUG-24",
+      "setup": null,
+      "input": {
+        "name": { "text": "Sac nhanh USB-C 20W", "unique": true },
+        "price": "0",
+        "category": "Phụ kiện"
+      },
+      "expected": {
+        "outcome": "reject",
+        "ui": {
+          "rowCountDelta": 0,
+          "row": { "present": false, "name": { "ref": "input" } },
+          "othersUnchanged": true
+        },
+        "server": { "countDelta": 0, "othersUnchanged": true },
+        "alert": { "shown": "unspecified" }
+      }
+    },
+    {
+      "id": "FR15-DT-09",
+      "title": "Thêm sản phẩm bị từ chối khi Giá âm",
+      "op": "add",
+      "bug": "BUG-24",
+      "setup": null,
+      "input": {
+        "name": { "text": "Sac nhanh USB-C 20W", "unique": true },
+        "price": "-50000",
+        "category": "Phụ kiện"
+      },
+      "expected": {
+        "outcome": "reject",
+        "ui": {
+          "rowCountDelta": 0,
+          "row": { "present": false, "name": { "ref": "input" } },
+          "othersUnchanged": true
+        },
+        "server": { "countDelta": 0, "othersUnchanged": true },
+        "alert": { "shown": "unspecified" }
+      }
+    },
+    {
+      "id": "FR15-DT-10",
+      "title": "Thêm sản phẩm bị từ chối khi bỏ trống Giá",
+      "op": "add",
+      "bug": "BUG-25",
+      "setup": null,
+      "input": {
+        "name": { "text": "Sac nhanh USB-C 20W", "unique": true },
+        "price": "",
+        "category": "Phụ kiện"
+      },
+      "expected": {
+        "outcome": "reject",
+        "ui": {
+          "rowCountDelta": 0,
+          "row": { "present": false, "name": { "ref": "input" } },
+          "othersUnchanged": true
+        },
+        "server": { "countDelta": 0, "othersUnchanged": true },
+        "alert": { "shown": "unspecified" }
+      }
+    },
+    {
+      "id": "FR15-DT-15",
+      "title": "Sửa Giá sản phẩm thành công và các sản phẩm khác giữ nguyên",
+      "op": "edit",
+      "bug": "NEW-UI-EDIT",
+      "setup": {
+        "name": { "text": "MacBook Pro M3", "unique": true },
+        "price": 45000000,
+        "category": "Laptop",
+        "description": "Mo ta goc FR15-DT-15",
+        "imageUrl": ""
+      },
+      "input": { "price": "42000000" },
+      "expected": {
+        "outcome": "accept",
+        "ui": {
+          "rowCountDelta": 0,
+          "row": { "present": true, "name": { "ref": "setup" }, "price": 42000000 },
+          "othersUnchanged": true
+        },
+        "server": {
+          "countDelta": 0,
+          "product": {
+            "name": { "ref": "setup" },
+            "price": 42000000,
+            "category": "Laptop",
+            "description": "Mo ta goc FR15-DT-15"
+          },
+          "othersUnchanged": true
+        },
+        "alert": { "shown": true, "text": "Cập nhật thành công!" }
+      }
+    },
+    {
+      "id": "FR15-DT-34",
+      "title": "Sửa chỉ Giá sản phẩm thành công, Tên và Danh mục do form điền sẵn được giữ nguyên",
+      "op": "edit",
+      "bug": "NEW-UI-EDIT",
+      "setup": {
+        "name": { "text": "MacBook Pro M3", "unique": true },
+        "price": 45000000,
+        "category": "Laptop",
+        "description": "Mo ta goc FR15-DT-34",
+        "imageUrl": ""
+      },
+      "input": { "price": "43000000" },
+      "expected": {
+        "outcome": "accept",
+        "formPrefill": { "name": { "ref": "setup" }, "price": "45000000", "category": "Laptop" },
+        "ui": {
+          "rowCountDelta": 0,
+          "row": { "present": true, "name": { "ref": "setup" }, "price": 43000000 },
+          "othersUnchanged": true
+        },
+        "server": {
+          "countDelta": 0,
+          "product": {
+            "name": { "ref": "setup" },
+            "price": 43000000,
+            "category": "Laptop",
+            "description": "Mo ta goc FR15-DT-34"
+          },
+          "othersUnchanged": true
+        },
+        "alert": { "shown": true, "text": "Cập nhật thành công!" }
+      }
+    },
+    {
+      "id": "FR15-DT-17",
+      "title": "Sửa sản phẩm bị từ chối khi bỏ trống Tên",
+      "op": "edit",
+      "bug": null,
+      "setup": {
+        "name": { "text": "Samsung Galaxy S24 Ultra", "unique": true },
+        "price": 28000000,
+        "category": "Điện thoại",
+        "description": "Mo ta goc FR15-DT-17",
+        "imageUrl": ""
+      },
+      "input": { "name": { "text": "" } },
+      "expected": {
+        "outcome": "reject",
+        "ui": {
+          "rowCountDelta": 0,
+          "row": { "present": true, "name": { "ref": "setup" }, "price": 28000000 },
+          "othersUnchanged": true
+        },
+        "server": {
+          "countDelta": 0,
+          "product": {
+            "name": { "ref": "setup" },
+            "price": 28000000,
+            "category": "Điện thoại",
+            "description": "Mo ta goc FR15-DT-17"
+          },
+          "othersUnchanged": true
+        },
+        "alert": { "shown": false },
+        "validation": { "field": "name", "state": "valueMissing" }
+      }
+    },
+    {
+      "id": "FR15-DT-20",
+      "title": "Sửa sản phẩm bị từ chối khi Giá bằng 0",
+      "op": "edit",
+      "bug": "BUG-24",
+      "setup": {
+        "name": { "text": "Samsung Galaxy S24 Ultra", "unique": true },
+        "price": 28000000,
+        "category": "Điện thoại",
+        "description": "Mo ta goc FR15-DT-20",
+        "imageUrl": ""
+      },
+      "input": { "price": "0" },
+      "expected": {
+        "outcome": "reject",
+        "ui": {
+          "rowCountDelta": 0,
+          "row": { "present": true, "name": { "ref": "setup" }, "price": 28000000 },
+          "othersUnchanged": true
+        },
+        "server": {
+          "countDelta": 0,
+          "product": {
+            "name": { "ref": "setup" },
+            "price": 28000000,
+            "category": "Điện thoại",
+            "description": "Mo ta goc FR15-DT-20"
+          },
+          "othersUnchanged": true
+        },
+        "alert": { "shown": "unspecified" }
+      }
+    },
+    {
+      "id": "FR15-DT-30",
+      "title": "Xóa sản phẩm thành công và các sản phẩm khác giữ nguyên",
+      "op": "delete",
+      "bug": null,
+      "setup": {
+        "name": { "text": "Bàn phím cơ Keychron Q1", "unique": true },
+        "price": 4000000,
+        "category": "Phụ kiện",
+        "description": "Mo ta goc FR15-DT-30",
+        "imageUrl": ""
+      },
+      "input": {},
+      "expected": {
+        "outcome": "accept",
+        "ui": {
+          "rowCountDelta": -1,
+          "row": { "present": false, "name": { "ref": "setup" } },
+          "othersUnchanged": true
+        },
+        "server": { "countDelta": -1, "productPresent": false, "othersUnchanged": true },
+        "alert": { "shown": false }
+      }
+    }
+  ]
+}
