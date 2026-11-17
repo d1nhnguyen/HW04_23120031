@@ -2,7 +2,8 @@ import { expect, type Locator, type Page } from '@playwright/test';
 
 export const ADMIN_URL = process.env.ADMIN_URL ?? 'http://localhost:5174';
 
-export type TableRow = { name: string; price: string };
+/** Một dòng của bảng sản phẩm: Tên đã gộp khoảng trắng, Giá là phần số của ô (bỏ ₫ và dấu phân cách). */
+export type TableRow = { name: string; price: number };
 
 /** Dấu vết ghi trong trang: trình duyệt có chặn form hay form đã được submit. */
 export type FormProbe = {
@@ -129,11 +130,20 @@ export class AdminProductsPage {
     return this.row(index).getByRole('button', { name: 'Xóa' });
   }
 
-  /** Chụp bảng hiện tại (dùng ở bước Arrange, sau khi đã chờ bảng tải xong). */
+  /** Các dòng có ô Tên khớp ĐÚNG cả chuỗi `name`. */
+  rowsNamed(name: string): Locator {
+    const exact = new RegExp(`^${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`);
+    return this.rows.filter({ has: this.page.locator('td:nth-child(2)', { hasText: exact }) });
+  }
+
+  /** Chụp bảng hiện tại theo đúng thứ tự hiển thị. */
   async readTable(): Promise<TableRow[]> {
     const names = await this.nameCells.allTextContents();
     const prices = await this.priceCells.allTextContents();
-    return names.map((name, i) => ({ name, price: prices[i] }));
+    return names.map((name, i) => ({
+      name: name.replace(/\s+/g, ' ').trim(),
+      price: Number((prices[i] ?? '').replace(/[^\d-]/g, '')),
+    }));
   }
 
   /** Chỉ điền các ô được truyền vào; ô không truyền thì không chạm. */

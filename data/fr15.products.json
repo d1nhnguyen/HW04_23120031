@@ -17,7 +17,7 @@
       "expected.server.othersUnchanged": "Mọi sản phẩm khác (toàn bộ các trường) giống hệt bản chụp GET /api/products trước thao tác.",
       "expected.alert.shown": "false = không được có alert; true = phải có alert với đúng text; \"unspecified\" = đặc tả không quy định cách báo lỗi, không assert.",
       "expected.validation": "Ô bị trình duyệt chặn bằng kiểm tra bắt buộc (không assert nguyên văn bong bóng vì mỗi browser một khác).",
-      "bug": "Issue ở d1nhnguyen/eshop-sut mà case này được kỳ vọng fail; \"NEW-UI-EDIT\" = bug mới phát hiện ở B2 (bảng hiển thị sai sau khi Sửa); null = kỳ vọng pass."
+      "bug": "Danh sách bug mà case này được kỳ vọng làm lộ ra: issue ở d1nhnguyen/eshop-sut (BUG-xx) hoặc \"NEW-UI-EDIT\" = bug mới phát hiện ở B2 (bảng hiển thị sai sau khi Sửa). Danh sách rỗng = kỳ vọng pass."
     },
     "observedNotSpecified": "Việc Thêm / Xóa thành công không có alert và Sửa thành công có alert \"Cập nhật thành công!\" là hành vi quan sát ở B2, đặc tả không quy định."
   },
@@ -26,7 +26,7 @@
       "id": "FR15-DT-01",
       "title": "Thêm sản phẩm thành công với dữ liệu hợp lệ điển hình, Danh mục khác mặc định",
       "op": "add",
-      "bug": null,
+      "bug": [],
       "setup": null,
       "input": {
         "name": { "text": "Sac nhanh USB-C 20W", "unique": true },
@@ -52,7 +52,7 @@
       "id": "FR15-DT-03",
       "title": "Thêm sản phẩm thành công và Tên hiển thị nguyên văn khi Tên có ký tự HTML",
       "op": "add",
-      "bug": null,
+      "bug": [],
       "setup": null,
       "input": {
         "name": { "text": "<b>Loa Bluetooth</b> Mini", "unique": true },
@@ -83,7 +83,7 @@
       "id": "FR15-BV-04",
       "title": "Thêm sản phẩm thành công khi Tên dài 255 ký tự",
       "op": "add",
-      "bug": null,
+      "bug": [],
       "setup": null,
       "input": {
         "name": { "length": 255, "fill": "A" },
@@ -114,7 +114,7 @@
       "id": "FR15-BV-05",
       "title": "Thêm sản phẩm bị từ chối khi Tên dài 256 ký tự",
       "op": "add",
-      "bug": "BUG-26",
+      "bug": ["BUG-26"],
       "setup": null,
       "input": {
         "name": { "length": 256, "fill": "A" },
@@ -136,7 +136,7 @@
       "id": "FR15-DT-05",
       "title": "Thêm sản phẩm bị từ chối khi bỏ trống Tên",
       "op": "add",
-      "bug": null,
+      "bug": [],
       "setup": null,
       "input": {
         "name": { "text": "" },
@@ -155,7 +155,7 @@
       "id": "FR15-DT-06",
       "title": "Thêm sản phẩm bị từ chối khi Tên chỉ gồm khoảng trắng",
       "op": "add",
-      "bug": "BUG-27",
+      "bug": ["BUG-27"],
       "setup": null,
       "input": {
         "name": { "text": "   " },
@@ -173,7 +173,7 @@
       "id": "FR15-BV-14",
       "title": "Thêm sản phẩm thành công khi Giá bằng 1",
       "op": "add",
-      "bug": null,
+      "bug": [],
       "setup": null,
       "input": {
         "name": { "text": "Sac nhanh USB-C 20W", "unique": true },
@@ -199,7 +199,7 @@
       "id": "FR15-DT-08",
       "title": "Thêm sản phẩm bị từ chối khi Giá bằng 0",
       "op": "add",
-      "bug": "BUG-24",
+      "bug": ["BUG-24"],
       "setup": null,
       "input": {
         "name": { "text": "Sac nhanh USB-C 20W", "unique": true },
@@ -221,7 +221,7 @@
       "id": "FR15-DT-09",
       "title": "Thêm sản phẩm bị từ chối khi Giá âm",
       "op": "add",
-      "bug": "BUG-24",
+      "bug": ["BUG-24"],
       "setup": null,
       "input": {
         "name": { "text": "Sac nhanh USB-C 20W", "unique": true },
@@ -243,7 +243,7 @@
       "id": "FR15-DT-10",
       "title": "Thêm sản phẩm bị từ chối khi bỏ trống Giá",
       "op": "add",
-      "bug": "BUG-25",
+      "bug": ["BUG-25"],
       "setup": null,
       "input": {
         "name": { "text": "Sac nhanh USB-C 20W", "unique": true },
@@ -265,7 +265,7 @@
       "id": "FR15-DT-15",
       "title": "Sửa Giá sản phẩm thành công và các sản phẩm khác giữ nguyên",
       "op": "edit",
-      "bug": "NEW-UI-EDIT",
+      "bug": ["NEW-UI-EDIT"],
       "setup": {
         "name": { "text": "MacBook Pro M3", "unique": true },
         "price": 45000000,
@@ -298,7 +298,7 @@
       "id": "FR15-DT-34",
       "title": "Sửa chỉ Giá sản phẩm thành công, Tên và Danh mục do form điền sẵn được giữ nguyên",
       "op": "edit",
-      "bug": "NEW-UI-EDIT",
+      "bug": ["NEW-UI-EDIT"],
       "setup": {
         "name": { "text": "MacBook Pro M3", "unique": true },
         "price": 45000000,
@@ -332,7 +332,7 @@
       "id": "FR15-DT-17",
       "title": "Sửa sản phẩm bị từ chối khi bỏ trống Tên",
       "op": "edit",
-      "bug": null,
+      "bug": [],
       "setup": {
         "name": { "text": "Samsung Galaxy S24 Ultra", "unique": true },
         "price": 28000000,
@@ -366,7 +366,7 @@
       "id": "FR15-DT-20",
       "title": "Sửa sản phẩm bị từ chối khi Giá bằng 0",
       "op": "edit",
-      "bug": "BUG-24",
+      "bug": ["BUG-24", "NEW-UI-EDIT"],
       "setup": {
         "name": { "text": "Samsung Galaxy S24 Ultra", "unique": true },
         "price": 28000000,
@@ -399,7 +399,7 @@
       "id": "FR15-DT-30",
       "title": "Xóa sản phẩm thành công và các sản phẩm khác giữ nguyên",
       "op": "delete",
-      "bug": null,
+      "bug": [],
       "setup": {
         "name": { "text": "Bàn phím cơ Keychron Q1", "unique": true },
         "price": 4000000,
