@@ -4,6 +4,11 @@ import type { Page } from '@playwright/test';
 export type FormProbe = {
   /** placeholder của các ô bị trình duyệt báo không hợp lệ (sự kiện `invalid`). */
   invalid: string[];
+  /**
+   * Chữ của nhãn đứng với từng ô bị báo không hợp lệ, cùng thứ tự với `invalid`.
+   * Dùng cho form mà ô nhập không có placeholder (trang Đăng ký). Chuỗi rỗng nếu ô không có nhãn.
+   */
+  invalidLabels: string[];
   /** số lần form thực sự được submit (sự kiện `submit`). */
   submit: number;
   /** số yêu cầu ghi (không phải GET) tới URL khớp mẫu mà trang đã gửi. */
@@ -22,7 +27,7 @@ type ProbeWindow = { __formProbe: FormProbe };
  */
 function probeScript(writePattern: string) {
   const isWrite = new RegExp(writePattern);
-  const probe = { invalid: [] as string[], submit: 0, sent: 0, pending: 0 };
+  const probe = { invalid: [] as string[], invalidLabels: [] as string[], submit: 0, sent: 0, pending: 0 };
   (window as unknown as { __formProbe: typeof probe }).__formProbe = probe;
   // Trang gọi server bằng XHR (axios). Đếm yêu cầu ghi và số XHR còn đang chờ.
   type TrackedXhr = XMLHttpRequest & { __method?: string; __url?: string };
@@ -42,7 +47,14 @@ function probeScript(writePattern: string) {
   };
   document.addEventListener(
     'invalid',
-    (event) => probe.invalid.push((event.target as HTMLInputElement).placeholder),
+    (event) => {
+      const input = event.target as HTMLInputElement;
+      probe.invalid.push(input.placeholder);
+      // Nhãn gắn bằng for / id nếu có; nếu không thì lấy <label> đứng ngay trước ô.
+      const previous = input.previousElementSibling;
+      const label = input.labels?.[0] ?? (previous instanceof HTMLLabelElement ? previous : null);
+      probe.invalidLabels.push(label?.textContent?.trim() ?? '');
+    },
     true,
   );
   document.addEventListener('submit', () => probe.submit++, true);
@@ -61,6 +73,7 @@ export async function resetProbe(page: Page) {
   await page.evaluate(() => {
     const probe = (window as unknown as ProbeWindow).__formProbe;
     probe.invalid = [];
+    probe.invalidLabels = [];
     probe.submit = 0;
     probe.sent = 0;
   });
@@ -69,7 +82,13 @@ export async function resetProbe(page: Page) {
 export async function readProbe(page: Page): Promise<FormProbe> {
   return page.evaluate(() => {
     const probe = (window as unknown as ProbeWindow).__formProbe;
-    return { invalid: [...probe.invalid], submit: probe.submit, sent: probe.sent, pending: probe.pending };
+    return {
+      invalid: [...probe.invalid],
+      invalidLabels: [...probe.invalidLabels],
+      submit: probe.submit,
+      sent: probe.sent,
+      pending: probe.pending,
+    };
   });
 }
 
