@@ -1,0 +1,304 @@
+{
+  "meta": {
+    "feature": "FR-01 Đăng ký tài khoản (Web khách hàng)",
+    "source": "report/fr01_testcases.md – 15 test case lấy từ HW02 (giữ nguyên ID) và 2 case bổ sung FR01-WA-11, FR01-WA-17",
+    "spec": {
+      "S1": "Người dùng phải cung cấp: Họ Tên, Email, Mật khẩu.",
+      "S2": "Email phải có định dạng hợp lệ (user@domain.com) và là duy nhất trong hệ thống.",
+      "S3": "Yêu cầu mật khẩu mạnh: Tối thiểu 8 ký tự, có ít nhất 1 chữ hoa, 1 chữ thường, 1 chữ số và 1 ký tự đặc biệt (@, $, !, %, *, ?, &).",
+      "S4": "Phải có trường Xác nhận mật khẩu — hệ thống từ chối nếu hai trường không khớp.",
+      "S5": "Sau khi đăng ký thành công, người dùng được chuyển tới trang Đăng nhập."
+    },
+    "conventions": {
+      "{uid}": "Script thay bằng một hậu tố duy nhất của test (browser + thời điểm), để email không trùng giữa các test và các lượt chạy.",
+      "input": "Giá trị gõ vào từng ô, đúng từng ký tự (kể cả dấu cách cuối). Chỉ case có khóa confirm mới chạm ô Xác nhận mật khẩu.",
+      "input.email.ref": "\"setup\" = email của tài khoản tạo ở setup.",
+      "setup.account": "Tài khoản tạo trước qua POST /api/register. Không dùng tài khoản seed trong automation.config.json.",
+      "expected.spec": "Mã các câu đặc tả mà expected của case dựa vào.",
+      "expected.ui.page": "\"login\" = sau thao tác, người dùng ở trang Đăng nhập (S5). \"register\" = vẫn ở trang Đăng ký; đây là suy ra từ S5 (chỉ đăng ký thành công mới chuyển trang), đặc tả không viết thành câu.",
+      "expected.ui.confirmField": "true = form phải có ô Xác nhận mật khẩu (S4).",
+      "expected.ui.rejection.field": "Lý do từ chối phải thuộc về ô này: name | email | duplicate | password | confirm. Cách nhận diện là GIẢ ĐỊNH, xem assumptions.rejectionReason. Không có khóa rejection = không assert lý do.",
+      "expected.server.newAccounts": "Số tài khoản mới trong GET /api/admin/users sau thao tác so với ngay trước thao tác (sau setup).",
+      "expected.server.account": "Tài khoản mới có đúng Họ Tên và Email đã nhập.",
+      "expected.server.loginWithInput": "Đăng nhập qua API bằng email + mật khẩu vừa nhập phải thành công. Suy ra từ \"đăng ký thành công\" (S5); đặc tả không viết thành câu.",
+      "expected.server.othersUnchanged": "Mọi tài khoản có từ trước thao tác giống hệt bản chụp GET /api/admin/users trước thao tác.",
+      "expected.server.setupLoginStillWorks": "Tài khoản tạo ở setup vẫn đăng nhập được bằng mật khẩu của chính nó.",
+      "bug": "Bug mà case được kỳ vọng làm lộ ra, theo mã trong tiêu đề issue ở d1nhnguyen/eshop-sut; số issue ở meta.bugIssues. Danh sách rỗng = kỳ vọng pass. Sẽ đối chiếu lại với tracker ở B8.",
+      "addedInHW04": "true = case bổ sung ở HW04, không có trong bộ test case của HW02."
+    },
+    "assumptions": {
+      "rejectionReason": {
+        "note": "GIẢ ĐỊNH (A7 của HW02), không phải đặc tả: đặc tả không quy định câu chữ thông báo lỗi. Lý do từ chối được coi là thuộc về một ô khi (a) trình duyệt chặn form và bắn sự kiện invalid vào đúng ô đó, hoặc (b) thông báo lỗi hiện trên trang được xếp vào ô đó theo bảng từ khóa dưới đây. Thông báo được thử theo thứ tự trong order và nhận nhóm đầu tiên khớp; so không phân biệt hoa thường.",
+        "order": ["confirm", "duplicate", "password", "email", "name"],
+        "keywords": {
+          "confirm": ["xác nhận", "không khớp", "confirm", "match"],
+          "duplicate": ["tồn tại", "đã được", "đã sử dụng", "exist", "already", "duplicate"],
+          "password": ["mật khẩu", "password"],
+          "email": ["email"],
+          "name": ["họ tên", "họ và tên", "name"]
+        }
+      }
+    },
+    "observedNotSpecified": [
+      "Quan sát ở B2 (2026-11-17), không phải đặc tả: đăng ký thành công không có alert và không có thông báo, trang chuyển thẳng sang /login.",
+      "Quan sát ở B2: form hiện chỉ gửi yêu cầu khi mật khẩu có dấu cách làm ký tự đặc biệt (ví dụ \"Abcdef1 \"); mọi mật khẩu hợp lệ theo S3 bị báo \"Mật khẩu quá yếu!\". Mật khẩu của FR01-WA-11 và FR01-WA-17 được chọn theo quan sát này.",
+      "Quan sát ở B2: ô bắt buộc bỏ trống bị trình duyệt chặn (thuộc tính required), không có thông báo của trang."
+    ],
+    "bugIssues": {
+      "BUG-15": "#15 Form Đăng ký báo \"Mật khẩu quá yếu\" với mọi mật khẩu hợp lệ (cùng nội dung: #110 của thành viên khác)",
+      "BUG-16": "#16 Form Đăng ký thiếu ô Xác nhận mật khẩu (cùng nội dung: #113)",
+      "BUG-18": "#18 API đăng ký chấp nhận email sai định dạng",
+      "BUG-19": "#19 API đăng ký chấp nhận mật khẩu không đủ mạnh",
+      "BUG-20": "#20 Cho đăng ký bằng email đã tồn tại (cùng nội dung: #112)",
+      "BUG-21": "#21 Ô Email dùng type=\"text\", không kiểm tra định dạng (cùng nội dung: #111)"
+    }
+  },
+  "cases": [
+    {
+      "id": "FR01-DT-01",
+      "title": "Đăng ký thành công với dữ liệu hợp lệ điển hình, Mật khẩu đúng 8 ký tự",
+      "op": "register",
+      "bug": ["BUG-15"],
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.dt01.{uid}@example.com", "password": "Abcdef1@" },
+      "expected": {
+        "outcome": "accept",
+        "spec": ["S1", "S2", "S3", "S5"],
+        "ui": { "page": "login" },
+        "server": { "newAccounts": 1, "account": true, "loginWithInput": true, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-BV-04",
+      "title": "Đăng ký thành công khi Mật khẩu dài 9 ký tự",
+      "op": "register",
+      "bug": ["BUG-15"],
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.bv04.{uid}@example.com", "password": "Abcdefg1@" },
+      "expected": {
+        "outcome": "accept",
+        "spec": ["S3", "S5"],
+        "ui": { "page": "login" },
+        "server": { "newAccounts": 1, "account": true, "loginWithInput": true, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-BV-14",
+      "title": "Đăng ký thành công khi Họ Tên dài 1 ký tự",
+      "op": "register",
+      "bug": ["BUG-15"],
+      "setup": null,
+      "input": { "name": "A", "email": "fr01.bv14.{uid}@example.com", "password": "Abcdef1@" },
+      "expected": {
+        "outcome": "accept",
+        "spec": ["S1", "S5"],
+        "ui": { "page": "login" },
+        "server": { "newAccounts": 1, "account": true, "loginWithInput": true, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-DT-08",
+      "title": "Đăng ký bị từ chối khi bỏ trống Họ Tên",
+      "op": "register",
+      "bug": [],
+      "setup": null,
+      "input": { "name": "", "email": "fr01.dt08.{uid}@example.com", "password": "Abcdef1@" },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S1"],
+        "ui": { "page": "register", "rejection": { "field": "name" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-DT-10",
+      "title": "Đăng ký bị từ chối khi bỏ trống Email",
+      "op": "register",
+      "bug": [],
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "", "password": "Abcdef1@" },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S1"],
+        "ui": { "page": "register", "rejection": { "field": "email" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-DT-19",
+      "title": "Đăng ký bị từ chối khi bỏ trống Mật khẩu",
+      "op": "register",
+      "bug": [],
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.dt19.{uid}@example.com", "password": "" },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S1"],
+        "ui": { "page": "register", "rejection": { "field": "password" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-DT-11",
+      "title": "Đăng ký bị từ chối khi Email thiếu ký tự @",
+      "op": "register",
+      "bug": ["BUG-15"],
+      "note": "BUG-15 chặn form vì mật khẩu trước khi email được kiểm, nên case này đỏ ở assertion lý do từ chối. Phần kiểm email trên SUT hiện tại do FR01-WA-11 đảm nhận.",
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.dt11.{uid}example.com", "password": "Abcdef1@" },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S2"],
+        "ui": { "page": "register", "rejection": { "field": "email" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-DT-17",
+      "title": "Đăng ký bị từ chối khi Email đã tồn tại",
+      "op": "register",
+      "bug": ["BUG-15"],
+      "note": "Khác HW02: không dùng tài khoản seed test@eshop.com mà đăng ký trùng với một tài khoản tạo ở setup. BUG-15 chặn form vì mật khẩu trước khi tính duy nhất được kiểm; phần đó trên SUT hiện tại do FR01-WA-17 đảm nhận.",
+      "setup": { "account": { "name": "Tai khoan co san", "email": "fr01.dt17.seed.{uid}@example.com", "password": "Seedpass1@" } },
+      "input": { "name": "Nguyen Van A", "email": { "ref": "setup" }, "password": "Newpass1@" },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S2"],
+        "ui": { "page": "register", "rejection": { "field": "duplicate" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true, "setupLoginStillWorks": true }
+      }
+    },
+    {
+      "id": "FR01-BV-03",
+      "title": "Đăng ký bị từ chối khi Mật khẩu dài 7 ký tự và đủ 4 loại ký tự",
+      "op": "register",
+      "bug": [],
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.bv03.{uid}@example.com", "password": "Abcde1@" },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S3"],
+        "ui": { "page": "register", "rejection": { "field": "password" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-DT-21",
+      "title": "Đăng ký bị từ chối khi Mật khẩu không có chữ hoa",
+      "op": "register",
+      "bug": [],
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.dt21.{uid}@example.com", "password": "abcdef1@" },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S3"],
+        "ui": { "page": "register", "rejection": { "field": "password" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-DT-22",
+      "title": "Đăng ký bị từ chối khi Mật khẩu không có chữ thường",
+      "op": "register",
+      "bug": [],
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.dt22.{uid}@example.com", "password": "ABCDEF1@" },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S3"],
+        "ui": { "page": "register", "rejection": { "field": "password" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-DT-23",
+      "title": "Đăng ký bị từ chối khi Mật khẩu không có chữ số",
+      "op": "register",
+      "bug": [],
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.dt23.{uid}@example.com", "password": "Abcdefg@" },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S3"],
+        "ui": { "page": "register", "rejection": { "field": "password" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-DT-24",
+      "title": "Đăng ký bị từ chối khi Mật khẩu không có ký tự đặc biệt",
+      "op": "register",
+      "bug": [],
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.dt24.{uid}@example.com", "password": "Abcdefg1" },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S3"],
+        "ui": { "page": "register", "rejection": { "field": "password" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-DT-29",
+      "title": "Đăng ký bị từ chối khi ký tự đặc biệt duy nhất của Mật khẩu là dấu cách",
+      "op": "register",
+      "bug": ["BUG-15", "BUG-19"],
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.dt29.{uid}@example.com", "password": "Abcdef1 " },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S3"],
+        "ui": { "page": "register", "rejection": { "field": "password" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-DT-27",
+      "title": "Đăng ký bị từ chối khi Xác nhận mật khẩu khác Mật khẩu",
+      "op": "register",
+      "bug": ["BUG-16"],
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.dt27.{uid}@example.com", "password": "Abcdef1@", "confirm": "Abcdef2@" },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S4"],
+        "ui": { "page": "register", "confirmField": true, "rejection": { "field": "confirm" } },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-WA-11",
+      "title": "Biến thể của FR01-DT-11: Email thiếu ký tự @, dùng mật khẩu mà form hiện đang nhận",
+      "op": "register",
+      "addedInHW04": true,
+      "variantOf": "FR01-DT-11",
+      "bug": ["BUG-21", "BUG-18"],
+      "note": "Case bổ sung so với HW02. Giới hạn: (1) mật khẩu \"Abcdef1 \" không hợp lệ theo S3, nên một hệ thống đúng có thể từ chối vì mật khẩu; vì vậy case KHÔNG assert lý do từ chối, chỉ assert bị từ chối và không tạo tài khoản. (2) Case đỏ chứng minh SUT đã nhận một lượt đăng ký có email sai định dạng; case xanh KHÔNG chứng minh email được kiểm. (3) Mật khẩu chọn theo quan sát ở B2, không theo đặc tả. Khi BUG-15 được sửa, case này hết tác dụng và FR01-DT-11 thay thế nó.",
+      "setup": null,
+      "input": { "name": "Nguyen Van A", "email": "fr01.wa11.{uid}example.com", "password": "Abcdef1 " },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S2"],
+        "ui": { "page": "register" },
+        "server": { "newAccounts": 0, "othersUnchanged": true }
+      }
+    },
+    {
+      "id": "FR01-WA-17",
+      "title": "Biến thể của FR01-DT-17: Email đã tồn tại, dùng mật khẩu mà form hiện đang nhận",
+      "op": "register",
+      "addedInHW04": true,
+      "variantOf": "FR01-DT-17",
+      "bug": ["BUG-20"],
+      "note": "Case bổ sung so với HW02. Giới hạn giống FR01-WA-11: mật khẩu \"Newpass1 \" không hợp lệ theo S3 nên không assert lý do từ chối; case đỏ chứng minh SUT đã tạo tài khoản trùng email, case xanh không chứng minh tính duy nhất được kiểm; mật khẩu chọn theo quan sát ở B2. Khi BUG-15 được sửa, FR01-DT-17 thay thế case này.",
+      "setup": { "account": { "name": "Tai khoan co san", "email": "fr01.wa17.seed.{uid}@example.com", "password": "Seedpass1@" } },
+      "input": { "name": "Nguyen Van A", "email": { "ref": "setup" }, "password": "Newpass1 " },
+      "expected": {
+        "outcome": "reject",
+        "spec": ["S2"],
+        "ui": { "page": "register" },
+        "server": { "newAccounts": 0, "othersUnchanged": true, "setupLoginStillWorks": true }
+      }
+    }
+  ]
+}
