@@ -37,7 +37,9 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     screenshot: 'only-on-failure',
-    trace: 'retain-on-failure',
+    /* Lượt chính thức (có REPORT_DIR, report được commit vào repo): tắt trace để report nhẹ.
+       Lượt chạy thử (không có REPORT_DIR): giữ trace của test fail để gỡ lỗi. */
+    trace: process.env.REPORT_DIR ? 'off' : 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */

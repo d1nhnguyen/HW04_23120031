@@ -17,7 +17,7 @@
       "expected.server.othersUnchanged": "Mọi sản phẩm khác (toàn bộ các trường) giống hệt bản chụp GET /api/products trước thao tác.",
       "expected.alert.shown": "false = không được có alert; true = phải có alert với đúng text; \"unspecified\" = đặc tả không quy định cách báo lỗi, không assert.",
       "expected.validation": "blockedBy = \"browser-required\": trình duyệt tự chặn form vì ô bắt buộc (field) bỏ trống. Kiểm bằng: ô đó nhận sự kiện invalid, form không bắn sự kiện submit, không có yêu cầu ghi nào được gửi, form giữ nguyên trạng thái. Không assert nguyên văn bong bóng vì mỗi browser một khác.",
-      "bug": "Danh sách bug mà case này được kỳ vọng làm lộ ra: issue ở d1nhnguyen/eshop-sut (BUG-xx) hoặc \"NEW-UI-EDIT\" = bug mới phát hiện ở B2 (bảng hiển thị sai sau khi Sửa). Danh sách rỗng = kỳ vọng pass."
+      "bug": "Danh sách bug mà case này được kỳ vọng làm lộ ra, ghi theo mã BUG-xx của issue ở d1nhnguyen/eshop-sut. BUG-41 (issue #87) = bảng hiển thị sai sau khi Sửa. Danh sách rỗng = kỳ vọng pass."
     },
     "observedNotSpecified": "Việc Thêm / Xóa thành công không có alert và Sửa thành công có alert \"Cập nhật thành công!\" là hành vi quan sát ở B2, đặc tả không quy định."
   },
@@ -265,7 +265,7 @@
       "id": "FR15-DT-15",
       "title": "Sửa Giá sản phẩm thành công và các sản phẩm khác giữ nguyên",
       "op": "edit",
-      "bug": ["NEW-UI-EDIT"],
+      "bug": ["BUG-41"],
       "setup": {
         "name": { "text": "MacBook Pro M3", "unique": true },
         "price": 45000000,
@@ -298,7 +298,7 @@
       "id": "FR15-DT-34",
       "title": "Sửa chỉ Giá sản phẩm thành công, Tên và Danh mục do form điền sẵn được giữ nguyên",
       "op": "edit",
-      "bug": ["NEW-UI-EDIT"],
+      "bug": ["BUG-41"],
       "setup": {
         "name": { "text": "MacBook Pro M3", "unique": true },
         "price": 45000000,
@@ -366,7 +366,7 @@
       "id": "FR15-DT-20",
       "title": "Sửa sản phẩm bị từ chối khi Giá bằng 0",
       "op": "edit",
-      "bug": ["BUG-24", "NEW-UI-EDIT"],
+      "bug": ["BUG-24", "BUG-41"],
       "setup": {
         "name": { "text": "Samsung Galaxy S24 Ultra", "unique": true },
         "price": 28000000,
