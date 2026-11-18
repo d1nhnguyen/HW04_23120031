@@ -1,6 +1,6 @@
 Git commit log – HW04 23120031 – repo https://github.com/d1nhnguyen/HW04_23120031
-Xuất lúc 2026-11-18 12:30:09 +0700 bằng scripts/export_commit_log.sh
-Tổng: 44 commit; có sửa .spec.ts: 15 (ngưỡng của đề: 8)
+Xuất lúc 2026-11-18 12:36:37 +0700 bằng scripts/export_commit_log.sh
+Tổng: 46 commit; có sửa .spec.ts: 15 (ngưỡng của đề: 8)
 
 spec | hash    | thời gian                 | tác giả     | thông điệp
      | 5b5e184 | 2026-11-16 13:41:48 +0700 | d1nhnguyen | [setup] Khởi tạo dự án Playwright Test (Chromium, Firefox, WebKit)
@@ -47,6 +47,8 @@ spec | hash    | thời gian                 | tác giả     | thông điệp
      | fc9f5ad | 2026-11-18 12:26:12 +0700 | d1nhnguyen | [report] Ảnh trang GitHub Issues của 13 bug (bugs/issue_shots/), chèn vào Bug_Report.md mục 3; scripts/issue_shots.mjs
      | 967d977 | 2026-11-18 12:26:21 +0700 | d1nhnguyen | [report] Xuất lại prompt log, AI Audit Report, commit log và ba PDF trước khi đóng gói
      | b408477 | 2026-11-18 12:30:09 +0700 | d1nhnguyen | [report] Hoàn thiện bản nộp: bỏ ghi chú bản nháp, mục 5 của AI Audit Report, PDF ba gap analysis, xuất lại prompt log và audit report
+     | 20ec299 | 2026-11-18 12:30:10 +0700 | d1nhnguyen | [report] Xuất lại git_commit_log.txt trước khi đóng gói
+     | 8bc2a82 | 2026-11-18 12:36:37 +0700 | d1nhnguyen | [report] AI Audit Report: điền chữ ký sinh viên, xuất lại PDF
 
 ===== Chi tiết (git log --stat) =====
 commit 5b5e184bc61179b6ce0bc6244523b08dc253bb98
@@ -1030,3 +1032,25 @@ Date:   2026-11-18 12:30:09 +0700
  report/main_report.md         |   4 +-
  scripts/build_audit_report.py |  18 ++++++--
  12 files changed, 167 insertions(+), 27 deletions(-)
+
+commit 20ec299bc065fef083e812a120cd17be24b28e7f
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 12:30:10 +0700
+
+    [report] Xuất lại git_commit_log.txt trước khi đóng gói
+    
+    Co-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>
+
+ git_commit_log.txt | 42 ++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 40 insertions(+), 2 deletions(-)
+
+commit 8bc2a828826adc31a87e3b11bb125de4c37fff26
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 12:36:37 +0700
+
+    [report] AI Audit Report: điền chữ ký sinh viên, xuất lại PDF
+
+ ai/AI_Audit_Report.md         | 698 +++++++++++++++++++++---------------------
+ pdf/AI_Audit_Report.pdf       | Bin 1138433 -> 1138532 bytes
+ scripts/build_audit_report.py |   2 +-
+ 3 files changed, 350 insertions(+), 350 deletions(-)
