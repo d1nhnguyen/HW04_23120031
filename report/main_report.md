@@ -6,7 +6,7 @@
 | --- | --- |
 | Sinh viên | NGUYỄN PHÚ DINH – 23120031 |
 | Repo | https://github.com/d1nhnguyen/HW04_23120031 |
-| Video demo | _(chưa có)_ |
+| Video demo | https://youtu.be/bMuzCpj23Xg |
 | SUT | EShop SUT (bản dùng chung của nhóm), issue tại https://github.com/d1nhnguyen/eshop-sut/issues |
 
 ## 1. Mục tiêu và phạm vi
@@ -68,11 +68,13 @@ _(sinh viên viết: nhận xét về việc đánh đổi giữa đọc diff v�
 
 | Feature | Chromium | Firefox | WebKit | Report |
 | --- | --- | --- | --- | --- |
-| FR-15 | _(chờ lượt chính thức)_ | _(chờ)_ | _(chờ)_ | `reports/fr15-<browser>/` |
-| FR-01 | _(chờ)_ | _(chờ)_ | _(chờ)_ | `reports/fr01-<browser>/` |
-| FR-10 | _(chờ)_ | _(chờ)_ | _(chờ)_ | `reports/fr10-<browser>/` |
+| FR-15 | 7 pass / 8 fail · 66,4 giây | 7 / 8 · 115,2 giây | 7 / 8 · 89,5 giây | `reports/fr15-<browser>/` |
+| FR-01 | 8 / 9 · 42,2 giây | 8 / 9 · 87,1 giây | 8 / 9 · 61,3 giây | `reports/fr01-<browser>/` |
+| FR-10 | 9 / 4 · 29,6 giây | 9 / 4 · 60,4 giây | 9 / 4 · 48,3 giây | `reports/fr10-<browser>/` |
 
-Tổng: 3 feature, 45 test case, 9 lượt browser, 135 lượt thực thi; pass / fail _(chờ lượt chính thức)_. Bảng tổng hợp đầy đủ ở `README.md` mục 2.
+Tổng: 3 feature, 45 test case, 9 lượt browser, 135 lượt thực thi; **72 pass / 63 fail**. Mọi test fail là do bug của SUT (mục 5), và mỗi test case cho cùng kết quả trên cả ba browser. Chín lượt chạy ngày 2026-11-18 từ 04:33 tới 04:58 UTC; tiêu đề mỗi report có "Run by: 23120031" kèm thời điểm ISO. Bảng tổng hợp đầy đủ ở `README.md` mục 2.
+
+**Ghi chú về lượt FR-15 trên WebKit.** Theo ghi nhận của sinh viên: trong video demo, lượt WebKit của FR-15 chạy có cửa sổ trình duyệt (`--headed`) ra 5 pass / 10 fail, do 8 test quá thời gian khi cửa sổ trình duyệt bị cửa sổ khác che. Report chính thức `reports/fr15-webkit/` là lượt chạy lại ở chế độ nền (không có cửa sổ), bắt đầu lúc 04:52 UTC (2026-11-18T04:52:03.706Z trong tiêu đề report), ra 7 / 8 như hai browser còn lại. Report của lượt có cửa sổ đã bị lượt chạy lại ghi đè nên không có trong repo.
 
 Độ ổn định (lặp 5 lần các case kỳ vọng pass trên Firefox và WebKit, trace tắt):
 
@@ -113,16 +115,16 @@ _(sinh viên viết: phân tích chung qua ba feature.)_
 - `lint_suite.py` bỏ qua giá trị của khóa `ref` (FR-01, gap G11).
 - `review-checklist.md` thêm bài học "lượt lặp phải chạy với trace tắt" (FR-10).
 
-Video dùng skill: _(chưa có)_.
+Video dùng skill: không quay; chỉ nộp skill.
 
 ## 8. Sử dụng AI
 
 - **AI Audit Report:** `ai/AI_Audit_Report.md`; Phụ lục A, prompt và output nguyên văn: `ai/prompt_log.md`.
-- **AI Critique:** _(sinh viên tự viết, 200–300 từ)_.
+- **AI Critique:** `ai/AI_Critique.md` _(sinh viên tự viết, 200–300 từ)_.
+- **PDF:** `scripts/build_pdf.sh` xuất PDF cho báo cáo chính, AI Audit Report và AI Critique vào `pdf/`.
 
 ## 9. Hạn chế và việc còn lại
 
-- Chín lượt chạy chính thức chưa có trong `reports/` (kiểm lúc 2026-11-18 10:45).
 - FR-10 không dọn được đơn test; bảng đơn dài thêm qua mỗi lượt.
 - Giả định A1 của FR-10 (Admin có hủy được đơn `shipping` không) cần hỏi trợ giảng.
 - Hai quan sát về SUT chưa báo: app xóa token khi yêu cầu kiểm phiên bị hủy; doanh thu Dashboard (FR-13) lệch. Ghi ở `TODO_thu_cong.md`.

@@ -11,9 +11,11 @@ Bản thô AI sinh ở bước B4 được lưu nguyên văn trong `raw/fr15/` (
 
 | Browser  | Pass | Fail | Thời gian | Report                   |
 | -------- | ---- | ---- | --------- | ------------------------ |
-| Chromium | 7    | 8    | 45,4 giây | `reports/fr15-chromium/` |
-| Firefox  | 7    | 8    | 1,5 phút  | `reports/fr15-firefox/`  |
-| WebKit   | 7    | 8    | 1,2 phút  | `reports/fr15-webkit/`   |
+| Chromium | 7    | 8    | 66,4 giây | `reports/fr15-chromium/` |
+| Firefox  | 7    | 8    | 115,2 giây | `reports/fr15-firefox/`  |
+| WebKit   | 7    | 8    | 89,5 giây | `reports/fr15-webkit/`   |
+
+Ba report là lượt chính thức ngày 2026-11-18 (04:33–04:53 UTC), chạy trên code cuối cùng. Lượt WebKit là lượt chạy lại ở chế độ nền; xem ghi chú ở mục 4 của `report/main_report.md`.
 
 Tám test fail đều do bug của SUT (mục 4), không do script: mỗi case có cùng một bộ assertion fail trên cả ba browser.
 

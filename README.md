@@ -3,8 +3,8 @@
 Tự động hóa kiểm thử ba feature web của EShop SUT bằng Playwright Test (TypeScript), data-driven, chạy trên Chromium, Firefox và WebKit. Script do AI sinh và được review, sửa, ghi lại trong gap analysis của từng feature.
 
 - **Repo:** https://github.com/d1nhnguyen/HW04_23120031
-- **Video demo (Task 2):** _(chưa có)_
-- **Video Agent Skill:** _(chưa có)_
+- **Video demo (Task 2):** https://youtu.be/bMuzCpj23Xg
+- **Video Agent Skill:** không quay (chỉ nộp skill)
 - **Bug tracker của SUT:** https://github.com/d1nhnguyen/eshop-sut/issues
 
 ## 1. Bảng tự chấm
@@ -26,26 +26,20 @@ Tự động hóa kiểm thử ba feature web của EShop SUT bằng Playwright 
 | Số test case tự động hóa | 45 | `data/fr15.products.json` (15), `data/fr01.register.json` (17), `data/fr10.orders.json` (13) |
 | Số lượt browser | 9 | 3 feature × 3 browser, mỗi lượt một HTML report trong `reports/` |
 | Số lượt thực thi test | 135 | 45 test case × 3 browser |
-| Pass | _(chờ lượt chính thức)_ | `reports/<feature>-<browser>/index.html` |
-| Fail | _(chờ lượt chính thức)_ | như trên |
+| Pass | 72 | tổng 9 report: FR-15 21, FR-01 24, FR-10 27 |
+| Fail | 63 | tổng 9 report: FR-15 24, FR-01 27, FR-10 12; mọi test fail là do bug của SUT |
 | Số bug (issue) | 13 | FR-15: 5, FR-01: 6, FR-10: 2; chi tiết ở `bugs/Bug_Report.md` |
 | Commit có sửa `.spec.ts` | 15 (ngưỡng 8) | `git_commit_log.txt` |
 
-Theo từng lượt chính thức:
+Theo từng lượt chính thức (pass / fail, thời gian; số đọc từ chính các file `reports/<feature>-<browser>/index.html`):
 
 | Feature | Chromium | Firefox | WebKit |
 | --- | --- | --- | --- |
-| FR-15 | _(chờ)_ | _(chờ)_ | _(chờ)_ |
-| FR-01 | _(chờ)_ | _(chờ)_ | _(chờ)_ |
-| FR-10 | _(chờ)_ | _(chờ)_ | _(chờ)_ |
+| FR-15 | 7 / 8 · 66,4 giây | 7 / 8 · 115,2 giây | 7 / 8 · 89,5 giây |
+| FR-01 | 8 / 9 · 42,2 giây | 8 / 9 · 87,1 giây | 8 / 9 · 61,3 giây |
+| FR-10 | 9 / 4 · 29,6 giây | 9 / 4 · 60,4 giây | 9 / 4 · 48,3 giây |
 
-> **Lưu ý cho bản nháp (xóa trước khi nộp).** Tới 2026-11-18 10:45, `reports/` chỉ có ba report FR-15 chạy ngày 2026-11-17, trước các lần sửa code dùng chung. Chín lượt chính thức cần chạy lại rồi điền bảng trên từ chính các report đó. Để đối chiếu, các lượt gỡ lỗi cuối (report ở thư mục tạm, không nộp) cho:
->
-> | Feature | Chromium | Firefox | WebKit | Thời điểm |
-> | --- | --- | --- | --- | --- |
-> | FR-15 | 7 pass / 8 fail | – | – | 2026-11-18, sau commit `42d2a67` |
-> | FR-01 | 8 / 9 | 8 / 9 | 8 / 9 | 2026-11-18 09:33 |
-> | FR-10 | 9 / 4 | 9 / 4 | 9 / 4 | 2026-11-18 10:29 |
+Chín lượt chạy ngày 2026-11-18 từ 04:33 tới 04:58 UTC (11:33–11:58 GMT+7); tiêu đề mỗi report có "Run by: 23120031" kèm thời điểm ISO. Mỗi test case cho cùng kết quả trên cả ba browser.
 
 ## 3. Tài liệu
 
@@ -56,7 +50,8 @@ Theo từng lượt chính thức:
 | Gap analysis script do AI sinh | `report/fr15_gap_analysis.md`, `report/fr01_gap_analysis.md`, `report/fr10_gap_analysis.md` |
 | Bug report | `bugs/Bug_Report.md` |
 | AI Audit Report | `ai/AI_Audit_Report.md` (Phụ lục A: `ai/prompt_log.md`) |
-| AI Critique | _(sinh viên tự viết)_ |
+| AI Critique | `ai/AI_Critique.md` (sinh viên tự viết) |
+| PDF của báo cáo chính, AI Audit Report, AI Critique | `pdf/` (xuất bằng `scripts/build_pdf.sh`) |
 | Git commit log | `git_commit_log.txt` |
 | HTML report | `reports/<feature>-<browser>/index.html` |
 | Agent Skill | `.claude/skills/data-driven-web-automation/` |

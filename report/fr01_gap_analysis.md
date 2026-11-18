@@ -14,13 +14,13 @@ Bản thô B4 lưu nguyên văn trong `raw/fr01/` (commit `3572a33`). Các lỗi
 
 ## 1. Kết quả sau khi sửa
 
-**Lượt chính thức: chưa có.** Ba report `reports/fr01-<browser>/` chưa được chạy (kiểm ngày 2026-11-18 lúc 10:45). Bảng dưới là lượt gỡ lỗi cuối của `run_matrix.py` trên code đã commit (`7bf5424`, report ở thư mục tạm, không nộp); thay bằng số của lượt chính thức khi có.
+Lượt chính thức ngày 2026-11-18, trên code đã commit (`7bf5424`); số đọc từ chính ba report.
 
-| Browser  | Pass | Fail | Thời gian (lượt gỡ lỗi) | Report chính thức         |
-| -------- | ---- | ---- | ----------------------- | ------------------------- |
-| Chromium | 8    | 9    | 36,2 giây               | `reports/fr01-chromium/` (chưa có) |
-| Firefox  | 8    | 9    | 77,6 giây               | `reports/fr01-firefox/` (chưa có)  |
-| WebKit   | 8    | 9    | 58,2 giây               | `reports/fr01-webkit/` (chưa có)   |
+| Browser  | Pass | Fail | Thời gian | Report |
+| -------- | ---- | ---- | --------- | ------ |
+| Chromium | 8    | 9    | 42,2 giây | `reports/fr01-chromium/` |
+| Firefox  | 8    | 9    | 87,1 giây | `reports/fr01-firefox/` |
+| WebKit   | 8    | 9    | 61,3 giây | `reports/fr01-webkit/` |
 
 Chín test fail đều do bug của SUT (mục 4): mỗi case có cùng một bộ assertion fail trên cả ba browser. Tám case kỳ vọng pass được lặp 5 lần trên Firefox và WebKit bằng `run_matrix.py` (trace tắt): 40 / 40 lượt pass ở mỗi browser.
 

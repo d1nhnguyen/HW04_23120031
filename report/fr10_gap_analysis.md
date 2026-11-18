@@ -14,13 +14,13 @@ Bản thô B4 lưu nguyên văn trong `raw/fr10/` (commit `3c078fc`). Các lỗi
 
 ## 1. Kết quả sau khi sửa
 
-**Lượt chính thức: chưa có.** Ba report `reports/fr10-<browser>/` chưa được chạy (kiểm ngày 2026-11-18 lúc 10:45). Bảng dưới là lượt gỡ lỗi cuối của `run_matrix.py` trên code đã commit (`4ba7051`, report ở thư mục tạm, không nộp); thay bằng số của lượt chính thức khi có.
+Lượt chính thức ngày 2026-11-18, trên code đã commit (`4ba7051`); số đọc từ chính ba report.
 
-| Browser  | Pass | Fail | Thời gian (lượt gỡ lỗi) | Report chính thức |
-| -------- | ---- | ---- | ----------------------- | ----------------- |
-| Chromium | 9    | 4    | 30,5 giây               | `reports/fr10-chromium/` (chưa có) |
-| Firefox  | 9    | 4    | 63,4 giây               | `reports/fr10-firefox/` (chưa có)  |
-| WebKit   | 9    | 4    | 50,9 giây               | `reports/fr10-webkit/` (chưa có)   |
+| Browser  | Pass | Fail | Thời gian | Report |
+| -------- | ---- | ---- | --------- | ------ |
+| Chromium | 9    | 4    | 29,6 giây | `reports/fr10-chromium/` |
+| Firefox  | 9    | 4    | 60,4 giây | `reports/fr10-firefox/` |
+| WebKit   | 9    | 4    | 48,3 giây | `reports/fr10-webkit/` |
 
 Bốn test fail đều do bug của SUT (mục 4), cùng bộ assertion fail trên ba browser. Chín case kỳ vọng pass được lặp 5 lần trên Firefox và WebKit bằng `run_matrix.py` (trace tắt): 45 / 45 lượt pass ở mỗi browser.
 
