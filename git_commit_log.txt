@@ -1,6 +1,6 @@
 Git commit log – HW04 23120031 – repo https://github.com/d1nhnguyen/HW04_23120031
-Xuất lúc 2026-11-18 12:26:13 +0700 bằng scripts/export_commit_log.sh
-Tổng: 42 commit; có sửa .spec.ts: 15 (ngưỡng của đề: 8)
+Xuất lúc 2026-11-18 12:30:09 +0700 bằng scripts/export_commit_log.sh
+Tổng: 44 commit; có sửa .spec.ts: 15 (ngưỡng của đề: 8)
 
 spec | hash    | thời gian                 | tác giả     | thông điệp
      | 5b5e184 | 2026-11-16 13:41:48 +0700 | d1nhnguyen | [setup] Khởi tạo dự án Playwright Test (Chromium, Firefox, WebKit)
@@ -45,6 +45,8 @@ spec | hash    | thời gian                 | tác giả     | thông điệp
      | 5f634dc | 2026-11-18 12:14:18 +0700 | d1nhnguyen | [report] Xuất lại prompt log (107 lượt), AI Audit Report và commit log; PDF báo cáo chính và AI Audit Report; khung AI Critique và scripts/build_pdf.sh
      | 56fb040 | 2026-11-18 12:20:19 +0700 | d1nhnguyen | [report] Bản nộp: AI Critique, tự chấm 87, xuất lại prompt log, AI Audit Report, commit log và ba PDF; bỏ qua scripts/__pycache__/
      | fc9f5ad | 2026-11-18 12:26:12 +0700 | d1nhnguyen | [report] Ảnh trang GitHub Issues của 13 bug (bugs/issue_shots/), chèn vào Bug_Report.md mục 3; scripts/issue_shots.mjs
+     | 967d977 | 2026-11-18 12:26:21 +0700 | d1nhnguyen | [report] Xuất lại prompt log, AI Audit Report, commit log và ba PDF trước khi đóng gói
+     | b408477 | 2026-11-18 12:30:09 +0700 | d1nhnguyen | [report] Hoàn thiện bản nộp: bỏ ghi chú bản nháp, mục 5 của AI Audit Report, PDF ba gap analysis, xuất lại prompt log và audit report
 
 ===== Chi tiết (git log --stat) =====
 commit 5b5e184bc61179b6ce0bc6244523b08dc253bb98
@@ -992,3 +994,39 @@ Date:   2026-11-18 12:26:12 +0700
  bugs/issue_shots/BUG-41_issue-87.jpg | Bin 0 -> 167820 bytes
  scripts/issue_shots.mjs              |  40 +++++++++++++++++++++++
  15 files changed, 98 insertions(+), 2 deletions(-)
+
+commit 967d977f3cff451e3c7d39f67d3f4a48c4cf78d1
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 12:26:21 +0700
+
+    [report] Xuất lại prompt log, AI Audit Report, commit log và ba PDF trước khi đóng gói
+
+ ai/AI_Audit_Report.md   |  25 ++++++++++----
+ ai/prompt_log.md        |  87 ++++++++++++++++++++++++++++++++++++++++++++++--
+ git_commit_log.txt      |  47 ++++++++++++++++++++++++--
+ pdf/AI_Audit_Report.pdf | Bin 1113993 -> 1120710 bytes
+ pdf/AI_Critique.pdf     | Bin 32647 -> 32647 bytes
+ pdf/main_report.pdf     | Bin 162016 -> 162016 bytes
+ 6 files changed, 149 insertions(+), 10 deletions(-)
+
+commit b4084777fc924ce58a1ed479dd05279ec3110d98
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 12:30:09 +0700
+
+    [report] Hoàn thiện bản nộp: bỏ ghi chú bản nháp, mục 5 của AI Audit Report, PDF ba gap analysis, xuất lại prompt log và audit report
+    
+    Co-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>
+
+ README.md                     |   4 +-
+ ai/AI_Audit_Report.md         |  55 ++++++++++++++++++----
+ ai/prompt_log.md              | 105 +++++++++++++++++++++++++++++++++++++++++-
+ bugs/Bug_Report.md            |   8 ----
+ pdf/AI_Audit_Report.pdf       | Bin 1120710 -> 1138433 bytes
+ pdf/AI_Critique.pdf           | Bin 32647 -> 32647 bytes
+ pdf/fr01_gap_analysis.pdf     | Bin 0 -> 147981 bytes
+ pdf/fr10_gap_analysis.pdf     | Bin 0 -> 146042 bytes
+ pdf/fr15_gap_analysis.pdf     | Bin 0 -> 181126 bytes
+ pdf/main_report.pdf           | Bin 162016 -> 154701 bytes
+ report/main_report.md         |   4 +-
+ scripts/build_audit_report.py |  18 ++++++--
+ 12 files changed, 167 insertions(+), 27 deletions(-)
