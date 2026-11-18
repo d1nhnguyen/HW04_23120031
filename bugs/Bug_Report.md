@@ -215,9 +215,65 @@ Bằng chứng:
 
 ![FR10-DT-27, đơn #15 Đang giao có nút "Hủy đơn"](screenshots/BUG-31_FR10-DT-27_chromium_don-dang-giao.png)
 
-## 3. Việc còn lại
+## 3. Ảnh trang GitHub Issues
 
-- [ ] Ảnh chụp trang GitHub Issues của 5 issue trên.
+Chụp ngày 2026-11-18 bằng `scripts/issue_shots.mjs` (trình duyệt headless, không đăng nhập; repo `d1nhnguyen/eshop-sut` công khai), chụp toàn trang. Năm issue FR-15 có thêm bình luận ngày 2026-11-17 kèm ảnh bảng sản phẩm do test tự động chụp. Các issue trùng nội dung của thành viên khác (#110–#113, #115) không chụp.
+
+### BUG-15 – issue #15 (FR-01)
+
+![Trang issue #15 trên GitHub](issue_shots/BUG-15_issue-15.jpg)
+
+### BUG-16 – issue #16 (FR-01)
+
+![Trang issue #16 trên GitHub](issue_shots/BUG-16_issue-16.jpg)
+
+### BUG-18 – issue #18 (FR-01)
+
+![Trang issue #18 trên GitHub](issue_shots/BUG-18_issue-18.jpg)
+
+### BUG-19 – issue #19 (FR-01)
+
+![Trang issue #19 trên GitHub](issue_shots/BUG-19_issue-19.jpg)
+
+### BUG-20 – issue #20 (FR-01)
+
+![Trang issue #20 trên GitHub](issue_shots/BUG-20_issue-20.jpg)
+
+### BUG-21 – issue #21 (FR-01)
+
+![Trang issue #21 trên GitHub](issue_shots/BUG-21_issue-21.jpg)
+
+### BUG-24 – issue #24 (FR-15)
+
+![Trang issue #24 trên GitHub](issue_shots/BUG-24_issue-24.jpg)
+
+### BUG-25 – issue #25 (FR-15)
+
+![Trang issue #25 trên GitHub](issue_shots/BUG-25_issue-25.jpg)
+
+### BUG-26 – issue #26 (FR-15)
+
+![Trang issue #26 trên GitHub](issue_shots/BUG-26_issue-26.jpg)
+
+### BUG-27 – issue #27 (FR-15)
+
+![Trang issue #27 trên GitHub](issue_shots/BUG-27_issue-27.jpg)
+
+### BUG-41 – issue #87 (FR-15)
+
+![Trang issue #87 trên GitHub](issue_shots/BUG-41_issue-87.jpg)
+
+### BUG-30 – issue #30 (FR-10)
+
+![Trang issue #30 trên GitHub](issue_shots/BUG-30_issue-30.jpg)
+
+### BUG-31 – issue #31 (FR-10)
+
+![Trang issue #31 trên GitHub](issue_shots/BUG-31_issue-31.jpg)
+
+## 4. Việc còn lại
+
+- [x] Ảnh chụp trang GitHub Issues: 13 issue ở mục 3 (2026-11-18).
 - [x] Chạy lại ba lượt chính thức của FR-15 để report trong repo có ảnh bảng sản phẩm (2026-11-18).
 - [x] Bug của FR-01 và FR-10: đã soạn mục 2.6–2.12 (bản nháp).
 - [x] Chép ảnh của FR-01 và FR-10 từ report chính thức vào `bugs/screenshots/` và chèn vào mục 2.6–2.12; đã mở từng ảnh. Ảnh form của FR01-DT-29 không tự cho thấy lỗi (mật khẩu bị che), nên mục 2.9 dựa vào tệp JSON phía server.
