@@ -18,6 +18,7 @@
       "expected.ui.page": "\"login\" = sau thao tác, người dùng ở trang Đăng nhập (S5). \"register\" = vẫn ở trang Đăng ký; đây là suy ra từ S5 (chỉ đăng ký thành công mới chuyển trang), đặc tả không viết thành câu.",
       "expected.ui.confirmField": "true = form phải có ô Xác nhận mật khẩu (S4).",
       "expected.ui.rejection.field": "Lý do từ chối phải thuộc về ô này: name | email | duplicate | password | confirm. Cách nhận diện là GIẢ ĐỊNH, xem assumptions.rejectionReason. Không có khóa rejection = không assert lý do.",
+      "expected.validation": "blockedBy = \"browser-required\": trình duyệt tự chặn form vì ô bắt buộc (field) bỏ trống. Cơ chế chặn là QUAN SÁT ở B2 (ô có thuộc tính required), đặc tả chỉ yêu cầu từ chối. Kiểm bằng: ô đó nhận sự kiện invalid, form không bắn sự kiện submit, không có yêu cầu đăng ký nào được gửi. Không assert nguyên văn bong bóng vì mỗi browser một khác.",
       "expected.server.newAccounts": "Số tài khoản mới trong GET /api/admin/users sau thao tác so với ngay trước thao tác (sau setup).",
       "expected.server.account": "Tài khoản mới có đúng Họ Tên và Email đã nhập.",
       "expected.server.loginWithInput": "Đăng nhập qua API bằng email + mật khẩu vừa nhập phải thành công. Suy ra từ \"đăng ký thành công\" (S5); đặc tả không viết thành câu.",
@@ -107,7 +108,8 @@
         "outcome": "reject",
         "spec": ["S1"],
         "ui": { "page": "register", "rejection": { "field": "name" } },
-        "server": { "newAccounts": 0, "othersUnchanged": true }
+        "server": { "newAccounts": 0, "othersUnchanged": true },
+        "validation": { "field": "name", "blockedBy": "browser-required" }
       }
     },
     {
@@ -121,7 +123,8 @@
         "outcome": "reject",
         "spec": ["S1"],
         "ui": { "page": "register", "rejection": { "field": "email" } },
-        "server": { "newAccounts": 0, "othersUnchanged": true }
+        "server": { "newAccounts": 0, "othersUnchanged": true },
+        "validation": { "field": "email", "blockedBy": "browser-required" }
       }
     },
     {
@@ -135,7 +138,8 @@
         "outcome": "reject",
         "spec": ["S1"],
         "ui": { "page": "register", "rejection": { "field": "password" } },
-        "server": { "newAccounts": 0, "othersUnchanged": true }
+        "server": { "newAccounts": 0, "othersUnchanged": true },
+        "validation": { "field": "password", "blockedBy": "browser-required" }
       }
     },
     {

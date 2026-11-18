@@ -1,7 +1,7 @@
 import { test as base, expect, type Page, type Response, type TestInfo } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { RegisterPage } from '../../pages/register.page';
+import { RegisterPage, type RegisterField } from '../../pages/register.page';
 import { cleanupNewRecords } from '../../support/api-client';
 import { account, config } from '../../support/env';
 import type { FormProbe } from '../../support/form-probe';
@@ -33,6 +33,7 @@ type Case = {
       othersUnchanged: boolean;
       setupLoginStillWorks?: boolean;
     };
+    validation?: { field: RegisterField; blockedBy: 'browser-required' };
   };
 };
 
@@ -193,6 +194,15 @@ async function assertUi(ctx: Context, result: ActResult) {
     await soft(reg.heading, 'form Đăng ký vẫn đang hiển thị').toBeVisible(UI_SETTLED);
   }
 
+  // Form bị trình duyệt chặn: đúng ô bắt buộc nhận sự kiện `invalid` và form không được submit.
+  // `invalid` và `submit` là sự kiện xảy ra do cú bấm, không phải trạng thái có sẵn của ô rỗng.
+  if (c.expected.validation) {
+    soft(reg.blockedFields(result.probe), 'trình duyệt phải báo đúng ô bỏ trống là không hợp lệ').toEqual([
+      c.expected.validation.field,
+    ]);
+    soft(result.probe.submit, 'form không được bắn sự kiện submit khi ô bắt buộc bỏ trống').toBe(0);
+  }
+
   if (ui.rejection) {
     // Lý do từ chối đọc từ hai nguồn xảy ra SAU cú bấm: ô bị trình duyệt chặn (sự kiện invalid)
     // và thông báo lỗi của trang (trước thao tác không có thông báo nào, xem RegisterPage.open).
@@ -214,6 +224,9 @@ async function assertServer(ctx: Context, result: ActResult) {
   const { server } = c.expected;
 
   // 1. Yêu cầu đăng ký và phản hồi của nó
+  if (c.expected.validation) {
+    soft(response, 'không được gửi yêu cầu đăng ký khi ô bắt buộc bỏ trống').toBeNull();
+  }
   if (c.expected.outcome === 'accept') {
     soft(response, 'giao diện phải gửi yêu cầu đăng ký khi dữ liệu hợp lệ').not.toBeNull();
     if (response) {
