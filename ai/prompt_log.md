@@ -1,6 +1,6 @@
 # Phụ lục A — Prompt log HW04 (trích tự động từ transcript Claude Code)
 
-> Sinh bởi `scripts/export_prompt_log.py` lúc 2026-11-18 10:52 (GMT+7). Prompt và output của AI được giữ **nguyên văn**. Không đưa vào: phần suy luận ẩn của model, nội dung file / kết quả lệnh mà AI đọc được (chỉ liệt kê tên hành động).
+> Sinh bởi `scripts/export_prompt_log.py` lúc 2026-11-18 12:13 (GMT+7). Prompt và output của AI được giữ **nguyên văn**. Không đưa vào: phần suy luận ẩn của model, nội dung file / kết quả lệnh mà AI đọc được (chỉ liệt kê tên hành động).
 > **AI-1** = phiên viết script (Claude Code, VS Code extension); **AI-2** = phiên review (Claude Code CLI).
 
 | # | Thời gian (GMT+7) | Vai trò | Phiên | Model | Prompt (rút gọn) |
@@ -98,6 +98,20 @@
 | 91 | 2026-11-18 09:49 | AI-1 | `cea4708c` | Claude Opus 5.5 | Duyệt, với các sửa đổi rồi chạy liền B4 → B8: (1) Đồng ý tách DT-26 và DT-27. Thêm ghi chú |
 | 92 | 2026-11-18 10:41 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | Xong FR-10 từ B4 tới B8. Mỗi nhóm có commit riêng, đã push lên `origin/main`, và chỉ commi |
 | 93 | 2026-11-18 10:42 | AI-1 | `cea4708c` | Claude Opus 5.5 | Chín lượt chính thức đã chạy xong, report nằm trong reports/. Soạn bản nháp các tài liệu n |
+| 94 | 2026-11-18 10:58 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | Viết cho: giảng viên và trợ giảng chấm bài. Đây là bản nháp để bạn sửa lời. **Chín lượt ch |
+| 95 | 2026-11-18 11:00 | AI-1 | `cea4708c` | Claude Opus 5.5 | Chín lượt chính thức đã chạy và đã được kiểm. Làm theo danh sách trong TODO_thu_cong.md: 1 |
+| 96 | 2026-11-18 11:03 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | kiểm tra |
+| 97 | 2026-11-18 11:07 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | chạy ở đau va cac cau lenh python dung de lam gi? |
+| 98 | 2026-11-18 11:09 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | cần phaỉ demo 3 feature? |
+| 99 | 2026-11-18 11:11 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | tôi đang cần nhung thu liên quan den video de quay demo, dung lan nhung thu khac vao, lam  |
+| 100 | 2026-11-18 11:14 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | viết lời thoại cho từng bước đi |
+| 101 | 2026-11-18 11:15 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | tạo mot file .md |
+| 102 | 2026-11-18 11:26 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | cho toi cac lenh text de copy nhanh |
+| 103 | 2026-11-18 11:46 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | kiem tra va ghep am thanh vao video giup toi |
+| 104 | 2026-11-18 11:51 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | toi nghi nên tải leen luôn, conf việc gif ngoài video ko? |
+| 105 | 2026-11-18 11:55 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | https://youtu.be/bMuzCpj23Xg đay laf link video |
+| 106 | 2026-11-18 12:08 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | kiểm tra |
+| 107 | 2026-11-18 12:09 | AI-1 | `cea4708c` | Claude Opus 5.5 | Chín lượt chính thức đã chạy và đã được kiểm: FR-15 7/8, FR-01 8/9, FR-10 9/4 trên mỗi bro |
 
 ## #1 · 2026-11-15 21:37:14 · AI-1 · phiên `843d9cd5`
 
@@ -7597,9 +7611,42 @@ Sửa hai mốc thời gian trong bảng diễn biến cho khớp giờ bắt đ
 **Phần 4:** README. Bảng tự chấm cần đúng các mục chấm của đề, nên tôi đọc phần chấm điểm và danh sách bài nộp trong đề HW04:
 
 **Phần 6:** AI Audit Report. Xem mẫu HW02 để giữ cùng khung:
+
+Không có token nào. Mật khẩu `Admin123!` và `Test1234!` có xuất hiện, nhưng đó là tài khoản mặc định ghi công khai trong README của SUT. Commit phần 6:
+
+**Phần 7:** khung báo cáo chính. Lấy phiên bản của môi trường để ghi vào báo cáo:
+
+Câu về lượt lặp FR-15 trong khung báo cáo đang để sinh viên tự kiểm, nhưng transcript trả lời được. Tìm đúng lệnh đã dùng để lặp FR-15:
+
+FR-15 với trace tắt cũng 35/35 trên mỗi browser. Sửa câu trong khung báo cáo cho đúng điều vừa kiểm, rồi commit phần 7:
+
+Viết cho: giảng viên và trợ giảng chấm bài. Đây là bản nháp để bạn sửa lời.
+
+**Chín lượt chính thức chưa được chạy.** `reports/` chỉ có ba report FR-15 cũ từ ngày 17/11, và remote cũng vậy. Các report FR-01, FR-10 tìm thấy trong `/tmp` đều là lượt gỡ lỗi của tôi. Prompt của bạn có lẽ được AI-2 soạn sẵn ở lượt #92, để gửi "ngay sau khi chạy xong chín lượt". Report HTML phải do bạn tự chạy nên tôi không chạy thay. Vì vậy ảnh bug và số pass / fail chính thức còn để trống, đánh dấu _(chờ …)_; ngoài ra không có số nào là ước lượng.
+
+Bảy phần đã commit và push, mỗi phần một commit `[report]`:
+
+| Phần | Commit | Đã xong | Còn chờ |
+| --- | --- | --- | --- |
+| 1. Bài học trace vào `review-checklist.md` | `afb0a2e` | Thêm vào mục 4 và vào bảng đầu file | – |
+| 2. Gap analysis FR-01, FR-10 | `0574198` | Đủ các bảng theo mẫu FR-15. Ghi đúng cách kiểm: cổng tự động và AI-2, bạn không đọc diff. Lỗi WebKit và trace che lỗi là mục 2 của FR-10 | Mục 1 đang dùng số của lượt gỡ lỗi |
+| 3. Bug report | `048a1ae` | Thêm 8 bug, kèm issue trùng nội dung và mức độ lấy từ issue gốc | Ảnh: mỗi mục ghi test và tệp đính kèm cần lấy |
+| 4. README | `b730c97` | Bảng tự chấm (cột điểm để trống), link repo; 3 feature, 45 case, 9 lượt, 135 lượt thực thi, 13 bug, 15 commit có sửa `.spec.ts` | Pass / fail |
+| 5. Commit log | `8a5596c` | `git_commit_log.txt`, đánh dấu commit có sửa `.spec.ts` | Chạy lại trước khi đóng gói |
+| 6. AI Audit Report | `35aea36` | 93 lượt từ 3 phiên. Script HW02 được viết lại thành bản HW04, vì bản cũ không đọc được prompt dán vào. Mỗi lượt có công cụ, model, thời gian và prompt nguyên văn; output nguyên văn ở `ai/prompt_log.md` | Chạy lại trước khi đóng gói |
+| 7. Báo cáo chính | `06f0b64` | Khung đầy đủ, trỏ tới các file trên; không có AI Critique | Số liệu chính thức, các đoạn _(sinh viên viết)_ |
+
+**Nên biết trước khi sửa lời**
+
+- **Cột "Ai phát hiện"** trong hai gap analysis ghi theo transcript của AI-2. Ví dụ: lỗi `type="text"`, lỗi đếm S3, tài khoản seed và cảnh báo sai của linter đều do AI-2 nêu, không phải bạn.
+- **Lượt lặp FR-15 (35/35) cũ đã chạy với trace bật.** Lúc đó trace chưa gắn với `REPORT_DIR`, tức đúng điều kiện có thể che lỗi. Tôi đã chạy lại với trace tắt và vẫn được 35/35 trên mỗi browser. Báo cáo chính ghi số của lượt chạy lại. Bảng số trong `report/fr15_gap_analysis.md` tôi chưa sửa.
+- **Đã kiểm lại FR-15 trên Chromium** sau commit dùng chung `42d2a67`: vẫn 7 pass / 8 fail. Đây là điểm AI-2 nêu là chưa được kiểm.
+- **Cột "Vì sao AI sai" và các mục bug mới là lời của AI-1.** Thỏa thuận AI-01 yêu cầu nội dung bug do sinh viên viết.
+
+`TODO_thu_cong.md` đã có danh sách việc phải làm sau khi bạn chạy chín lượt chính thức. Gồm: điền số vào bốn file, chép ảnh vào bug report, và chạy lại ba script (prompt log, audit report, commit log) ngay trước khi đóng gói.
 ````
 
-<details><summary>Hành động AI đã thực hiện (26)</summary>
+<details><summary>Hành động AI đã thực hiện (34)</summary>
 
 1. `Bash` — Survey repo state, official reports, existing report files and transcript folders
 2. `Bash` — Check timestamps of existing reports and search the machine for the FR-01 and FR-10 report folders
@@ -7627,5 +7674,955 @@ Sửa hai mốc thời gian trong bảng diễn biến cho khớp giờ bắt đ
 24. `Bash` — Read the outline and opening of the HW02 AI Audit Report
 25. `Write` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/scripts/build_audit_report.py
 26. `Bash` — Regenerate the prompt log, build the audit report, spot-check rows and check for private email leaks
+27. `Bash` — Scan the generated logs for JWTs or API tokens
+28. `Bash` — Commit and push the AI audit report, prompt log and their scripts
+29. `Bash` — Collect Node, Playwright, TypeScript, browser and OS versions for the report
+30. `Write` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/report/main_report.md
+31. `Bash` — Find the exact commands used for the FR-15 repeat runs in the earlier transcript
+32. `Bash` — Repeat FR-15 expected-pass cases five times on Firefox and WebKit with tracing off and count runs
+33. `Bash` — Update the FR-15 repeat note in the main report, then commit and push it
+34. `Bash` — Remove the generated pycache and add post-official-run tasks to the manual TODO
+
+</details>
+
+## #94 · 2026-11-18 10:58:49 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+Viết cho: giảng viên và trợ giảng chấm bài. Đây là bản nháp để bạn sửa lời.
+
+**Chín lượt chính thức chưa được chạy.** `reports/` chỉ có ba report FR-15 cũ từ ngày 17/11, và remote cũng vậy. Các report FR-01, FR-10 tìm thấy trong `/tmp` đều là lượt gỡ lỗi của tôi. Prompt của bạn có lẽ được AI-2 soạn sẵn ở lượt #92, để gửi "ngay sau khi chạy xong chín lượt". Report HTML phải do bạn tự chạy nên tôi không chạy thay. Vì vậy ảnh bug và số pass / fail chính thức còn để trống, đánh dấu _(chờ …)_; ngoài ra không có số nào là ước lượng.
+
+Bảy phần đã commit và push, mỗi phần một commit `[report]`:
+
+| Phần | Commit | Đã xong | Còn chờ |
+| --- | --- | --- | --- |
+| 1. Bài học trace vào `review-checklist.md` | `afb0a2e` | Thêm vào mục 4 và vào bảng đầu file | – |
+| 2. Gap analysis FR-01, FR-10 | `0574198` | Đủ các bảng theo mẫu FR-15. Ghi đúng cách kiểm: cổng tự động và AI-2, bạn không đọc diff. Lỗi WebKit và trace che lỗi là mục 2 của FR-10 | Mục 1 đang dùng số của lượt gỡ lỗi |
+| 3. Bug report | `048a1ae` | Thêm 8 bug, kèm issue trùng nội dung và mức độ lấy từ issue gốc | Ảnh: mỗi mục ghi test và tệp đính kèm cần lấy |
+| 4. README | `b730c97` | Bảng tự chấm (cột điểm để trống), link repo; 3 feature, 45 case, 9 lượt, 135 lượt thực thi, 13 bug, 15 commit có sửa `.spec.ts` | Pass / fail |
+| 5. Commit log | `8a5596c` | `git_commit_log.txt`, đánh dấu commit có sửa `.spec.ts` | Chạy lại trước khi đóng gói |
+| 6. AI Audit Report | `35aea36` | 93 lượt từ 3 phiên. Script HW02 được viết lại thành bản HW04, vì bản cũ không đọc được prompt dán vào. Mỗi lượt có công cụ, model, thời gian và prompt nguyên văn; output nguyên văn ở `ai/prompt_log.md` | Chạy lại trước khi đóng gói |
+| 7. Báo cáo chính | `06f0b64` | Khung đầy đủ, trỏ tới các file trên; không có AI Critique | Số liệu chính thức, các đoạn _(sinh viên viết)_ |
+
+**Nên biết trước khi sửa lời**
+
+- **Cột "Ai phát hiện"** trong hai gap analysis ghi theo transcript của AI-2. Ví dụ: lỗi `type="text"`, lỗi đếm S3, tài khoản seed và cảnh báo sai của linter đều do AI-2 nêu, không phải bạn.
+- **Lượt lặp FR-15 (35/35) cũ đã chạy với trace bật.** Lúc đó trace chưa gắn với `REPORT_DIR`, tức đúng điều kiện có thể che lỗi. Tôi đã chạy lại với trace tắt và vẫn được 35/35 trên mỗi browser. Báo cáo chính ghi số của lượt chạy lại. Bảng số trong `report/fr15_gap_analysis.md` tôi chưa sửa.
+- **Đã kiểm lại FR-15 trên Chromium** sau commit dùng chung `42d2a67`: vẫn 7 pass / 8 fail. Đây là điểm AI-2 nêu là chưa được kiểm.
+- **Cột "Vì sao AI sai" và các mục bug mới là lời của AI-1.** Thỏa thuận AI-01 yêu cầu nội dung bug do sinh viên viết.
+
+`TODO_thu_cong.md` đã có danh sách việc phải làm sau khi bạn chạy chín lượt chính thức. Gồm: điền số vào bốn file, chép ảnh vào bug report, và chạy lại ba script (prompt log, audit report, commit log) ngay trước khi đóng gói.
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Phần tài liệu đã có khung đầy đủ trên repo; việc đang chặn mọi thứ còn lại là chín lượt chạy chính thức, và chỉ bạn chạy được. Phiên kia từ chối chạy thay là đúng, vì đề cấm HTML report do AI tạo.
+
+## Tôi đã kiểm
+
+- **Bảy commit `[report]`** có trên `main`, đã push, repo không còn thay đổi chưa commit.
+- **Đủ file:** `README.md`, `git_commit_log.txt`, `report/main_report.md`, ba gap analysis, `bugs/Bug_Report.md`, `ai/AI_Audit_Report.md` và `ai/prompt_log.md`.
+- **Chỗ còn trống được đánh dấu rõ:** 5 chỗ trong README, 5 trong báo cáo chính, 7 trong bug report. Không số pass / fail nào được điền bằng ước lượng.
+- **SUT** đang chạy đủ ba dịch vụ; `reports/` mới có ba report FR-15 cũ.
+
+## Việc của bạn ngay bây giờ: chạy chín lượt và quay video
+
+Bật quay màn hình, rồi gõ lần lượt trong terminal của bạn:
+
+```bash
+whoami; hostname; date
+scripts/sut.sh status
+
+REPORT_DIR=reports/fr15-chromium npx playwright test tests/fr15 --project=chromium --headed
+REPORT_DIR=reports/fr15-firefox  npx playwright test tests/fr15 --project=firefox --headed
+REPORT_DIR=reports/fr15-webkit   npx playwright test tests/fr15 --project=webkit --headed
+npx playwright show-report reports/fr15-chromium
+
+python3 .claude/skills/data-driven-web-automation/scripts/run_matrix.py fr01 --out reports
+python3 .claude/skills/data-driven-web-automation/scripts/run_matrix.py fr10 --out reports
+```
+
+Kết quả phải là FR-15: 7 pass / 8 fail, FR-01: 8 / 9, FR-10: 9 / 4 trên mỗi browser. Phần video gồm từ `whoami` tới hết `show-report`, cộng đoạn kể chỗ sửa `valueMissing` như kịch bản tôi đã đưa. Hai lệnh `run_matrix` không cần quay.
+
+Chạy xong, nhắn "kiểm tra" ở đây. Tôi mở chín report xác nhận số liệu, dòng "Run by" và ảnh, rồi bạn mới cho phiên kia điền số.
+
+## Prompt cho phiên kia, sau khi tôi xác nhận
+
+```
+Chín lượt chính thức đã chạy và đã được kiểm. Làm theo danh sách
+trong TODO_thu_cong.md:
+1. Điền số pass / fail chính thức vào README, main_report và mục 1
+   của ba gap analysis, lấy từ chín report trong reports/. Xóa đoạn
+   "Lưu ý cho bản nháp" trong README.
+2. Sửa bảng lượt lặp trong report/fr15_gap_analysis.md: ghi số của
+   lượt chạy lại với trace tắt, và nêu rõ lượt cũ chạy với trace bật.
+3. Chép ảnh bug của FR-01 và FR-10 từ report chính thức vào
+   bugs/screenshots/, mở từng ảnh để chắc nó cho thấy lỗi, rồi chèn
+   vào Bug_Report.md.
+4. Commit reports/ và các file trên, push.
+Chưa chạy lại ba script xuất log; việc đó làm ngay trước khi đóng gói.
+```
+
+## Một điều cần lưu ý trong báo cáo
+
+Phiên kia đã ghi cột "Ai phát hiện" theo transcript: nhiều lỗi của FR-01 và FR-10 do phiên review nêu, không phải bạn, và bạn không đọc diff ở hai feature này. Hãy giữ nguyên cách ghi đó. Phần còn phải là của bạn gồm AI Critique 200–300 từ, cột tự chấm trong README, và việc đọc lại `tests/fr15/products.spec.ts` trước khi quay video và trước vấn đáp.
+````
+
+<details><summary>Hành động AI đã thực hiện (1)</summary>
+
+1. `Bash` — Check documentation commits, placeholders, SUT and README
+
+</details>
+
+## #95 · 2026-11-18 11:00:37 · AI-1 · phiên `cea4708c`
+
+- **Công cụ AI:** Claude Code (VS Code extension) 2.1.325, model Claude Opus 5.5
+
+**Prompt (nguyên văn):**
+
+````text
+Chín lượt chính thức đã chạy và đã được kiểm. Làm theo danh sách
+trong TODO_thu_cong.md:
+1. Điền số pass / fail chính thức vào README, main_report và mục 1
+   của ba gap analysis, lấy từ chín report trong reports/. Xóa đoạn
+   "Lưu ý cho bản nháp" trong README.
+2. Sửa bảng lượt lặp trong report/fr15_gap_analysis.md: ghi số của
+   lượt chạy lại với trace tắt, và nêu rõ lượt cũ chạy với trace bật.
+3. Chép ảnh bug của FR-01 và FR-10 từ report chính thức vào
+   bugs/screenshots/, mở từng ảnh để chắc nó cho thấy lỗi, rồi chèn
+   vào Bug_Report.md.
+4. Commit reports/ và các file trên, push.
+Chưa chạy lại ba script xuất log; việc đó làm ngay trước khi đóng gói.
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Lần trước câu "chín lượt đã chạy" không khớp với máy, nên trước hết tôi kiểm `reports/`: đủ chín thư mục chưa, thời điểm tạo, và tiêu đề "Run by".
+
+Mục 2 xong (`afbd73e`, đã push). Các mục 1, 3 và phần `reports/` của mục 4 chưa làm được, vì **chín report chính thức vẫn chưa có**:
+
+- `reports/` chỉ có ba report FR-15 từ 17:17 ngày 17/11, và remote cũng vậy.
+- Tìm khắp `/`, `/home` và `/tmp` không thấy report nào được tạo sau 10:45 hôm nay, ngoài các lượt gỡ lỗi do tôi chạy (`/tmp/run-matrix-*`, `playwright-report/`, `test-results/`).
+- Có thể bạn đã chạy ở một máy hoặc một bản clone khác mà chưa push, hoặc chạy từ một thư mục khác. Nếu chạy từ thư mục khác thì report đã nằm ở `<thư mục đó>/reports/`, nhưng lần tìm của tôi cũng không thấy.
+
+Report HTML chính thức phải do bạn tự chạy (đề, mục 11), nên tôi không chạy thay và không dùng các report gỡ lỗi để thế chỗ.
+
+Chạy chín lượt từ gốc repo:
+
+```bash
+cd ~/study/Homeworks/HW04/HW04_23120031
+scripts/sut.sh status        # đủ backend, web, admin; thiếu thì scripts/sut.sh start
+python3 .claude/skills/data-driven-web-automation/scripts/run_matrix.py fr15 --out reports
+python3 .claude/skills/data-driven-web-automation/scripts/run_matrix.py fr01 --out reports
+python3 .claude/skills/data-driven-web-automation/scripts/run_matrix.py fr10 --out reports
+ls reports                   # phải thấy đủ 9 thư mục
+```
+
+Kết quả nên khớp với các lượt gỡ lỗi: FR-15 7 pass / 8 fail, FR-01 8 / 9, FR-10 9 / 4 trên mỗi browser. Mã thoát khác 0 là bình thường khi có test fail vì bug.
+
+Khi `ls reports` thấy đủ chín thư mục, bạn báo lại. Tôi sẽ làm tiếp:
+- Điền số vào README, `main_report` và mục 1 của ba gap analysis.
+- Xóa đoạn "Lưu ý cho bản nháp" trong README.
+- Chép ảnh bug và mở xem từng ảnh.
+- Commit `reports/` cùng các file trên.
+````
+
+<details><summary>Hành động AI đã thực hiện (5)</summary>
+
+1. `Bash` — Verify the nine official reports exist, with timestamps, sizes and attachment counts
+2. `Bash` — Search the machine and the remote for report folders created after 10:45 today
+3. `Bash` — Confirm the trace setting in effect during the old FR-15 repeat run
+4. `Edit` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/report/fr15_gap_analysis.md
+5. `Bash` — Commit and push the FR-15 repeat-table fix
+
+</details>
+
+## #96 · 2026-11-18 11:03:00 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+kiểm tra
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Chín lượt chính thức vẫn chưa được chạy. `reports/` chỉ có ba report FR-15 cũ, tạo lúc 17:17–17:20 ngày 17/11, và không có thư mục `fr01-*` hay `fr10-*` nào. Thay đổi mới duy nhất trên repo từ lần kiểm trước là một commit báo cáo của phiên kia (`afbd73e`, sửa bảng lượt lặp trong gap analysis FR-15).
+
+Các thư mục tôi tìm thấy trong `/tmp` (như `run-matrix-fr10-…`, `run-matrix-fr15-…`) là lượt gỡ lỗi của phiên kia, không phải lượt chính thức, nên không dùng để nộp được.
+
+Ba report FR-15 cũ thì vẫn hợp lệ về số liệu (7 pass / 8 fail, có "Run by"), nhưng chúng được chạy trước ba lần sửa sau đó: bước chụp bảng sản phẩm, lần tách code dùng chung, và việc gom `escapeRegExp`. Vì vậy cần chạy lại cả FR-15 để report khớp với code nộp.
+
+## Việc cần làm
+
+SUT đang chạy đủ ba dịch vụ, nên bạn chạy được ngay. Gõ trong terminal của bạn, tại thư mục `HW04_23120031`:
+
+```bash
+whoami; hostname; date
+scripts/sut.sh status
+
+REPORT_DIR=reports/fr15-chromium npx playwright test tests/fr15 --project=chromium --headed
+REPORT_DIR=reports/fr15-firefox  npx playwright test tests/fr15 --project=firefox --headed
+REPORT_DIR=reports/fr15-webkit   npx playwright test tests/fr15 --project=webkit --headed
+npx playwright show-report reports/fr15-chromium
+
+python3 .claude/skills/data-driven-web-automation/scripts/run_matrix.py fr01 --out reports
+python3 .claude/skills/data-driven-web-automation/scripts/run_matrix.py fr10 --out reports
+```
+
+- **Thời gian:** khoảng 10–12 phút cho cả chín lượt.
+- **Quay video:** bật quay màn hình trước `whoami` nếu bạn muốn gộp với video demo; phần FR-15 là nội dung video.
+- **Mỗi lệnh kết thúc với mã lỗi** vì có test fail do bug của SUT. Đó là kết quả đúng; cứ chạy lệnh kế tiếp.
+- **Kết quả cần thấy trên mỗi browser:** FR-15 là 7 pass / 8 fail, FR-01 là 8 / 9, FR-10 là 9 / 4.
+
+Nếu bạn đã chạy mà report không xuất hiện, có thể lệnh được gõ ở thư mục khác, hoặc bạn gõ vào ô chat của phiên Claude thay vì terminal. Trong trường hợp đó, dán cho tôi dòng cuối terminal in ra.
+
+Chạy xong, nhắn "kiểm tra" lần nữa. Khi đó `reports/` phải có đủ chín thư mục, và tôi sẽ mở từng report để xác nhận.
+````
+
+<details><summary>Hành động AI đã thực hiện (2)</summary>
+
+1. `Bash` — Verify all nine official reports: results, Run by, browsers, evidence
+2. `Bash` — Look for any report produced since the request to run
+
+</details>
+
+## #97 · 2026-11-18 11:07:59 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+chạy ở đau va cac cau lenh python dung de lam gi?
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Chạy trong ứng dụng Terminal của Ubuntu (mở bằng Ctrl+Alt+T), hoặc trong ô Terminal của VS Code (menu Terminal, New Terminal). Không gõ vào ô chat của Claude. Việc đầu tiên là chuyển vào thư mục dự án:
+
+```bash
+cd ~/study/Homeworks/HW04/HW04_23120031
+```
+
+Mọi lệnh sau đó đều gõ tại thư mục này.
+
+## Hai lệnh `python3` làm gì
+
+`run_matrix.py` là script nằm trong Agent Skill của bạn. Nó chỉ là cách gõ gọn: thay bạn chạy một feature lần lượt trên ba browser, mỗi lượt ghi một report riêng vào `reports/`, rồi in bảng so kết quả giữa ba browser. Bên trong nó gọi đúng lệnh `npx playwright test` như bạn đã dùng với FR-15.
+
+Nếu muốn mọi thứ rõ ràng và tự tay gõ từng lượt, bạn bỏ hai lệnh `python3` và dùng sáu lệnh tương đương này:
+
+```bash
+REPORT_DIR=reports/fr01-chromium npx playwright test tests/fr01 --project=chromium
+REPORT_DIR=reports/fr01-firefox  npx playwright test tests/fr01 --project=firefox
+REPORT_DIR=reports/fr01-webkit   npx playwright test tests/fr01 --project=webkit
+
+REPORT_DIR=reports/fr10-chromium npx playwright test tests/fr10 --project=chromium
+REPORT_DIR=reports/fr10-firefox  npx playwright test tests/fr10 --project=firefox
+REPORT_DIR=reports/fr10-webkit   npx playwright test tests/fr10 --project=webkit
+```
+
+Hai cách cho ra cùng một bộ report. Tôi nghiêng về sáu lệnh `npx` cho lượt chính thức, vì bạn nhìn thấy chính xác mình đang chạy gì và dễ giải thích nếu bị hỏi.
+
+## Toàn bộ trình tự, từ đầu đến cuối
+
+```bash
+cd ~/study/Homeworks/HW04/HW04_23120031
+whoami; hostname; date
+scripts/sut.sh status
+
+REPORT_DIR=reports/fr15-chromium npx playwright test tests/fr15 --project=chromium --headed
+REPORT_DIR=reports/fr15-firefox  npx playwright test tests/fr15 --project=firefox --headed
+REPORT_DIR=reports/fr15-webkit   npx playwright test tests/fr15 --project=webkit --headed
+npx playwright show-report reports/fr15-chromium
+```
+
+Sau đó là sáu lệnh của FR-01 và FR-10 ở trên.
+
+Vài điều sẽ thấy khi chạy:
+
+- **`scripts/sut.sh status`** phải báo backend, web và admin đều "chạy". Nếu thiếu, gõ `scripts/sut.sh start`.
+- **Mỗi lệnh test** in từng dòng có dấu ✓ hoặc ✘, cuối cùng là dòng tổng kết như `7 passed`, `8 failed`. Test fail ở đây là do bug của SUT, là kết quả đúng.
+- **`npx playwright show-report`** mở report trong trình duyệt và giữ terminal lại. Xem xong, quay về terminal bấm Ctrl+C rồi gõ lệnh tiếp.
+- **Gõ từng lệnh, chờ xong mới gõ lệnh kế.** Không chạy hai lệnh cùng lúc, vì cả ba feature dùng chung một backend.
+
+Chạy xong cả chín lượt, nhắn "kiểm tra" để tôi mở report xác nhận.
+````
+
+## #98 · 2026-11-18 11:09:46 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+cần phaỉ demo 3 feature?
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Không. Video chỉ cần demo một script, tức một feature. Đề ghi rõ ở Task 2: video cho thấy "một trong các script automation của bạn" chạy từ đầu đến cuối, gồm lượt chạy đa browser và HTML report sinh ra.
+
+Hai việc khác nhau, đừng lẫn:
+
+| Việc | Phạm vi | Có quay không |
+| --- | --- | --- |
+| Video demo (Task 2, 15 điểm) | Một feature, tôi đề xuất FR-15 | Có |
+| Chín lượt chạy chính thức (Task 1) | Cả ba feature × ba browser | Không cần quay |
+
+Chín lượt chạy thì vẫn bắt buộc, vì đề yêu cầu mỗi feature chạy trên cả ba browser và mỗi lượt có một HTML report. Chỉ là bạn không phải quay sáu lượt của FR-01 và FR-10.
+
+Trình tự gọn nhất:
+
+1. **Bật quay,** chạy `whoami; hostname; date`, rồi ba lệnh FR-15 có `--headed`, mở report, kể chỗ sửa `valueMissing`. Tắt quay. Phần này đủ 5 phút nếu bạn thuyết minh trong lúc ba browser chạy.
+2. **Không quay,** chạy tiếp sáu lệnh của FR-01 và FR-10.
+
+Nếu video ngắn hơn 5 phút, cách kéo dài hợp lệ là mở thêm report Firefox hoặc WebKit, hoặc giải thích file dữ liệu kỹ hơn. Không cần thêm feature thứ hai.
+````
+
+## #99 · 2026-11-18 11:11:05 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+tôi đang cần nhung thu liên quan den video de quay demo, dung lan nhung thu khac vao, lam tu tu, noi nhieu thu cung luc toi bi roi, toi demo cai gi? no lam gi? va test nhung gi? no nam o file nao? can show ra file nao?
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Bạn demo một thứ duy nhất: bộ test tự động của **FR-15 Quản lý sản phẩm** trên trang Web Admin.
+
+## 1. Demo cái gì
+
+Một script Playwright tự mở trình duyệt, đăng nhập trang quản trị của EShop, rồi tự Thêm, Sửa, Xóa sản phẩm và tự kiểm kết quả.
+
+## 2. Nó làm gì
+
+Với mỗi test case, script làm bốn bước:
+
+1. **Chuẩn bị:** tạo dữ liệu cần thiết, đăng nhập Admin, mở mục Sản phẩm.
+2. **Thao tác:** điền form rồi bấm "Lưu sản phẩm", hoặc bấm "Sửa", "Xóa" trên một dòng.
+3. **Kiểm giao diện:** bảng sản phẩm trên màn hình có đúng không.
+4. **Kiểm server:** dữ liệu thật sự được lưu có đúng không.
+
+## 3. Nó test những gì
+
+15 test case, chia ba nhóm:
+
+| Nhóm | Ví dụ | Số case |
+| --- | --- | --- |
+| Thêm sản phẩm | Dữ liệu hợp lệ; tên 255 và 256 ký tự; tên rỗng; giá 0, giá âm, bỏ trống giá | 10 |
+| Sửa sản phẩm | Sửa giá; sửa với tên rỗng; sửa giá thành 0 | 4 |
+| Xóa sản phẩm | Xóa một sản phẩm, các sản phẩm khác giữ nguyên | 1 |
+
+Kết quả: 7 case pass, 8 case fail. Tám case fail là do EShop có bug thật (ví dụ vẫn cho lưu giá bằng 0), không phải do script sai.
+
+## 4. Nằm ở file nào, và cần mở file nào
+
+Trong video chỉ cần mở ba file, theo thứ tự này:
+
+| Thứ tự | File | Chỉ vào đâu | Nói gì |
+| --- | --- | --- | --- |
+| 1 | `data/fr15.products.json` | Dòng 198, case `FR15-DT-08` | Dữ liệu test nằm ở file riêng: mã case, giá trị nhập (giá `0`), kết quả mong đợi (từ chối) |
+| 2 | `tests/fr15/products.spec.ts` | Dòng 367, vòng `for (const c of data.cases)` | Script đọc file dữ liệu và sinh ra 15 test; mỗi test gọi `arrange`, `act`, `assertUi`, `assertServer` |
+| 3 | `raw/fr15/B4_v1_products.spec.ts.txt` | Dòng 195 | Đây là bản AI viết lúc đầu, để kể chỗ bạn đã sửa |
+
+## 5. Chỗ sửa để kể (bắt buộc phải có trong video)
+
+- **Bản AI viết** (file thứ 3, dòng 195): với case bỏ trống tên sản phẩm, script kiểm `valueMissing` của ô Tên.
+- **Sai ở đâu:** giá trị đó luôn đúng khi ô đang rỗng, kể cả khi chưa bấm Lưu. Vì vậy dòng kiểm này không bao giờ fail và không chứng minh được gì.
+- **Bản đã sửa** (file thứ 2, dòng 236): script kiểm ô Tên nhận sự kiện `invalid`, form không bắn `submit`, và không có yêu cầu nào gửi lên server.
+
+## Thứ tự quay
+
+1. Terminal: `whoami; hostname; date`
+2. Mở file 1 và file 2, giải thích như bảng trên.
+3. Chạy ba lệnh FR-15 (Chromium, Firefox, WebKit).
+4. Mở report, chỉ dòng "Run by: 23120031" và bấm vào một case fail.
+5. Mở file 3 và file 2, kể chỗ sửa.
+
+Bạn muốn tôi viết sẵn lời thoại cho từng bước không? Tôi sẽ viết từng bước một, bạn đọc xong bước này rồi mới sang bước sau.
+````
+
+<details><summary>Hành động AI đã thực hiện (1)</summary>
+
+1. `Bash` — Find the exact lines to show in the demo video
+
+</details>
+
+## #100 · 2026-11-18 11:14:37 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+viết lời thoại cho từng bước đi
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Đây là lời thoại cho năm bước. Mỗi bước có phần **Làm** (thao tác trên màn hình) và phần **Nói**. Bạn nên nói lại bằng lời của mình thay vì đọc nguyên văn, vì đề yêu cầu giọng thuyết minh của chính bạn và nói tự nhiên thì dễ hơn đọc.
+
+## Bước 1: Giới thiệu (khoảng 30 giây)
+
+**Làm:** mở terminal, gõ:
+
+```bash
+cd ~/study/Homeworks/HW04/HW04_23120031
+whoami; hostname; date
+```
+
+**Nói:**
+
+> Xin chào thầy cô. Em là [họ tên], mã số sinh viên 23120031. Đây là video demo cho bài HW04, Automation Testing. Trên màn hình là tên người dùng, tên máy và thời gian hiện tại trên máy của em. Trong video này em demo bộ test tự động cho tính năng FR-15, Quản lý sản phẩm trên trang Web Admin của EShop, viết bằng Playwright.
+
+## Bước 2: Giới thiệu dữ liệu và script (khoảng 1 phút)
+
+**Làm:** mở `data/fr15.products.json`, kéo tới dòng 198 (case `FR15-DT-08`).
+
+**Nói:**
+
+> Toàn bộ dữ liệu test nằm trong file JSON này, tách riêng khỏi script. File có 15 test case. Ví dụ case FR15-DT-08: thao tác là thêm sản phẩm, giá nhập vào là 0, và kết quả mong đợi là hệ thống phải từ chối, vì đặc tả yêu cầu giá phải là số dương. Muốn thêm test case mới, em chỉ cần thêm một mục vào file này, không phải sửa script.
+
+**Làm:** mở `tests/fr15/products.spec.ts`, kéo tới dòng 367.
+
+**Nói:**
+
+> Đây là script. Vòng lặp này đọc file dữ liệu và sinh ra 15 test. Mỗi test đi qua bốn bước: arrange là chuẩn bị dữ liệu và đăng nhập, act là thao tác trên form, assertUi là kiểm bảng sản phẩm trên giao diện, và assertServer là kiểm dữ liệu thật sự được lưu phía server.
+
+## Bước 3: Chạy trên ba browser (khoảng 3 phút)
+
+**Làm:** quay lại terminal, gõ lệnh thứ nhất:
+
+```bash
+REPORT_DIR=reports/fr15-chromium npx playwright test tests/fr15 --project=chromium --headed
+```
+
+**Nói trong lúc chạy:**
+
+> Em chạy bộ test trên Chromium trước. Trình duyệt tự mở, tự đăng nhập trang Admin, tự điền form và bấm lưu. Em cấu hình chạy một worker, tức từng test một, vì tất cả test dùng chung một backend; chạy song song thì dữ liệu của test này sẽ làm sai kết quả của test kia.
+
+**Khi lệnh chạy xong, nói:**
+
+> Kết quả là 7 test pass và 8 test fail. Tám test fail này không phải do script sai, mà do EShop có bug thật. Ví dụ hệ thống vẫn cho lưu sản phẩm có giá bằng 0.
+
+**Làm:** gõ lệnh thứ hai và thứ ba, mỗi lệnh chờ xong mới gõ lệnh sau:
+
+```bash
+REPORT_DIR=reports/fr15-firefox npx playwright test tests/fr15 --project=firefox --headed
+REPORT_DIR=reports/fr15-webkit  npx playwright test tests/fr15 --project=webkit --headed
+```
+
+**Nói trong lúc chạy:**
+
+> Tiếp theo là Firefox, rồi WebKit, là nhân của trình duyệt Safari. Mỗi lượt chạy ghi ra một report HTML riêng. Trước mỗi lượt, script tự đưa dữ liệu của EShop về trạng thái ban đầu, và sau mỗi test nó tự xóa sản phẩm đã tạo, để các test không ảnh hưởng lẫn nhau.
+
+**Khi cả ba xong, nói:**
+
+> Cả ba trình duyệt cho cùng kết quả: 7 pass, 8 fail, và cùng một danh sách test fail.
+
+## Bước 4: Mở report (khoảng 1 phút)
+
+**Làm:** gõ:
+
+```bash
+npx playwright show-report reports/fr15-chromium
+```
+
+**Nói:**
+
+> Đây là report HTML của lượt Chromium. Ở tiêu đề có dòng "Run by: 23120031" và thời điểm chạy theo định dạng ISO.
+
+**Làm:** bấm vào case `FR15-DT-08`.
+
+**Nói:**
+
+> Em mở một test fail, là case giá bằng 0. Phần Annotations ghi lại người chạy và mã bug tương ứng là BUG-24. Phần Errors nói rõ lý do: hệ thống đã nhận dữ liệu sai, yêu cầu POST trả về 200 trong khi theo đặc tả phải từ chối. Phía dưới là ảnh bảng sản phẩm do test tự chụp, dòng cuối cùng là sản phẩm vừa được lưu với giá 0.
+
+**Làm:** quay về terminal, bấm Ctrl+C để đóng report.
+
+## Bước 5: Kể chỗ đã sửa (khoảng 1 phút)
+
+**Làm:** mở `raw/fr15/B4_v1_products.spec.ts.txt`, kéo tới dòng 195.
+
+**Nói:**
+
+> Script ban đầu do AI sinh ra, và em lưu lại bản thô ở đây để so sánh. Em kể một chỗ đã sửa. Với test case bỏ trống tên sản phẩm, bản của AI kiểm thuộc tính valueMissing của ô Tên. Vấn đề là thuộc tính này luôn đúng khi ô đang rỗng, kể cả khi chưa bấm nút Lưu. Nghĩa là dòng kiểm này không bao giờ fail, nên nó không chứng minh được form có bị chặn hay không.
+
+**Làm:** mở `tests/fr15/products.spec.ts`, kéo tới dòng 236.
+
+**Nói:**
+
+> Đây là bản đã sửa. Script kiểm ba điều chỉ xảy ra khi người dùng thật sự bấm Lưu: ô Tên nhận sự kiện invalid từ trình duyệt, form không bắn sự kiện submit, và không có yêu cầu nào được gửi lên server. Nguyên nhân AI viết sai là do prompt nêu sẵn tên thuộc tính cần kiểm, thay vì nêu điều cần chứng minh. Bài học của em là khi làm việc với AI, cần nói rõ mục đích của việc kiểm tra và tự hỏi assertion đó có thể fail trong trường hợp nào.
+
+**Nói để kết thúc:**
+
+> Em xin hết phần demo. Em cảm ơn thầy cô đã theo dõi.
+
+## Trước khi bấm quay
+
+- Chạy `scripts/sut.sh status` để chắc EShop đang chạy đủ ba dịch vụ.
+- Mở sẵn ba file trong VS Code để không phải tìm khi đang quay.
+- Tổng thời lượng khoảng 6–7 phút, vượt mức tối thiểu 5 phút.
+````
+
+## #101 · 2026-11-18 11:15:38 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+tạo mot file .md
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Kịch bản đã lưu tại `/home/npdinh/study/Homeworks/HW04/HW04_kich_ban_video.md`.
+
+Tôi đặt file ở thư mục `HW04`, bên ngoài repo `HW04_23120031`, để nó không lẫn vào bài nộp. File gồm phần chuẩn bị trước khi quay, năm bước với thao tác và lời thoại, và ba việc cần làm sau khi quay. Chỗ `[họ tên]` ở Bước 1 bạn tự điền.
+````
+
+<details><summary>Hành động AI đã thực hiện (1)</summary>
+
+1. `Write` — /home/npdinh/study/Homeworks/HW04/HW04_kich_ban_video.md
+
+</details>
+
+## #102 · 2026-11-18 11:26:02 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+cho toi cac lenh text de copy nhanh
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Các lệnh theo đúng thứ tự quay, mỗi khối là một lần dán.
+
+**Chuẩn bị (trước khi bấm quay)**
+
+```bash
+cd ~/study/Homeworks/HW04/HW04_23120031
+```
+
+```bash
+scripts/sut.sh status
+```
+
+**Bước 1: Giới thiệu**
+
+```bash
+whoami; hostname; date
+```
+
+**Bước 3: Chạy ba browser** (chờ lệnh trước xong mới dán lệnh sau)
+
+```bash
+REPORT_DIR=reports/fr15-chromium npx playwright test tests/fr15 --project=chromium --headed
+```
+
+```bash
+REPORT_DIR=reports/fr15-firefox npx playwright test tests/fr15 --project=firefox --headed
+```
+
+```bash
+REPORT_DIR=reports/fr15-webkit npx playwright test tests/fr15 --project=webkit --headed
+```
+
+**Bước 4: Mở report** (xem xong bấm Ctrl+C trong terminal)
+
+```bash
+npx playwright show-report reports/fr15-chromium
+```
+
+**Ba file cần mở trong VS Code** (Ctrl+P, dán tên file kèm số dòng để nhảy thẳng tới đó)
+
+```
+data/fr15.products.json:198
+```
+
+```
+tests/fr15/products.spec.ts:367
+```
+
+```
+raw/fr15/B4_v1_products.spec.ts.txt:195
+```
+
+```
+tests/fr15/products.spec.ts:236
+```
+
+Nếu `scripts/sut.sh status` báo thiếu dịch vụ:
+
+```bash
+scripts/sut.sh start
+```
+````
+
+## #103 · 2026-11-18 11:46:44 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+kiem tra va ghep am thanh vao video giup toi
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Đã ghép xong âm thanh vào video; giờ tôi xem vài khung hình để kiểm nội dung và độ khớp tiếng.
+
+Đã ghép xong: file mới là `/home/npdinh/study/Homeworks/HW04/HW04_demo_23120031.mp4`. Nhưng khi xem lại nội dung, tôi thấy lượt WebKit trong video bị lỗi, nên video chưa nên tải lên ngay.
+
+## Việc ghép âm thanh
+
+- **Video gốc** dài 13 phút 38 giây, 1280×720, và rãnh tiếng của nó hoàn toàn im lặng. Tôi đã thay rãnh đó bằng file ghi âm.
+- **File ghi âm** dài 13 phút 37 giây. Tôi nâng âm lượng lên vì bản gốc hơi nhỏ (mức trung bình từ −27,7 dB lên −22,7 dB), không đụng tới hình ảnh.
+- **Độ khớp tiếng và hình tôi chưa xác nhận được.** Hai file cùng bắt đầu lúc 11:30:37 theo tên file và dài gần bằng nhau, nên tôi ghép từ giây 0. Tôi không nghe được nội dung, và video gốc không có tiếng để so. Bạn xem thử 30 giây đầu và một đoạn ở giữa; nếu tiếng sớm hay trễ, cho tôi biết khoảng bao nhiêu giây, tôi dịch lại.
+
+## Nội dung video so với yêu cầu
+
+| Yêu cầu | Trong video |
+| --- | --- |
+| `whoami`, `hostname`, `date` | Có, ở khoảng giây 15: `npdinh`, `home`, 11:30:17 ngày 18/11 |
+| File dữ liệu và script | Có: `fr15.products.json` ở case DT-08, rồi vòng lặp sinh test |
+| Chạy đa browser | Chromium và Firefox chạy có cửa sổ, kết quả 7 pass / 8 fail; WebKit bị lỗi (xem dưới) |
+| HTML report có "Run by" | Có, mở report và trang chi tiết của case BUG-24 |
+| Kể một chỗ sửa | Có: bản thô dòng 195, rồi bản đã sửa dòng 236 |
+| Dài ít nhất 5 phút | Có, 13 phút 38 giây |
+
+## Vấn đề: lượt WebKit ra 5 pass / 10 fail
+
+Report `reports/fr15-webkit` của lượt quay ghi 5 pass / 10 fail thay vì 7 / 8. Tám test bị "Test timeout of 30000ms exceeded" ở bước bấm nút hoặc chụp ảnh, và cuối video terminal hiện rõ các lỗi này.
+
+Nguyên nhân nhiều khả năng là cửa sổ WebKit bị che: trong lúc WebKit chạy có cửa sổ, bạn chuyển sang VS Code để kể chỗ sửa. Khi cửa sổ không hiển thị, WebKit ngừng vẽ, nên Playwright chờ mãi phần tử "ổn định". Tôi suy ra điều này từ các khung hình và thông báo lỗi, chưa tái hiện lại. Các lượt WebKit chạy nền trước đây đều ra 7 / 8.
+
+Hệ quả:
+
+- **Report WebKit này không dùng làm report chính thức được,** vì 8 test đỏ do cách chạy, không do EShop.
+- **Video cho thấy một lượt chạy lỗi** mà lời thuyết minh có thể đang nói là "cùng kết quả".
+
+## Cách sửa, khoảng 5 phút
+
+Không cần quay lại cả video. Quay thêm một đoạn ngắn, có ghi âm, rồi tôi nối vào cuối:
+
+1. Bật quay và ghi âm.
+2. Chạy lại WebKit ở chế độ nền (không có `--headed`), và không chuyển cửa sổ trong lúc chạy:
+
+```bash
+REPORT_DIR=reports/fr15-webkit npx playwright test tests/fr15 --project=webkit
+```
+
+3. Khi ra 7 passed, 8 failed, mở report:
+
+```bash
+npx playwright show-report reports/fr15-webkit
+```
+
+4. Nói đại ý: lượt WebKit lúc nãy có 8 test bị quá thời gian vì cửa sổ trình duyệt bị che khi em chuyển sang VS Code; em chạy lại ở chế độ nền và kết quả là 7 pass, 8 fail, giống Chromium và Firefox.
+
+Đoạn này còn cho thấy bạn phân biệt được test đỏ do môi trường với test đỏ do bug, là điểm cộng chứ không phải điểm trừ. Quay xong, cho tôi tên hai file mới; tôi nối vào và kiểm lại report WebKit.
+
+Hai report Chromium và Firefox của lượt quay thì hợp lệ (7 / 8, chạy lúc 11:33 và 11:35). Sáu lượt của FR-01 và FR-10 vẫn chưa chạy.
+````
+
+<details><summary>Hành động AI đã thực hiện (8)</summary>
+
+1. `Bash` — Find recent video and audio files and check for ffmpeg
+2. `Bash` — Inspect video and audio streams, durations and loudness
+3. `Bash` — Merge narration into the video, check loudness, silences, sample frames and reports
+4. `Bash` — Build contact sheets from sampled frames
+5. `Read` — /tmp/claude-1000/-home-npdinh-study-Homeworks-HW04-HW04-23120031/7ed1ce04-2e8a-48f9-abce-4bb8c6be6c1f/scratchpad/vid/grid1.jpg
+6. `Read` — /tmp/claude-1000/-home-npdinh-study-Homeworks-HW04-HW04-23120031/7ed1ce04-2e8a-48f9-abce-4bb8c6be6c1f/scratchpad/vid/grid2.jpg
+7. `Bash` — Check the three reports for timeouts and sample the second half of the video
+8. `Read` — /tmp/claude-1000/-home-npdinh-study-Homeworks-HW04-HW04-23120031/7ed1ce04-2e8a-48f9-abce-4bb8c6be6c1f/scratchpad/vid/grid3.jpg
+
+</details>
+
+## #104 · 2026-11-18 11:51:04 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+toi nghi nên tải leen luôn, conf việc gif ngoài video ko?
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Được, video là quyết định của bạn; nó có đủ các yêu cầu bắt buộc, nên tải lên được. Một lưu ý duy nhất về video: cuối video có lượt WebKit bị timeout, nên trong báo cáo cần có một dòng giải thích (lượt đó lỗi do cửa sổ bị che, report chính thức được chạy lại sau).
+
+Ngoài video còn sáu việc, theo thứ tự:
+
+## 1. Tải video lên YouTube
+
+Tải `/home/npdinh/study/Homeworks/HW04/HW04_demo_23120031.mp4`, chọn chế độ **Unlisted**, rồi lưu link lại.
+
+## 2. Chạy lại bảy lượt chính thức (khoảng 8 phút)
+
+Report WebKit của FR-15 đang là 5 pass / 10 fail do timeout nên không nộp được, và FR-01, FR-10 chưa chạy. Dán lần lượt, chờ lệnh trước xong mới dán lệnh sau, và đừng thêm `--headed`:
+
+```bash
+cd ~/study/Homeworks/HW04/HW04_23120031
+```
+
+```bash
+REPORT_DIR=reports/fr15-webkit npx playwright test tests/fr15 --project=webkit
+```
+
+```bash
+REPORT_DIR=reports/fr01-chromium npx playwright test tests/fr01 --project=chromium
+```
+
+```bash
+REPORT_DIR=reports/fr01-firefox npx playwright test tests/fr01 --project=firefox
+```
+
+```bash
+REPORT_DIR=reports/fr01-webkit npx playwright test tests/fr01 --project=webkit
+```
+
+```bash
+REPORT_DIR=reports/fr10-chromium npx playwright test tests/fr10 --project=chromium
+```
+
+```bash
+REPORT_DIR=reports/fr10-firefox npx playwright test tests/fr10 --project=firefox
+```
+
+```bash
+REPORT_DIR=reports/fr10-webkit npx playwright test tests/fr10 --project=webkit
+```
+
+Kết quả phải là FR-15: 7 pass / 8 fail, FR-01: 8 / 9, FR-10: 9 / 4. Chạy xong nhắn "kiểm tra", tôi mở chín report xác nhận.
+
+## 3. Điền số liệu và ảnh vào tài liệu (phiên kia làm)
+
+Sau khi tôi xác nhận report, gửi sang phiên kia prompt "điền số" tôi đã đưa, thêm link video. README, báo cáo chính và bug report đang còn 24 chỗ để trống chờ số chính thức.
+
+## 4. Phần bạn tự viết (khoảng 20 phút)
+
+- **AI Critique 200–300 từ.** Đề ghi là bắt buộc.
+- **Cột tự chấm** trong bảng ở README, và con số ba chữ số cho tên file zip.
+
+## 5. Xuất PDF
+
+Đề yêu cầu báo cáo chính, AI Critique và AI Audit Report có cả bản Markdown lẫn PDF. HW02 của bạn có `scripts/build_pdf.sh`, phiên kia dùng lại được.
+
+## 6. Đóng gói và nộp
+
+- Chạy lại ba script xuất log (prompt log, audit report, commit log) ngay trước khi đóng gói.
+- Tạo file zip tên `23120031_HW04_AI_Automation_<điểm tự chấm>.zip`, ví dụ `23120031_HW04_AI_Automation_090.zip`.
+- Nộp lên Moodle.
+
+Việc cần làm ngay là mục 1 và mục 2; hai việc này làm song song được, vì video tải lên trong lúc test chạy.
+````
+
+<details><summary>Hành động AI đã thực hiện (1)</summary>
+
+1. `Bash` — Check what is still open outside the video
+
+</details>
+
+## #105 · 2026-11-18 11:55:03 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+https://youtu.be/bMuzCpj23Xg đay laf link video
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Tôi đã ghi link `https://youtu.be/bMuzCpj23Xg` vào `README.md` và `report/main_report.md`, và đổi dòng video Agent Skill ở cả hai file thành "không quay, chỉ nộp skill". Hai file này chưa commit.
+
+Tôi chưa mở link, nên chưa xác nhận được video đang ở chế độ Unlisted và xem được khi không đăng nhập. Bạn mở thử link trong một cửa sổ ẩn danh để chắc người chấm xem được.
+
+Các lượt chạy chính thức đang dở: `reports/` đã có thêm `fr01-chromium`, còn thiếu `fr01-firefox`, `fr01-webkit` và ba lượt của `fr10`. Chạy xong các lượt còn lại (và lượt `fr15-webkit` nếu bạn chưa chạy lại), nhắn "kiểm tra" để tôi mở chín report xác nhận.
+````
+
+<details><summary>Hành động AI đã thực hiện (2)</summary>
+
+1. `Bash` — Find where the video link belongs in the documents
+2. `Bash` — Write the video link into README and the main report
+
+</details>
+
+## #106 · 2026-11-18 12:08:25 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+kiểm tra
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Cả chín report chính thức đều hợp lệ. Tôi đã mở dữ liệu bên trong từng report; riêng ảnh bằng chứng thì tôi chỉ đếm số lượng, chưa mở xem từng ảnh.
+
+| Report | Kết quả | Thời điểm chạy (UTC) | Run by |
+| --- | --- | --- | --- |
+| `fr15-chromium` | 7 pass / 8 fail | 04:33 | 23120031 |
+| `fr15-firefox` | 7 pass / 8 fail | 04:35 | 23120031 |
+| `fr15-webkit` | 7 pass / 8 fail | 04:52 | 23120031 |
+| `fr01-chromium` | 8 pass / 9 fail | 04:53 | 23120031 |
+| `fr01-firefox` | 8 pass / 9 fail | 04:54 | 23120031 |
+| `fr01-webkit` | 8 pass / 9 fail | 04:55 | 23120031 |
+| `fr10-chromium` | 9 pass / 4 fail | 04:56 | 23120031 |
+| `fr10-firefox` | 9 pass / 4 fail | 04:57 | 23120031 |
+| `fr10-webkit` | 9 pass / 4 fail | 04:58 | 23120031 |
+
+- **Tổng:** 45 test case, 135 lượt thực thi, 72 pass, 63 fail.
+- **Không có lượt nào bị timeout hay lỗi kết nối.** Lượt WebKit của FR-15 chạy lại đã ra 7 / 8, thay cho lượt 5 / 10 trong video.
+- **Không case nào lệch giữa ba browser,** và danh sách case fail của mỗi feature đúng như dự đoán.
+- **Cả 135 lượt test đều có annotation "Run by: 23120031";** mỗi report chỉ chứa một browser.
+- **Dữ liệu SUT** sau chín lượt còn đúng 5 sản phẩm seed.
+
+Chín report nặng tổng cộng khoảng 21 MB. Chúng chưa được commit: repo đang có khoảng 150 thay đổi chờ, gồm `reports/` và hai file tôi ghi link video.
+
+## Prompt cho phiên kia
+
+```
+Chín lượt chính thức đã chạy và đã được kiểm: FR-15 7/8, FR-01 8/9,
+FR-10 9/4 trên mỗi browser; tổng 72 pass / 63 fail trên 135 lượt.
+README.md và report/main_report.md đã có link video
+https://youtu.be/bMuzCpj23Xg (chưa commit). Làm theo TODO_thu_cong.md:
+1. Điền số pass / fail chính thức vào README, main_report và mục 1
+   của ba gap analysis, lấy từ chín report trong reports/. Xóa đoạn
+   "Lưu ý cho bản nháp" trong README.
+2. Chép ảnh bug của FR-01 và FR-10 từ report chính thức vào
+   bugs/screenshots/, mở từng ảnh để chắc nó cho thấy lỗi, rồi chèn
+   vào Bug_Report.md.
+3. Thêm vào main_report một ghi chú: trong video demo, lượt WebKit của
+   FR-15 chạy có cửa sổ ra 5 pass / 10 fail do 8 test quá thời gian
+   khi cửa sổ trình duyệt bị che; report chính thức fr15-webkit là
+   lượt chạy lại ở chế độ nền lúc 04:52 UTC, ra 7 / 8.
+4. Chạy lại ba script xuất log (prompt log, audit report, commit log).
+5. Xuất PDF cho main_report, AI Audit Report và AI Critique (file
+   AI Critique tôi sẽ viết; để sẵn chỗ và lệnh build).
+6. Commit reports/ và các file trên, push.
+Không đăng gì lên GitHub Issues.
+```
+
+## Việc còn lại của bạn
+
+1. **Viết AI Critique 200–300 từ** (bắt buộc), lưu thành `ai/AI_Critique.md`.
+2. **Điền cột tự chấm** trong README và chọn con số cho tên file zip.
+3. **Mở link video trong cửa sổ ẩn danh** để chắc người chấm xem được.
+4. **Đóng gói zip và nộp Moodle** sau khi phiên kia push xong.
+````
+
+<details><summary>Hành động AI đã thực hiện (1)</summary>
+
+1. `Bash` — Verify all nine official reports
+
+</details>
+
+## #107 · 2026-11-18 12:09:39 · AI-1 · phiên `cea4708c`
+
+- **Công cụ AI:** Claude Code (VS Code extension) 2.1.325, model Claude Opus 5.5
+
+**Prompt (nguyên văn):**
+
+````text
+Chín lượt chính thức đã chạy và đã được kiểm: FR-15 7/8, FR-01 8/9,
+FR-10 9/4 trên mỗi browser; tổng 72 pass / 63 fail trên 135 lượt.
+README.md và report/main_report.md đã có link video
+https://youtu.be/bMuzCpj23Xg (chưa commit). Làm theo TODO_thu_cong.md:
+1. Điền số pass / fail chính thức vào README, main_report và mục 1
+   của ba gap analysis, lấy từ chín report trong reports/. Xóa đoạn
+   "Lưu ý cho bản nháp" trong README.
+2. Chép ảnh bug của FR-01 và FR-10 từ report chính thức vào
+   bugs/screenshots/, mở từng ảnh để chắc nó cho thấy lỗi, rồi chèn
+   vào Bug_Report.md.
+3. Thêm vào main_report một ghi chú: trong video demo, lượt WebKit của
+   FR-15 chạy có cửa sổ ra 5 pass / 10 fail do 8 test quá thời gian
+   khi cửa sổ trình duyệt bị che; report chính thức fr15-webkit là
+   lượt chạy lại ở chế độ nền lúc 04:52 UTC, ra 7 / 8.
+4. Chạy lại ba script xuất log (prompt log, audit report, commit log).
+5. Xuất PDF cho main_report, AI Audit Report và AI Critique (file
+   AI Critique tôi sẽ viết; để sẵn chỗ và lệnh build).
+6. Commit reports/ và các file trên, push.
+Không đăng gì lên GitHub Issues.
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Trước hết kiểm `reports/` và git status. Có ba điều cần xem: chín report có thật không, số liệu trong từng report, và vì sao hai file dữ liệu `data/fr01.register.json`, `data/fr10.orders.json` vừa đổi trên đĩa.
+
+Cả chín report có đúng danh sách case fail như kỳ vọng. Đọc đoạn cần sửa trong README:
+
+README xong. Sang báo cáo chính, đọc mục 4 và mục 9:
+
+Báo cáo chính xong. Sang mục 1 của ba gap analysis. Bảng của FR-15 vẫn ghi thời gian của ba report cũ ngày 17/11, nên cũng phải thay:
+
+Đã push. Sang mục 4 và 5: chạy lại ba script xuất log, rồi xuất PDF.
+````
+
+<details><summary>Hành động AI đã thực hiện (28)</summary>
+
+1. `Bash` — Check reports folder, git status and the unexpected data-file changes
+2. `Bash` — Inspect how the Playwright HTML report embeds its data
+3. `Bash` — Decode the nine official reports and print their stats, start time and title
+4. `Bash` — Check each report's failing cases match expectations and locate placeholders in README and main report
+5. `Read` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/README.md
+6. `Bash` — Fill official results into the README and remove the draft note
+7. `Read` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/report/main_report.md
+8. `Bash` — Fill official results, the WebKit video note and PDF pointers into the main report
+9. `Bash` — Replace section 1 tables of the three gap analyses with official report numbers
+10. `Bash` — List attachments of the bug-evidence tests in the official Chromium reports
+11. `Bash` — Copy twelve evidence screenshots from the official Chromium reports into bugs/screenshots
+12. `Bash` — Build a labelled viewing montage of the six FR-10 row screenshots in the scratchpad
+13. `Read` — /tmp/claude-1000/-home-npdinh-study-Homeworks/cea4708c-1210-4b50-bde5-148fe5972ddf/scratchpad/fr10-rows.png
+14. `Read` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/bugs/screenshots/BUG-15_FR01-DT-01_chromium_form.png
+15. `Read` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/bugs/screenshots/BUG-15_FR01-DT-01_chromium_sau.png
+16. `Read` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/bugs/screenshots/BUG-16_FR01-DT-27_chromium_form.png
+17. `Read` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/bugs/screenshots/BUG-18-21_FR01-WA-11_chromium_form.png
+18. `Read` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/bugs/screenshots/BUG-19_FR01-DT-29_chromium_form.png
+19. `Read` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/bugs/screenshots/BUG-20_FR01-WA-17_chromium_form.png
+20. `Bash` — Print the server-side new-account attachments for DT-29, WA-11 and WA-17
+21. `Bash` — Locate placeholder lines in the bug report and check FR-15 official report attachments
+22. `Bash` — Show the full text of the evidence paragraph, origin note and remaining-work list
+23. `Bash` — Insert FR-01/FR-10 images and server JSON evidence into the bug report and verify image links resolve
+24. `Bash` — Read the HW02 PDF build script and check available PDF tooling
+25. `Bash` — Add the PDF build script, stylesheet and an empty AI Critique placeholder
+26. `Bash` — Update README docs table, measure reports size, and stage the first commit
+27. `Bash` — Commit and push the official reports with the filled-in documents and bug images
+28. `Bash` — Regenerate prompt log, audit report and commit log, then build the PDFs
 
 </details>

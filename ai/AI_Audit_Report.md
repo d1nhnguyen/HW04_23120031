@@ -12,7 +12,7 @@ Phụ lục bắt buộc theo đề HW04 §9 và mẫu [AI-02] – FIT@HCMUS –
 | MSSV | 23120031 |
 | Lớp / Khoá | CQ2023/3 |
 | Mã bài tập | HW04 – AI-Assisted Automation Testing trên EShop |
-| Thời gian dùng AI | 15/11/2026 21:37 – 18/11/2026 10:42 (GMT+7) |
+| Thời gian dùng AI | 15/11/2026 21:37 – 18/11/2026 12:09 (GMT+7) |
 | Có dùng AI | [x] Có [ ] Không |
 
 **Khai báo theo đề §9:** _I use AI tools for the following tasks_ – tôi sử dụng công cụ AI cho các công việc sau: đọc đề và lập kế hoạch; dựng dự án Playwright và script điều khiển SUT; chọn test case từ bộ test case HW02; khảo sát trang thật; sinh file dữ liệu, Page Object và spec cho FR-15, FR-01, FR-10; review và sửa script; chạy ba browser và phân loại test fail; xây dựng Agent Skill `data-driven-web-automation`; nháp tài liệu nộp (gap analysis, bug report, README, báo cáo). Các phần không do AI làm: HTML report chính thức (sinh viên tự chạy), video demo, AI Critique.
@@ -21,8 +21,8 @@ Phụ lục bắt buộc theo đề HW04 §9 và mẫu [AI-02] – FIT@HCMUS –
 
 | Vai trò | Công cụ | Phiên bản | Model | Phiên (transcript) | Số lượt |
 | --- | --- | --- | --- | --- | --- |
-| AI-1 – viết script | Claude Code (VS Code extension) | 2.1.325 | Claude Fable 5.2; Claude Opus 5.5 từ lượt có `/model opus` | `843d9cd5`, `cea4708c` | 46 |
-| AI-2 – review | Claude Code CLI | 2.1.326 | Claude Fable 5.2 | `7ed1ce04` | 47 |
+| AI-1 – viết script | Claude Code (VS Code extension) | 2.1.325 | Claude Fable 5.2; Claude Opus 5.5 từ lượt có `/model opus` | `843d9cd5`, `cea4708c` | 48 |
+| AI-2 – review | Claude Code CLI | 2.1.326 | Claude Fable 5.2 | `7ed1ce04` | 59 |
 
 Công cụ kiểm thử (không phải AI): Playwright Test 1.65.1 với Playwright HTML reporter; TypeScript (`tsc --noEmit`).
 
@@ -34,7 +34,7 @@ Công cụ kiểm thử (không phải AI): Playwright Test 1.65.1 với Playwri
 - **Cách hai phiên làm việc với nhau:** sinh viên dán kết quả của AI-1 sang AI-2; AI-2 đối chiếu với đặc tả, mã nguồn SUT và tracker rồi đề xuất sửa; sinh viên chọn, sửa lời và gửi prompt cho AI-1. Vì vậy nhiều prompt của AI-1 có nội dung giống phần đề xuất trong output của lượt AI-2 ngay trước đó.
 - **Đánh giá output AI** (sai ở đâu, ai phát hiện, vì sao AI sai) nằm trong gap analysis của từng feature: `report/fr15_gap_analysis.md`, `report/fr01_gap_analysis.md`, `report/fr10_gap_analysis.md`. Output dạng file là các commit trong `git_commit_log.txt`; bản thô AI sinh ở bước B4 lưu nguyên văn trong `raw/<feature>/`.
 
-## 4. Bảng audit — 93 lượt
+## 4. Bảng audit — 107 lượt
 
 | # | Thời gian (GMT+7) | Vai trò | Công cụ, model | Prompt (rút gọn) | Tóm tắt output |
 | --- | --- | --- | --- | --- | --- |
@@ -130,7 +130,21 @@ Công cụ kiểm thử (không phải AI): Playwright Test 1.65.1 với Playwri
 | 90 | 2026-11-18 09:48 | AI-2 | CLI, Claude Fable 5.2 | Xong B0 → B3 cho FR-10. Đây là điểm dừng duy nhất của bạn. Hai file mới, chưa commit: [data/fr10.orders.json]( | Duyệt được. |
 | 91 | 2026-11-18 09:49 | AI-1 | VS Code, Claude Opus 5.5 | Duyệt, với các sửa đổi rồi chạy liền B4 → B8: (1) Đồng ý tách DT-26 và DT-27. Thêm ghi chú vào hai case đó và  | Xong FR-10 từ B4 tới B8. |
 | 92 | 2026-11-18 10:41 | AI-2 | CLI, Claude Fable 5.2 | Xong FR-10 từ B4 tới B8. Mỗi nhóm có commit riêng, đã push lên `origin/main`, và chỉ commit sau khi qua đủ ba  | FR-10 đạt, và cả ba feature giờ đã có script hoàn chỉnh. |
-| 93 | 2026-11-18 10:42 | AI-1 | VS Code, Claude Opus 5.5 | Chín lượt chính thức đã chạy xong, report nằm trong reports/. Soạn bản nháp các tài liệu nộp bài, tôi sẽ sửa l |  |
+| 93 | 2026-11-18 10:42 | AI-1 | VS Code, Claude Opus 5.5 | Chín lượt chính thức đã chạy xong, report nằm trong reports/. Soạn bản nháp các tài liệu nộp bài, tôi sẽ sửa l | Viết cho: |
+| 94 | 2026-11-18 10:58 | AI-2 | CLI, Claude Fable 5.2 | Viết cho: giảng viên và trợ giảng chấm bài. Đây là bản nháp để bạn sửa lời. **Chín lượt chính thức chưa được c | Phần tài liệu đã có khung đầy đủ trên repo; việc đang chặn mọi thứ còn lại là chín lượt chạy chính thức, và chỉ bạn chạy được. |
+| 95 | 2026-11-18 11:00 | AI-1 | VS Code, Claude Opus 5.5 | Chín lượt chính thức đã chạy và đã được kiểm. Làm theo danh sách trong TODO_thu_cong.md: 1. Điền số pass / fai | Mục 2 xong (`afbd73e`, đã push). |
+| 96 | 2026-11-18 11:03 | AI-2 | CLI, Claude Fable 5.2 | kiểm tra | Chín lượt chính thức vẫn chưa được chạy. |
+| 97 | 2026-11-18 11:07 | AI-2 | CLI, Claude Fable 5.2 | chạy ở đau va cac cau lenh python dung de lam gi? | Chạy trong ứng dụng Terminal của Ubuntu (mở bằng Ctrl+Alt+T), hoặc trong ô Terminal của VS Code (menu Terminal, New Terminal). |
+| 98 | 2026-11-18 11:09 | AI-2 | CLI, Claude Fable 5.2 | cần phaỉ demo 3 feature? | Không. |
+| 99 | 2026-11-18 11:11 | AI-2 | CLI, Claude Fable 5.2 | tôi đang cần nhung thu liên quan den video de quay demo, dung lan nhung thu khac vao, lam tu tu, noi nhieu thu | Bạn demo một thứ duy nhất: |
+| 100 | 2026-11-18 11:14 | AI-2 | CLI, Claude Fable 5.2 | viết lời thoại cho từng bước đi | Đây là lời thoại cho năm bước. |
+| 101 | 2026-11-18 11:15 | AI-2 | CLI, Claude Fable 5.2 | tạo mot file .md | Kịch bản đã lưu tại `/home/npdinh/study/Homeworks/HW04/HW04_kich_ban_video.md`. |
+| 102 | 2026-11-18 11:26 | AI-2 | CLI, Claude Fable 5.2 | cho toi cac lenh text de copy nhanh | Các lệnh theo đúng thứ tự quay, mỗi khối là một lần dán. |
+| 103 | 2026-11-18 11:46 | AI-2 | CLI, Claude Fable 5.2 | kiem tra va ghep am thanh vao video giup toi | Đã ghép xong: |
+| 104 | 2026-11-18 11:51 | AI-2 | CLI, Claude Fable 5.2 | toi nghi nên tải leen luôn, conf việc gif ngoài video ko? | Được, video là quyết định của bạn; nó có đủ các yêu cầu bắt buộc, nên tải lên được. |
+| 105 | 2026-11-18 11:55 | AI-2 | CLI, Claude Fable 5.2 | https://youtu.be/bMuzCpj23Xg đay laf link video | Tôi đã ghi link `https://youtu.be/bMuzCpj23Xg` vào `README.md` và `report/main_report.md`, và đổi dòng video Agent Skill ở cả hai file thành "không quay, chỉ nộp skill". |
+| 106 | 2026-11-18 12:08 | AI-2 | CLI, Claude Fable 5.2 | kiểm tra | Cả chín report chính thức đều hợp lệ. |
+| 107 | 2026-11-18 12:09 | AI-1 | VS Code, Claude Opus 5.5 | Chín lượt chính thức đã chạy và đã được kiểm: FR-15 7/8, FR-01 8/9, FR-10 9/4 trên mỗi browser; tổng 72 pass / | Đã push. |
 
 ## 5. Nhận xét của sinh viên
 
@@ -2739,8 +2753,8 @@ Tôi cũng đã ghi vào memory bài học "trace che lỗi race": lượt lặp
 ### #93 · 2026-11-18 10:42:42 · AI-1 · phiên `cea4708c`
 
 - **Công cụ AI:** Claude Code (VS Code extension) 2.1.325, model Claude Opus 5.5
-- **Tóm tắt output:** 
-- **Số hành động AI đã chạy:** 26 (danh sách ở Phụ lục A, lượt #93)
+- **Tóm tắt output:** Viết cho:
+- **Số hành động AI đã chạy:** 34 (danh sách ở Phụ lục A, lượt #93)
 
 **Prompt (nguyên văn):**
 
@@ -2771,6 +2785,226 @@ bản nháp các tài liệu nộp bài, tôi sẽ sửa lời sau:
    trên. KHÔNG viết AI Critique; tôi tự viết.
 Số liệu nào cũng phải lấy từ file thật, không ước lượng. Không đăng
 gì lên GitHub Issues. Commit từng phần với tiền tố [report] và push.
+````
+
+### #94 · 2026-11-18 10:58:49 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Phần tài liệu đã có khung đầy đủ trên repo; việc đang chặn mọi thứ còn lại là chín lượt chạy chính thức, và chỉ bạn chạy được.
+- **Số hành động AI đã chạy:** 1 (danh sách ở Phụ lục A, lượt #94)
+
+**Prompt (nguyên văn):**
+
+````text
+Viết cho: giảng viên và trợ giảng chấm bài. Đây là bản nháp để bạn sửa lời.
+
+**Chín lượt chính thức chưa được chạy.** `reports/` chỉ có ba report FR-15 cũ từ ngày 17/11, và remote cũng vậy. Các report FR-01, FR-10 tìm thấy trong `/tmp` đều là lượt gỡ lỗi của tôi. Prompt của bạn có lẽ được AI-2 soạn sẵn ở lượt #92, để gửi "ngay sau khi chạy xong chín lượt". Report HTML phải do bạn tự chạy nên tôi không chạy thay. Vì vậy ảnh bug và số pass / fail chính thức còn để trống, đánh dấu _(chờ …)_; ngoài ra không có số nào là ước lượng.
+
+Bảy phần đã commit và push, mỗi phần một commit `[report]`:
+
+| Phần | Commit | Đã xong | Còn chờ |
+| --- | --- | --- | --- |
+| 1. Bài học trace vào `review-checklist.md` | `afb0a2e` | Thêm vào mục 4 và vào bảng đầu file | – |
+| 2. Gap analysis FR-01, FR-10 | `0574198` | Đủ các bảng theo mẫu FR-15. Ghi đúng cách kiểm: cổng tự động và AI-2, bạn không đọc diff. Lỗi WebKit và trace che lỗi là mục 2 của FR-10 | Mục 1 đang dùng số của lượt gỡ lỗi |
+| 3. Bug report | `048a1ae` | Thêm 8 bug, kèm issue trùng nội dung và mức độ lấy từ issue gốc | Ảnh: mỗi mục ghi test và tệp đính kèm cần lấy |
+| 4. README | `b730c97` | Bảng tự chấm (cột điểm để trống), link repo; 3 feature, 45 case, 9 lượt, 135 lượt thực thi, 13 bug, 15 commit có sửa `.spec.ts` | Pass / fail |
+| 5. Commit log | `8a5596c` | `git_commit_log.txt`, đánh dấu commit có sửa `.spec.ts` | Chạy lại trước khi đóng gói |
+| 6. AI Audit Report | `35aea36` | 93 lượt từ 3 phiên. Script HW02 được viết lại thành bản HW04, vì bản cũ không đọc được prompt dán vào. Mỗi lượt có công cụ, model, thời gian và prompt nguyên văn; output nguyên văn ở `ai/prompt_log.md` | Chạy lại trước khi đóng gói |
+| 7. Báo cáo chính | `06f0b64` | Khung đầy đủ, trỏ tới các file trên; không có AI Critique | Số liệu chính thức, các đoạn _(sinh viên viết)_ |
+
+**Nên biết trước khi sửa lời**
+
+- **Cột "Ai phát hiện"** trong hai gap analysis ghi theo transcript của AI-2. Ví dụ: lỗi `type="text"`, lỗi đếm S3, tài khoản seed và cảnh báo sai của linter đều do AI-2 nêu, không phải bạn.
+- **Lượt lặp FR-15 (35/35) cũ đã chạy với trace bật.** Lúc đó trace chưa gắn với `REPORT_DIR`, tức đúng điều kiện có thể che lỗi. Tôi đã chạy lại với trace tắt và vẫn được 35/35 trên mỗi browser. Báo cáo chính ghi số của lượt chạy lại. Bảng số trong `report/fr15_gap_analysis.md` tôi chưa sửa.
+- **Đã kiểm lại FR-15 trên Chromium** sau commit dùng chung `42d2a67`: vẫn 7 pass / 8 fail. Đây là điểm AI-2 nêu là chưa được kiểm.
+- **Cột "Vì sao AI sai" và các mục bug mới là lời của AI-1.** Thỏa thuận AI-01 yêu cầu nội dung bug do sinh viên viết.
+
+`TODO_thu_cong.md` đã có danh sách việc phải làm sau khi bạn chạy chín lượt chính thức. Gồm: điền số vào bốn file, chép ảnh vào bug report, và chạy lại ba script (prompt log, audit report, commit log) ngay trước khi đóng gói.
+````
+
+### #95 · 2026-11-18 11:00:37 · AI-1 · phiên `cea4708c`
+
+- **Công cụ AI:** Claude Code (VS Code extension) 2.1.325, model Claude Opus 5.5
+- **Tóm tắt output:** Mục 2 xong (`afbd73e`, đã push).
+- **Số hành động AI đã chạy:** 5 (danh sách ở Phụ lục A, lượt #95)
+
+**Prompt (nguyên văn):**
+
+````text
+Chín lượt chính thức đã chạy và đã được kiểm. Làm theo danh sách
+trong TODO_thu_cong.md:
+1. Điền số pass / fail chính thức vào README, main_report và mục 1
+   của ba gap analysis, lấy từ chín report trong reports/. Xóa đoạn
+   "Lưu ý cho bản nháp" trong README.
+2. Sửa bảng lượt lặp trong report/fr15_gap_analysis.md: ghi số của
+   lượt chạy lại với trace tắt, và nêu rõ lượt cũ chạy với trace bật.
+3. Chép ảnh bug của FR-01 và FR-10 từ report chính thức vào
+   bugs/screenshots/, mở từng ảnh để chắc nó cho thấy lỗi, rồi chèn
+   vào Bug_Report.md.
+4. Commit reports/ và các file trên, push.
+Chưa chạy lại ba script xuất log; việc đó làm ngay trước khi đóng gói.
+````
+
+### #96 · 2026-11-18 11:03:00 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Chín lượt chính thức vẫn chưa được chạy.
+- **Số hành động AI đã chạy:** 2 (danh sách ở Phụ lục A, lượt #96)
+
+**Prompt (nguyên văn):**
+
+````text
+kiểm tra
+````
+
+### #97 · 2026-11-18 11:07:59 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Chạy trong ứng dụng Terminal của Ubuntu (mở bằng Ctrl+Alt+T), hoặc trong ô Terminal của VS Code (menu Terminal, New Terminal).
+- **Số hành động AI đã chạy:** 0 (danh sách ở Phụ lục A, lượt #97)
+
+**Prompt (nguyên văn):**
+
+````text
+chạy ở đau va cac cau lenh python dung de lam gi?
+````
+
+### #98 · 2026-11-18 11:09:46 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Không.
+- **Số hành động AI đã chạy:** 0 (danh sách ở Phụ lục A, lượt #98)
+
+**Prompt (nguyên văn):**
+
+````text
+cần phaỉ demo 3 feature?
+````
+
+### #99 · 2026-11-18 11:11:05 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Bạn demo một thứ duy nhất:
+- **Số hành động AI đã chạy:** 1 (danh sách ở Phụ lục A, lượt #99)
+
+**Prompt (nguyên văn):**
+
+````text
+tôi đang cần nhung thu liên quan den video de quay demo, dung lan nhung thu khac vao, lam tu tu, noi nhieu thu cung luc toi bi roi, toi demo cai gi? no lam gi? va test nhung gi? no nam o file nao? can show ra file nao?
+````
+
+### #100 · 2026-11-18 11:14:37 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Đây là lời thoại cho năm bước.
+- **Số hành động AI đã chạy:** 0 (danh sách ở Phụ lục A, lượt #100)
+
+**Prompt (nguyên văn):**
+
+````text
+viết lời thoại cho từng bước đi
+````
+
+### #101 · 2026-11-18 11:15:38 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Kịch bản đã lưu tại `/home/npdinh/study/Homeworks/HW04/HW04_kich_ban_video.md`.
+- **Số hành động AI đã chạy:** 1 (danh sách ở Phụ lục A, lượt #101)
+
+**Prompt (nguyên văn):**
+
+````text
+tạo mot file .md
+````
+
+### #102 · 2026-11-18 11:26:02 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Các lệnh theo đúng thứ tự quay, mỗi khối là một lần dán.
+- **Số hành động AI đã chạy:** 0 (danh sách ở Phụ lục A, lượt #102)
+
+**Prompt (nguyên văn):**
+
+````text
+cho toi cac lenh text de copy nhanh
+````
+
+### #103 · 2026-11-18 11:46:44 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Đã ghép xong:
+- **Số hành động AI đã chạy:** 8 (danh sách ở Phụ lục A, lượt #103)
+
+**Prompt (nguyên văn):**
+
+````text
+kiem tra va ghep am thanh vao video giup toi
+````
+
+### #104 · 2026-11-18 11:51:04 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Được, video là quyết định của bạn; nó có đủ các yêu cầu bắt buộc, nên tải lên được.
+- **Số hành động AI đã chạy:** 1 (danh sách ở Phụ lục A, lượt #104)
+
+**Prompt (nguyên văn):**
+
+````text
+toi nghi nên tải leen luôn, conf việc gif ngoài video ko?
+````
+
+### #105 · 2026-11-18 11:55:03 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Tôi đã ghi link `https://youtu.be/bMuzCpj23Xg` vào `README.md` và `report/main_report.md`, và đổi dòng video Agent Skill ở cả hai file thành "không quay, chỉ nộp skill".
+- **Số hành động AI đã chạy:** 2 (danh sách ở Phụ lục A, lượt #105)
+
+**Prompt (nguyên văn):**
+
+````text
+https://youtu.be/bMuzCpj23Xg đay laf link video
+````
+
+### #106 · 2026-11-18 12:08:25 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** Cả chín report chính thức đều hợp lệ.
+- **Số hành động AI đã chạy:** 1 (danh sách ở Phụ lục A, lượt #106)
+
+**Prompt (nguyên văn):**
+
+````text
+kiểm tra
+````
+
+### #107 · 2026-11-18 12:09:39 · AI-1 · phiên `cea4708c`
+
+- **Công cụ AI:** Claude Code (VS Code extension) 2.1.325, model Claude Opus 5.5
+- **Tóm tắt output:** Đã push.
+- **Số hành động AI đã chạy:** 28 (danh sách ở Phụ lục A, lượt #107)
+
+**Prompt (nguyên văn):**
+
+````text
+Chín lượt chính thức đã chạy và đã được kiểm: FR-15 7/8, FR-01 8/9,
+FR-10 9/4 trên mỗi browser; tổng 72 pass / 63 fail trên 135 lượt.
+README.md và report/main_report.md đã có link video
+https://youtu.be/bMuzCpj23Xg (chưa commit). Làm theo TODO_thu_cong.md:
+1. Điền số pass / fail chính thức vào README, main_report và mục 1
+   của ba gap analysis, lấy từ chín report trong reports/. Xóa đoạn
+   "Lưu ý cho bản nháp" trong README.
+2. Chép ảnh bug của FR-01 và FR-10 từ report chính thức vào
+   bugs/screenshots/, mở từng ảnh để chắc nó cho thấy lỗi, rồi chèn
+   vào Bug_Report.md.
+3. Thêm vào main_report một ghi chú: trong video demo, lượt WebKit của
+   FR-15 chạy có cửa sổ ra 5 pass / 10 fail do 8 test quá thời gian
+   khi cửa sổ trình duyệt bị che; report chính thức fr15-webkit là
+   lượt chạy lại ở chế độ nền lúc 04:52 UTC, ra 7 / 8.
+4. Chạy lại ba script xuất log (prompt log, audit report, commit log).
+5. Xuất PDF cho main_report, AI Audit Report và AI Critique (file
+   AI Critique tôi sẽ viết; để sẵn chỗ và lệnh build).
+6. Commit reports/ và các file trên, push.
+Không đăng gì lên GitHub Issues.
 ````
 
 ## Chữ ký
