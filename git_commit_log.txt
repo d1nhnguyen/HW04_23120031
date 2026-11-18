@@ -1,6 +1,6 @@
 Git commit log – HW04 23120031 – repo https://github.com/d1nhnguyen/HW04_23120031
-Xuất lúc 2026-11-18 12:20:04 +0700 bằng scripts/export_commit_log.sh
-Tổng: 40 commit; có sửa .spec.ts: 15 (ngưỡng của đề: 8)
+Xuất lúc 2026-11-18 12:26:13 +0700 bằng scripts/export_commit_log.sh
+Tổng: 42 commit; có sửa .spec.ts: 15 (ngưỡng của đề: 8)
 
 spec | hash    | thời gian                 | tác giả     | thông điệp
      | 5b5e184 | 2026-11-16 13:41:48 +0700 | d1nhnguyen | [setup] Khởi tạo dự án Playwright Test (Chromium, Firefox, WebKit)
@@ -43,6 +43,8 @@ spec | hash    | thời gian                 | tác giả     | thông điệp
      | afbd73e | 2026-11-18 11:01:25 +0700 | d1nhnguyen | [report] FR-15 gap analysis: bảng lượt lặp ghi số của lượt chạy lại với trace tắt, nêu rõ lượt cũ chạy với trace bật
      | 402be2b | 2026-11-18 12:13:33 +0700 | d1nhnguyen | [report] Chín HTML report chính thức (72 pass / 63 fail); điền số vào README, báo cáo chính và ba gap analysis; ảnh bug FR-01, FR-10 từ report chính thức; link video
      | 5f634dc | 2026-11-18 12:14:18 +0700 | d1nhnguyen | [report] Xuất lại prompt log (107 lượt), AI Audit Report và commit log; PDF báo cáo chính và AI Audit Report; khung AI Critique và scripts/build_pdf.sh
+     | 56fb040 | 2026-11-18 12:20:19 +0700 | d1nhnguyen | [report] Bản nộp: AI Critique, tự chấm 87, xuất lại prompt log, AI Audit Report, commit log và ba PDF; bỏ qua scripts/__pycache__/
+     | fc9f5ad | 2026-11-18 12:26:12 +0700 | d1nhnguyen | [report] Ảnh trang GitHub Issues của 13 bug (bugs/issue_shots/), chèn vào Bug_Report.md mục 3; scripts/issue_shots.mjs
 
 ===== Chi tiết (git log --stat) =====
 commit 5b5e184bc61179b6ce0bc6244523b08dc253bb98
@@ -949,3 +951,44 @@ Date:   2026-11-18 12:14:18 +0700
  scripts/build_pdf.sh    |   31 ++
  scripts/pdf.css         |   15 +
  8 files changed, 1747 insertions(+), 11 deletions(-)
+
+commit 56fb040487907176ef300892e1503e6cab67e6c4
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 12:20:19 +0700
+
+    [report] Bản nộp: AI Critique, tự chấm 87, xuất lại prompt log, AI Audit Report, commit log và ba PDF; bỏ qua scripts/__pycache__/
+
+ .gitignore              |   3 +
+ README.md               |  12 +--
+ ai/AI_Audit_Report.md   |  59 +++++++++++--
+ ai/AI_Critique.md       |   2 +-
+ ai/prompt_log.md        | 215 +++++++++++++++++++++++++++++++++++++++++++++++-
+ git_commit_log.txt      |  21 ++++-
+ pdf/AI_Audit_Report.pdf | Bin 1093250 -> 1113993 bytes
+ pdf/AI_Critique.pdf     | Bin 0 -> 32647 bytes
+ pdf/main_report.pdf     | Bin 164439 -> 162016 bytes
+ report/main_report.md   |  17 +++-
+ 10 files changed, 307 insertions(+), 22 deletions(-)
+
+commit fc9f5ad717af7c8c98497e3e5f43aca945b6d631
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 12:26:12 +0700
+
+    [report] Ảnh trang GitHub Issues của 13 bug (bugs/issue_shots/), chèn vào Bug_Report.md mục 3; scripts/issue_shots.mjs
+
+ bugs/Bug_Report.md                   |  60 +++++++++++++++++++++++++++++++++--
+ bugs/issue_shots/BUG-15_issue-15.jpg | Bin 0 -> 192230 bytes
+ bugs/issue_shots/BUG-16_issue-16.jpg | Bin 0 -> 140908 bytes
+ bugs/issue_shots/BUG-18_issue-18.jpg | Bin 0 -> 162557 bytes
+ bugs/issue_shots/BUG-19_issue-19.jpg | Bin 0 -> 196530 bytes
+ bugs/issue_shots/BUG-20_issue-20.jpg | Bin 0 -> 177283 bytes
+ bugs/issue_shots/BUG-21_issue-21.jpg | Bin 0 -> 157128 bytes
+ bugs/issue_shots/BUG-24_issue-24.jpg | Bin 0 -> 278949 bytes
+ bugs/issue_shots/BUG-25_issue-25.jpg | Bin 0 -> 224410 bytes
+ bugs/issue_shots/BUG-26_issue-26.jpg | Bin 0 -> 202934 bytes
+ bugs/issue_shots/BUG-27_issue-27.jpg | Bin 0 -> 268408 bytes
+ bugs/issue_shots/BUG-30_issue-30.jpg | Bin 0 -> 202873 bytes
+ bugs/issue_shots/BUG-31_issue-31.jpg | Bin 0 -> 193328 bytes
+ bugs/issue_shots/BUG-41_issue-87.jpg | Bin 0 -> 167820 bytes
+ scripts/issue_shots.mjs              |  40 +++++++++++++++++++++++
+ 15 files changed, 98 insertions(+), 2 deletions(-)

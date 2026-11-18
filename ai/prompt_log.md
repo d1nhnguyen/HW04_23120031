@@ -1,6 +1,6 @@
 # Phụ lục A — Prompt log HW04 (trích tự động từ transcript Claude Code)
 
-> Sinh bởi `scripts/export_prompt_log.py` lúc 2026-11-18 12:20 (GMT+7). Prompt và output của AI được giữ **nguyên văn**. Không đưa vào: phần suy luận ẩn của model, nội dung file / kết quả lệnh mà AI đọc được (chỉ liệt kê tên hành động).
+> Sinh bởi `scripts/export_prompt_log.py` lúc 2026-11-18 12:26 (GMT+7). Prompt và output của AI được giữ **nguyên văn**. Không đưa vào: phần suy luận ẩn của model, nội dung file / kết quả lệnh mà AI đọc được (chỉ liệt kê tên hành động).
 > **AI-1** = phiên viết script (Claude Code, VS Code extension); **AI-2** = phiên review (Claude Code CLI).
 
 | # | Thời gian (GMT+7) | Vai trò | Phiên | Model | Prompt (rút gọn) |
@@ -115,6 +115,7 @@
 | 108 | 2026-11-18 12:15 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | kiểm tra trang thai hien tai |
 | 109 | 2026-11-18 12:18 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | draft AI Critique cho toi, chinh lai cac placeholder va tu cham cho toi, toi se doc va duy |
 | 110 | 2026-11-18 12:19 | AI-1 | `cea4708c` | Claude Opus 5.5 | Tôi đã duyệt ai/AI_Critique.md, report/main_report.md và cột tự chấm trong README (tổng 87 |
+| 111 | 2026-11-18 12:23 | AI-1 | `cea4708c` | Claude Opus 5.5 | Chụp ảnh trang 13 issue rồi tạo lại zip |
 
 ## #1 · 2026-11-15 21:37:14 · AI-1 · phiên `843d9cd5`
 
@@ -8829,11 +8830,93 @@ chiếu từng mục với danh sách của đề.
 
 ````markdown
 Kiểm trước những gì bạn vừa sửa: AI Critique đã bỏ dòng "CHƯA VIẾT" chưa và dài bao nhiêu từ, tổng điểm trong README, và trạng thái git.
+
+Đã tạo file nộp `HW04/23120031_HW04_AI_Automation_087.zip`, nặng 17,1 MB (dưới giới hạn 20 MB của Moodle). Tôi chưa thêm ảnh chụp trang GitHub Issues vào zip, vì repo chưa có ảnh nào như vậy (xem mục "Bug report" bên dưới).
+
+Trước khi đóng gói:
+- Đã thêm `scripts/__pycache__/` vào `.gitignore`.
+- Đã chạy lại ba script xuất log (prompt log và AI Audit Report giờ có 110 lượt).
+- Đã xuất cả ba PDF: báo cáo chính 5 trang, AI Audit Report 42 trang, AI Critique 1 trang.
+- Commit `56fb040` đã push lên `origin/main`.
+
+Zip được tạo bằng `git archive` từ commit đó, nên chứa đúng 441 file đang có trong git, nằm trong thư mục `23120031_HW04_AI_Automation_087/`. `node_modules`, `test-results`, `playwright-report` và `TODO_thu_cong.md` không nằm trong git nên tự động không vào zip; tôi đã kiểm lại.
+
+**Nội dung zip:**
+- **Tài liệu:**
+  - `README.md`
+  - `report/`: báo cáo chính, ba file bảng test case, ba gap analysis
+  - `ai/`: AI Audit Report, AI Critique, prompt log
+  - `pdf/`: ba PDF
+  - `bugs/`: bug report và 18 ảnh
+  - `git_commit_log.txt`
+- **HTML report:** `reports/`, đủ chín report.
+- **Bộ test:** `tests/` (3 spec), `pages/` (8 file), `support/` (7), `data/` (3), `raw/` (18 bản thô B4), `scripts/` (6), cùng các file cấu hình `automation.config.json`, `playwright.config.ts`, `global-setup.ts`, `tsconfig.json`, `package.json`, `package-lock.json`, `.gitignore`.
+- **Agent Skill:** `.claude/skills/data-driven-web-automation/` (4 file).
+
+**Đối chiếu với danh sách nộp ở mục 14 của đề:**
+
+| Yêu cầu | Trong zip | Đạt |
+| --- | --- | --- |
+| Báo cáo chính (Markdown + PDF), gồm báo cáo automation và gap analysis | `report/main_report.md`, `pdf/main_report.pdf`, ba file `report/fr*_gap_analysis.md` | Đạt |
+| Link repo GitHub public | Có trong README và báo cáo chính | Đạt |
+| HTML report nhiều browser | `reports/`: 9 report, mỗi report có "Run by: 23120031 · <ISO>"; tổng 72 pass / 63 fail | Đạt |
+| Link video YouTube unlisted | `https://youtu.be/bMuzCpj23Xg` trong README và báo cáo chính | Đạt |
+| AI Critique và AI Audit Report (Markdown + PDF) | `ai/AI_Critique.md` (287 từ), `ai/AI_Audit_Report.md`, hai PDF tương ứng | Đạt |
+| Git commit log dạng text | `git_commit_log.txt`: 40 commit, 15 commit sửa `.spec.ts` (ngưỡng 8) | Đạt (*) |
+| Bug report, kèm ảnh bug trên trang GitHub Issues (nếu có) | `bugs/Bug_Report.md` và 18 ảnh do test chụp | **Thiếu ảnh trang Issues** |
+| README có bảng tự chấm và tổng hợp test | Tự chấm tổng 87; 3 feature, 45 case, 135 lượt, 72 / 63, 9 lượt browser, 13 bug, link video | Đạt |
+| Tài liệu hỗ trợ khác | Script, dữ liệu, Page Object, bản thô AI sinh, Agent Skill | Đạt |
+| Tên file `<MSSV>_HW04_AI_Automation_<điểm>.zip` | `23120031_HW04_AI_Automation_087.zip`, khớp tổng tự chấm 87 | Đạt |
+
+(*) Commit log dừng ở `5f634dc`, chưa có commit `56fb040`, vì file log không thể tự liệt kê commit chứa chính nó. Đây là giới hạn đã biết.
+
+**Bug report:** `bugs/screenshots/` chỉ có ảnh do test chụp, không có ảnh nào chụp trang GitHub Issues. Đề ghi "if any". Bug của bạn có issue thật trên GitHub, nên tôi hiểu là đề cần ảnh, nhưng câu chữ có thể hiểu theo hai cách. Mục 3 của `TODO_thu_cong.md` vẫn ghi việc này là bạn tự chụp. Nếu bạn muốn bổ sung:
+1. Chụp trang issue #15, #16, #18, #19, #20, #21, #24, #25, #26, #27, #30, #31, #87.
+2. Lưu vào `bugs/` và chèn vào `Bug_Report.md`.
+3. Commit, rồi tạo lại zip bằng lệnh dưới (chạy trong thư mục `HW04_23120031`):
+
+```bash
+git archive --format=zip -9 --prefix=23120031_HW04_AI_Automation_087/ -o ../23120031_HW04_AI_Automation_087.zip HEAD
+```
 ````
 
-<details><summary>Hành động AI đã thực hiện (2)</summary>
+<details><summary>Hành động AI đã thực hiện (5)</summary>
 
 1. `Bash` — Check AI Critique status and word count, README self-grade table, git status and .gitignore
 2. `Bash` — Ignore the pycache folder, regenerate the three logs and build all three PDFs
+3. `Bash` — Commit and push the submission files, then confirm excluded paths are untracked and look for issue-page screenshots
+4. `Bash` — Build the submission zip from HEAD with git archive and summarize its contents and size
+5. `Bash` — List zip contents and verify links, self-grade total, report titles and commit log inside the zip
+
+</details>
+
+## #111 · 2026-11-18 12:23:30 · AI-1 · phiên `cea4708c`
+
+- **Công cụ AI:** Claude Code (VS Code extension) 2.1.325, model Claude Opus 5.5
+
+**Prompt (nguyên văn):**
+
+````text
+Chụp ảnh trang 13 issue rồi tạo lại zip
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Trước khi chụp, kiểm hai điều: repo `d1nhnguyen/eshop-sut` có công khai không (nếu không thì cần đăng nhập mới mở được trang issue), và cách HW02 đã chụp trang issue (`scripts/issue_shots.mjs`).
+````
+
+<details><summary>Hành động AI đã thực hiện (10)</summary>
+
+1. `Bash` — Check the tracker repo visibility and read the HW02 issue screenshot script
+2. `Bash` — Write the HW04 issue screenshot script and capture the 13 issue pages
+3. `Bash` — Print issue screenshot dimensions and build a thumbnail contact sheet for viewing
+4. `Read` — /tmp/claude-1000/-home-npdinh-study-Homeworks/cea4708c-1210-4b50-bde5-148fe5972ddf/scratchpad/issues-thumb.jpg
+5. `Read` — /home/npdinh/study/Homeworks/HW04/HW04_23120031/bugs/issue_shots/BUG-30_issue-30.jpg
+6. `Bash` — Measure total size of the issue screenshots at several JPEG qualities and save a readability sample
+7. `Read` — /tmp/claude-1000/-home-npdinh-study-Homeworks/cea4708c-1210-4b50-bde5-148fe5972ddf/scratchpad/q65-sample.jpg
+8. `Bash` — Set JPEG quality 65 in the script and recapture the 13 issue pages
+9. `Bash` — Add the 13 issue-page screenshots to the bug report and verify every link resolves
+10. `Bash` — Commit the issue screenshots, regenerate logs and PDFs, commit again and push
 
 </details>
