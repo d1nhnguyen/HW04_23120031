@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import { url, type Account } from '../support/env';
-import { escapeRegExp } from './order-table';
+import { escapeRegExp } from '../support/regexp';
 import { ProbedPage } from './probed-page';
 
 /**

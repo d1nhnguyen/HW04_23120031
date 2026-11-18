@@ -1,6 +1,7 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import { url } from '../support/env';
 import type { FormProbe } from '../support/form-probe';
+import { escapeRegExp } from '../support/regexp';
 import { ProbedPage } from './probed-page';
 
 /** Bốn ô của form Đăng ký theo đặc tả FR-01. */
@@ -13,10 +14,6 @@ const LABELS: Record<RegisterField, string> = {
   password: 'Mật khẩu',
   confirm: 'Xác nhận mật khẩu',
 };
-
-function escapeRegExp(text: string): string {
-  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
 
 /** Page Object của Web khách hàng – trang Đăng ký (riêng của FR-01). Locator lấy theo bảng khảo sát B2. */
 export class RegisterPage extends ProbedPage {

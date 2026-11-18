@@ -1,9 +1,5 @@
 import type { Locator, Page } from '@playwright/test';
 
-function escapeRegExp(text: string): string {
-  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
 /**
  * Bảng đơn hàng dùng chung cho Web Admin (mục Đơn hàng) và trang Hồ sơ (Lịch sử đơn hàng).
  * Cả hai bảng: ô đầu tiên của dòng là "#<mã đơn>", có một cột "Trạng thái", nút thao tác nằm trong dòng.
@@ -57,5 +53,3 @@ export class OrderTable {
     return out;
   }
 }
-
-export { escapeRegExp };
