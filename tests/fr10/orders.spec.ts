@@ -74,6 +74,20 @@ function statusLabel(state: string): string {
   return label;
 }
 
+/**
+ * Bằng chứng: chụp RIÊNG từng dòng đơn của test và đính vào report. Không chụp cả bảng: bảng nằm trong khung cuộn
+ * và dài thêm qua mỗi test, ảnh cả bảng bị cắt mất phần ngoài khung nhìn. Chụp riêng một phần tử thì Playwright
+ * cuộn phần tử đó vào khung nhìn trước.
+ */
+async function shootRows(table: OrderTable, ids: number[], testInfo: TestInfo, when: 'truoc' | 'sau') {
+  const label = when === 'truoc' ? 'trước thao tác' : 'sau thao tác';
+  for (const id of ids) {
+    const file = testInfo.outputPath(`don-${id}-${when}-thao-tac.png`);
+    await table.row(id).screenshot({ path: file });
+    await testInfo.attach(`Dòng đơn #${id} ${label}`, { path: file, contentType: 'image/png' });
+  }
+}
+
 // ---------- Fixture: API của admin và của khách hàng ----------
 
 /**
@@ -157,6 +171,7 @@ async function arrange(
     await expect(table.row(id), `dòng của đơn #${id} phải hiển thị trước khi thao tác`).toBeVisible();
   }
   const tableBefore = await table.readStatuses();
+  await shootRows(table, ids, testInfo, 'truoc');
 
   return { c, role, ui, table, api: api.admin, ids, ordersBefore, tableBefore, testInfo };
 }
@@ -308,10 +323,7 @@ test.describe('FR-10 Trạng thái đơn hàng – Web Admin và trang Hồ sơ'
       const ctx = await arrange(c, page, api, testInfo);
       const result = await act(ctx);
 
-      // Bằng chứng: chụp riêng bảng đơn ngay sau thao tác (bảng dài, dòng đơn test có thể nằm ngoài khung nhìn).
-      const shot = testInfo.outputPath('bang-don-sau-thao-tac.png');
-      await ctx.table.table.screenshot({ path: shot });
-      await testInfo.attach('Bảng đơn sau thao tác', { path: shot, contentType: 'image/png' });
+      await shootRows(ctx.table, ctx.ids, testInfo, 'sau');
 
       await assertUi(ctx);
       await assertServer(ctx, result);
