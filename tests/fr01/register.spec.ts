@@ -60,6 +60,13 @@ const REASONS = data.meta.assumptions.rejectionReason;
  */
 const UI_SETTLED = { timeout: 1000 };
 
+/**
+ * Kiểm một lần, không chờ lại. Dùng cho assertion giao diện đứng SAU assertion URL đầu tiên khi URL đã sai:
+ * assertion URL đã chờ trang đi tới trạng thái cuối, nên trang không còn đổi nữa và chờ thêm chỉ làm test fail chậm.
+ * (Playwright vẫn kiểm ít nhất một lần dù timeout rất nhỏ.)
+ */
+const NO_RETRY = { timeout: 1 };
+
 const soft = expect.configure({ soft: true });
 
 // ---------- Fixture: API + dọn tài khoản theo id, chạy cả khi test fail ----------
@@ -179,19 +186,27 @@ async function assertUi(ctx: Context, result: ActResult) {
   const { c, reg } = ctx;
   const { ui } = c.expected;
 
+  // Chỉ assertion URL đầu tiên được chờ. Các assertion giao diện sau nó:
+  // - URL đúng: vẫn cho thời gian vẽ lại (React có thể vẽ trang mới sau khi URL đổi một nhịp), và đúng ngay lần đầu;
+  // - URL sai: trang đã ở trạng thái cuối, kiểm một lần rồi thôi (NO_RETRY), không chờ lại cho từng assertion.
+  const expectedUrl = ui.page === 'login' ? reg.loginUrl : reg.registerUrl;
   if (ui.page === 'login') {
     await soft(reg.page, 'sau khi đăng ký thành công phải được chuyển tới trang Đăng nhập (S5)').toHaveURL(
-      reg.loginUrl,
+      expectedUrl,
       UI_SETTLED,
     );
-    await soft(reg.loginSubmitButton, 'trang Đăng nhập phải hiện nút đăng nhập').toBeVisible(UI_SETTLED);
-    await soft(reg.forgotPasswordLink, 'trang Đăng nhập phải hiện link Quên mật khẩu').toBeVisible(UI_SETTLED);
   } else {
     await soft(reg.page, 'đăng ký bị từ chối thì phải ở lại trang Đăng ký, không chuyển tới trang Đăng nhập').toHaveURL(
-      reg.registerUrl,
+      expectedUrl,
       UI_SETTLED,
     );
-    await soft(reg.heading, 'form Đăng ký vẫn đang hiển thị').toBeVisible(UI_SETTLED);
+  }
+  const after = expectedUrl.test(reg.page.url()) ? UI_SETTLED : NO_RETRY;
+  if (ui.page === 'login') {
+    await soft(reg.loginSubmitButton, 'trang Đăng nhập phải hiện nút đăng nhập').toBeVisible(after);
+    await soft(reg.forgotPasswordLink, 'trang Đăng nhập phải hiện link Quên mật khẩu').toBeVisible(after);
+  } else {
+    await soft(reg.heading, 'form Đăng ký vẫn đang hiển thị').toBeVisible(after);
   }
 
   // Form bị trình duyệt chặn: đúng ô bắt buộc nhận sự kiện `invalid` và form không được submit.
