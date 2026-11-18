@@ -172,7 +172,11 @@ async function act(ctx: Context): Promise<ActResult> {
   // (giao diện không cho gửi chuyển không hợp lệ), nên ghi lại và không bấm.
   if ((await button.count()) === 0) {
     if (c.expected.outcome === 'accept') {
-      soft(0, `dòng của đơn #${id} phải có nút "${c.input.button}"`).toBe(1);
+      // Dòng đã hiển thị từ arrange và nút vẽ cùng dòng, nên kiểm một lần trên trạng thái cuối.
+      await soft(button, `dòng của đơn #${id} phải có nút "${c.input.button}" cho chuyển hợp lệ`).toHaveCount(
+        1,
+        NO_RETRY,
+      );
     } else {
       ctx.testInfo.annotations.push({ type: 'Ghi chú', description: `Không có nút "${c.input.button}", không bấm.` });
     }
