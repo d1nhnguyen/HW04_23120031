@@ -1,7 +1,5 @@
 # Báo cáo HW04 – AI-Assisted Automation Testing · 23120031
 
-> **Khung bản nháp.** Các mục gộp phần chung và trỏ tới tài liệu chi tiết. Chỗ ghi _(chờ …)_ hoặc _(sinh viên viết)_ cần điền trước khi nộp. AI Critique do sinh viên tự viết, không nằm trong bản nháp này.
-
 | Mục | Giá trị |
 | --- | --- |
 | Sinh viên | NGUYỄN PHÚ DINH – 23120031 |
@@ -62,7 +60,12 @@ Kết quả mong đợi lấy từ đặc tả (README của SUT), không lấy 
 | FR-01 | Duyệt ba điểm dừng; từ nhóm sửa thứ hai, cổng tự động (tsc, lint, Chromium đúng 8 / 9) và AI-2 thay cho đọc diff |
 | FR-10 | Một điểm dừng sau B3; cổng tự động (tsc, lint, hai lượt Chromium cùng danh sách) và AI-2 |
 
-_(sinh viên viết: nhận xét về việc đánh đổi giữa đọc diff và cổng tự động; xem mục 2 của `report/fr10_gap_analysis.md`.)_
+**Đánh đổi giữa đọc diff và cổng tự động.** Ở FR-15 tôi đọc từng diff nên hiểu script này rõ nhất, nhưng cũng mất nhiều thời gian nhất. Ở FR-01 và FR-10, vì sát hạn nộp, tôi thay việc đọc diff bằng ba cổng tự động và phiên AI review. Cách này nhanh hơn nhiều và vẫn bắt được lỗi cơ học, nhưng có hai giới hạn:
+
+- **Cổng chỉ chạy Chromium.** Lỗi riêng của WebKit ở FR-10 lọt qua cổng và chỉ lộ ra ở ma trận ba browser (mục 2 của `report/fr10_gap_analysis.md`).
+- **Cổng không biết expected có đúng đặc tả hay không.** Phần đó vẫn dựa vào các điểm dừng nơi tôi duyệt test case và file dữ liệu.
+
+Vì vậy tôi nắm FR-01 và FR-10 ở mức thiết kế test và kết quả, không ở mức từng dòng code như FR-15.
 
 ## 4. Kết quả
 
@@ -106,7 +109,13 @@ Mỗi feature có một file riêng (bảng ở mục 1). Các điểm nổi b�
 - **FR-01:** AI khẳng định chi tiết giao diện trước khi khảo sát trang; sửa code cho khớp một cảnh báo sai của linter; assertion của nhánh accept chưa từng chạy tới, được chứng minh bằng bản sao suite ngoài repo.
 - **FR-10:** lỗi chỉ có trên WebKit (`page.goto` hủy yêu cầu kiểm phiên, app xóa token) thoát qua cổng Chromium; trace làm lỗi biến mất nên lượt lặp với trace bật cho kết quả xanh giả.
 
-_(sinh viên viết: phân tích chung qua ba feature.)_
+**Phân tích chung qua ba feature.** Ba điểm lặp lại ở cả ba feature:
+
+1. **Lỗi nặng nhất nằm ở assertion và bằng chứng, không nằm ở selector.** Selector ít phải sửa, vì trước khi sinh code luôn có bước khảo sát trang thật.
+2. **Test xanh không đồng nghĩa với đúng.** `valueMissing` ở FR-15 luôn đúng; năm case mật khẩu yếu ở FR-01 xanh vì form từ chối gần như mọi mật khẩu, kể cả mật khẩu hợp lệ; lượt lặp ở FR-10 xanh giả do trace che lỗi.
+3. **Bài học đã ghi vẫn bị lặp lại.** Lỗi ảnh bằng chứng không cho thấy bug xuất hiện ở cả FR-15 lẫn FR-10, dù đã có trong danh sách kiểm.
+
+Bản thô của FR-01 và FR-10 không lặp lại hai lỗi lớn của FR-15 (chờ cố định, assertion luôn đúng) nhờ skill và danh sách kiểm, nhưng mỗi feature vẫn lộ ra một loại lỗi mới mà danh sách chưa có. Phần lớn lỗi do phiên AI review nêu; vai trò của tôi là quyết định test case, giữ expected theo đặc tả, và duyệt hoặc bác các đề xuất sửa.
 
 ## 7. Agent Skill
 

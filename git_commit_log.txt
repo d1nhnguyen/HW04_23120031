@@ -1,6 +1,6 @@
 Git commit log – HW04 23120031 – repo https://github.com/d1nhnguyen/HW04_23120031
-Xuất lúc 2026-11-18 12:13:50 +0700 bằng scripts/export_commit_log.sh
-Tổng: 39 commit; có sửa .spec.ts: 15 (ngưỡng của đề: 8)
+Xuất lúc 2026-11-18 12:20:04 +0700 bằng scripts/export_commit_log.sh
+Tổng: 40 commit; có sửa .spec.ts: 15 (ngưỡng của đề: 8)
 
 spec | hash    | thời gian                 | tác giả     | thông điệp
      | 5b5e184 | 2026-11-16 13:41:48 +0700 | d1nhnguyen | [setup] Khởi tạo dự án Playwright Test (Chromium, Firefox, WebKit)
@@ -42,6 +42,7 @@ spec | hash    | thời gian                 | tác giả     | thông điệp
      | 06f0b64 | 2026-11-18 10:57:44 +0700 | d1nhnguyen | [report] Khung báo cáo chính: phạm vi, môi trường, phương pháp, kết quả (chờ lượt chính thức), bug, skill, trỏ tới các tài liệu chi tiết
      | afbd73e | 2026-11-18 11:01:25 +0700 | d1nhnguyen | [report] FR-15 gap analysis: bảng lượt lặp ghi số của lượt chạy lại với trace tắt, nêu rõ lượt cũ chạy với trace bật
      | 402be2b | 2026-11-18 12:13:33 +0700 | d1nhnguyen | [report] Chín HTML report chính thức (72 pass / 63 fail); điền số vào README, báo cáo chính và ba gap analysis; ảnh bug FR-01, FR-10 từ report chính thức; link video
+     | 5f634dc | 2026-11-18 12:14:18 +0700 | d1nhnguyen | [report] Xuất lại prompt log (107 lượt), AI Audit Report và commit log; PDF báo cáo chính và AI Audit Report; khung AI Critique và scripts/build_pdf.sh
 
 ===== Chi tiết (git log --stat) =====
 commit 5b5e184bc61179b6ce0bc6244523b08dc253bb98
@@ -932,3 +933,19 @@ Date:   2026-11-18 12:13:33 +0700
  .../f76d27c1e9cddc83f46c81ddefbf8e3e12f099e2.png   | Bin 0 -> 138909 bytes
  reports/fr15-webkit/index.html                     |   2 +-
  403 files changed, 17598 insertions(+), 5707 deletions(-)
+
+commit 5f634dc161497ae418916fe52f01fe0b2708eb08
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 12:14:18 +0700
+
+    [report] Xuất lại prompt log (107 lượt), AI Audit Report và commit log; PDF báo cáo chính và AI Audit Report; khung AI Critique và scripts/build_pdf.sh
+
+ ai/AI_Audit_Report.md   |  248 +++++++++++-
+ ai/AI_Critique.md       |    3 +
+ ai/prompt_log.md        | 1001 ++++++++++++++++++++++++++++++++++++++++++++++-
+ git_commit_log.txt      |  460 +++++++++++++++++++++-
+ pdf/AI_Audit_Report.pdf |  Bin 0 -> 1093250 bytes
+ pdf/main_report.pdf     |  Bin 0 -> 164439 bytes
+ scripts/build_pdf.sh    |   31 ++
+ scripts/pdf.css         |   15 +
+ 8 files changed, 1747 insertions(+), 11 deletions(-)

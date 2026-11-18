@@ -1,6 +1,6 @@
 # Phụ lục A — Prompt log HW04 (trích tự động từ transcript Claude Code)
 
-> Sinh bởi `scripts/export_prompt_log.py` lúc 2026-11-18 12:13 (GMT+7). Prompt và output của AI được giữ **nguyên văn**. Không đưa vào: phần suy luận ẩn của model, nội dung file / kết quả lệnh mà AI đọc được (chỉ liệt kê tên hành động).
+> Sinh bởi `scripts/export_prompt_log.py` lúc 2026-11-18 12:20 (GMT+7). Prompt và output của AI được giữ **nguyên văn**. Không đưa vào: phần suy luận ẩn của model, nội dung file / kết quả lệnh mà AI đọc được (chỉ liệt kê tên hành động).
 > **AI-1** = phiên viết script (Claude Code, VS Code extension); **AI-2** = phiên review (Claude Code CLI).
 
 | # | Thời gian (GMT+7) | Vai trò | Phiên | Model | Prompt (rút gọn) |
@@ -112,6 +112,9 @@
 | 105 | 2026-11-18 11:55 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | https://youtu.be/bMuzCpj23Xg đay laf link video |
 | 106 | 2026-11-18 12:08 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | kiểm tra |
 | 107 | 2026-11-18 12:09 | AI-1 | `cea4708c` | Claude Opus 5.5 | Chín lượt chính thức đã chạy và đã được kiểm: FR-15 7/8, FR-01 8/9, FR-10 9/4 trên mỗi bro |
+| 108 | 2026-11-18 12:15 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | kiểm tra trang thai hien tai |
+| 109 | 2026-11-18 12:18 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | draft AI Critique cho toi, chinh lai cac placeholder va tu cham cho toi, toi se doc va duy |
+| 110 | 2026-11-18 12:19 | AI-1 | `cea4708c` | Claude Opus 5.5 | Tôi đã duyệt ai/AI_Critique.md, report/main_report.md và cột tự chấm trong README (tổng 87 |
 
 ## #1 · 2026-11-15 21:37:14 · AI-1 · phiên `843d9cd5`
 
@@ -8592,9 +8595,44 @@ README xong. Sang báo cáo chính, đọc mục 4 và mục 9:
 Báo cáo chính xong. Sang mục 1 của ba gap analysis. Bảng của FR-15 vẫn ghi thời gian của ba report cũ ngày 17/11, nên cũng phải thay:
 
 Đã push. Sang mục 4 và 5: chạy lại ba script xuất log, rồi xuất PDF.
+
+Đã xong và đã push lên `origin/main` qua hai commit:
+- `402be2b`: chín report, các tài liệu đã điền số, ảnh bug.
+- `5f634dc`: log, PDF, khung AI Critique, script xuất PDF.
+
+Không đăng gì lên GitHub Issues.
+
+**Chín report chính thức.** Tôi đọc số trực tiếp từ từng `reports/*/index.html`, và chúng khớp với số bạn báo:
+
+| Feature | Chromium | Firefox | WebKit |
+| --- | --- | --- | --- |
+| FR-15 | 7 pass / 8 fail | 7 / 8 | 7 / 8 |
+| FR-01 | 8 / 9 | 8 / 9 | 8 / 9 |
+| FR-10 | 9 / 4 | 9 / 4 | 9 / 4 |
+
+- Tổng 72 pass / 63 fail.
+- Mỗi report có tiêu đề "Run by: 23120031" kèm thời điểm ISO.
+- Danh sách case fail trong từng report đúng như kỳ vọng.
+- Report fr15-webkit bắt đầu lúc 04:52:03 UTC.
+
+**Từng mục:**
+
+1. **Điền số chính thức:** README, báo cáo chính và mục 1 của ba gap analysis đã có số kèm thời gian từng lượt; đoạn "Lưu ý cho bản nháp" đã xóa. FR-15 trước đó còn ghi thời gian của report cũ ngày 17/11, nay đã thay.
+2. **Ảnh bug:** 12 ảnh lấy từ report Chromium, đã mở xem từng ảnh và chèn vào mục 2.6–2.12 của `bugs/Bug_Report.md`. Có một ngoại lệ: ảnh form của FR01-DT-29 không tự cho thấy lỗi, vì mật khẩu `Abcdef1␣` bị che bằng chấm. Mục đó, cùng WA-11 và WA-17, dựa vào nội dung JSON "Tài khoản mới phía server" trích từ report.
+3. **Ghi chú về lượt WebKit trong video:** đã thêm vào mục 4 của báo cáo chính, ghi là theo ghi nhận của bạn. Report của lượt có cửa sổ đã bị lượt chạy lại ghi đè, nên tôi không kiểm được con số 5 / 10.
+4. **Ba script xuất log:** đã chạy lại. Prompt log và AI Audit Report có 107 lượt; commit log có 39 commit, trong đó 15 commit sửa `.spec.ts`.
+5. **PDF:** `pdf/main_report.pdf` (4 trang) và `pdf/AI_Audit_Report.pdf` (42 trang); đã mở xem một trang để chắc tiếng Việt hiển thị đúng. `ai/AI_Critique.md` hiện chỉ là khung có dòng "CHƯA VIẾT", và `scripts/build_pdf.sh` sẽ bỏ qua file này cho tới khi bạn xóa dòng đó.
+
+**Còn lại cho bạn (đã ghi vào `TODO_thu_cong.md`):**
+- **AI Critique:** viết `ai/AI_Critique.md`, rồi chạy `scripts/build_pdf.sh`.
+- **Trước khi đóng gói:** chạy lại bốn lệnh dưới, vì commit log không tự liệt kê được commit chứa nó.
+  ```bash
+  python3 scripts/export_prompt_log.py && python3 scripts/build_audit_report.py && scripts/export_commit_log.sh && scripts/build_pdf.sh
+  ```
+- **Dung lượng:** riêng `reports/` đã nặng 22 MB, phần lớn là ảnh PNG khó nén thêm. File zip có thể vượt giới hạn 20 MB mỗi file của Moodle; nên kiểm dung lượng zip trước khi nộp.
 ````
 
-<details><summary>Hành động AI đã thực hiện (28)</summary>
+<details><summary>Hành động AI đã thực hiện (31)</summary>
 
 1. `Bash` — Check reports folder, git status and the unexpected data-file changes
 2. `Bash` — Inspect how the Playwright HTML report embeds its data
@@ -8624,5 +8662,178 @@ Báo cáo chính xong. Sang mục 1 của ba gap analysis. Bảng của FR-15 v�
 26. `Bash` — Update README docs table, measure reports size, and stage the first commit
 27. `Bash` — Commit and push the official reports with the filled-in documents and bug images
 28. `Bash` — Regenerate prompt log, audit report and commit log, then build the PDFs
+29. `Bash` — Render page 2 of the main report PDF to an image for a visual check
+30. `Read` — /tmp/claude-1000/-home-npdinh-study-Homeworks/cea4708c-1210-4b50-bde5-148fe5972ddf/scratchpad/mr-2.png
+31. `Bash` — Commit and push regenerated logs, PDFs and build script, then update the manual TODO
+
+</details>
+
+## #108 · 2026-11-18 12:15:14 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+kiểm tra trang thai hien tai
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Bài gần xong: mọi thứ do máy làm đã có trên GitHub, còn lại là bốn phần bạn tự viết hoặc tự quyết, rồi đóng gói.
+
+## Đã xong
+
+| Hạng mục | Trạng thái |
+| --- | --- |
+| Script ba feature | 45 test case; `tsc` và lint sạch ở lần kiểm gần nhất |
+| Chín HTML report chính thức | Đã commit và push (`402be2b`): 72 pass / 63 fail, có "Run by: 23120031" |
+| Commit có sửa `.spec.ts` | 15, ngưỡng là 8 |
+| Repo GitHub | Public, `main` khớp với `origin/main` |
+| Video demo | Link đã ghi trong README và báo cáo chính |
+| Số liệu trong README và báo cáo | Đã điền; đoạn "Lưu ý cho bản nháp" đã xóa |
+| Bug report | 13 bug, 17 ảnh trong `bugs/screenshots/` |
+| Ghi chú về lượt WebKit trong video | Có trong `report/main_report.md`, dòng 77 |
+| Agent Skill | Trong `.claude/skills/`, có hai script và danh sách kiểm |
+| AI Audit Report, prompt log, commit log | Có; PDF của báo cáo chính và audit report nằm trong `pdf/` |
+
+## Còn thiếu, phần của bạn
+
+1. **AI Critique chưa viết.** `ai/AI_Critique.md` mới chỉ có dòng nhắc "CHƯA VIẾT". Đề ghi mục này bắt buộc, 200–300 từ. Viết xong, chạy `scripts/build_pdf.sh ai/AI_Critique.md` để có bản PDF.
+2. **Hai đoạn trong `report/main_report.md` còn để trống** cho bạn viết: dòng 65 (đánh đổi giữa đọc diff và cổng tự động) và dòng 109 (phân tích chung qua ba feature). Dòng 3 còn ghi chú "Khung bản nháp", cần xóa. Sau khi sửa, xuất lại PDF của báo cáo chính.
+3. **Cột tự chấm trong README còn trống** cả năm dòng. Lưu ý mục Agent Skills: bạn có skill nhưng không có video demo skill, nên tự chấm thấp hơn 10.
+4. **Chưa có file zip.** Tên file theo mẫu `23120031_HW04_AI_Automation_<điểm>.zip`, với điểm là ba chữ số.
+
+## Việc nhỏ còn treo
+
+- **Sáu thay đổi chưa commit:** bản xuất lại của audit report, prompt log, commit log và hai file PDF. Chúng sẽ đổi tiếp mỗi lần có lượt AI mới, nên commit một lần cuối ngay trước khi đóng gói.
+- **`scripts/__pycache__/`** đang nằm ngoài git; thêm vào `.gitignore` hoặc xóa trước khi tạo zip.
+- **Ảnh chụp trang GitHub Issues** chưa có. Đề yêu cầu nếu có bug; làm nếu còn thời gian, không thì các link issue trong bug report là phần tối thiểu.
+- **Link video:** tôi chưa mở được để xác nhận chế độ Unlisted; bạn thử trong cửa sổ ẩn danh.
+
+## Thứ tự làm tiếp
+
+1. Viết AI Critique và hai đoạn trong báo cáo chính.
+2. Điền cột tự chấm.
+3. Bảo phiên kia xuất lại ba file log, xuất PDF, commit, push, rồi tạo zip.
+4. Nộp lên Moodle.
+
+Cho bước 3, khi bạn viết xong:
+
+```
+Tôi đã viết xong ai/AI_Critique.md, hai đoạn trong main_report và cột
+tự chấm trong README, điểm tự chấm là <điểm>. Xóa ghi chú "Khung bản
+nháp" ở đầu main_report. Thêm scripts/__pycache__/ vào .gitignore.
+Chạy lại ba script xuất log, xuất PDF cho main_report, AI Audit Report
+và AI Critique, commit, push. Sau đó tạo
+23120031_HW04_AI_Automation_<điểm>.zip ở thư mục HW04, gồm đủ các mục
+đề yêu cầu ở mục 14, không kèm node_modules, test-results,
+playwright-report và TODO_thu_cong.md. Liệt kê nội dung zip và đối
+chiếu từng mục với danh sách của đề.
+```
+````
+
+<details><summary>Hành động AI đã thực hiện (2)</summary>
+
+1. `Bash` — Check overall submission readiness of the repo
+2. `Bash` — Check PDFs, the AI Critique file and pending diffs
+
+</details>
+
+## #109 · 2026-11-18 12:18:17 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+draft AI Critique cho toi, chinh lai cac placeholder va tu cham cho toi, toi se doc va duyet ban cuoi de nop
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Cả ba phần đã viết xong vào file và chưa commit, chờ bạn đọc. Hai file PDF (`pdf/main_report.pdf`, `pdf/AI_Critique.pdf`) đã được xuất lại theo nội dung mới.
+
+## 1. AI Critique (`ai/AI_Critique.md`, 287 từ)
+
+> Trong bài này, AI sai nhiều nhất ở assertion chứ không phải ở selector. Ở FR-15, bản thô kiểm `validity.valueMissing` cho trường hợp bỏ trống tên sản phẩm; thuộc tính này luôn đúng khi ô rỗng, nên test xanh mà không chứng minh form bị chặn. Tôi cấm `waitForTimeout`, AI thay bằng `waitForResponse` có timeout rồi bỏ qua lỗi, tức vẫn là chờ cố định. Ở FR-01, AI khẳng định ô Email là `type="email"` trước khi mở trang, và nới lỏng kiểu dữ liệu để chiều một cảnh báo sai của linter. Ở FR-10, script lỗi trên WebKit nhưng lượt chạy lặp vẫn xanh, vì trace làm chậm trang và che mất lỗi. AI cũng thiên về kết luận có lợi cho mình: sau lượt chạy đầu, nó báo không có lỗi script nào, và nó gọi một bug là mới khi chỉ đối chiếu với danh sách bug của riêng tôi. AI không tự bắt được các lỗi này vì nó làm đúng câu chữ của prompt mà không tự hỏi assertion sẽ đỏ trong trường hợp nào, vì nó suy kết quả từ hành vi của SUT thay cho đặc tả, và vì nó coi test xanh là bằng chứng đủ. Phần lớn lỗi do một phiên AI thứ hai chuyên review phát hiện, không phải phiên viết code. Bản thân tôi cũng có giới hạn: ở FR-01 và FR-10 tôi không kịp đọc từng diff mà dựa vào cổng tự động và phiên review. Nguyên tắc tôi rút ra: nêu điều cần chứng minh thay vì nêu cách làm; không để AI tự chấm bài của chính nó; và mỗi kết quả xanh phải kèm một lần chứng minh rằng nó có thể đỏ.
+
+Đoạn này trả lời đủ ba câu hỏi của đề: AI sai ở đâu, vì sao không tự bắt được, và nguyên tắc rút ra.
+
+## 2. Báo cáo chính (`report/main_report.md`)
+
+- **Xóa** ghi chú "Khung bản nháp" ở đầu file.
+- **Mục 3:** thêm đoạn "Đánh đổi giữa đọc diff và cổng tự động". Ý chính: cổng tự động nhanh nhưng chỉ chạy Chromium nên để lọt lỗi WebKit, và không biết expected có đúng đặc tả không; bạn nắm FR-01 và FR-10 ở mức thiết kế test, không ở mức từng dòng code như FR-15.
+- **Mục 6:** thêm đoạn "Phân tích chung qua ba feature" với ba điểm: lỗi nặng nhất nằm ở assertion và bằng chứng; test xanh không đồng nghĩa với đúng; bài học đã ghi vẫn bị lặp lại.
+
+## 3. Tự chấm trong README: 87/100
+
+| Tiêu chí | Tối đa | Đề xuất | Lý do trừ |
+| --- | --- | --- | --- |
+| Feature A: FR-15 | 25 | 24 | Thiếu ảnh chụp trang GitHub Issues |
+| Feature B: FR-01 | 25 | 23 | Không đọc diff; issue của FR-01 chưa có bình luận kèm ảnh từ lượt chạy tự động |
+| Feature C: FR-10 | 25 | 22 | Như FR-01; 13 case, sát ngưỡng 12; 4 kiểu assertion |
+| Demo video | 15 | 13 | Lượt WebKit trong video bị timeout, ra 5 pass / 10 fail |
+| Agent Skills | 10 | 5 | Có skill đầy đủ, nhưng đề yêu cầu nộp kèm video dùng skill và bạn không quay |
+| **Tổng** | 100 | **87** | |
+
+Đây là mức tôi cho là trung thực với những gì đã làm. Điểm là quyết định của bạn; nếu đổi, sửa cả cột trong README lẫn tên file zip.
+
+## Trước khi duyệt, đọc kỹ ba chỗ
+
+1. **Câu về giới hạn của bạn** trong AI Critique ("tôi không kịp đọc từng diff"). Tôi giữ câu này vì báo cáo chính và gap analysis đều ghi như vậy; ba tài liệu cần nói cùng một điều.
+2. **Toàn bộ ba phần là bản nháp do AI viết,** cho những mục đề yêu cầu là phân tích của sinh viên. Lượt này sẽ nằm trong AI Audit Report. Sửa lời theo cách bạn nói, và chắc rằng bạn giải thích được từng ý khi vấn đáp.
+3. **Tên bạn trong báo cáo chính** đang ghi "NGUYỄN PHÚ DINH"; kiểm lại chính tả.
+
+## Khi bạn duyệt xong
+
+Gửi sang phiên kia, với điểm tự chấm cuối cùng của bạn:
+
+```
+Tôi đã duyệt ai/AI_Critique.md, report/main_report.md và cột tự chấm
+trong README (tổng 87). Thêm scripts/__pycache__/ vào .gitignore.
+Chạy lại ba script xuất log, xuất lại cả ba PDF, commit, push. Sau đó
+tạo 23120031_HW04_AI_Automation_087.zip ở thư mục HW04, gồm đủ các mục
+đề yêu cầu ở mục 14, không kèm node_modules, test-results,
+playwright-report và TODO_thu_cong.md. Liệt kê nội dung zip và đối
+chiếu từng mục với danh sách của đề.
+```
+````
+
+<details><summary>Hành động AI đã thực hiện (2)</summary>
+
+1. `Bash` — Read the placeholder sections and the critique stub
+2. `Bash` — Write the critique, fill report placeholders and self-assessment, rebuild PDFs
+
+</details>
+
+## #110 · 2026-11-18 12:19:44 · AI-1 · phiên `cea4708c`
+
+- **Công cụ AI:** Claude Code (VS Code extension) 2.1.325, model Claude Opus 5.5
+
+**Prompt (nguyên văn):**
+
+````text
+Tôi đã duyệt ai/AI_Critique.md, report/main_report.md và cột tự chấm
+trong README (tổng 87). Thêm scripts/__pycache__/ vào .gitignore.
+Chạy lại ba script xuất log, xuất lại cả ba PDF, commit, push. Sau đó
+tạo 23120031_HW04_AI_Automation_087.zip ở thư mục HW04, gồm đủ các mục
+đề yêu cầu ở mục 14, không kèm node_modules, test-results,
+playwright-report và TODO_thu_cong.md. Liệt kê nội dung zip và đối
+chiếu từng mục với danh sách của đề.
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Kiểm trước những gì bạn vừa sửa: AI Critique đã bỏ dòng "CHƯA VIẾT" chưa và dài bao nhiêu từ, tổng điểm trong README, và trạng thái git.
+````
+
+<details><summary>Hành động AI đã thực hiện (2)</summary>
+
+1. `Bash` — Check AI Critique status and word count, README self-grade table, git status and .gitignore
+2. `Bash` — Ignore the pycache folder, regenerate the three logs and build all three PDFs
 
 </details>

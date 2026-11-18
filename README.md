@@ -11,12 +11,12 @@ Tự động hóa kiểm thử ba feature web của EShop SUT bằng Playwright 
 
 | No. | Tiêu chí | Điểm tối đa | Tự chấm |
 | --- | --- | --- | --- |
-| 1 | Task 1 – Feature A: FR-15 Quản lý sản phẩm (Web Admin) | 25 | |
-| 1 | Task 1 – Feature B: FR-01 Đăng ký tài khoản (Web khách hàng) | 25 | |
-| 1 | Task 1 – Feature C: FR-10 Trạng thái đơn hàng (Web Admin, trang Hồ sơ) | 25 | |
-| 2 | Task 2 – Demo video | 15 | |
-| 3 | Agent Skills | 10 | |
-| | **Tổng** | **100** | |
+| 1 | Task 1 – Feature A: FR-15 Quản lý sản phẩm (Web Admin) | 25 | 24 |
+| 1 | Task 1 – Feature B: FR-01 Đăng ký tài khoản (Web khách hàng) | 25 | 23 |
+| 1 | Task 1 – Feature C: FR-10 Trạng thái đơn hàng (Web Admin, trang Hồ sơ) | 25 | 22 |
+| 2 | Task 2 – Demo video | 15 | 13 |
+| 3 | Agent Skills | 10 | 5 |
+| | **Tổng** | **100** | **87** |
 
 ## 2. Tổng hợp kết quả test
 
