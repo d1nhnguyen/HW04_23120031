@@ -50,6 +50,29 @@
       "bug": "Dạng \"BUG-xx (#số issue, trùng nội dung: #số issue BUG-yy)\". Sẽ đối chiếu lại với d1nhnguyen/eshop-sut ở B8. Danh sách rỗng = kỳ vọng pass.",
       "addedInHW04": "true = case bổ sung ở HW04, không có trong bộ test case của HW02."
     },
+    "bugIssues": {
+      "checkedAt": "2026-11-18, B8. Tìm trên d1nhnguyen/eshop-sut (issue mở lẫn đóng; tracker không có issue đóng) bằng: FR-10, hủy đơn, đơn hàng, trạng thái, order.",
+      "BUG-30 (#30)": {
+        "title": "Đơn đã hủy chuyển được sang \"Đã giao\"; Web Admin hiện nút \"Đánh dấu Đã giao\" cho đơn đã hủy",
+        "duplicates": [],
+        "cases": [
+          "FR10-DT-09",
+          "FR10-UI-01"
+        ]
+      },
+      "BUG-31 (#31)": {
+        "title": "User hủy được đơn đang giao; trang Hồ sơ hiện nút \"Hủy đơn\" cho đơn đang giao",
+        "duplicates": [
+          "#115 BUG-69 (UngDuong125): cùng triệu chứng, thêm ý không có hộp thoại xác nhận"
+        ],
+        "cases": [
+          "FR10-DT-14",
+          "FR10-DT-27"
+        ]
+      },
+      "noNewBug": "Cả 4 case fail đều khớp issue đã có; không có bug mới cần soạn.",
+      "outOfScope": "Doanh thu Dashboard (FR-13) lệch, ghi ở TODO_thu_cong.md, không xử lý ở FR-10."
+    },
     "limitations": [
       "SUT không có API xóa đơn. Test không dọn được đơn đã tạo: mọi assertion bám vào id của đơn test tự tạo, \"các đơn khác giữ nguyên\" so với bản chụp ngay trước thao tác, và dữ liệu chỉ về seed ở lần reset đầu mỗi lượt chạy (global-setup).",
       "Tài khoản user trong automation.config.json là tài khoản dùng chung: test chỉ tạo đơn và hủy đơn bằng nó, không đổi gì khác. Bảng Lịch sử đơn hàng của tài khoản này dài thêm qua mỗi test trong một lượt."
