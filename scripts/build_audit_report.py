@@ -133,7 +133,7 @@ def main():
             fence(it["prompt"], "text"),
             "",
         ]
-    out += ["## Chữ ký", "", "Sinh viên: ______________________ Ngày: ____ / ____ / 2026", ""]
+    out += ["## Chữ ký", "", "Sinh viên: Nguyễn Phú Dinh Ngày: 18/11/2026", ""]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n".join(out), encoding="utf-8")
     print(f"{len(items)} lượt -> {OUT} (dựng lúc {datetime.now(TZ):%Y-%m-%d %H:%M})")

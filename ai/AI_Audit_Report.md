@@ -6,23 +6,23 @@ Phụ lục bắt buộc theo đề HW04 §9 và mẫu [AI-02] – FIT@HCMUS –
 
 ## 1. Thông tin sinh viên
 
-| Mục | Giá trị |
-| --- | --- |
-| Họ tên sinh viên (in hoa) | NGUYỄN PHÚ DINH |
-| MSSV | 23120031 |
-| Lớp / Khoá | CQ2023/3 |
-| Mã bài tập | HW04 – AI-Assisted Automation Testing trên EShop |
-| Thời gian dùng AI | 15/11/2026 21:37 – 18/11/2026 12:28 (GMT+7) |
-| Có dùng AI | [x] Có [ ] Không |
+| Mục                       | Giá trị                                          |
+| ------------------------- | ------------------------------------------------ |
+| Họ tên sinh viên (in hoa) | NGUYỄN PHÚ DINH                                  |
+| MSSV                      | 23120031                                         |
+| Lớp / Khoá                | CQ2023/3                                         |
+| Mã bài tập                | HW04 – AI-Assisted Automation Testing trên EShop |
+| Thời gian dùng AI         | 15/11/2026 21:37 – 18/11/2026 12:28 (GMT+7)      |
+| Có dùng AI                | [x] Có [ ] Không                                 |
 
 **Khai báo theo đề §9:** _I use AI tools for the following tasks_ – tôi sử dụng công cụ AI cho các công việc sau: đọc đề và lập kế hoạch; dựng dự án Playwright và script điều khiển SUT; chọn test case từ bộ test case HW02; khảo sát trang thật; sinh file dữ liệu, Page Object và spec cho FR-15, FR-01, FR-10; review và sửa script; chạy ba browser và phân loại test fail; xây dựng Agent Skill `data-driven-web-automation`; nháp tài liệu nộp (gap analysis, bug report, README, báo cáo). Các phần không do AI làm: HTML report chính thức (sinh viên tự chạy), video demo, AI Critique.
 
 ## 2. Công cụ AI
 
-| Vai trò | Công cụ | Phiên bản | Model | Phiên (transcript) | Số lượt |
-| --- | --- | --- | --- | --- | --- |
-| AI-1 – viết script | Claude Code (VS Code extension) | 2.1.325 | Claude Fable 5.2; Claude Opus 5.5 từ lượt có `/model opus` | `843d9cd5`, `cea4708c` | 51 |
-| AI-2 – review | Claude Code CLI | 2.1.326 | Claude Fable 5.2 | `7ed1ce04` | 62 |
+| Vai trò            | Công cụ                         | Phiên bản | Model                                                      | Phiên (transcript)     | Số lượt |
+| ------------------ | ------------------------------- | --------- | ---------------------------------------------------------- | ---------------------- | ------- |
+| AI-1 – viết script | Claude Code (VS Code extension) | 2.1.325   | Claude Fable 5.2; Claude Opus 5.5 từ lượt có `/model opus` | `843d9cd5`, `cea4708c` | 51      |
+| AI-2 – review      | Claude Code CLI                 | 2.1.326   | Claude Fable 5.2                                           | `7ed1ce04`             | 62      |
 
 Công cụ kiểm thử (không phải AI): Playwright Test 1.65.1 với Playwright HTML reporter; TypeScript (`tsc --noEmit`).
 
@@ -36,121 +36,121 @@ Công cụ kiểm thử (không phải AI): Playwright Test 1.65.1 với Playwri
 
 ## 4. Bảng audit — 113 lượt
 
-| # | Thời gian (GMT+7) | Vai trò | Công cụ, model | Prompt (rút gọn) | Tóm tắt output |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 2026-11-15 21:37 | AI-1 | VS Code, Claude Fable 5.2 | check yêu cầu của hw04 cho tôi và có yêu cầu phân việc cho các thành viên trong nhóm như các bài trước ko? | Đã đọc 2026.HW04.Automation Testing_En.pdf. |
-| 2 | 2026-11-15 21:45 | AI-1 | VS Code, Claude Fable 5.2 | từ yêu cầu và nội dung slides liên quan, cũng như flow làm việc thực tế cần thiết (nếu có), hãy lập một plan c | Tôi đã tạo HW04_Tim_hieu_de_va_ke_hoach.md, nằm ngoài repo bài nộp sau này. |
-| 3 | 2026-11-16 13:32 | AI-1 | VS Code, Claude Fable 5.2 | 3 Browser có thể là gì? tôi hiện có chrom và firefox | Đề cho phép hai bộ: |
-| 4 | 2026-11-16 13:33 | AI-1 | VS Code, Claude Fable 5.2 | vậy tôi nghĩ cách 1 là ổn nhất? chạy 2 lệnh trên là tải được phải ko? | Đúng, cách 1 là ổn nhất, và hai lệnh đó là đủ để tải. |
-| 5 | 2026-11-16 13:41 | AI-1 | VS Code, Claude Fable 5.2 | tạo repo và cài playwright giúp tôi (tôi đã cài xong, kiểm tra lại) | Playwright đã cài đúng và repo git local đã được tạo; repo trên GitHub thì tôi chưa tạo, vì đó là repo public nên cần bạn xác nhận trước. |
-| 6 | 2026-11-16 13:42 | AI-1 | VS Code, Claude Fable 5.2 | tạo repo public trên github và push giúp tôi | Repo đã được tạo ở chế độ public và đã push xong: |
-| 7 | 2026-11-17 10:45 | AI-2 | CLI, – | /login | (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model) |
-| 8 | 2026-11-17 10:45 | AI-2 | CLI, Claude Fable 5.2 | xem Hw04 và huớng dẫn tôi prompt hiệu quả để hoàn thành bài tập này | Tôi đã đọc đề (PDF), file kế hoạch `HW04_Tim_hieu_de_va_ke_hoach.md` và repo hiện tại. |
-| 9 | 2026-11-17 10:49 | AI-1 | VS Code, Claude Fable 5.2 | Sửa playwright.config.ts: workers 1, fullyParallel false, retries 0, screenshot only-on-failure, trace retain- | Config đã sửa xong và dòng "Run by" hiện đúng trong report: |
-| 10 | 2026-11-17 10:53 | AI-2 | CLI, Claude Fable 5.2 | kiem tra giai doan 0 | Giai đoạn 0 gần xong: |
-| 11 | 2026-11-17 10:58 | AI-1 | VS Code, Claude Fable 5.2 | xóa file tạm rồi commit và push | Đã xóa `tests/_smoke.spec.ts` và `reports/smoke-chromium/`, rồi commit và push lên `origin/main`. |
-| 12 | 2026-11-17 10:59 | AI-1 | VS Code, Claude Fable 5.2 | Viết scripts/sut.sh với 3 lệnh: start (bật backend, frontend-web, frontend-admin của SUT ở /home/npdinh/study/ | scripts/sut.sh đã viết xong và SUT đang chạy: |
-| 13 | 2026-11-17 11:00 | AI-2 | CLI, Claude Fable 5.2 | " [scripts/sut.sh](HW04/HW04_23120031/scripts/sut.sh) đã viết xong và SUT đang chạy: cả ba dịch vụ phản hồi và | Tôi đã kiểm tra lại: |
-| 14 | 2026-11-17 11:01 | AI-1 | VS Code, Claude Fable 5.2 | 1. Commit scripts/sut.sh ngay. Commit này không sửa .spec.ts nên không tính vào ngưỡng 8, và hai commit [setup | Đã commit `scripts/sut.sh` thành `de77770`; commit này chưa push (local đang hơn `origin/main` một commit). |
-| 15 | 2026-11-17 11:07 | AI-1 | VS Code, Claude Fable 5.2 | Đọc @/home/npdinh/study/Homeworks/HW02/HW02_23120031/scripts/fr15/cases.json và phần FR-15 trong @/home/npdinh | Đây là 14 test case FR-15 tôi đề xuất để bạn duyệt: |
-| 16 | 2026-11-17 11:10 | AI-2 | CLI, Claude Fable 5.2 | " Đây là 14 test case FR-15 tôi đề xuất để bạn duyệt: 7 case kỳ vọng pass, 6 case kỳ vọng fail vì ba bug đã bi | Bảng B1 dùng được, nhưng có một lỗi đếm và một ràng buộc đặc tả bị bỏ sót cần sửa trước khi sang B2. |
-| 17 | 2026-11-17 11:13 | AI-1 | VS Code, Claude Fable 5.2 | Tôi duyệt bảng với các sửa đổi: (1) câu tóm tắt của bạn đếm sai, bảng cho 8 Pass / 5 Fail / 1 chưa chạy, hãy s | Bảng test case đã cập nhật và lưu vào report/fr15_testcases.md (chưa commit), và khảo sát B2 đã xong. |
-| 18 | 2026-11-17 11:20 | AI-2 | CLI, Claude Fable 5.2 | " Bảng test case đã cập nhật và lưu vào [report/fr15_testcases.md](HW04/HW04_23120031/report/fr15_testcases.md | Phát hiện ở B2 là đúng và là bug mới: |
-| 19 | 2026-11-17 11:59 | AI-1 | VS Code, Claude Fable 5.2 | B3: Tôi quyết định assert cả giao diện lẫn API, không tải lại trang sau khi Sửa. Từ 15 case trong @report/fr15 | File dữ liệu đã tạo xong ở data/fr15.products.json để bạn duyệt: |
-| 20 | 2026-11-17 12:07 | AI-2 | CLI, Claude Fable 5.2 | " File dữ liệu đã tạo xong ở [data/fr15.products.json](HW04/HW04_23120031/data/fr15.products.json) để bạn duyệ | File dữ liệu duyệt được: |
-| 21 | 2026-11-17 12:10 | AI-1 | VS Code, Claude Fable 5.2 | Tôi duyệt file dữ liệu với một sửa đổi: thêm server.othersUnchanged cho 10 case Thêm, vì bạn nói case reject k | Bản B4 đầu tiên đã viết xong, chưa chạy test nào và chưa commit. |
-| 22 | 2026-11-17 12:15 | AI-1 | VS Code, Claude Fable 5.2 | commit bản thô với [FR-15][B4-raw] rồi chạy trên Chromium | Đã commit bản thô (`e829452`, chưa push) và chạy trên Chromium: |
-| 23 | 2026-11-17 12:18 | AI-2 | CLI, Claude Fable 5.2 | " Đã commit bản thô (`e829452`, chưa push) và chạy trên Chromium: **7 pass / 8 fail trong 2,4 phút**, đúng như | Kết quả 7 pass / 8 fail khớp dự đoán, nhưng kết luận "không thấy lỗi nào của script" là AI tự chấm bài của mình. |
-| 24 | 2026-11-17 12:20 | AI-1 | VS Code, Claude Fable 5.2 | [B6-assert] Tôi review và thấy 3 assertion yếu: (1) dòng 195: validity.valueMissing luôn true với ô required đ | Cả ba nhóm đã sửa xong, mỗi nhóm một commit riêng có sửa `.spec.ts` (chưa push). |
-| 25 | 2026-11-17 12:37 | AI-2 | CLI, Claude Fable 5.2 | " Cả ba nhóm đã sửa xong, mỗi nhóm một commit riêng có sửa `.spec.ts` (chưa push). Kết quả trên Chromium vẫn l | Ba commit B6 sửa đúng các lỗi đã nêu. |
-| 26 | 2026-11-17 12:53 | AI-1 | VS Code, Claude Fable 5.2 | Trước B7, sửa hai điểm tôi thấy khi đọc diff: (1) void page.addInitScript trong constructor không được await:  | Hai điểm sửa đã xong và B7 đã chạy: |
-| 27 | 2026-11-17 12:58 | AI-2 | CLI, Claude Fable 5.2 | Hai điểm sửa đã xong và B7 đã chạy: cả ba browser cho **7 pass / 8 fail, không có case nào lệch kết quả**. Chư | Diff đúng như mô tả và duyệt được để commit: |
-| 28 | 2026-11-17 13:00 | AI-1 | VS Code, Claude Fable 5.2 | Trước khi chốt FR-15: (1) cài typescript làm devDependency, thêm tsconfig tối thiểu, chạy tsc --noEmit và báo  | Cả hai việc đã xong và không phát hiện lỗi nào: |
-| 29 | 2026-11-17 13:05 | AI-2 | CLI, Claude Fable 5.2 | Cả hai việc đã xong và không phát hiện lỗi nào: `tsc --noEmit` sạch, và 7 case kỳ vọng pass đều pass 5/5 trên  | Duyệt được để commit: |
-| 30 | 2026-11-17 13:06 | AI-1 | VS Code, Claude Fable 5.2 | Tách thành hai commit, vì chỉ một trong hai có sửa .spec.ts: ┌────────────────────────────────┬─────────────── | Đã tạo hai commit đúng như bảng của bạn và push lên `origin/main`; local và remote đã khớp nhau. |
-| 31 | 2026-11-17 13:14 | AI-2 | CLI, Claude Fable 5.2 | kiểm tra ba luợt chạy | Ba lượt chạy chính thức đạt yêu cầu của đề. |
-| 32 | 2026-11-17 13:16 | AI-1 | VS Code, Claude Fable 5.2 | 1. reports/ chưa được commit. git status báo thư mục này còn untracked. Đề yêu cầu repo GitHub có cả HTML repo | Tôi chưa commit gì, vì điểm 2 có một phát hiện làm thay đổi cả hai phương án: |
-| 33 | 2026-11-17 13:21 | AI-1 | VS Code, Claude Fable 5.2 | Chọn A, tắt trace cho lượt chính thức | Đã sửa xong hai chỗ và dừng lại để bạn đọc diff; chưa commit gì. |
-| 34 | 2026-11-17 17:15 | AI-2 | CLI, Claude Fable 5.2 | tôi đã chạy laị report | Ba report chạy lại không dùng được: |
-| 35 | 2026-11-17 17:21 | AI-2 | CLI, Claude Fable 5.2 | tôi đã chạy lại 3 lênhj | Ba report lần này hợp lệ và dùng được làm bản chính thức cho FR-15: |
-| 36 | 2026-11-17 17:22 | AI-1 | VS Code, Claude Fable 5.2 | 1. Commit và push. reports/, data/fr15.products.json và playwright.config.ts vẫn chưa commit. Commit này không | Written for: |
-| 37 | 2026-11-17 17:26 | AI-2 | CLI, Claude Fable 5.2 | Written for: giảng viên và trợ giảng chấm bài (hai file báo cáo mới). Việc 1 đã xong và đã push. Việc 2 và 3 đ | `global-setup.ts` duyệt được để commit. |
-| 38 | 2026-11-17 17:28 | AI-1 | VS Code, Claude Fable 5.2 | Commit global-setup.ts ngay; không tính vào ngưỡng 8, vẫn là 5/8. Sửa report/fr15_gap_analysis.md: (1) cột "Ai | Đã commit `global-setup.ts` (`dc91996`, chưa push) và sửa hai file báo cáo theo yêu cầu; hai file này vẫn chưa commit. |
-| 39 | 2026-11-17 17:30 | AI-2 | CLI, Claude Fable 5.2 | Đã commit `global-setup.ts` (`dc91996`, chưa push) và sửa hai file báo cáo theo yêu cầu; hai file này vẫn chưa | Các sửa đổi đã vào đúng như mô tả: |
-| 40 | 2026-11-17 17:31 | AI-2 | CLI, Claude Fable 5.2 | ban co the prompt qua session kia luon duoc ko? | Tin nhắn chưa tới được Claude ở phiên `homeworks-e2`: |
-| 41 | 2026-11-17 17:32 | AI-1 | VS Code, Claude Fable 5.2 | Sửa nốt report/fr15_gap_analysis.md: (1) AI-2 là Claude Code CLI, model Claude Fable 5.2; (2) xóa hai gạch đầu | Bốn điểm đã sửa xong trong report/fr15_gap_analysis.md; chưa commit. |
-| 42 | 2026-11-17 17:33 | AI-2 | CLI, Claude Fable 5.2 | Bốn điểm đã sửa xong trong [report/fr15_gap_analysis.md](HW04/HW04_23120031/report/fr15_gap_analysis.md); chưa | Tin nhắn tôi gửi sang phiên `homeworks-e2` đã hết hạn mà chưa được chấp thuận, nên Claude ở phiên đó chưa hề nhận nó và không còn gì đang chờ bên đó. |
-| 43 | 2026-11-17 17:36 | AI-2 | CLI, Claude Fable 5.2 | draft luôn 3 chỗ do cho toi | Tôi đã viết nháp cả ba chỗ thẳng vào `report/fr15_gap_analysis.md`, ở ngôi của bạn; chưa commit. |
-| 44 | 2026-11-17 17:39 | AI-2 | CLI, Claude Fable 5.2 | toi can lam gi tiep | Việc ngay lúc này là commit và push phần FR-15 còn treo, rồi làm Agent Skill và FR-01. |
-| 45 | 2026-11-17 17:41 | AI-2 | CLI, Claude Fable 5.2 | " - Bình luận kèm ảnh chụp từ lượt chạy tự động vào issue #24–#27 và #87, rồi chụp màn hình trang Issues để đư | Phần đó xuất phát từ một yêu cầu trong đề (Task 1): |
-| 46 | 2026-11-17 17:48 | AI-1 | VS Code, Claude Fable 5.2 | thêm ảnh vào issues trên github, ┌───────┬────────────────────────────────────────────────────┐ │ Issue │ Ảnh  | Năm bình luận kèm ảnh đã đăng lên năm issue bằng tài khoản `d1nhnguyen`, nhưng bốn trong năm ảnh không phải file bạn chỉ định: |
-| 47 | 2026-11-17 17:56 | AI-2 | CLI, Claude Fable 5.2 | Năm bình luận kèm ảnh đã đăng lên năm issue bằng tài khoản d1nhnguyen, nhưng bốn trong năm ảnh không phải file | Phiên kia thay ảnh là đúng, và lỗi là của tôi: |
-| 48 | 2026-11-17 18:00 | AI-1 | VS Code, Claude Fable 5.2 | 1. Code test đã đổi và chưa commit. tests/fr15/products.spec.ts thêm bước chụp riêng bảng sản phẩm sau thao tá | Cả bốn việc đã xong. |
-| 49 | 2026-11-17 18:03 | AI-2 | CLI, Claude Fable 5.2 | Cả bốn việc đã xong. Code test đã commit; hai file báo cáo và thư mục ảnh vẫn chưa commit, chờ bạn đọc diff. # | Phần này duyệt được: |
-| 50 | 2026-11-17 18:07 | AI-2 | CLI, Claude Fable 5.2 | agent skill chỉ liên quan đến viec thuc hien automation test va theo de bai, ko lien quan den cac thu nhu viet | Đúng. |
-| 51 | 2026-11-17 18:19 | AI-2 | CLI, Claude Fable 5.2 | về các phần cần sự can thiệp cua toi nhu chup anh,.. co the doi toi cuoi roi lam mot luot ko? va tiep tuc lam  | Được. |
-| 52 | 2026-11-17 18:20 | AI-1 | VS Code, Claude Fable 5.2 | Tạo TODO_thu_cong.md ở gốc repo, liệt kê các việc tôi phải tự làm và đang để dồn về cuối: chụp màn hình issue, | Đã tạo TODO_thu_cong.md ở gốc repo. |
-| 53 | 2026-11-17 18:23 | AI-2 | CLI, Claude Fable 5.2 | toi da tao file roi, tiep theo can lam gi? | Bước tiếp theo là commit và push phần FR-15 đang treo, rồi tạo Agent Skill. |
-| 54 | 2026-11-17 18:25 | AI-1 | VS Code, Claude Fable 5.2 | Commit report/fr15_gap_analysis.md, bugs/Bug_Report.md và bugs/screenshots/ thành một commit [FR-15][report],  | Đã commit và push: |
-| 55 | 2026-11-17 18:27 | AI-1 | VS Code, Claude Fable 5.2 | Đóng gói quy trình automation vừa làm cho FR-15 thành một Agent Skill trong .claude/skills/. Phạm vi chỉ là si | Bản nháp skill đã sẵn để bạn xem; tôi chưa dùng nó và chưa commit gì. |
-| 56 | 2026-11-17 18:52 | AI-2 | CLI, Claude Fable 5.2 | Bản nháp skill đã sẵn để bạn xem; tôi chưa dùng nó và chưa commit gì. Code của repo không bị đổi dòng nào. ##  | Skill duyệt được với hai bổ sung nhỏ. |
-| 57 | 2026-11-17 18:53 | AI-1 | VS Code, Claude Fable 5.2 | Duyệt skill với hai bổ sung: (1) điểm dừng B4 có thêm bảng "kiểu assertion nào dùng ở test nào", số kiểu tối t | Hai bổ sung cho skill và phần tách code dùng chung đều đã xong; chưa commit gì. |
-| 58 | 2026-11-17 19:32 | AI-2 | CLI, Claude Fable 5.2 | Hai bổ sung cho skill và phần tách code dùng chung đều đã xong; chưa commit gì. Sau khi tách, FR-15 vẫn ra **7 | Phần tách code duyệt được sau khi sửa một lỗi: |
-| 59 | 2026-11-17 19:33 | AI-1 | VS Code, Claude Fable 5.2 | Sửa một điểm trước khi commit: sut.services và urls đang ghi cùng địa chỉ ở hai nơi, nên đặt ADMIN_URL sang cổ | Đã sửa: |
-| 60 | 2026-11-17 19:42 | AI-1 | VS Code, Claude Fable 5.2 | 1. Tách code dùng chung (năm file mới, bảy file sửa): có sửa .spec.ts, là commit hợp lệ thứ 7/8. 2. Skill (.cl | Đã tạo hai commit riêng như bạn yêu cầu; chưa push (local đang hơn `origin/main` hai commit). |
-| 61 | 2026-11-17 19:43 | AI-2 | CLI, Claude Fable 5.2 | vậy giờ toi co the bat dau fr-01 bang skill rồi phair ko | Đúng, bạn bắt đầu FR-01 được rồi. |
-| 62 | 2026-11-17 19:44 | AI-2 | CLI, Claude Fable 5.2 | vậy skill nayf ko phai tu dong tu dau den cuoi? nhu vay co that su la mot "skill" ko ? | Vẫn là skill. |
-| 63 | 2026-11-17 19:47 | AI-2 | CLI, Claude Fable 5.2 | toi vua them mot skill mau cua giang vien vao folder, doc thu xem | Skill mẫu là `test-case-writing`: |
-| 64 | 2026-11-17 19:53 | AI-1 | VS Code, Claude Fable 5.2 | Giảng viên phát một skill mẫu ở test-case-writing.skill (file zip). Đọc cấu trúc của nó, không chạy script tro | Skill đã được nâng cấp theo cách tổ chức của skill mẫu, và cả hai script đều chạy đúng trên FR-15: |
-| 65 | 2026-11-17 20:04 | AI-2 | CLI, Claude Fable 5.2 | Skill đã được nâng cấp theo cách tổ chức của skill mẫu, và cả hai script đều chạy đúng trên FR-15: `lint_suite | Bản nâng cấp duyệt được để commit. |
-| 66 | 2026-11-17 20:08 | AI-1 | VS Code, Claude Fable 5.2 | 1. Thêm một dòng vào B6 rồi commit skill và ba file dự án: Thêm vào B6 của SKILL.md: ở điểm dừng này, trước nh | Đã thêm dòng nhắc vào B6 và push hai commit đang có. |
-| 67 | 2026-11-17 20:11 | AI-2 | CLI, Claude Fable 5.2 | Đã thêm dòng nhắc vào B6 và push hai commit đang có. Phần nâng cấp skill và ba file dự án tôi **chưa commit**, | Hai ý ngược nhau đó là lỗi trong prompt tôi soạn, và phiên kia chọn cách hiểu thận trọng là đúng. |
-| 68 | 2026-11-17 20:13 | AI-1 | VS Code, Claude Fable 5.2 | commit | Đã commit và push: |
-| 69 | 2026-11-17 20:18 | AI-1 | VS Code, Claude Fable 5.2 | Dùng skill data-driven-web-automation, chế độ sinh mới, để tự động hóa FR-01 Đăng ký tài khoản trên web khách  | Đã xong B0 và B1; chưa tạo hay sửa file nào. |
-| 70 | 2026-11-17 20:21 | AI-2 | CLI, Claude Fable 5.2 | Đã xong B0 và B1; chưa tạo hay sửa file nào. Đây là điểm dừng bắt buộc đầu tiên của skill. ## ĐIỂM DỪNG 1 ###  | Bảng B1 dùng được, nhưng có một sự kiện sai, một lỗi đếm và một vấn đề thiết kế cần quyết trước khi duyệt. |
-| 71 | 2026-11-17 20:24 | AI-1 | VS Code, Claude Fable 5.2 | Duyệt B1 với các sửa đổi: (1) Ô Email trong Register.jsx là type="text" (xem issue #21, #111), không phải type | Xong B2 và B3. |
-| 72 | 2026-11-17 20:31 | AI-2 | CLI, Claude Fable 5.2 | Xong B2 và B3. Hai file mới: [data/fr01.register.json](HW04/HW04_23120031/data/fr01.register.json) và [report/ | Điểm dừng 2 duyệt được. |
-| 73 | 2026-11-17 20:33 | AI-1 | VS Code, Claude Fable 5.2 | Duyệt B2 và B3. Ràng buộc cho B4: (1) DT-27: ô Xác nhận mật khẩu hiện không tồn tại. Kiểm số phần tử bằng asse | Xong B4 → B6. |
-| 74 | 2026-11-17 20:42 | AI-2 | CLI, Claude Fable 5.2 | Xong B4 → B6. Chưa sửa gì sau bản thô ngoài một lỗi lint (nêu bên dưới). ## ĐIỂM DỪNG 3 ### Năm ràng buộc của  | Điểm dừng 3 ổn về kết quả, nhưng có một việc phải xử lý ngược lại trước khi commit: |
-| 75 | 2026-11-17 20:45 | AI-1 | VS Code, Claude Fable 5.2 | Trước khi tôi commit bản thô: lint_suite báo sai ở { ref: 'setup' }. "setup" là từ khóa của cấu trúc dữ liệu,  | Đã sửa xong, chưa commit gì. |
-| 76 | 2026-11-17 20:49 | AI-1 | VS Code, Claude Fable 5.2 | Duyệt cả bốn nhóm, làm lần lượt, dừng sau mỗi nhóm. Nhóm 1 thêm: DT-08, DT-10, DT-19 kiểm thêm form không bắn  | Xong nhóm 1 (assertion). |
-| 77 | 2026-11-17 20:54 | AI-2 | CLI, Claude Fable 5.2 | kiem tra | Mọi thứ khớp và đã đạt ngưỡng 8 commit hợp lệ. |
-| 78 | 2026-11-18 09:11 | AI-2 | CLI, Claude Fable 5.2 | cho toi prompt de hoan thanh cac viec nay | Trạng thái repo vẫn như lần kiểm trước: |
-| 79 | 2026-11-18 09:12 | AI-1 | VS Code, – | /model opus | (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model) |
-| 80 | 2026-11-18 09:12 | AI-1 | VS Code, Claude Opus 5.5 | Push ba commit đang có. Sau đó hoàn tất nhóm 1: (a) Phần validation cho DT-08, DT-10, DT-19 đã có trong diff,  | Nhóm 1 (assertion) đã xong, đã commit và push. |
-| 81 | 2026-11-18 09:14 | AI-2 | CLI, – | bai tap nay uoc tinh thoi luong 1h nhung thuc te keo dai bao lau? | (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model) |
-| 82 | 2026-11-18 09:14 | AI-2 | CLI, Claude Fable 5.2 | bai tap nay uoc tinh thoi luong 10h nhung thuc te keo dai bao lau? | Tính theo dấu thời gian của các commit, đến giờ bạn đã dùng khoảng 7 giờ, và tôi ước lượng cả bài sẽ hết khoảng 14–16 giờ, tức vượt mức 10 giờ của đề khoảng một nửa. |
-| 83 | 2026-11-18 09:16 | AI-2 | CLI, Claude Fable 5.2 | qua sat thoi gian, toi ko doc diff kip nua, gio cung bo phan quay video agent skill luon, chi lam agent skill  | Được, với thời gian này thì cắt như vậy là hợp lý. |
-| 84 | 2026-11-18 09:17 | AI-1 | VS Code, Claude Opus 5.5 | Tôi hết thời gian đọc diff. Từ giờ bạn tự commit và push sau mỗi nhóm sửa, với điều kiện cả ba cổng đều đạt: t | FR-01 đã xong từ B1 tới B8. |
-| 85 | 2026-11-18 09:17 | AI-2 | CLI, – | han nop la 13h hien tai dang la 9h17p | (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model) |
-| 86 | 2026-11-18 09:18 | AI-2 | CLI, Claude Fable 5.2 | noi ro cho toi quay video gi? | Chỉ cần quay một video, cho Task 2. |
-| 87 | 2026-11-18 09:27 | AI-2 | CLI, Claude Fable 5.2 | 3 lenh tren co cho hien thi tren man hinh ko? hay chi chay nen? | Trong ba lệnh đó, chỉ lệnh đầu (Chromium) hiện cửa sổ trình duyệt, vì chỉ nó có `--headed`. |
-| 88 | 2026-11-18 09:40 | AI-2 | CLI, Claude Fable 5.2 | cho toi prompt fr-10 | FR-01 đã xong tới B8 và đã push (commit `7bf5424`), nên bạn chuyển sang FR-10 được. |
-| 89 | 2026-11-18 09:42 | AI-1 | VS Code, Claude Opus 5.5 | Dùng skill data-driven-web-automation, chế độ sinh mới, cho FR-10 Trạng thái đơn hàng. Tôi đang rất sát hạn nê | Xong B0 → B3 cho FR-10. |
-| 90 | 2026-11-18 09:48 | AI-2 | CLI, Claude Fable 5.2 | Xong B0 → B3 cho FR-10. Đây là điểm dừng duy nhất của bạn. Hai file mới, chưa commit: [data/fr10.orders.json]( | Duyệt được. |
-| 91 | 2026-11-18 09:49 | AI-1 | VS Code, Claude Opus 5.5 | Duyệt, với các sửa đổi rồi chạy liền B4 → B8: (1) Đồng ý tách DT-26 và DT-27. Thêm ghi chú vào hai case đó và  | Xong FR-10 từ B4 tới B8. |
-| 92 | 2026-11-18 10:41 | AI-2 | CLI, Claude Fable 5.2 | Xong FR-10 từ B4 tới B8. Mỗi nhóm có commit riêng, đã push lên `origin/main`, và chỉ commit sau khi qua đủ ba  | FR-10 đạt, và cả ba feature giờ đã có script hoàn chỉnh. |
-| 93 | 2026-11-18 10:42 | AI-1 | VS Code, Claude Opus 5.5 | Chín lượt chính thức đã chạy xong, report nằm trong reports/. Soạn bản nháp các tài liệu nộp bài, tôi sẽ sửa l | Viết cho: |
-| 94 | 2026-11-18 10:58 | AI-2 | CLI, Claude Fable 5.2 | Viết cho: giảng viên và trợ giảng chấm bài. Đây là bản nháp để bạn sửa lời. **Chín lượt chính thức chưa được c | Phần tài liệu đã có khung đầy đủ trên repo; việc đang chặn mọi thứ còn lại là chín lượt chạy chính thức, và chỉ bạn chạy được. |
-| 95 | 2026-11-18 11:00 | AI-1 | VS Code, Claude Opus 5.5 | Chín lượt chính thức đã chạy và đã được kiểm. Làm theo danh sách trong TODO_thu_cong.md: 1. Điền số pass / fai | Mục 2 xong (`afbd73e`, đã push). |
-| 96 | 2026-11-18 11:03 | AI-2 | CLI, Claude Fable 5.2 | kiểm tra | Chín lượt chính thức vẫn chưa được chạy. |
-| 97 | 2026-11-18 11:07 | AI-2 | CLI, Claude Fable 5.2 | chạy ở đau va cac cau lenh python dung de lam gi? | Chạy trong ứng dụng Terminal của Ubuntu (mở bằng Ctrl+Alt+T), hoặc trong ô Terminal của VS Code (menu Terminal, New Terminal). |
-| 98 | 2026-11-18 11:09 | AI-2 | CLI, Claude Fable 5.2 | cần phaỉ demo 3 feature? | Không. |
-| 99 | 2026-11-18 11:11 | AI-2 | CLI, Claude Fable 5.2 | tôi đang cần nhung thu liên quan den video de quay demo, dung lan nhung thu khac vao, lam tu tu, noi nhieu thu | Bạn demo một thứ duy nhất: |
-| 100 | 2026-11-18 11:14 | AI-2 | CLI, Claude Fable 5.2 | viết lời thoại cho từng bước đi | Đây là lời thoại cho năm bước. |
-| 101 | 2026-11-18 11:15 | AI-2 | CLI, Claude Fable 5.2 | tạo mot file .md | Kịch bản đã lưu tại `/home/npdinh/study/Homeworks/HW04/HW04_kich_ban_video.md`. |
-| 102 | 2026-11-18 11:26 | AI-2 | CLI, Claude Fable 5.2 | cho toi cac lenh text de copy nhanh | Các lệnh theo đúng thứ tự quay, mỗi khối là một lần dán. |
-| 103 | 2026-11-18 11:46 | AI-2 | CLI, Claude Fable 5.2 | kiem tra va ghep am thanh vao video giup toi | Đã ghép xong: |
-| 104 | 2026-11-18 11:51 | AI-2 | CLI, Claude Fable 5.2 | toi nghi nên tải leen luôn, conf việc gif ngoài video ko? | Được, video là quyết định của bạn; nó có đủ các yêu cầu bắt buộc, nên tải lên được. |
-| 105 | 2026-11-18 11:55 | AI-2 | CLI, Claude Fable 5.2 | https://youtu.be/bMuzCpj23Xg đay laf link video | Tôi đã ghi link `https://youtu.be/bMuzCpj23Xg` vào `README.md` và `report/main_report.md`, và đổi dòng video Agent Skill ở cả hai file thành "không quay, chỉ nộp skill". |
-| 106 | 2026-11-18 12:08 | AI-2 | CLI, Claude Fable 5.2 | kiểm tra | Cả chín report chính thức đều hợp lệ. |
-| 107 | 2026-11-18 12:09 | AI-1 | VS Code, Claude Opus 5.5 | Chín lượt chính thức đã chạy và đã được kiểm: FR-15 7/8, FR-01 8/9, FR-10 9/4 trên mỗi browser; tổng 72 pass / | Đã xong và đã push lên `origin/main` qua hai commit: |
-| 108 | 2026-11-18 12:15 | AI-2 | CLI, Claude Fable 5.2 | kiểm tra trang thai hien tai | Bài gần xong: |
-| 109 | 2026-11-18 12:18 | AI-2 | CLI, Claude Fable 5.2 | draft AI Critique cho toi, chinh lai cac placeholder va tu cham cho toi, toi se doc va duyet ban cuoi de nop | Cả ba phần đã viết xong vào file và chưa commit, chờ bạn đọc. |
-| 110 | 2026-11-18 12:19 | AI-1 | VS Code, Claude Opus 5.5 | Tôi đã duyệt ai/AI_Critique.md, report/main_report.md và cột tự chấm trong README (tổng 87). Thêm scripts/__py | Đã tạo file nộp `HW04/23120031_HW04_AI_Automation_087.zip`, nặng 17,1 MB (dưới giới hạn 20 MB của Moodle). |
-| 111 | 2026-11-18 12:23 | AI-1 | VS Code, Claude Opus 5.5 | Chụp ảnh trang 13 issue rồi tạo lại zip | File zip mới `HW04/23120031_HW04_AI_Automation_087.zip` đã ghi đè file cũ. |
-| 112 | 2026-11-18 12:27 | AI-1 | VS Code, Claude Opus 5.5 | hien con thieu gi ko? hay da nop duoc roi | Về cấu trúc thì nộp được: |
-| 113 | 2026-11-18 12:28 | AI-2 | CLI, Claude Fable 5.2 | kiem tra tat ca cac file hien tai, dac biet la cac file report xem con thieu gi ko? va con placeholder ko? hoa | (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model) |
+| #   | Thời gian (GMT+7) | Vai trò | Công cụ, model            | Prompt (rút gọn)                                                                                                 | Tóm tắt output                                                                                                                                                            |
+| --- | ----------------- | ------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | 2026-11-15 21:37  | AI-1    | VS Code, Claude Fable 5.2 | check yêu cầu của hw04 cho tôi và có yêu cầu phân việc cho các thành viên trong nhóm như các bài trước ko?       | Đã đọc 2026.HW04.Automation Testing_En.pdf.                                                                                                                               |
+| 2   | 2026-11-15 21:45  | AI-1    | VS Code, Claude Fable 5.2 | từ yêu cầu và nội dung slides liên quan, cũng như flow làm việc thực tế cần thiết (nếu có), hãy lập một plan c   | Tôi đã tạo HW04_Tim_hieu_de_va_ke_hoach.md, nằm ngoài repo bài nộp sau này.                                                                                               |
+| 3   | 2026-11-16 13:32  | AI-1    | VS Code, Claude Fable 5.2 | 3 Browser có thể là gì? tôi hiện có chrom và firefox                                                             | Đề cho phép hai bộ:                                                                                                                                                       |
+| 4   | 2026-11-16 13:33  | AI-1    | VS Code, Claude Fable 5.2 | vậy tôi nghĩ cách 1 là ổn nhất? chạy 2 lệnh trên là tải được phải ko?                                            | Đúng, cách 1 là ổn nhất, và hai lệnh đó là đủ để tải.                                                                                                                     |
+| 5   | 2026-11-16 13:41  | AI-1    | VS Code, Claude Fable 5.2 | tạo repo và cài playwright giúp tôi (tôi đã cài xong, kiểm tra lại)                                              | Playwright đã cài đúng và repo git local đã được tạo; repo trên GitHub thì tôi chưa tạo, vì đó là repo public nên cần bạn xác nhận trước.                                 |
+| 6   | 2026-11-16 13:42  | AI-1    | VS Code, Claude Fable 5.2 | tạo repo public trên github và push giúp tôi                                                                     | Repo đã được tạo ở chế độ public và đã push xong:                                                                                                                         |
+| 7   | 2026-11-17 10:45  | AI-2    | CLI, –                    | /login                                                                                                           | (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model)                                                                                                    |
+| 8   | 2026-11-17 10:45  | AI-2    | CLI, Claude Fable 5.2     | xem Hw04 và huớng dẫn tôi prompt hiệu quả để hoàn thành bài tập này                                              | Tôi đã đọc đề (PDF), file kế hoạch `HW04_Tim_hieu_de_va_ke_hoach.md` và repo hiện tại.                                                                                    |
+| 9   | 2026-11-17 10:49  | AI-1    | VS Code, Claude Fable 5.2 | Sửa playwright.config.ts: workers 1, fullyParallel false, retries 0, screenshot only-on-failure, trace retain-   | Config đã sửa xong và dòng "Run by" hiện đúng trong report:                                                                                                               |
+| 10  | 2026-11-17 10:53  | AI-2    | CLI, Claude Fable 5.2     | kiem tra giai doan 0                                                                                             | Giai đoạn 0 gần xong:                                                                                                                                                     |
+| 11  | 2026-11-17 10:58  | AI-1    | VS Code, Claude Fable 5.2 | xóa file tạm rồi commit và push                                                                                  | Đã xóa `tests/_smoke.spec.ts` và `reports/smoke-chromium/`, rồi commit và push lên `origin/main`.                                                                         |
+| 12  | 2026-11-17 10:59  | AI-1    | VS Code, Claude Fable 5.2 | Viết scripts/sut.sh với 3 lệnh: start (bật backend, frontend-web, frontend-admin của SUT ở /home/npdinh/study/   | scripts/sut.sh đã viết xong và SUT đang chạy:                                                                                                                             |
+| 13  | 2026-11-17 11:00  | AI-2    | CLI, Claude Fable 5.2     | " [scripts/sut.sh](HW04/HW04_23120031/scripts/sut.sh) đã viết xong và SUT đang chạy: cả ba dịch vụ phản hồi và   | Tôi đã kiểm tra lại:                                                                                                                                                      |
+| 14  | 2026-11-17 11:01  | AI-1    | VS Code, Claude Fable 5.2 | 1. Commit scripts/sut.sh ngay. Commit này không sửa .spec.ts nên không tính vào ngưỡng 8, và hai commit [setup   | Đã commit `scripts/sut.sh` thành `de77770`; commit này chưa push (local đang hơn `origin/main` một commit).                                                               |
+| 15  | 2026-11-17 11:07  | AI-1    | VS Code, Claude Fable 5.2 | Đọc @/home/npdinh/study/Homeworks/HW02/HW02_23120031/scripts/fr15/cases.json và phần FR-15 trong @/home/npdinh   | Đây là 14 test case FR-15 tôi đề xuất để bạn duyệt:                                                                                                                       |
+| 16  | 2026-11-17 11:10  | AI-2    | CLI, Claude Fable 5.2     | " Đây là 14 test case FR-15 tôi đề xuất để bạn duyệt: 7 case kỳ vọng pass, 6 case kỳ vọng fail vì ba bug đã bi   | Bảng B1 dùng được, nhưng có một lỗi đếm và một ràng buộc đặc tả bị bỏ sót cần sửa trước khi sang B2.                                                                      |
+| 17  | 2026-11-17 11:13  | AI-1    | VS Code, Claude Fable 5.2 | Tôi duyệt bảng với các sửa đổi: (1) câu tóm tắt của bạn đếm sai, bảng cho 8 Pass / 5 Fail / 1 chưa chạy, hãy s   | Bảng test case đã cập nhật và lưu vào report/fr15_testcases.md (chưa commit), và khảo sát B2 đã xong.                                                                     |
+| 18  | 2026-11-17 11:20  | AI-2    | CLI, Claude Fable 5.2     | " Bảng test case đã cập nhật và lưu vào [report/fr15_testcases.md](HW04/HW04_23120031/report/fr15_testcases.md   | Phát hiện ở B2 là đúng và là bug mới:                                                                                                                                     |
+| 19  | 2026-11-17 11:59  | AI-1    | VS Code, Claude Fable 5.2 | B3: Tôi quyết định assert cả giao diện lẫn API, không tải lại trang sau khi Sửa. Từ 15 case trong @report/fr15   | File dữ liệu đã tạo xong ở data/fr15.products.json để bạn duyệt:                                                                                                          |
+| 20  | 2026-11-17 12:07  | AI-2    | CLI, Claude Fable 5.2     | " File dữ liệu đã tạo xong ở [data/fr15.products.json](HW04/HW04_23120031/data/fr15.products.json) để bạn duyệ   | File dữ liệu duyệt được:                                                                                                                                                  |
+| 21  | 2026-11-17 12:10  | AI-1    | VS Code, Claude Fable 5.2 | Tôi duyệt file dữ liệu với một sửa đổi: thêm server.othersUnchanged cho 10 case Thêm, vì bạn nói case reject k   | Bản B4 đầu tiên đã viết xong, chưa chạy test nào và chưa commit.                                                                                                          |
+| 22  | 2026-11-17 12:15  | AI-1    | VS Code, Claude Fable 5.2 | commit bản thô với [FR-15][B4-raw] rồi chạy trên Chromium                                                        | Đã commit bản thô (`e829452`, chưa push) và chạy trên Chromium:                                                                                                           |
+| 23  | 2026-11-17 12:18  | AI-2    | CLI, Claude Fable 5.2     | " Đã commit bản thô (`e829452`, chưa push) và chạy trên Chromium: **7 pass / 8 fail trong 2,4 phút**, đúng như   | Kết quả 7 pass / 8 fail khớp dự đoán, nhưng kết luận "không thấy lỗi nào của script" là AI tự chấm bài của mình.                                                          |
+| 24  | 2026-11-17 12:20  | AI-1    | VS Code, Claude Fable 5.2 | [B6-assert] Tôi review và thấy 3 assertion yếu: (1) dòng 195: validity.valueMissing luôn true với ô required đ   | Cả ba nhóm đã sửa xong, mỗi nhóm một commit riêng có sửa `.spec.ts` (chưa push).                                                                                          |
+| 25  | 2026-11-17 12:37  | AI-2    | CLI, Claude Fable 5.2     | " Cả ba nhóm đã sửa xong, mỗi nhóm một commit riêng có sửa `.spec.ts` (chưa push). Kết quả trên Chromium vẫn l   | Ba commit B6 sửa đúng các lỗi đã nêu.                                                                                                                                     |
+| 26  | 2026-11-17 12:53  | AI-1    | VS Code, Claude Fable 5.2 | Trước B7, sửa hai điểm tôi thấy khi đọc diff: (1) void page.addInitScript trong constructor không được await:    | Hai điểm sửa đã xong và B7 đã chạy:                                                                                                                                       |
+| 27  | 2026-11-17 12:58  | AI-2    | CLI, Claude Fable 5.2     | Hai điểm sửa đã xong và B7 đã chạy: cả ba browser cho **7 pass / 8 fail, không có case nào lệch kết quả**. Chư   | Diff đúng như mô tả và duyệt được để commit:                                                                                                                              |
+| 28  | 2026-11-17 13:00  | AI-1    | VS Code, Claude Fable 5.2 | Trước khi chốt FR-15: (1) cài typescript làm devDependency, thêm tsconfig tối thiểu, chạy tsc --noEmit và báo    | Cả hai việc đã xong và không phát hiện lỗi nào:                                                                                                                           |
+| 29  | 2026-11-17 13:05  | AI-2    | CLI, Claude Fable 5.2     | Cả hai việc đã xong và không phát hiện lỗi nào: `tsc --noEmit` sạch, và 7 case kỳ vọng pass đều pass 5/5 trên    | Duyệt được để commit:                                                                                                                                                     |
+| 30  | 2026-11-17 13:06  | AI-1    | VS Code, Claude Fable 5.2 | Tách thành hai commit, vì chỉ một trong hai có sửa .spec.ts: ┌────────────────────────────────┬───────────────   | Đã tạo hai commit đúng như bảng của bạn và push lên `origin/main`; local và remote đã khớp nhau.                                                                          |
+| 31  | 2026-11-17 13:14  | AI-2    | CLI, Claude Fable 5.2     | kiểm tra ba luợt chạy                                                                                            | Ba lượt chạy chính thức đạt yêu cầu của đề.                                                                                                                               |
+| 32  | 2026-11-17 13:16  | AI-1    | VS Code, Claude Fable 5.2 | 1. reports/ chưa được commit. git status báo thư mục này còn untracked. Đề yêu cầu repo GitHub có cả HTML repo   | Tôi chưa commit gì, vì điểm 2 có một phát hiện làm thay đổi cả hai phương án:                                                                                             |
+| 33  | 2026-11-17 13:21  | AI-1    | VS Code, Claude Fable 5.2 | Chọn A, tắt trace cho lượt chính thức                                                                            | Đã sửa xong hai chỗ và dừng lại để bạn đọc diff; chưa commit gì.                                                                                                          |
+| 34  | 2026-11-17 17:15  | AI-2    | CLI, Claude Fable 5.2     | tôi đã chạy laị report                                                                                           | Ba report chạy lại không dùng được:                                                                                                                                       |
+| 35  | 2026-11-17 17:21  | AI-2    | CLI, Claude Fable 5.2     | tôi đã chạy lại 3 lênhj                                                                                          | Ba report lần này hợp lệ và dùng được làm bản chính thức cho FR-15:                                                                                                       |
+| 36  | 2026-11-17 17:22  | AI-1    | VS Code, Claude Fable 5.2 | 1. Commit và push. reports/, data/fr15.products.json và playwright.config.ts vẫn chưa commit. Commit này không   | Written for:                                                                                                                                                              |
+| 37  | 2026-11-17 17:26  | AI-2    | CLI, Claude Fable 5.2     | Written for: giảng viên và trợ giảng chấm bài (hai file báo cáo mới). Việc 1 đã xong và đã push. Việc 2 và 3 đ   | `global-setup.ts` duyệt được để commit.                                                                                                                                   |
+| 38  | 2026-11-17 17:28  | AI-1    | VS Code, Claude Fable 5.2 | Commit global-setup.ts ngay; không tính vào ngưỡng 8, vẫn là 5/8. Sửa report/fr15_gap_analysis.md: (1) cột "Ai   | Đã commit `global-setup.ts` (`dc91996`, chưa push) và sửa hai file báo cáo theo yêu cầu; hai file này vẫn chưa commit.                                                    |
+| 39  | 2026-11-17 17:30  | AI-2    | CLI, Claude Fable 5.2     | Đã commit `global-setup.ts` (`dc91996`, chưa push) và sửa hai file báo cáo theo yêu cầu; hai file này vẫn chưa   | Các sửa đổi đã vào đúng như mô tả:                                                                                                                                        |
+| 40  | 2026-11-17 17:31  | AI-2    | CLI, Claude Fable 5.2     | ban co the prompt qua session kia luon duoc ko?                                                                  | Tin nhắn chưa tới được Claude ở phiên `homeworks-e2`:                                                                                                                     |
+| 41  | 2026-11-17 17:32  | AI-1    | VS Code, Claude Fable 5.2 | Sửa nốt report/fr15_gap_analysis.md: (1) AI-2 là Claude Code CLI, model Claude Fable 5.2; (2) xóa hai gạch đầu   | Bốn điểm đã sửa xong trong report/fr15_gap_analysis.md; chưa commit.                                                                                                      |
+| 42  | 2026-11-17 17:33  | AI-2    | CLI, Claude Fable 5.2     | Bốn điểm đã sửa xong trong [report/fr15_gap_analysis.md](HW04/HW04_23120031/report/fr15_gap_analysis.md); chưa   | Tin nhắn tôi gửi sang phiên `homeworks-e2` đã hết hạn mà chưa được chấp thuận, nên Claude ở phiên đó chưa hề nhận nó và không còn gì đang chờ bên đó.                     |
+| 43  | 2026-11-17 17:36  | AI-2    | CLI, Claude Fable 5.2     | draft luôn 3 chỗ do cho toi                                                                                      | Tôi đã viết nháp cả ba chỗ thẳng vào `report/fr15_gap_analysis.md`, ở ngôi của bạn; chưa commit.                                                                          |
+| 44  | 2026-11-17 17:39  | AI-2    | CLI, Claude Fable 5.2     | toi can lam gi tiep                                                                                              | Việc ngay lúc này là commit và push phần FR-15 còn treo, rồi làm Agent Skill và FR-01.                                                                                    |
+| 45  | 2026-11-17 17:41  | AI-2    | CLI, Claude Fable 5.2     | " - Bình luận kèm ảnh chụp từ lượt chạy tự động vào issue #24–#27 và #87, rồi chụp màn hình trang Issues để đư   | Phần đó xuất phát từ một yêu cầu trong đề (Task 1):                                                                                                                       |
+| 46  | 2026-11-17 17:48  | AI-1    | VS Code, Claude Fable 5.2 | thêm ảnh vào issues trên github, ┌───────┬────────────────────────────────────────────────────┐ │ Issue │ Ảnh    | Năm bình luận kèm ảnh đã đăng lên năm issue bằng tài khoản `d1nhnguyen`, nhưng bốn trong năm ảnh không phải file bạn chỉ định:                                            |
+| 47  | 2026-11-17 17:56  | AI-2    | CLI, Claude Fable 5.2     | Năm bình luận kèm ảnh đã đăng lên năm issue bằng tài khoản d1nhnguyen, nhưng bốn trong năm ảnh không phải file   | Phiên kia thay ảnh là đúng, và lỗi là của tôi:                                                                                                                            |
+| 48  | 2026-11-17 18:00  | AI-1    | VS Code, Claude Fable 5.2 | 1. Code test đã đổi và chưa commit. tests/fr15/products.spec.ts thêm bước chụp riêng bảng sản phẩm sau thao tá   | Cả bốn việc đã xong.                                                                                                                                                      |
+| 49  | 2026-11-17 18:03  | AI-2    | CLI, Claude Fable 5.2     | Cả bốn việc đã xong. Code test đã commit; hai file báo cáo và thư mục ảnh vẫn chưa commit, chờ bạn đọc diff. #   | Phần này duyệt được:                                                                                                                                                      |
+| 50  | 2026-11-17 18:07  | AI-2    | CLI, Claude Fable 5.2     | agent skill chỉ liên quan đến viec thuc hien automation test va theo de bai, ko lien quan den cac thu nhu viet   | Đúng.                                                                                                                                                                     |
+| 51  | 2026-11-17 18:19  | AI-2    | CLI, Claude Fable 5.2     | về các phần cần sự can thiệp cua toi nhu chup anh,.. co the doi toi cuoi roi lam mot luot ko? va tiep tuc lam    | Được.                                                                                                                                                                     |
+| 52  | 2026-11-17 18:20  | AI-1    | VS Code, Claude Fable 5.2 | Tạo TODO_thu_cong.md ở gốc repo, liệt kê các việc tôi phải tự làm và đang để dồn về cuối: chụp màn hình issue,   | Đã tạo TODO_thu_cong.md ở gốc repo.                                                                                                                                       |
+| 53  | 2026-11-17 18:23  | AI-2    | CLI, Claude Fable 5.2     | toi da tao file roi, tiep theo can lam gi?                                                                       | Bước tiếp theo là commit và push phần FR-15 đang treo, rồi tạo Agent Skill.                                                                                               |
+| 54  | 2026-11-17 18:25  | AI-1    | VS Code, Claude Fable 5.2 | Commit report/fr15_gap_analysis.md, bugs/Bug_Report.md và bugs/screenshots/ thành một commit [FR-15][report],    | Đã commit và push:                                                                                                                                                        |
+| 55  | 2026-11-17 18:27  | AI-1    | VS Code, Claude Fable 5.2 | Đóng gói quy trình automation vừa làm cho FR-15 thành một Agent Skill trong .claude/skills/. Phạm vi chỉ là si   | Bản nháp skill đã sẵn để bạn xem; tôi chưa dùng nó và chưa commit gì.                                                                                                     |
+| 56  | 2026-11-17 18:52  | AI-2    | CLI, Claude Fable 5.2     | Bản nháp skill đã sẵn để bạn xem; tôi chưa dùng nó và chưa commit gì. Code của repo không bị đổi dòng nào. ##    | Skill duyệt được với hai bổ sung nhỏ.                                                                                                                                     |
+| 57  | 2026-11-17 18:53  | AI-1    | VS Code, Claude Fable 5.2 | Duyệt skill với hai bổ sung: (1) điểm dừng B4 có thêm bảng "kiểu assertion nào dùng ở test nào", số kiểu tối t   | Hai bổ sung cho skill và phần tách code dùng chung đều đã xong; chưa commit gì.                                                                                           |
+| 58  | 2026-11-17 19:32  | AI-2    | CLI, Claude Fable 5.2     | Hai bổ sung cho skill và phần tách code dùng chung đều đã xong; chưa commit gì. Sau khi tách, FR-15 vẫn ra \*\*7 | Phần tách code duyệt được sau khi sửa một lỗi:                                                                                                                            |
+| 59  | 2026-11-17 19:33  | AI-1    | VS Code, Claude Fable 5.2 | Sửa một điểm trước khi commit: sut.services và urls đang ghi cùng địa chỉ ở hai nơi, nên đặt ADMIN_URL sang cổ   | Đã sửa:                                                                                                                                                                   |
+| 60  | 2026-11-17 19:42  | AI-1    | VS Code, Claude Fable 5.2 | 1. Tách code dùng chung (năm file mới, bảy file sửa): có sửa .spec.ts, là commit hợp lệ thứ 7/8. 2. Skill (.cl   | Đã tạo hai commit riêng như bạn yêu cầu; chưa push (local đang hơn `origin/main` hai commit).                                                                             |
+| 61  | 2026-11-17 19:43  | AI-2    | CLI, Claude Fable 5.2     | vậy giờ toi co the bat dau fr-01 bang skill rồi phair ko                                                         | Đúng, bạn bắt đầu FR-01 được rồi.                                                                                                                                         |
+| 62  | 2026-11-17 19:44  | AI-2    | CLI, Claude Fable 5.2     | vậy skill nayf ko phai tu dong tu dau den cuoi? nhu vay co that su la mot "skill" ko ?                           | Vẫn là skill.                                                                                                                                                             |
+| 63  | 2026-11-17 19:47  | AI-2    | CLI, Claude Fable 5.2     | toi vua them mot skill mau cua giang vien vao folder, doc thu xem                                                | Skill mẫu là `test-case-writing`:                                                                                                                                         |
+| 64  | 2026-11-17 19:53  | AI-1    | VS Code, Claude Fable 5.2 | Giảng viên phát một skill mẫu ở test-case-writing.skill (file zip). Đọc cấu trúc của nó, không chạy script tro   | Skill đã được nâng cấp theo cách tổ chức của skill mẫu, và cả hai script đều chạy đúng trên FR-15:                                                                        |
+| 65  | 2026-11-17 20:04  | AI-2    | CLI, Claude Fable 5.2     | Skill đã được nâng cấp theo cách tổ chức của skill mẫu, và cả hai script đều chạy đúng trên FR-15: `lint_suite   | Bản nâng cấp duyệt được để commit.                                                                                                                                        |
+| 66  | 2026-11-17 20:08  | AI-1    | VS Code, Claude Fable 5.2 | 1. Thêm một dòng vào B6 rồi commit skill và ba file dự án: Thêm vào B6 của SKILL.md: ở điểm dừng này, trước nh   | Đã thêm dòng nhắc vào B6 và push hai commit đang có.                                                                                                                      |
+| 67  | 2026-11-17 20:11  | AI-2    | CLI, Claude Fable 5.2     | Đã thêm dòng nhắc vào B6 và push hai commit đang có. Phần nâng cấp skill và ba file dự án tôi **chưa commit**,   | Hai ý ngược nhau đó là lỗi trong prompt tôi soạn, và phiên kia chọn cách hiểu thận trọng là đúng.                                                                         |
+| 68  | 2026-11-17 20:13  | AI-1    | VS Code, Claude Fable 5.2 | commit                                                                                                           | Đã commit và push:                                                                                                                                                        |
+| 69  | 2026-11-17 20:18  | AI-1    | VS Code, Claude Fable 5.2 | Dùng skill data-driven-web-automation, chế độ sinh mới, để tự động hóa FR-01 Đăng ký tài khoản trên web khách    | Đã xong B0 và B1; chưa tạo hay sửa file nào.                                                                                                                              |
+| 70  | 2026-11-17 20:21  | AI-2    | CLI, Claude Fable 5.2     | Đã xong B0 và B1; chưa tạo hay sửa file nào. Đây là điểm dừng bắt buộc đầu tiên của skill. ## ĐIỂM DỪNG 1 ###    | Bảng B1 dùng được, nhưng có một sự kiện sai, một lỗi đếm và một vấn đề thiết kế cần quyết trước khi duyệt.                                                                |
+| 71  | 2026-11-17 20:24  | AI-1    | VS Code, Claude Fable 5.2 | Duyệt B1 với các sửa đổi: (1) Ô Email trong Register.jsx là type="text" (xem issue #21, #111), không phải type   | Xong B2 và B3.                                                                                                                                                            |
+| 72  | 2026-11-17 20:31  | AI-2    | CLI, Claude Fable 5.2     | Xong B2 và B3. Hai file mới: [data/fr01.register.json](HW04/HW04_23120031/data/fr01.register.json) và [report/   | Điểm dừng 2 duyệt được.                                                                                                                                                   |
+| 73  | 2026-11-17 20:33  | AI-1    | VS Code, Claude Fable 5.2 | Duyệt B2 và B3. Ràng buộc cho B4: (1) DT-27: ô Xác nhận mật khẩu hiện không tồn tại. Kiểm số phần tử bằng asse   | Xong B4 → B6.                                                                                                                                                             |
+| 74  | 2026-11-17 20:42  | AI-2    | CLI, Claude Fable 5.2     | Xong B4 → B6. Chưa sửa gì sau bản thô ngoài một lỗi lint (nêu bên dưới). ## ĐIỂM DỪNG 3 ### Năm ràng buộc của    | Điểm dừng 3 ổn về kết quả, nhưng có một việc phải xử lý ngược lại trước khi commit:                                                                                       |
+| 75  | 2026-11-17 20:45  | AI-1    | VS Code, Claude Fable 5.2 | Trước khi tôi commit bản thô: lint_suite báo sai ở { ref: 'setup' }. "setup" là từ khóa của cấu trúc dữ liệu,    | Đã sửa xong, chưa commit gì.                                                                                                                                              |
+| 76  | 2026-11-17 20:49  | AI-1    | VS Code, Claude Fable 5.2 | Duyệt cả bốn nhóm, làm lần lượt, dừng sau mỗi nhóm. Nhóm 1 thêm: DT-08, DT-10, DT-19 kiểm thêm form không bắn    | Xong nhóm 1 (assertion).                                                                                                                                                  |
+| 77  | 2026-11-17 20:54  | AI-2    | CLI, Claude Fable 5.2     | kiem tra                                                                                                         | Mọi thứ khớp và đã đạt ngưỡng 8 commit hợp lệ.                                                                                                                            |
+| 78  | 2026-11-18 09:11  | AI-2    | CLI, Claude Fable 5.2     | cho toi prompt de hoan thanh cac viec nay                                                                        | Trạng thái repo vẫn như lần kiểm trước:                                                                                                                                   |
+| 79  | 2026-11-18 09:12  | AI-1    | VS Code, –                | /model opus                                                                                                      | (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model)                                                                                                    |
+| 80  | 2026-11-18 09:12  | AI-1    | VS Code, Claude Opus 5.5  | Push ba commit đang có. Sau đó hoàn tất nhóm 1: (a) Phần validation cho DT-08, DT-10, DT-19 đã có trong diff,    | Nhóm 1 (assertion) đã xong, đã commit và push.                                                                                                                            |
+| 81  | 2026-11-18 09:14  | AI-2    | CLI, –                    | bai tap nay uoc tinh thoi luong 1h nhung thuc te keo dai bao lau?                                                | (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model)                                                                                                    |
+| 82  | 2026-11-18 09:14  | AI-2    | CLI, Claude Fable 5.2     | bai tap nay uoc tinh thoi luong 10h nhung thuc te keo dai bao lau?                                               | Tính theo dấu thời gian của các commit, đến giờ bạn đã dùng khoảng 7 giờ, và tôi ước lượng cả bài sẽ hết khoảng 14–16 giờ, tức vượt mức 10 giờ của đề khoảng một nửa.     |
+| 83  | 2026-11-18 09:16  | AI-2    | CLI, Claude Fable 5.2     | qua sat thoi gian, toi ko doc diff kip nua, gio cung bo phan quay video agent skill luon, chi lam agent skill    | Được, với thời gian này thì cắt như vậy là hợp lý.                                                                                                                        |
+| 84  | 2026-11-18 09:17  | AI-1    | VS Code, Claude Opus 5.5  | Tôi hết thời gian đọc diff. Từ giờ bạn tự commit và push sau mỗi nhóm sửa, với điều kiện cả ba cổng đều đạt: t   | FR-01 đã xong từ B1 tới B8.                                                                                                                                               |
+| 85  | 2026-11-18 09:17  | AI-2    | CLI, –                    | han nop la 13h hien tai dang la 9h17p                                                                            | (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model)                                                                                                    |
+| 86  | 2026-11-18 09:18  | AI-2    | CLI, Claude Fable 5.2     | noi ro cho toi quay video gi?                                                                                    | Chỉ cần quay một video, cho Task 2.                                                                                                                                       |
+| 87  | 2026-11-18 09:27  | AI-2    | CLI, Claude Fable 5.2     | 3 lenh tren co cho hien thi tren man hinh ko? hay chi chay nen?                                                  | Trong ba lệnh đó, chỉ lệnh đầu (Chromium) hiện cửa sổ trình duyệt, vì chỉ nó có `--headed`.                                                                               |
+| 88  | 2026-11-18 09:40  | AI-2    | CLI, Claude Fable 5.2     | cho toi prompt fr-10                                                                                             | FR-01 đã xong tới B8 và đã push (commit `7bf5424`), nên bạn chuyển sang FR-10 được.                                                                                       |
+| 89  | 2026-11-18 09:42  | AI-1    | VS Code, Claude Opus 5.5  | Dùng skill data-driven-web-automation, chế độ sinh mới, cho FR-10 Trạng thái đơn hàng. Tôi đang rất sát hạn nê   | Xong B0 → B3 cho FR-10.                                                                                                                                                   |
+| 90  | 2026-11-18 09:48  | AI-2    | CLI, Claude Fable 5.2     | Xong B0 → B3 cho FR-10. Đây là điểm dừng duy nhất của bạn. Hai file mới, chưa commit: [data/fr10.orders.json](   | Duyệt được.                                                                                                                                                               |
+| 91  | 2026-11-18 09:49  | AI-1    | VS Code, Claude Opus 5.5  | Duyệt, với các sửa đổi rồi chạy liền B4 → B8: (1) Đồng ý tách DT-26 và DT-27. Thêm ghi chú vào hai case đó và    | Xong FR-10 từ B4 tới B8.                                                                                                                                                  |
+| 92  | 2026-11-18 10:41  | AI-2    | CLI, Claude Fable 5.2     | Xong FR-10 từ B4 tới B8. Mỗi nhóm có commit riêng, đã push lên `origin/main`, và chỉ commit sau khi qua đủ ba    | FR-10 đạt, và cả ba feature giờ đã có script hoàn chỉnh.                                                                                                                  |
+| 93  | 2026-11-18 10:42  | AI-1    | VS Code, Claude Opus 5.5  | Chín lượt chính thức đã chạy xong, report nằm trong reports/. Soạn bản nháp các tài liệu nộp bài, tôi sẽ sửa l   | Viết cho:                                                                                                                                                                 |
+| 94  | 2026-11-18 10:58  | AI-2    | CLI, Claude Fable 5.2     | Viết cho: giảng viên và trợ giảng chấm bài. Đây là bản nháp để bạn sửa lời. \*\*Chín lượt chính thức chưa được c | Phần tài liệu đã có khung đầy đủ trên repo; việc đang chặn mọi thứ còn lại là chín lượt chạy chính thức, và chỉ bạn chạy được.                                            |
+| 95  | 2026-11-18 11:00  | AI-1    | VS Code, Claude Opus 5.5  | Chín lượt chính thức đã chạy và đã được kiểm. Làm theo danh sách trong TODO_thu_cong.md: 1. Điền số pass / fai   | Mục 2 xong (`afbd73e`, đã push).                                                                                                                                          |
+| 96  | 2026-11-18 11:03  | AI-2    | CLI, Claude Fable 5.2     | kiểm tra                                                                                                         | Chín lượt chính thức vẫn chưa được chạy.                                                                                                                                  |
+| 97  | 2026-11-18 11:07  | AI-2    | CLI, Claude Fable 5.2     | chạy ở đau va cac cau lenh python dung de lam gi?                                                                | Chạy trong ứng dụng Terminal của Ubuntu (mở bằng Ctrl+Alt+T), hoặc trong ô Terminal của VS Code (menu Terminal, New Terminal).                                            |
+| 98  | 2026-11-18 11:09  | AI-2    | CLI, Claude Fable 5.2     | cần phaỉ demo 3 feature?                                                                                         | Không.                                                                                                                                                                    |
+| 99  | 2026-11-18 11:11  | AI-2    | CLI, Claude Fable 5.2     | tôi đang cần nhung thu liên quan den video de quay demo, dung lan nhung thu khac vao, lam tu tu, noi nhieu thu   | Bạn demo một thứ duy nhất:                                                                                                                                                |
+| 100 | 2026-11-18 11:14  | AI-2    | CLI, Claude Fable 5.2     | viết lời thoại cho từng bước đi                                                                                  | Đây là lời thoại cho năm bước.                                                                                                                                            |
+| 101 | 2026-11-18 11:15  | AI-2    | CLI, Claude Fable 5.2     | tạo mot file .md                                                                                                 | Kịch bản đã lưu tại `/home/npdinh/study/Homeworks/HW04/HW04_kich_ban_video.md`.                                                                                           |
+| 102 | 2026-11-18 11:26  | AI-2    | CLI, Claude Fable 5.2     | cho toi cac lenh text de copy nhanh                                                                              | Các lệnh theo đúng thứ tự quay, mỗi khối là một lần dán.                                                                                                                  |
+| 103 | 2026-11-18 11:46  | AI-2    | CLI, Claude Fable 5.2     | kiem tra va ghep am thanh vao video giup toi                                                                     | Đã ghép xong:                                                                                                                                                             |
+| 104 | 2026-11-18 11:51  | AI-2    | CLI, Claude Fable 5.2     | toi nghi nên tải leen luôn, conf việc gif ngoài video ko?                                                        | Được, video là quyết định của bạn; nó có đủ các yêu cầu bắt buộc, nên tải lên được.                                                                                       |
+| 105 | 2026-11-18 11:55  | AI-2    | CLI, Claude Fable 5.2     | https://youtu.be/bMuzCpj23Xg đay laf link video                                                                  | Tôi đã ghi link `https://youtu.be/bMuzCpj23Xg` vào `README.md` và `report/main_report.md`, và đổi dòng video Agent Skill ở cả hai file thành "không quay, chỉ nộp skill". |
+| 106 | 2026-11-18 12:08  | AI-2    | CLI, Claude Fable 5.2     | kiểm tra                                                                                                         | Cả chín report chính thức đều hợp lệ.                                                                                                                                     |
+| 107 | 2026-11-18 12:09  | AI-1    | VS Code, Claude Opus 5.5  | Chín lượt chính thức đã chạy và đã được kiểm: FR-15 7/8, FR-01 8/9, FR-10 9/4 trên mỗi browser; tổng 72 pass /   | Đã xong và đã push lên `origin/main` qua hai commit:                                                                                                                      |
+| 108 | 2026-11-18 12:15  | AI-2    | CLI, Claude Fable 5.2     | kiểm tra trang thai hien tai                                                                                     | Bài gần xong:                                                                                                                                                             |
+| 109 | 2026-11-18 12:18  | AI-2    | CLI, Claude Fable 5.2     | draft AI Critique cho toi, chinh lai cac placeholder va tu cham cho toi, toi se doc va duyet ban cuoi de nop     | Cả ba phần đã viết xong vào file và chưa commit, chờ bạn đọc.                                                                                                             |
+| 110 | 2026-11-18 12:19  | AI-1    | VS Code, Claude Opus 5.5  | Tôi đã duyệt ai/AI_Critique.md, report/main_report.md và cột tự chấm trong README (tổng 87). Thêm scripts/\_\_py | Đã tạo file nộp `HW04/23120031_HW04_AI_Automation_087.zip`, nặng 17,1 MB (dưới giới hạn 20 MB của Moodle).                                                                |
+| 111 | 2026-11-18 12:23  | AI-1    | VS Code, Claude Opus 5.5  | Chụp ảnh trang 13 issue rồi tạo lại zip                                                                          | File zip mới `HW04/23120031_HW04_AI_Automation_087.zip` đã ghi đè file cũ.                                                                                                |
+| 112 | 2026-11-18 12:27  | AI-1    | VS Code, Claude Opus 5.5  | hien con thieu gi ko? hay da nop duoc roi                                                                        | Về cấu trúc thì nộp được:                                                                                                                                                 |
+| 113 | 2026-11-18 12:28  | AI-2    | CLI, Claude Fable 5.2     | kiem tra tat ca cac file hien tai, dac biet la cac file report xem con thieu gi ko? va con placeholder ko? hoa   | (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model)                                                                                                    |
 
 ## 5. Nhận xét của sinh viên
 
@@ -177,9 +177,9 @@ Công cụ kiểm thử (không phải AI): Playwright Test 1.65.1 với Playwri
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 check yêu cầu của hw04 cho tôi và có yêu cầu phân việc cho các thành viên trong nhóm như các bài trước ko?
-````
+```
 
 ### #2 · 2026-11-15 21:45:24 · AI-1 · phiên `843d9cd5`
 
@@ -189,9 +189,9 @@ check yêu cầu của hw04 cho tôi và có yêu cầu phân việc cho các th
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 từ yêu cầu và nội dung slides liên quan, cũng như flow làm việc thực tế cần thiết (nếu có), hãy lập một plan chi tiết, cũng như có thể giảng dạy lại tôi sơ qua các khái niệm để tôi có thể thực hiện bài này một cách trơn tru, tạo một file .md trong thư mục hw04, phần này chỉ để tìm hiểu đề bà và kiến thức liên quan nên sẽ ko thêm vào nội dung bài nộp.
-````
+```
 
 ### #3 · 2026-11-16 13:32:05 · AI-1 · phiên `843d9cd5`
 
@@ -201,9 +201,9 @@ từ yêu cầu và nội dung slides liên quan, cũng như flow làm việc th
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 3 Browser có thể là gì? tôi hiện có chrom và firefox
-````
+```
 
 ### #4 · 2026-11-16 13:33:06 · AI-1 · phiên `843d9cd5`
 
@@ -213,9 +213,9 @@ từ yêu cầu và nội dung slides liên quan, cũng như flow làm việc th
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 vậy tôi nghĩ cách 1 là ổn nhất? chạy 2 lệnh trên là tải được phải ko?
-````
+```
 
 ### #5 · 2026-11-16 13:41:11 · AI-1 · phiên `843d9cd5`
 
@@ -225,9 +225,9 @@ vậy tôi nghĩ cách 1 là ổn nhất? chạy 2 lệnh trên là tải đư�
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 tạo repo và cài playwright giúp tôi (tôi đã cài xong, kiểm tra lại)
-````
+```
 
 ### #6 · 2026-11-16 13:42:32 · AI-1 · phiên `843d9cd5`
 
@@ -237,9 +237,9 @@ tạo repo và cài playwright giúp tôi (tôi đã cài xong, kiểm tra lại
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 tạo repo public trên github và push giúp tôi
-````
+```
 
 ### #7 · 2026-11-17 10:45:13 · AI-2 · phiên `7ed1ce04`
 
@@ -249,9 +249,9 @@ tạo repo public trên github và push giúp tôi
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 /login
-````
+```
 
 ### #8 · 2026-11-17 10:45:35 · AI-2 · phiên `7ed1ce04`
 
@@ -261,9 +261,9 @@ tạo repo public trên github và push giúp tôi
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 xem Hw04 và huớng dẫn tôi prompt hiệu quả để hoàn thành bài tập này
-````
+```
 
 ### #9 · 2026-11-17 10:49:11 · AI-1 · phiên `843d9cd5`
 
@@ -273,14 +273,14 @@ xem Hw04 và huớng dẫn tôi prompt hiệu quả để hoàn thành bài tậ
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Sửa playwright.config.ts: workers 1, fullyParallel false, retries 0,
 screenshot only-on-failure, trace retain-on-failure. HTML reporter có
 title "Run by: 23120031 · <ISO timestamp>", thư mục output lấy từ biến
 môi trường để mỗi lượt feature × browser ra một report riêng trong
 reports/. Bỏ reports/ khỏi .gitignore. Xóa example.spec.ts. Sau đó chạy
 một test rỗng và cho tôi biết dòng "Run by" hiện ở đâu trong report.
-````
+```
 
 ### #10 · 2026-11-17 10:53:54 · AI-2 · phiên `7ed1ce04`
 
@@ -290,9 +290,9 @@ một test rỗng và cho tôi biết dòng "Run by" hiện ở đâu trong repo
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 kiem tra giai doan 0
-````
+```
 
 ### #11 · 2026-11-17 10:58:02 · AI-1 · phiên `843d9cd5`
 
@@ -302,9 +302,9 @@ kiem tra giai doan 0
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 xóa file tạm rồi commit và push
-````
+```
 
 ### #12 · 2026-11-17 10:59:04 · AI-1 · phiên `843d9cd5`
 
@@ -314,7 +314,7 @@ xóa file tạm rồi commit và push
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Viết scripts/sut.sh với 3 lệnh: start (bật backend, frontend-web,
 frontend-admin của SUT ở /home/npdinh/study/Homeworks/eshop-sut-main,
 ghi log và PID vào thư mục tạm), stop (chỉ dừng đúng các PID đó, không
@@ -322,7 +322,7 @@ killall node), reset (dừng backend, chạy node database.js để nạp lại
 seed, bật lại). Đường dẫn SUT lấy từ biến môi trường SUT_DIR. Sau đó
 chạy start và xác nhận 5173, 5174 và API backend đều phản hồi, đăng
 nhập được bằng admin@eshop.com / Admin123!.
-````
+```
 
 ### #13 · 2026-11-17 11:00:38 · AI-2 · phiên `7ed1ce04`
 
@@ -332,7 +332,7 @@ nhập được bằng admin@eshop.com / Admin123!.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 "
 
 [scripts/sut.sh](HW04/HW04_23120031/scripts/sut.sh) đã viết xong và SUT đang chạy: cả ba dịch vụ phản hồi và đăng nhập admin thành công.
@@ -368,7 +368,7 @@ Hệ quả cho bài: `start` hay `reset` đều xóa mọi dữ liệu test, và
 SUT hiện vẫn đang chạy (backend PID 24400, web 24184, admin 24238). Script chưa được commit.
 
 "
-````
+```
 
 ### #14 · 2026-11-17 11:01:53 · AI-1 · phiên `843d9cd5`
 
@@ -378,10 +378,10 @@ SUT hiện vẫn đang chạy (backend PID 24400, web 24184, admin 24238). Scrip
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 1. Commit scripts/sut.sh ngay. Commit này không sửa .spec.ts nên không tính vào ngưỡng 8, và hai commit [setup] trước cũng vậy. Đến giờ bạn có 0/8 commit hợp lệ, nên từ B4 trở đi mỗi nhóm sửa nên là một commit riêng.
 2. Đừng reset bằng cách khởi động lại backend trước mỗi test. Mỗi lần mất 1–2 giây, nhân với khoảng 36 test × 3 browser là chậm thêm vài phút. Nên reset một lần ở đầu mỗi lượt feature × browser, còn trong từng test thì tự dựng và dọn dữ liệu qua API (tên sản phẩm, email có hậu tố duy nhất). Khi làm B4, hãy nêu rõ ràng buộc này trong prompt, vì AI không tự biết.
-````
+```
 
 ### #15 · 2026-11-17 11:07:07 · AI-1 · phiên `843d9cd5`
 
@@ -391,7 +391,7 @@ SUT hiện vẫn đang chạy (backend PID 24400, web 24184, admin 24238). Scrip
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Đọc @/home/npdinh/study/Homeworks/HW02/HW02_23120031/scripts/fr15/cases.json
 và phần FR-15 trong @/home/npdinh/study/Homeworks/eshop-sut-main/README.md.
 Đề xuất 14 test case để tự động hóa trên web admin (localhost:5174): có
@@ -400,7 +400,7 @@ số), có cả thêm, sửa, xóa. Giữ nguyên ID của HW02. Mỗi case ghi:
 tiêu, expected THEO ĐẶC TẢ (trích câu đặc tả), kết quả web ở HW02, lý do
 chọn. Liệt kê riêng các case không tự động hóa được và lý do. Chưa viết
 code, đưa tôi bảng để duyệt.
-````
+```
 
 ### #16 · 2026-11-17 11:10:30 · AI-2 · phiên `7ed1ce04`
 
@@ -410,7 +410,7 @@ code, đưa tôi bảng để duyệt.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 "
 
 Đây là 14 test case FR-15 tôi đề xuất để bạn duyệt: 7 case kỳ vọng pass, 6 case kỳ vọng fail vì ba bug đã biết từ HW02, và 1 case (FR15-DT-11) chưa từng chạy trên web nên chưa biết kết quả.
@@ -480,7 +480,7 @@ Các case này đều đã được kiểm qua API ở HW02 (BUG-25, BUG-28 và 
 25 case web còn lại của HW02 phần lớn lặp lại cùng một lớp tương đương với 14 case trên. Ví dụ: Tên dài 1, 2, 254 ký tự; Tên 255 / 256 ký tự có dấu; Giá −1, −0,01, 0,01; và các bản Sửa của cùng một lỗi. Nếu bạn muốn tăng số lượng để lấy điểm, nhóm đáng thêm nhất là FR15-DT-06 (Tên chỉ gồm khoảng trắng, BUG-27), FR15-BV-10 (Sửa Tên 256 ký tự, BUG-26) và FR15-DT-03.
 
 "
-````
+```
 
 ### #17 · 2026-11-17 11:13:24 · AI-1 · phiên `843d9cd5`
 
@@ -490,7 +490,7 @@ Các case này đều đã được kiểm qua API ở HW02 (BUG-25, BUG-28 và 
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Tôi duyệt bảng với các sửa đổi: (1) câu tóm tắt của bạn đếm sai, bảng cho
 8 Pass / 5 Fail / 1 chưa chạy, hãy sửa; (2) bạn bỏ sót ràng buộc "Danh
 mục: bắt buộc, phải chọn từ danh sách có sẵn": cho DT-01 chọn danh mục
@@ -506,7 +506,7 @@ của form sản phẩm, nút lưu ở chế độ Thêm và Sửa, dòng trong 
 Sửa / Xóa theo dòng. Mỗi dòng ghi: phần tử | locator | vì sao bền | rủi
 ro. Ghi rõ thao tác nào bật alert() hoặc confirm(), nguyên văn thông báo,
 và thao tác nào thành công mà KHÔNG có thông báo. Chưa viết code.
-````
+```
 
 ### #18 · 2026-11-17 11:20:09 · AI-2 · phiên `7ed1ce04`
 
@@ -516,7 +516,7 @@ và thao tác nào thành công mà KHÔNG có thông báo. Chưa viết code.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 "
 
 Bảng test case đã cập nhật và lưu vào [report/fr15_testcases.md](HW04/HW04_23120031/report/fr15_testcases.md) (chưa commit), và khảo sát B2 đã xong. Khảo sát cho thấy một hành vi sai của giao diện ảnh hưởng trực tiếp tới hai case Sửa:
@@ -591,7 +591,7 @@ Ba hệ quả cho script:
 - **Dữ liệu SUT đã về như cũ**: sản phẩm tạm đã bị xóa, còn đúng 5 sản phẩm seed.
 
 "
-````
+```
 
 ### #19 · 2026-11-17 11:59:51 · AI-1 · phiên `843d9cd5`
 
@@ -601,7 +601,7 @@ Ba hệ quả cho script:
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 B3: Tôi quyết định assert cả giao diện lẫn API, không tải lại trang sau
 khi Sửa. Từ 15 case trong @report/fr15_testcases.md, tạo
 data/fr15.products.json. Mỗi dòng có: id, title, op (add/edit/delete),
@@ -612,7 +612,7 @@ dòng, dữ liệu phía server, có alert hay không và nguyên văn). Tên 25
 256 ký tự ghi dạng {"length": 255} để script tự sinh, hậu tố duy nhất
 nằm TRONG tổng độ dài. Không để giá trị test nào ngoài file này. Đưa tôi
 xem file trước khi viết code.
-````
+```
 
 ### #20 · 2026-11-17 12:07:25 · AI-2 · phiên `7ed1ce04`
 
@@ -704,7 +704,7 @@ Hai case không định danh được bằng tên là DT-05 (tên rỗng) và DT
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Tôi duyệt file dữ liệu với một sửa đổi: thêm server.othersUnchanged cho
 10 case Thêm, vì bạn nói case reject kiểm cả hai tầng nhưng dữ liệu
 chưa có. Sửa xong thì làm B4 theo prompt tôi gửi, thêm hai ràng buộc:
@@ -730,7 +730,7 @@ sinh 15 test theo Arrange – Act – Assert. Ràng buộc:
 - Chỉ dùng web-first assertion, cấm waitForTimeout.
 - Gắn annotation "Run by" và số bug vào từng test.
 Lưu thêm bản thô vào raw/fr15/. Chưa chạy, chưa commit.
-````
+```
 
 ### #22 · 2026-11-17 12:15:21 · AI-1 · phiên `843d9cd5`
 
@@ -740,9 +740,9 @@ Lưu thêm bản thô vào raw/fr15/. Chưa chạy, chưa commit.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 commit bản thô với [FR-15][B4-raw] rồi chạy trên Chromium
-````
+```
 
 ### #23 · 2026-11-17 12:18:58 · AI-2 · phiên `7ed1ce04`
 
@@ -752,7 +752,7 @@ commit bản thô với [FR-15][B4-raw] rồi chạy trên Chromium
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 "
 
 Đã commit bản thô (`e829452`, chưa push) và chạy trên Chromium: **7 pass / 8 fail trong 2,4 phút**, đúng như dự đoán. Tám test fail đều do SUT, tôi không thấy lỗi nào của script trong lượt này.
@@ -792,7 +792,7 @@ Hai điều lượt chạy này xác nhận:
 Report HTML của lượt này nằm ở `playwright-report/` (thư mục bị ignore, chỉ để xem thử). Log đầy đủ ở `/tmp/claude-1000/-home-npdinh-study-Homeworks/843d9cd5-43f0-47d2-8858-d68c87413537/scratchpad/fr15-chromium-run1.log`.
 
 "
-````
+```
 
 ### #24 · 2026-11-17 12:20:51 · AI-1 · phiên `843d9cd5`
 
@@ -802,7 +802,7 @@ Report HTML của lượt này nằm ở `playwright-report/` (thư mục bị i
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 [B6-assert] Tôi review và thấy 3 assertion yếu:
 (1) dòng 195: validity.valueMissing luôn true với ô required đang rỗng,
 không chứng minh form bị chặn. Thay bằng kiểm chứng thật: sau khi bấm
@@ -828,7 +828,7 @@ danh sách, annotation ghi đủ cả hai. (3) Tách thân test thành ba hàm
 arrange / act / assertUi + assertServer, giữ nguyên một vòng for...of.
 (4) Thay giả định "sản phẩm mới nằm cuối bảng" bằng cách so không phụ
 thuộc thứ tự, hoặc assert thứ tự đó một cách tường minh.
-````
+```
 
 ### #25 · 2026-11-17 12:37:06 · AI-2 · phiên `7ed1ce04`
 
@@ -838,7 +838,7 @@ thuộc thứ tự, hoặc assert thứ tự đó một cách tường minh.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 "
 
 Cả ba nhóm đã sửa xong, mỗi nhóm một commit riêng có sửa `.spec.ts` (chưa push). Kết quả trên Chromium vẫn là 7 pass / 8 fail, và thời gian chạy giảm từ 2,4 phút xuống 54 giây.
@@ -902,7 +902,7 @@ Dấu hiệu tôi chọn là cặp này: ô Tên nhận sự kiện `invalid` **
 - **Mới chạy trên Chromium.** Firefox và WebKit chỉ mới được thử ở bước kiểm dấu hiệu chặn form, chưa chạy cả suite.
 
 "
-````
+```
 
 ### #26 · 2026-11-17 12:53:09 · AI-1 · phiên `843d9cd5`
 
@@ -912,7 +912,7 @@ Dấu hiệu tôi chọn là cặp này: ô Tên nhận sự kiện `invalid` **
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Trước B7, sửa hai điểm tôi thấy khi đọc diff: (1) void page.addInitScript
 trong constructor không được await: chuyển vào một bước async được await
 trước goto; (2) trường validation.state "valueMissing" trong file dữ liệu
@@ -924,7 +924,7 @@ Lập bảng 15 case × 3 browser. Case nào lệch kết quả giữa các brow
 tìm nguyên nhân gốc: do script (kiểm UI_AFTER_SETTLED = 1 giây trước
 tiên) hay do SUT hành xử khác nhau. Không thêm retry, không nới timeout
 khi chưa có bằng chứng. Chưa commit.
-````
+```
 
 ### #27 · 2026-11-17 12:58:55 · AI-2 · phiên `7ed1ce04`
 
@@ -934,7 +934,7 @@ khi chưa có bằng chứng. Chưa commit.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Hai điểm sửa đã xong và B7 đã chạy: cả ba browser cho **7 pass / 8 fail, không có case nào lệch kết quả**. Chưa commit; ba file đang chờ bạn đọc diff.
 
 ## Hai điểm sửa trước B7
@@ -983,7 +983,7 @@ Tôi không thêm retry và không nới timeout nào.
 - **Firefox và WebKit chậm hơn Chromium 2–3 lần** ngay cả ở case pass (ví dụ DT-01: 1,8 giây so với 5,6 và 5,1 giây). Tôi chưa tìm nguyên nhân, vì nó không làm lệch kết quả.
 
 Report gỡ lỗi nằm trong thư mục tạm, không nằm trong repo: `/tmp/claude-1000/-home-npdinh-study-Homeworks/843d9cd5-43f0-47d2-8858-d68c87413537/scratchpad/reports-debug/` (ba thư mục `fr15-chromium`, `fr15-firefox`, `fr15-webkit`). Dữ liệu SUT sau ba lượt còn đúng 5 sản phẩm seed.
-````
+```
 
 ### #28 · 2026-11-17 13:00:30 · AI-1 · phiên `843d9cd5`
 
@@ -993,13 +993,13 @@ Report gỡ lỗi nằm trong thư mục tạm, không nằm trong repo: `/tmp/c
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Trước khi chốt FR-15: (1) cài typescript làm devDependency, thêm
 tsconfig tối thiểu, chạy tsc --noEmit và báo lỗi nếu có; (2) chạy 7 case
 kỳ vọng pass với --repeat-each=5 trên firefox và webkit (hai browser
 chậm), báo số lần pass / fail của từng case. Nếu có case nào lúc pass
 lúc fail thì tìm nguyên nhân gốc trước, chưa sửa gì. Chưa commit.
-````
+```
 
 ### #29 · 2026-11-17 13:05:10 · AI-2 · phiên `7ed1ce04`
 
@@ -1009,7 +1009,7 @@ lúc fail thì tìm nguyên nhân gốc trước, chưa sửa gì. Chưa commit.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Cả hai việc đã xong và không phát hiện lỗi nào: `tsc --noEmit` sạch, và 7 case kỳ vọng pass đều pass 5/5 trên cả Firefox lẫn WebKit. Chưa commit và chưa sửa gì thêm.
 
 ## (1) TypeScript
@@ -1045,7 +1045,7 @@ Sáu file chưa commit:
 
 - `pages/admin-products.page.ts`, `data/fr15.products.json`, `tests/fr15/products.spec.ts`: hai điểm sửa trước B7.
 - `package.json`, `package-lock.json`, `tsconfig.json`: phần TypeScript.
-````
+```
 
 ### #30 · 2026-11-17 13:06:22 · AI-1 · phiên `843d9cd5`
 
@@ -1055,7 +1055,7 @@ Sáu file chưa commit:
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Tách thành hai commit, vì chỉ một trong hai có sửa .spec.ts:
 
 ┌────────────────────────────────┬──────────────────────────────────────────────────┬─────────────┐
@@ -1071,7 +1071,7 @@ Tách thành hai commit, vì chỉ một trong hai có sửa .spec.ts:
 └────────────────────────────────┴──────────────────────────────────────────────────┴─────────────┘
 
 Sau đó push.
-````
+```
 
 ### #31 · 2026-11-17 13:14:06 · AI-2 · phiên `7ed1ce04`
 
@@ -1081,9 +1081,9 @@ Sau đó push.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 kiểm tra ba luợt chạy
-````
+```
 
 ### #32 · 2026-11-17 13:16:05 · AI-1 · phiên `843d9cd5`
 
@@ -1093,10 +1093,10 @@ kiểm tra ba luợt chạy
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 1. reports/ chưa được commit. git status báo thư mục này còn untracked. Đề yêu cầu repo GitHub có cả HTML report.
 2. Ba report vẫn ghi NEW-UI-EDIT ở DT-15, DT-34 và DT-20 thay vì số issue. Nếu bạn muốn report khớp với bug report thì tạo issue, sửa file dữ liệu rồi chạy lại ba lượt (khoảng 4 phút). Nếu giữ nguyên, hãy thêm vào báo cáo một dòng ánh xạ NEW-UI-EDIT sang số issue.
-````
+```
 
 ### #33 · 2026-11-17 13:21:19 · AI-1 · phiên `843d9cd5`
 
@@ -1106,9 +1106,9 @@ kiểm tra ba luợt chạy
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Chọn A, tắt trace cho lượt chính thức
-````
+```
 
 ### #34 · 2026-11-17 17:15:15 · AI-2 · phiên `7ed1ce04`
 
@@ -1118,9 +1118,9 @@ Chọn A, tắt trace cho lượt chính thức
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 tôi đã chạy laị report
-````
+```
 
 ### #35 · 2026-11-17 17:21:09 · AI-2 · phiên `7ed1ce04`
 
@@ -1130,9 +1130,9 @@ tôi đã chạy laị report
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 tôi đã chạy lại 3 lênhj
-````
+```
 
 ### #36 · 2026-11-17 17:22:04 · AI-1 · phiên `843d9cd5`
 
@@ -1142,11 +1142,11 @@ tôi đã chạy lại 3 lênhj
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 1. Commit và push. reports/, data/fr15.products.json và playwright.config.ts vẫn chưa commit. Commit này không sửa .spec.ts nên không tính vào ngưỡng 8; hiện vẫn là 5/8.
 2. Kiểm tra môi trường trong global-setup.ts chưa được thêm. Lượt này chạy được vì tôi đã bật lại hai frontend; nếu chúng tắt lần nữa, bạn lại nhận 15 test đỏ giả. Prompt ở tin nhắn trước vẫn dùng được.
 3. Gap analysis và bug report FR-15 viết vào báo cáo khi còn nhớ.
-````
+```
 
 ### #37 · 2026-11-17 17:26:44 · AI-2 · phiên `7ed1ce04`
 
@@ -1156,7 +1156,7 @@ tôi đã chạy lại 3 lênhj
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Written for: giảng viên và trợ giảng chấm bài (hai file báo cáo mới).
 
 Việc 1 đã xong và đã push. Việc 2 và 3 đã làm xong nhưng chưa commit, đang chờ bạn đọc diff.
@@ -1208,7 +1208,7 @@ Bug report còn bốn việc để ngỏ, ghi ở mục 3 của file: ảnh ch�
 | `bugs/Bug_Report.md` | mới |
 
 Cả ba đều không sửa `.spec.ts`. Ba commit hợp lệ còn thiếu sẽ đến từ FR-01 và FR-10.
-````
+```
 
 ### #38 · 2026-11-17 17:28:36 · AI-1 · phiên `843d9cd5`
 
@@ -1218,7 +1218,7 @@ Cả ba đều không sửa `.spec.ts`. Ba commit hợp lệ còn thiếu sẽ �
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Commit global-setup.ts ngay; không tính vào ngưỡng 8, vẫn là 5/8.
 
 Sửa report/fr15_gap_analysis.md: (1) cột "Ai phát hiện": G1, G2, G4,
@@ -1229,7 +1229,7 @@ từng có bước kiểm kiểu; (3) G17: xảy ra ở lượt chính thức th
 phát hiện khi đọc report sau lượt chạy. Sửa bugs/Bug_Report.md: ghi rõ
 BUG-41 là issue #87, không phải issue #41. Để trống cột "Vì sao AI sai"
 ở G6 và G8 cho tôi tự viết. Chưa commit.
-````
+```
 
 ### #39 · 2026-11-17 17:30:22 · AI-2 · phiên `7ed1ce04`
 
@@ -1239,7 +1239,7 @@ BUG-41 là issue #87, không phải issue #41. Để trống cột "Vì sao AI s
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Đã commit `global-setup.ts` (`dc91996`, chưa push) và sửa hai file báo cáo theo yêu cầu; hai file này vẫn chưa commit.
 
 ## Commit
@@ -1264,7 +1264,7 @@ BUG-41 là issue #87, không phải issue #41. Để trống cột "Vì sao AI s
 1. **Mục 3 "Nhận xét chung" vẫn còn lời giải thích của tôi cho G6 và G8.** Gạch đầu dòng thứ nhất nói AI làm đúng câu chữ prompt mà không kiểm assertion chứng minh điều gì (G6), gạch thứ hai nói AI lách ràng buộc `waitForTimeout` (G8). Nếu bạn muốn tự viết cả hai lý do thì nên sửa hoặc xóa hai gạch đó, kẻo chúng trả lời thay cho hai ô bạn để trống.
 2. **Tên công cụ của AI-2 chưa có.** Tôi chỉ ghi "một phiên AI thứ hai" vì không biết bạn dùng công cụ gì; AI Audit Report yêu cầu khai tên công cụ, nên bạn cần điền vào.
 3. **G18 đổi người phát hiện thành AI-2** theo danh sách của bạn. Ở phiên này, vấn đề report nặng 29 MB do tôi nêu khi chuẩn bị commit `reports/`; nếu AI-2 nêu trước đó thì cách ghi hiện tại đúng, còn nếu không thì nên ghi là AI-1.
-````
+```
 
 ### #40 · 2026-11-17 17:31:12 · AI-2 · phiên `7ed1ce04`
 
@@ -1274,9 +1274,9 @@ BUG-41 là issue #87, không phải issue #41. Để trống cột "Vì sao AI s
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 ban co the prompt qua session kia luon duoc ko?
-````
+```
 
 ### #41 · 2026-11-17 17:32:20 · AI-1 · phiên `843d9cd5`
 
@@ -1286,13 +1286,13 @@ ban co the prompt qua session kia luon duoc ko?
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Sửa nốt report/fr15_gap_analysis.md: (1) AI-2 là Claude Code CLI, model
 Claude Fable 5.2; (2) xóa hai gạch đầu dòng ở mục 3 đang giải thích G6
 và G8, tôi sẽ tự viết; (3) G16: bỏ ý trong ngoặc về tsc, cột "Ai phát
 hiện" ghi "AI-2 nêu, SV xác nhận và yêu cầu sửa"; (4) G18 ghi "AI-1 và
 AI-2 cùng nêu". Chưa commit.
-````
+```
 
 ### #42 · 2026-11-17 17:33:33 · AI-2 · phiên `7ed1ce04`
 
@@ -1302,7 +1302,7 @@ AI-2 cùng nêu". Chưa commit.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Bốn điểm đã sửa xong trong [report/fr15_gap_analysis.md](HW04/HW04_23120031/report/fr15_gap_analysis.md); chưa commit.
 
 1. **AI-2** ghi là "Claude Code CLI, model Claude Fable 5.2".
@@ -1316,7 +1316,7 @@ Hai chỗ còn liên quan tới phần bạn sẽ tự viết:
 - **Gạch "Điều AI làm đúng" ở mục 3** vẫn nhắc "AI tự nêu trước một số điểm yếu (G8, G10)". Nó không giải thích lý do của G8 nên tôi giữ lại.
 
 Hai file đang chờ bạn đọc diff rồi commit là `report/fr15_gap_analysis.md` và `bugs/Bug_Report.md`. Ngoài ra, commit `dc91996` (`global-setup.ts`) vẫn chưa push.
-````
+```
 
 ### #43 · 2026-11-17 17:36:48 · AI-2 · phiên `7ed1ce04`
 
@@ -1326,9 +1326,9 @@ Hai file đang chờ bạn đọc diff rồi commit là `report/fr15_gap_analysi
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 draft luôn 3 chỗ do cho toi
-````
+```
 
 ### #44 · 2026-11-17 17:39:40 · AI-2 · phiên `7ed1ce04`
 
@@ -1338,9 +1338,9 @@ draft luôn 3 chỗ do cho toi
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 toi can lam gi tiep
-````
+```
 
 ### #45 · 2026-11-17 17:41:49 · AI-2 · phiên `7ed1ce04`
 
@@ -1350,9 +1350,9 @@ toi can lam gi tiep
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 "  - Bình luận kèm ảnh chụp từ lượt chạy tự động vào issue #24–#27 và #87, rồi chụp màn hình trang Issues để đưa vào bug report." phần nay là sao?
-````
+```
 
 ### #46 · 2026-11-17 17:48:12 · AI-1 · phiên `843d9cd5`
 
@@ -1362,8 +1362,8 @@ toi can lam gi tiep
 
 **Prompt (nguyên văn):**
 
-````text
-thêm ảnh vào issues trên github, 
+```text
+thêm ảnh vào issues trên github,
 
 ┌───────┬────────────────────────────────────────────────────┐
 │ Issue │                Ảnh dùng để đính kèm                │
@@ -1380,7 +1380,7 @@ thêm ảnh vào issues trên github,
 └───────┴────────────────────────────────────────────────────┘
 
 bug được tái hiện bằng test tự động HW04, mã test case, ba browser đều fail, link tới report trong repo HW04_23120031. Riêng #87, hãy nêu thêm ba chi tiết mà issue gốc chưa có: lỗi xảy ra cả khi chỉ sửa Giá, dòng được sửa vẫn hiện Giá cũ, và dữ liệu phía server vẫn đúng.
-````
+```
 
 ### #47 · 2026-11-17 17:56:29 · AI-2 · phiên `7ed1ce04`
 
@@ -1390,14 +1390,14 @@ bug được tái hiện bằng test tự động HW04, mã test case, ba browse
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Năm bình luận kèm ảnh đã đăng lên năm issue bằng tài khoản d1nhnguyen, nhưng bốn trong năm ảnh không phải file bạn chỉ định: tôi thay chúng vì ảnh gốc không cho thấy bug.
 
 Vì sao tôi thay ảnh
 Tôi mở năm file bạn liệt kê trước khi đăng. Bốn ảnh của BUG-24, 25, 26, 27 chỉ chụp phần đầu trang (form trống và dòng iPhone đầu tiên). Dòng lỗi nằm cuối bảng, ngoài khung nhìn, nên ảnh không chứng minh được gì. Chỉ ảnh BUG-41 có thấy lỗi, và cũng thiếu dòng được sửa.
 
 Tôi thử bật chụp cả trang trong config nhưng không ăn thua, vì trang Admin cuộn bên trong một khung cố định. Tôi đã hoàn lại thay đổi config đó. Cách dùng được là cho test chụp riêng bảng sản phẩm ngay sau thao tác rồi đính vào report. Tôi chạy lại năm test trên Chromium ra thư mục tạm và lấy ảnh từ đó; chúng vẫn là ảnh do chính test tự động chụp.
-````
+```
 
 ### #48 · 2026-11-17 18:00:55 · AI-1 · phiên `843d9cd5`
 
@@ -1407,13 +1407,13 @@ Tôi thử bật chụp cả trang trong config nhưng không ăn thua, vì tran
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 1. Code test đã đổi và chưa commit. tests/fr15/products.spec.ts thêm bước chụp riêng bảng sản phẩm sau thao tác, pages/admin-products.page.ts thêm locator table. Đọc diff (9 dòng) rồi commit; commit này có sửa .spec.ts nên là commit hợp lệ thứ 6/8.
 2. Ba report chính thức trong repo cũ hơn code. Chúng được chạy trước khi có bước chụp bảng, nên không chứa ảnh đã đăng lên issue; ảnh đó đến từ một lượt chạy riêng trên Chromium ra thư mục tạm. Không cần chạy lại ngay, vì 9 lượt chính thức cuối cùng sẽ thay cả ba. Từ giờ đến lúc đó, đừng mô tả trong báo cáo rằng ảnh trên issue lấy từ report trong repo.
 3. Dọn bugs/screenshots/. Thư mục đang lẫn tám ảnh cũ chụp khung nhìn với năm ảnh _table mới. Xóa tám ảnh cũ, giữ năm ảnh _table, rồi cập nhật đường dẫn trong bugs/Bug_Report.md.
 Thêm vào gap analysis
 Sự việc này đáng một dòng mới: ảnh chụp tự động lúc fail (screenshot: 'only-on-failure') chỉ chụp khung nhìn, trong khi dòng lỗi nằm cuối bảng, nên bằng chứng trong ba report hiện tại không cho thấy bug ở bốn trên năm trường hợp. Cấu hình này có từ giai đoạn 0, và cả hai phiên AI đều không kiểm ảnh cho tới khi cần đăng lên issue.
-````
+```
 
 ### #49 · 2026-11-17 18:03:17 · AI-2 · phiên `7ed1ce04`
 
@@ -1423,7 +1423,7 @@ Sự việc này đáng một dòng mới: ảnh chụp tự động lúc fail (
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Cả bốn việc đã xong. Code test đã commit; hai file báo cáo và thư mục ảnh vẫn chưa commit, chờ bạn đọc diff.
 
 ## 1. Commit code test
@@ -1465,7 +1465,7 @@ Danh sách "Việc còn lại" của bug report giờ còn ba mục: ảnh chụ
 | `report/fr15_gap_analysis.md` | mới, chưa commit |
 | `bugs/Bug_Report.md` | mới, chưa commit |
 | `bugs/screenshots/` (5 ảnh) | mới, chưa commit |
-````
+```
 
 ### #50 · 2026-11-17 18:07:37 · AI-2 · phiên `7ed1ce04`
 
@@ -1475,9 +1475,9 @@ Danh sách "Việc còn lại" của bug report giờ còn ba mục: ảnh chụ
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 agent skill chỉ liên quan đến viec thuc hien automation test va theo de bai, ko lien quan den cac thu nhu viet report de nop bai hay phuc vu bai nop phai ko?
-````
+```
 
 ### #51 · 2026-11-17 18:19:08 · AI-2 · phiên `7ed1ce04`
 
@@ -1487,9 +1487,9 @@ agent skill chỉ liên quan đến viec thuc hien automation test va theo de ba
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 về các phần cần sự can thiệp cua toi nhu chup anh,.. co the doi toi cuoi roi lam mot luot ko? va tiep tuc lam cac phan khac de hoan thanh bai tap dan?
-````
+```
 
 ### #52 · 2026-11-17 18:20:34 · AI-1 · phiên `843d9cd5`
 
@@ -1499,13 +1499,13 @@ về các phần cần sự can thiệp cua toi nhu chup anh,.. co the doi toi c
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Tạo TODO_thu_cong.md ở gốc repo, liệt kê các việc tôi phải tự làm và
 đang để dồn về cuối: chụp màn hình issue, sửa lời bình luận, viết lại
 các ô phân tích bằng lời của tôi, 9 lượt chạy chính thức, video, và
 các tài liệu nộp bài. Cập nhật file này mỗi khi phát sinh việc mới.
 Không commit file này.
-````
+```
 
 ### #53 · 2026-11-17 18:23:07 · AI-2 · phiên `7ed1ce04`
 
@@ -1515,9 +1515,9 @@ Không commit file này.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 toi da tao file roi, tiep theo can lam gi?
-````
+```
 
 ### #54 · 2026-11-17 18:25:49 · AI-1 · phiên `843d9cd5`
 
@@ -1527,10 +1527,10 @@ toi da tao file roi, tiep theo can lam gi?
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Commit report/fr15_gap_analysis.md, bugs/Bug_Report.md và
 bugs/screenshots/ thành một commit [FR-15][report], rồi push.
-````
+```
 
 ### #55 · 2026-11-17 18:27:26 · AI-1 · phiên `843d9cd5`
 
@@ -1540,7 +1540,7 @@ bugs/screenshots/ thành một commit [FR-15][report], rồi push.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Đóng gói quy trình automation vừa làm cho FR-15 thành một Agent Skill
 trong .claude/skills/. Phạm vi chỉ là sinh và bảo trì script test
 data-driven, đa browser; không gồm việc viết báo cáo hay đóng gói bài
@@ -1559,7 +1559,7 @@ Các giá trị riêng của bài này (mã sinh viên cho "Run by", đường d
 SUT, tài khoản) là tham số, không ghi cứng. Tách phần dùng chung
 (đăng nhập, API, probe, global-setup) khỏi phần riêng của FR-15 nếu
 cần. Đưa tôi xem SKILL.md trước khi dùng.
-````
+```
 
 ### #56 · 2026-11-17 18:52:14 · AI-2 · phiên `7ed1ce04`
 
@@ -1569,7 +1569,7 @@ cần. Đưa tôi xem SKILL.md trước khi dùng.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Bản nháp skill đã sẵn để bạn xem; tôi chưa dùng nó và chưa commit gì. Code của repo không bị đổi dòng nào.
 
 ## File cần xem
@@ -1621,7 +1621,7 @@ Nếu bạn muốn tách, tôi đề xuất năm file mới và sửa năm file 
 Năm file phải sửa theo là `pages/admin-products.page.ts`, `support/products-api.ts`, `tests/fr15/products.spec.ts`, `global-setup.ts` và `playwright.config.ts`, cùng `scripts/sut.sh` và việc bỏ tài khoản khỏi file dữ liệu. Vì có sửa spec, đây sẽ là commit hợp lệ thứ 7/8, và cần chạy lại FR-15 để chắc không vỡ.
 
 Bạn cho biết: skill cần sửa gì, và có tách code dùng chung không (làm một lượt, hay bạn muốn duyệt từng file).
-````
+```
 
 ### #57 · 2026-11-17 18:53:06 · AI-1 · phiên `843d9cd5`
 
@@ -1631,7 +1631,7 @@ Bạn cho biết: skill cần sửa gì, và có tách code dùng chung không (
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Duyệt skill với hai bổ sung: (1) điểm dừng B4 có thêm bảng "kiểu
 assertion nào dùng ở test nào", số kiểu tối thiểu là tham số; (2) B2
 thêm cảnh báo không thử thao tác có thể khóa hoặc làm hỏng tài khoản
@@ -1643,7 +1643,7 @@ sửa expected. Xong thì chạy tsc --noEmit và chạy tests/fr15 trên cả b
 browser ra thư mục tạm; kết quả phải vẫn là 7 pass / 8 fail với cùng
 danh sách case và cùng bộ assertion fail. Báo diff tóm tắt theo từng
 file. Chưa commit.
-````
+```
 
 ### #58 · 2026-11-17 19:32:18 · AI-2 · phiên `7ed1ce04`
 
@@ -1653,7 +1653,7 @@ file. Chưa commit.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Hai bổ sung cho skill và phần tách code dùng chung đều đã xong; chưa commit gì. Sau khi tách, FR-15 vẫn ra **7 pass / 8 fail trên cả ba browser, cùng danh sách case và cùng bộ assertion fail** như bản trước khi tách.
 
 ## Bổ sung vào skill
@@ -1707,7 +1707,7 @@ Tám case fail vẫn là BV-05, DT-06, DT-08, DT-09, DT-10, DT-15, DT-34, DT-20.
 ## Đang chờ bạn đọc diff
 
 Năm file mới, bảy file sửa và thư mục `.claude/` (skill). Commit này có sửa `.spec.ts` nên sẽ là commit hợp lệ thứ 7/8. Tôi đã ghi việc này vào `TODO_thu_cong.md`.
-````
+```
 
 ### #59 · 2026-11-17 19:33:34 · AI-1 · phiên `843d9cd5`
 
@@ -1717,14 +1717,14 @@ Năm file mới, bảy file sửa và thư mục `.claude/` (skill). Commit này
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Sửa một điểm trước khi commit: sut.services và urls đang ghi cùng địa
 chỉ ở hai nơi, nên đặt ADMIN_URL sang cổng sai thì global-setup vẫn
 cho qua và test fail ở page.goto. Cho mỗi dịch vụ tham chiếu khóa
 trong urls (kèm đường dẫn kiểm nếu cần) để chỉ còn một nguồn. Thử lại
 cả hai cách làm sai địa chỉ (qua config và qua ADMIN_URL): cả hai phải
 dừng ở global-setup. Chạy lại tsc và một case FR-15. Chưa commit.
-````
+```
 
 ### #60 · 2026-11-17 19:42:03 · AI-1 · phiên `843d9cd5`
 
@@ -1734,10 +1734,10 @@ dừng ở global-setup. Chạy lại tsc và một case FR-15. Chưa commit.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 1. Tách code dùng chung (năm file mới, bảy file sửa): có sửa .spec.ts, là commit hợp lệ thứ 7/8.
 2. Skill (.claude/skills/): commit riêng để lịch sử cho thấy rõ skill được thêm vào lúc nào.
-````
+```
 
 ### #61 · 2026-11-17 19:43:09 · AI-2 · phiên `7ed1ce04`
 
@@ -1747,9 +1747,9 @@ dừng ở global-setup. Chạy lại tsc và một case FR-15. Chưa commit.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 vậy giờ toi co the bat dau fr-01 bang skill rồi phair ko
-````
+```
 
 ### #62 · 2026-11-17 19:44:21 · AI-2 · phiên `7ed1ce04`
 
@@ -1759,9 +1759,9 @@ vậy giờ toi co the bat dau fr-01 bang skill rồi phair ko
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 vậy skill nayf ko phai tu dong tu dau den cuoi? nhu vay co that su la mot "skill" ko ?
-````
+```
 
 ### #63 · 2026-11-17 19:47:57 · AI-2 · phiên `7ed1ce04`
 
@@ -1771,9 +1771,9 @@ vậy skill nayf ko phai tu dong tu dau den cuoi? nhu vay co that su la mot "ski
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 toi vua them mot skill mau cua giang vien vao folder, doc thu xem
-````
+```
 
 ### #64 · 2026-11-17 19:53:16 · AI-1 · phiên `843d9cd5`
 
@@ -1783,7 +1783,7 @@ toi vua them mot skill mau cua giang vien vao folder, doc thu xem
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Giảng viên phát một skill mẫu ở
 test-case-writing.skill (file zip).
 Đọc cấu trúc của nó, không chạy script trong đó. Nâng cấp skill
@@ -1800,7 +1800,7 @@ REPORT_DIR, in bảng test case × browser và so bộ assertion fail.
 chạy liền và báo ở điểm dừng kế tiếp.
 Thử lint_suite và run_matrix trên FR-15; lint phải sạch, bảng phải ra
 7 pass / 8 fail. Chưa commit.
-````
+```
 
 ### #65 · 2026-11-17 20:04:32 · AI-2 · phiên `7ed1ce04`
 
@@ -1810,7 +1810,7 @@ Thử lint_suite và run_matrix trên FR-15; lint phải sạch, bảng phải r
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Skill đã được nâng cấp theo cách tổ chức của skill mẫu, và cả hai script đều chạy đúng trên FR-15: `lint_suite` sạch (0 ERROR, 0 WARN), `run_matrix` ra 7 pass / 8 fail trên cả ba browser. Chưa commit.
 
 Tôi giải nén `HW04/test-case-writing.skill` vào một thư mục tạm trống và chỉ đọc, không chạy script nào trong đó. Cách tổ chức tôi lấy theo: SKILL.md ngắn, mở đầu bằng bảng chế độ ở bước 0; linter trả mã lỗi khi có ERROR và nói rõ nó không biết kết quả mong đợi đúng hay sai; tài liệu chi tiết nằm trong `references/`; cuối file có mục "Tài nguyên".
@@ -1872,7 +1872,7 @@ Không file `.spec.ts` nào bị sửa, nên commit này sẽ không tính vào 
 - **Thử thách của giảng viên về thứ tự bước**: tôi rút từ "dừng sau mỗi bước" xuống ba điểm dừng đúng như bạn yêu cầu, nên B2 (khảo sát trang, có thao tác thật trên SUT) giờ chạy mà không chờ duyệt.
 
 Đang chờ bạn đọc diff: hai script mới, SKILL.md, `review-checklist.md` và ba file dự án. Tôi đã ghi việc này vào `TODO_thu_cong.md`.
-````
+```
 
 ### #66 · 2026-11-17 20:08:36 · AI-1 · phiên `843d9cd5`
 
@@ -1882,7 +1882,7 @@ Không file `.spec.ts` nào bị sửa, nên commit này sẽ không tính vào 
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 1. Thêm một dòng vào B6 rồi commit skill và ba file dự án:
 
 Thêm vào B6 của SKILL.md: ở điểm dừng này, trước nhóm sửa đầu tiên,
@@ -1891,7 +1891,7 @@ raw/<feature>/) để lịch sử có mốc trước khi sửa. Sau đó tôi s�
 diff và commit.
 
 2. Push. Local đang hơn origin/main ít nhất hai commit.
-````
+```
 
 ### #67 · 2026-11-17 20:11:13 · AI-2 · phiên `7ed1ce04`
 
@@ -1901,7 +1901,7 @@ diff và commit.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Đã thêm dòng nhắc vào B6 và push hai commit đang có. Phần nâng cấp skill và ba file dự án tôi **chưa commit**, vì tin nhắn của bạn có hai ý ngược nhau ở điểm này.
 
 ## Đã làm
@@ -1925,7 +1925,7 @@ Sáu mục đang chờ:
 | `playwright.config.ts` | Reporter `json` khi có `JSON_REPORT` |
 
 Nếu bạn muốn tôi commit, nói "commit" là tôi làm một commit `[skill]` rồi push. Nếu bạn tự commit thì không cần làm gì thêm ở phía tôi.
-````
+```
 
 ### #68 · 2026-11-17 20:13:16 · AI-1 · phiên `843d9cd5`
 
@@ -1935,9 +1935,9 @@ Nếu bạn muốn tôi commit, nói "commit" là tôi làm một commit `[skill
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 commit
-````
+```
 
 ### #69 · 2026-11-17 20:18:40 · AI-1 · phiên `cea4708c`
 
@@ -1947,13 +1947,13 @@ commit
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Dùng skill data-driven-web-automation, chế độ sinh mới, để tự động hóa
 FR-01 Đăng ký tài khoản trên web khách hàng. Bộ test case thiết kế sẵn
 nằm ở /home/npdinh/study/Homeworks/HW02/HW02_23120031/scripts/fr01/cases.json,
 kết quả web của HW02 ở evidence/FR-01/web_results.json. Tôi cần ít
 nhất 12 test case, nên chọn 14–15 để có dư.
-````
+```
 
 ### #70 · 2026-11-17 20:21:34 · AI-2 · phiên `7ed1ce04`
 
@@ -1963,7 +1963,7 @@ nhất 12 test case, nên chọn 14–15 để có dư.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Đã xong B0 và B1; chưa tạo hay sửa file nào. Đây là điểm dừng bắt buộc đầu tiên của skill.
 
 ## ĐIỂM DỪNG 1
@@ -2039,7 +2039,7 @@ Dự phòng nếu bạn muốn đổi: FR01-DT-03 (ký tự đặc biệt `!`), 
    - Nếu bạn không muốn: tôi thay DT-11 và DT-17 bằng DT-03 và DT-25, và suite sẽ không phủ định dạng email lẫn tính duy nhất.
 
 Theo kết quả HW02, tôi dự đoán khoảng 8 pass / 7 fail (BUG-15 cho 6 case, BUG-16 cho DT-27). Đây chỉ là dự đoán; expected vẫn lấy từ đặc tả. Bạn duyệt xong tôi sang B2 (khảo sát trang thật) và B3 (file dữ liệu), rồi dừng ở điểm dừng 2.
-````
+```
 
 ### #71 · 2026-11-17 20:24:44 · AI-1 · phiên `cea4708c`
 
@@ -2049,7 +2049,7 @@ Theo kết quả HW02, tôi dự đoán khoảng 8 pass / 7 fail (BUG-15 cho 6 c
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Duyệt B1 với các sửa đổi:
 (1) Ô Email trong Register.jsx là type="text" (xem issue #21, #111),
 không phải type="email". Sửa lại lý do loại DT-14, DT-02, BV-19 cho
@@ -2063,7 +2063,7 @@ case biến thể dùng mật khẩu mà form hiện đang nhận, expected vẫ
 S2 (từ chối, không tạo tài khoản), ID mới, ghi rõ là case bổ sung so
 với HW02 và giới hạn của nó. Tổng 17 case.
 Sang B2 và B3, dừng ở điểm dừng 2.
-````
+```
 
 ### #72 · 2026-11-17 20:31:12 · AI-2 · phiên `7ed1ce04`
 
@@ -2073,7 +2073,7 @@ Sang B2 và B3, dừng ở điểm dừng 2.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Xong B2 và B3. Hai file mới: [data/fr01.register.json](HW04/HW04_23120031/data/fr01.register.json) và [report/fr01_testcases.md](HW04/HW04_23120031/report/fr01_testcases.md) (bảng B1 đã duyệt kèm năm sửa đổi). Chưa có Page Object hay spec.
 
 ## ĐIỂM DỪNG 2
@@ -2152,7 +2152,7 @@ Mọi case đều kiểm thêm phía server: số tài khoản mới và các t�
 7. **`report/fr01_testcases.md`** tôi tạo theo mẫu `fr15_testcases.md` dù bạn không yêu cầu; xóa nếu không cần.
 
 Bạn duyệt thì tôi chạy liền B4 → B6 (sinh Page Object và spec, lưu bản thô vào `raw/fr01/`, lint, chạy thử Chromium, review) và dừng ở điểm dừng 3.
-````
+```
 
 ### #73 · 2026-11-17 20:33:54 · AI-1 · phiên `cea4708c`
 
@@ -2162,7 +2162,7 @@ Bạn duyệt thì tôi chạy liền B4 → B6 (sinh Page Object và spec, lưu
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Duyệt B2 và B3. Ràng buộc cho B4:
 (1) DT-27: ô Xác nhận mật khẩu hiện không tồn tại. Kiểm số phần tử
 bằng assertion soft trước, chỉ điền khi ô có; không để fill chờ hết
@@ -2178,7 +2178,7 @@ khoản SUT nhận sai.
 tests/fr15 trên Chromium, kết quả phải vẫn 7 pass / 8 fail.
 Chạy B4 → B6 và dừng ở điểm dừng 3. Trước nhóm sửa đầu tiên, nhắc tôi
 commit bản thô.
-````
+```
 
 ### #74 · 2026-11-17 20:42:53 · AI-2 · phiên `7ed1ce04`
 
@@ -2298,13 +2298,13 @@ Commit thứ hai có sửa `.spec.ts`, tính vào chỉ tiêu 8 commit của b�
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Trước khi tôi commit bản thô: lint_suite báo sai ở { ref: 'setup' }.
 "setup" là từ khóa của cấu trúc dữ liệu, không phải giá trị test.
 Trả kiểu trong spec về { ref: 'setup' } và sửa linter để không coi
 giá trị của khóa ref là dữ liệu test. Chạy lint trên fr01, fr15 và
 bản thô B4 của fr15 (vẫn phải ra 3 ERROR). Chưa commit.
-````
+```
 
 ### #76 · 2026-11-17 20:49:48 · AI-1 · phiên `cea4708c`
 
@@ -2314,12 +2314,12 @@ bản thô B4 của fr15 (vẫn phải ra 3 ERROR). Chưa commit.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Duyệt cả bốn nhóm, làm lần lượt, dừng sau mỗi nhóm. Nhóm 1 thêm:
 DT-08, DT-10, DT-19 kiểm thêm form không bắn sự kiện submit, giống
 FR-15. Với nhóm 1, báo rõ hai assertion nhánh accept đã chạy tới,
 pass khi dữ liệu đúng và đỏ khi tôi cố ý đổi tên mong đợi.
-````
+```
 
 ### #77 · 2026-11-17 20:54:44 · AI-2 · phiên `7ed1ce04`
 
@@ -2329,9 +2329,9 @@ pass khi dữ liệu đúng và đỏ khi tôi cố ý đổi tên mong đợi.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 kiem tra
-````
+```
 
 ### #78 · 2026-11-18 09:11:48 · AI-2 · phiên `7ed1ce04`
 
@@ -2341,9 +2341,9 @@ kiem tra
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 cho toi prompt de hoan thanh cac viec nay
-````
+```
 
 ### #79 · 2026-11-18 09:12:33 · AI-1 · phiên `cea4708c`
 
@@ -2353,9 +2353,9 @@ cho toi prompt de hoan thanh cac viec nay
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 /model opus
-````
+```
 
 ### #80 · 2026-11-18 09:12:35 · AI-1 · phiên `cea4708c`
 
@@ -2365,7 +2365,7 @@ cho toi prompt de hoan thanh cac viec nay
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Push ba commit đang có. Sau đó hoàn tất nhóm 1:
 (a) Phần validation cho DT-08, DT-10, DT-19 đã có trong diff, giữ.
 (b) Chứng minh hai assertion của nhánh accept ("tài khoản mới đúng
@@ -2378,7 +2378,7 @@ file dữ liệu thật cho phép thử này.
 (c) Chạy tsc, lint_suite fr01 và Chromium; kết quả phải vẫn 8 pass /
 9 fail với cùng danh sách case.
 Báo diff tóm tắt và dừng. Chưa commit.
-````
+```
 
 ### #81 · 2026-11-18 09:14:00 · AI-2 · phiên `7ed1ce04`
 
@@ -2388,9 +2388,9 @@ Báo diff tóm tắt và dừng. Chưa commit.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 bai tap nay uoc tinh thoi luong 1h nhung thuc te keo dai bao lau?
-````
+```
 
 ### #82 · 2026-11-18 09:14:17 · AI-2 · phiên `7ed1ce04`
 
@@ -2400,9 +2400,9 @@ bai tap nay uoc tinh thoi luong 1h nhung thuc te keo dai bao lau?
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 bai tap nay uoc tinh thoi luong 10h nhung thuc te keo dai bao lau?
-````
+```
 
 ### #83 · 2026-11-18 09:16:07 · AI-2 · phiên `7ed1ce04`
 
@@ -2412,9 +2412,9 @@ bai tap nay uoc tinh thoi luong 10h nhung thuc te keo dai bao lau?
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 qua sat thoi gian, toi ko doc diff kip nua, gio cung bo phan quay video agent skill luon, chi lam agent skill thoi
-````
+```
 
 ### #84 · 2026-11-18 09:17:04 · AI-1 · phiên `cea4708c`
 
@@ -2424,7 +2424,7 @@ qua sat thoi gian, toi ko doc diff kip nua, gio cung bo phan quay video agent sk
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Tôi hết thời gian đọc diff. Từ giờ bạn tự commit và push sau mỗi nhóm
 sửa, với điều kiện cả ba cổng đều đạt: tsc --noEmit sạch, lint_suite
 không có ERROR, và Chromium ra đúng 8 pass / 9 fail với cùng danh sách
@@ -2446,7 +2446,7 @@ nội dung, cập nhật trường bug.
 Mỗi nhóm một commit có tiền tố [FR-01]. Không đăng gì lên GitHub
 Issues. Cuối cùng báo một bảng: commit nào, cổng nào đạt, bảng 17 case
 × 3 browser, và những chỗ bạn không chắc.
-````
+```
 
 ### #85 · 2026-11-18 09:17:24 · AI-2 · phiên `7ed1ce04`
 
@@ -2456,9 +2456,9 @@ Issues. Cuối cùng báo một bảng: commit nào, cổng nào đạt, bảng 
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 han nop la 13h hien tai dang la 9h17p
-````
+```
 
 ### #86 · 2026-11-18 09:18:10 · AI-2 · phiên `7ed1ce04`
 
@@ -2468,9 +2468,9 @@ han nop la 13h hien tai dang la 9h17p
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 noi ro cho toi quay video gi?
-````
+```
 
 ### #87 · 2026-11-18 09:27:05 · AI-2 · phiên `7ed1ce04`
 
@@ -2480,9 +2480,9 @@ noi ro cho toi quay video gi?
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 3 lenh tren co cho hien thi tren man hinh ko? hay chi chay nen?
-````
+```
 
 ### #88 · 2026-11-18 09:40:59 · AI-2 · phiên `7ed1ce04`
 
@@ -2492,9 +2492,9 @@ noi ro cho toi quay video gi?
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 cho toi prompt fr-10
-````
+```
 
 ### #89 · 2026-11-18 09:42:01 · AI-1 · phiên `cea4708c`
 
@@ -2504,7 +2504,7 @@ cho toi prompt fr-10
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Dùng skill data-driven-web-automation, chế độ sinh mới, cho FR-10
 Trạng thái đơn hàng. Tôi đang rất sát hạn nên quy trình rút gọn:
 
@@ -2562,7 +2562,7 @@ RÀNG BUỘC KỸ THUẬT (bài học từ FR-15 và FR-01)
 
 Ở điểm dừng, nêu rõ số pass / fail bạn dự đoán và case nào bạn không
 chắc.
-````
+```
 
 ### #90 · 2026-11-18 09:48:15 · AI-2 · phiên `7ed1ce04`
 
@@ -2572,7 +2572,7 @@ chắc.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Xong B0 → B3 cho FR-10. Đây là điểm dừng duy nhất của bạn. Hai file mới, chưa commit: [data/fr10.orders.json](HW04/HW04_23120031/data/fr10.orders.json) và [report/fr10_testcases.md](HW04/HW04_23120031/report/fr10_testcases.md).
 
 ## Điểm dừng FR-10
@@ -2652,7 +2652,7 @@ Xong B0 → B3 cho FR-10. Đây là điểm dừng duy nhất của bạn. Hai f
 - **FR10-DT-14:** nếu SUT đúng, tôi chưa biết trang sẽ báo lỗi bằng alert hay cách khác. Case chỉ assert "không có thông báo thành công", không assert nội dung lỗi.
 
 Bạn duyệt thì tôi chạy liền B4 → B8. Bản thô sẽ được commit trước nhóm sửa đầu tiên. Mỗi nhóm chỉ commit khi qua đủ ba cổng: tsc sạch, lint không có ERROR, và hai lượt Chromium liên tiếp cho cùng danh sách pass / fail.
-````
+```
 
 ### #91 · 2026-11-18 09:49:11 · AI-1 · phiên `cea4708c`
 
@@ -2662,7 +2662,7 @@ Bạn duyệt thì tôi chạy liền B4 → B8. Bản thô sẽ được commit
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Duyệt, với các sửa đổi rồi chạy liền B4 → B8:
 (1) Đồng ý tách DT-26 và DT-27. Thêm ghi chú vào hai case đó và vào
 report/fr10_testcases.md: phạm vi thu hẹp so với HW02 (bỏ delivered,
@@ -2677,7 +2677,7 @@ xử lý.
 Giữ các cổng tự động như đã thống nhất. Cuối cùng báo một bảng: các
 commit, cổng nào đạt, bảng 13 case × 3 browser, kết quả lặp 5 lần, và
 những chỗ bạn không chắc.
-````
+```
 
 ### #92 · 2026-11-18 10:41:35 · AI-2 · phiên `7ed1ce04`
 
@@ -2775,7 +2775,7 @@ Tôi cũng đã ghi vào memory bài học "trace che lỗi race": lượt lặp
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Chín lượt chính thức đã chạy xong, report nằm trong reports/. Soạn
 bản nháp các tài liệu nộp bài, tôi sẽ sửa lời sau:
 1. Thêm bài học "trace che lỗi race: lượt lặp kiểm độ ổn định phải
@@ -2802,7 +2802,7 @@ bản nháp các tài liệu nộp bài, tôi sẽ sửa lời sau:
    trên. KHÔNG viết AI Critique; tôi tự viết.
 Số liệu nào cũng phải lấy từ file thật, không ước lượng. Không đăng
 gì lên GitHub Issues. Commit từng phần với tiền tố [report] và push.
-````
+```
 
 ### #94 · 2026-11-18 10:58:49 · AI-2 · phiên `7ed1ce04`
 
@@ -2812,7 +2812,7 @@ gì lên GitHub Issues. Commit từng phần với tiền tố [report] và push
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Viết cho: giảng viên và trợ giảng chấm bài. Đây là bản nháp để bạn sửa lời.
 
 **Chín lượt chính thức chưa được chạy.** `reports/` chỉ có ba report FR-15 cũ từ ngày 17/11, và remote cũng vậy. Các report FR-01, FR-10 tìm thấy trong `/tmp` đều là lượt gỡ lỗi của tôi. Prompt của bạn có lẽ được AI-2 soạn sẵn ở lượt #92, để gửi "ngay sau khi chạy xong chín lượt". Report HTML phải do bạn tự chạy nên tôi không chạy thay. Vì vậy ảnh bug và số pass / fail chính thức còn để trống, đánh dấu _(chờ …)_; ngoài ra không có số nào là ước lượng.
@@ -2837,7 +2837,7 @@ Bảy phần đã commit và push, mỗi phần một commit `[report]`:
 - **Cột "Vì sao AI sai" và các mục bug mới là lời của AI-1.** Thỏa thuận AI-01 yêu cầu nội dung bug do sinh viên viết.
 
 `TODO_thu_cong.md` đã có danh sách việc phải làm sau khi bạn chạy chín lượt chính thức. Gồm: điền số vào bốn file, chép ảnh vào bug report, và chạy lại ba script (prompt log, audit report, commit log) ngay trước khi đóng gói.
-````
+```
 
 ### #95 · 2026-11-18 11:00:37 · AI-1 · phiên `cea4708c`
 
@@ -2847,7 +2847,7 @@ Bảy phần đã commit và push, mỗi phần một commit `[report]`:
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Chín lượt chính thức đã chạy và đã được kiểm. Làm theo danh sách
 trong TODO_thu_cong.md:
 1. Điền số pass / fail chính thức vào README, main_report và mục 1
@@ -2860,7 +2860,7 @@ trong TODO_thu_cong.md:
    vào Bug_Report.md.
 4. Commit reports/ và các file trên, push.
 Chưa chạy lại ba script xuất log; việc đó làm ngay trước khi đóng gói.
-````
+```
 
 ### #96 · 2026-11-18 11:03:00 · AI-2 · phiên `7ed1ce04`
 
@@ -2870,9 +2870,9 @@ Chưa chạy lại ba script xuất log; việc đó làm ngay trước khi đó
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 kiểm tra
-````
+```
 
 ### #97 · 2026-11-18 11:07:59 · AI-2 · phiên `7ed1ce04`
 
@@ -2882,9 +2882,9 @@ kiểm tra
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 chạy ở đau va cac cau lenh python dung de lam gi?
-````
+```
 
 ### #98 · 2026-11-18 11:09:46 · AI-2 · phiên `7ed1ce04`
 
@@ -2894,9 +2894,9 @@ chạy ở đau va cac cau lenh python dung de lam gi?
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 cần phaỉ demo 3 feature?
-````
+```
 
 ### #99 · 2026-11-18 11:11:05 · AI-2 · phiên `7ed1ce04`
 
@@ -2906,9 +2906,9 @@ cần phaỉ demo 3 feature?
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 tôi đang cần nhung thu liên quan den video de quay demo, dung lan nhung thu khac vao, lam tu tu, noi nhieu thu cung luc toi bi roi, toi demo cai gi? no lam gi? va test nhung gi? no nam o file nao? can show ra file nao?
-````
+```
 
 ### #100 · 2026-11-18 11:14:37 · AI-2 · phiên `7ed1ce04`
 
@@ -2918,9 +2918,9 @@ tôi đang cần nhung thu liên quan den video de quay demo, dung lan nhung thu
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 viết lời thoại cho từng bước đi
-````
+```
 
 ### #101 · 2026-11-18 11:15:38 · AI-2 · phiên `7ed1ce04`
 
@@ -2930,9 +2930,9 @@ viết lời thoại cho từng bước đi
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 tạo mot file .md
-````
+```
 
 ### #102 · 2026-11-18 11:26:02 · AI-2 · phiên `7ed1ce04`
 
@@ -2942,9 +2942,9 @@ tạo mot file .md
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 cho toi cac lenh text de copy nhanh
-````
+```
 
 ### #103 · 2026-11-18 11:46:44 · AI-2 · phiên `7ed1ce04`
 
@@ -2954,9 +2954,9 @@ cho toi cac lenh text de copy nhanh
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 kiem tra va ghep am thanh vao video giup toi
-````
+```
 
 ### #104 · 2026-11-18 11:51:04 · AI-2 · phiên `7ed1ce04`
 
@@ -2966,9 +2966,9 @@ kiem tra va ghep am thanh vao video giup toi
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 toi nghi nên tải leen luôn, conf việc gif ngoài video ko?
-````
+```
 
 ### #105 · 2026-11-18 11:55:03 · AI-2 · phiên `7ed1ce04`
 
@@ -2978,9 +2978,9 @@ toi nghi nên tải leen luôn, conf việc gif ngoài video ko?
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 https://youtu.be/bMuzCpj23Xg đay laf link video
-````
+```
 
 ### #106 · 2026-11-18 12:08:25 · AI-2 · phiên `7ed1ce04`
 
@@ -2990,9 +2990,9 @@ https://youtu.be/bMuzCpj23Xg đay laf link video
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 kiểm tra
-````
+```
 
 ### #107 · 2026-11-18 12:09:39 · AI-1 · phiên `cea4708c`
 
@@ -3002,7 +3002,7 @@ kiểm tra
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Chín lượt chính thức đã chạy và đã được kiểm: FR-15 7/8, FR-01 8/9,
 FR-10 9/4 trên mỗi browser; tổng 72 pass / 63 fail trên 135 lượt.
 README.md và report/main_report.md đã có link video
@@ -3022,7 +3022,7 @@ https://youtu.be/bMuzCpj23Xg (chưa commit). Làm theo TODO_thu_cong.md:
    AI Critique tôi sẽ viết; để sẵn chỗ và lệnh build).
 6. Commit reports/ và các file trên, push.
 Không đăng gì lên GitHub Issues.
-````
+```
 
 ### #108 · 2026-11-18 12:15:14 · AI-2 · phiên `7ed1ce04`
 
@@ -3032,9 +3032,9 @@ Không đăng gì lên GitHub Issues.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 kiểm tra trang thai hien tai
-````
+```
 
 ### #109 · 2026-11-18 12:18:17 · AI-2 · phiên `7ed1ce04`
 
@@ -3044,9 +3044,9 @@ kiểm tra trang thai hien tai
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 draft AI Critique cho toi, chinh lai cac placeholder va tu cham cho toi, toi se doc va duyet ban cuoi de nop
-````
+```
 
 ### #110 · 2026-11-18 12:19:44 · AI-1 · phiên `cea4708c`
 
@@ -3056,7 +3056,7 @@ draft AI Critique cho toi, chinh lai cac placeholder va tu cham cho toi, toi se 
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Tôi đã duyệt ai/AI_Critique.md, report/main_report.md và cột tự chấm
 trong README (tổng 87). Thêm scripts/__pycache__/ vào .gitignore.
 Chạy lại ba script xuất log, xuất lại cả ba PDF, commit, push. Sau đó
@@ -3064,7 +3064,7 @@ tạo 23120031_HW04_AI_Automation_087.zip ở thư mục HW04, gồm đủ các 
 đề yêu cầu ở mục 14, không kèm node_modules, test-results,
 playwright-report và TODO_thu_cong.md. Liệt kê nội dung zip và đối
 chiếu từng mục với danh sách của đề.
-````
+```
 
 ### #111 · 2026-11-18 12:23:30 · AI-1 · phiên `cea4708c`
 
@@ -3074,9 +3074,9 @@ chiếu từng mục với danh sách của đề.
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 Chụp ảnh trang 13 issue rồi tạo lại zip
-````
+```
 
 ### #112 · 2026-11-18 12:27:10 · AI-1 · phiên `cea4708c`
 
@@ -3086,9 +3086,9 @@ Chụp ảnh trang 13 issue rồi tạo lại zip
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 hien con thieu gi ko? hay da nop duoc roi
-````
+```
 
 ### #113 · 2026-11-18 12:28:33 · AI-2 · phiên `7ed1ce04`
 
@@ -3098,10 +3098,10 @@ hien con thieu gi ko? hay da nop duoc roi
 
 **Prompt (nguyên văn):**
 
-````text
+```text
 kiem tra tat ca cac file hien tai, dac biet la cac file report xem con thieu gi ko? va con placeholder ko? hoan thien giup toi
-````
+```
 
 ## Chữ ký
 
-Sinh viên: ______________________ Ngày: ____ / ____ / 2026
+Sinh viên: Nguyễn Phú Dinh Ngày: 18/11/2026
