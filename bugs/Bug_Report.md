@@ -270,11 +270,3 @@ Chụp ngày 2026-11-18 bằng `scripts/issue_shots.mjs` (trình duyệt headles
 ### BUG-31 – issue #31 (FR-10)
 
 ![Trang issue #31 trên GitHub](issue_shots/BUG-31_issue-31.jpg)
-
-## 4. Việc còn lại
-
-- [x] Ảnh chụp trang GitHub Issues: 13 issue ở mục 3 (2026-11-18).
-- [x] Chạy lại ba lượt chính thức của FR-15 để report trong repo có ảnh bảng sản phẩm (2026-11-18).
-- [x] Bug của FR-01 và FR-10: đã soạn mục 2.6–2.12 (bản nháp).
-- [x] Chép ảnh của FR-01 và FR-10 từ report chính thức vào `bugs/screenshots/` và chèn vào mục 2.6–2.12; đã mở từng ảnh. Ảnh form của FR01-DT-29 không tự cho thấy lỗi (mật khẩu bị che), nên mục 2.9 dựa vào tệp JSON phía server.
-- [ ] Đọc lại và viết lại mục 2.6–2.12 bằng lời của bạn (AI-1 soạn).

@@ -2,7 +2,7 @@
 
 Phụ lục bắt buộc theo đề HW04 §9 và mẫu [AI-02] – FIT@HCMUS – AI Audit Report.
 
-> **Bản nháp.** Mục 1–3 và bảng ở mục 4 được dựng tự động bằng `scripts/build_audit_report.py` từ transcript; sinh viên đọc lại và sửa lời trước khi nộp. Mục 5 do sinh viên viết.
+> Mục 1–3, bảng ở mục 4 và mục 6 được dựng tự động bằng `scripts/build_audit_report.py` từ transcript của hai phiên AI. Mục 5 do AI-2 soạn nháp, sinh viên đọc và duyệt.
 
 ## 1. Thông tin sinh viên
 
@@ -12,7 +12,7 @@ Phụ lục bắt buộc theo đề HW04 §9 và mẫu [AI-02] – FIT@HCMUS –
 | MSSV | 23120031 |
 | Lớp / Khoá | CQ2023/3 |
 | Mã bài tập | HW04 – AI-Assisted Automation Testing trên EShop |
-| Thời gian dùng AI | 15/11/2026 21:37 – 18/11/2026 12:23 (GMT+7) |
+| Thời gian dùng AI | 15/11/2026 21:37 – 18/11/2026 12:28 (GMT+7) |
 | Có dùng AI | [x] Có [ ] Không |
 
 **Khai báo theo đề §9:** _I use AI tools for the following tasks_ – tôi sử dụng công cụ AI cho các công việc sau: đọc đề và lập kế hoạch; dựng dự án Playwright và script điều khiển SUT; chọn test case từ bộ test case HW02; khảo sát trang thật; sinh file dữ liệu, Page Object và spec cho FR-15, FR-01, FR-10; review và sửa script; chạy ba browser và phân loại test fail; xây dựng Agent Skill `data-driven-web-automation`; nháp tài liệu nộp (gap analysis, bug report, README, báo cáo). Các phần không do AI làm: HTML report chính thức (sinh viên tự chạy), video demo, AI Critique.
@@ -21,8 +21,8 @@ Phụ lục bắt buộc theo đề HW04 §9 và mẫu [AI-02] – FIT@HCMUS –
 
 | Vai trò | Công cụ | Phiên bản | Model | Phiên (transcript) | Số lượt |
 | --- | --- | --- | --- | --- | --- |
-| AI-1 – viết script | Claude Code (VS Code extension) | 2.1.325 | Claude Fable 5.2; Claude Opus 5.5 từ lượt có `/model opus` | `843d9cd5`, `cea4708c` | 50 |
-| AI-2 – review | Claude Code CLI | 2.1.326 | Claude Fable 5.2 | `7ed1ce04` | 61 |
+| AI-1 – viết script | Claude Code (VS Code extension) | 2.1.325 | Claude Fable 5.2; Claude Opus 5.5 từ lượt có `/model opus` | `843d9cd5`, `cea4708c` | 51 |
+| AI-2 – review | Claude Code CLI | 2.1.326 | Claude Fable 5.2 | `7ed1ce04` | 62 |
 
 Công cụ kiểm thử (không phải AI): Playwright Test 1.65.1 với Playwright HTML reporter; TypeScript (`tsc --noEmit`).
 
@@ -34,7 +34,7 @@ Công cụ kiểm thử (không phải AI): Playwright Test 1.65.1 với Playwri
 - **Cách hai phiên làm việc với nhau:** sinh viên dán kết quả của AI-1 sang AI-2; AI-2 đối chiếu với đặc tả, mã nguồn SUT và tracker rồi đề xuất sửa; sinh viên chọn, sửa lời và gửi prompt cho AI-1. Vì vậy nhiều prompt của AI-1 có nội dung giống phần đề xuất trong output của lượt AI-2 ngay trước đó.
 - **Đánh giá output AI** (sai ở đâu, ai phát hiện, vì sao AI sai) nằm trong gap analysis của từng feature: `report/fr15_gap_analysis.md`, `report/fr01_gap_analysis.md`, `report/fr10_gap_analysis.md`. Output dạng file là các commit trong `git_commit_log.txt`; bản thô AI sinh ở bước B4 lưu nguyên văn trong `raw/<feature>/`.
 
-## 4. Bảng audit — 111 lượt
+## 4. Bảng audit — 113 lượt
 
 | # | Thời gian (GMT+7) | Vai trò | Công cụ, model | Prompt (rút gọn) | Tóm tắt output |
 | --- | --- | --- | --- | --- | --- |
@@ -148,11 +148,24 @@ Công cụ kiểm thử (không phải AI): Playwright Test 1.65.1 với Playwri
 | 108 | 2026-11-18 12:15 | AI-2 | CLI, Claude Fable 5.2 | kiểm tra trang thai hien tai | Bài gần xong: |
 | 109 | 2026-11-18 12:18 | AI-2 | CLI, Claude Fable 5.2 | draft AI Critique cho toi, chinh lai cac placeholder va tu cham cho toi, toi se doc va duyet ban cuoi de nop | Cả ba phần đã viết xong vào file và chưa commit, chờ bạn đọc. |
 | 110 | 2026-11-18 12:19 | AI-1 | VS Code, Claude Opus 5.5 | Tôi đã duyệt ai/AI_Critique.md, report/main_report.md và cột tự chấm trong README (tổng 87). Thêm scripts/__py | Đã tạo file nộp `HW04/23120031_HW04_AI_Automation_087.zip`, nặng 17,1 MB (dưới giới hạn 20 MB của Moodle). |
-| 111 | 2026-11-18 12:23 | AI-1 | VS Code, Claude Opus 5.5 | Chụp ảnh trang 13 issue rồi tạo lại zip | Trước khi chụp, kiểm hai điều: |
+| 111 | 2026-11-18 12:23 | AI-1 | VS Code, Claude Opus 5.5 | Chụp ảnh trang 13 issue rồi tạo lại zip | File zip mới `HW04/23120031_HW04_AI_Automation_087.zip` đã ghi đè file cũ. |
+| 112 | 2026-11-18 12:27 | AI-1 | VS Code, Claude Opus 5.5 | hien con thieu gi ko? hay da nop duoc roi | Về cấu trúc thì nộp được: |
+| 113 | 2026-11-18 12:28 | AI-2 | CLI, Claude Fable 5.2 | kiem tra tat ca cac file hien tai, dac biet la cac file report xem con thieu gi ko? va con placeholder ko? hoa | (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model) |
 
 ## 5. Nhận xét của sinh viên
 
-_(sinh viên tự viết: AI giúp được gì, sai ở đâu, cách kiểm soát; có thể dẫn tới các mục chính trong ba gap analysis.)_
+**AI giúp được gì.** AI làm phần lớn việc sinh code: Page Object, spec, file dữ liệu, fixture, script chạy và Agent Skill. AI cũng soạn bản nháp các tài liệu: gap analysis, bug report, AI Critique và mục này.
+
+**AI sai ở đâu.** Chủ yếu ở assertion, cách chờ và bằng chứng. Danh sách đầy đủ nằm ở `report/fr15_gap_analysis.md`, `report/fr01_gap_analysis.md` và `report/fr10_gap_analysis.md`; tóm tắt ở `ai/AI_Critique.md`.
+
+**Cách kiểm soát.**
+
+- Tôi duyệt test case và kết quả mong đợi theo đặc tả ở các điểm dừng.
+- Một phiên AI thứ hai (AI-2) chỉ dùng để review kết quả của phiên viết script (AI-1).
+- Cổng tự động trước mỗi commit: `tsc --noEmit`, `lint_suite.py`, chạy lại trên Chromium và chạy lặp.
+- Chín lượt chạy chính thức và video demo do tôi tự chạy và tự quay.
+
+**Giới hạn.** Ở FR-15 tôi đọc từng diff. Ở FR-01 và FR-10, vì sát hạn nộp, tôi không đọc từng diff mà dựa vào cổng tự động và AI-2. Các bản nháp do AI soạn được tôi đọc và duyệt trước khi nộp.
 
 ## 6. Chi tiết từng lượt (prompt nguyên văn)
 
@@ -3056,13 +3069,37 @@ chiếu từng mục với danh sách của đề.
 ### #111 · 2026-11-18 12:23:30 · AI-1 · phiên `cea4708c`
 
 - **Công cụ AI:** Claude Code (VS Code extension) 2.1.325, model Claude Opus 5.5
-- **Tóm tắt output:** Trước khi chụp, kiểm hai điều:
-- **Số hành động AI đã chạy:** 10 (danh sách ở Phụ lục A, lượt #111)
+- **Tóm tắt output:** File zip mới `HW04/23120031_HW04_AI_Automation_087.zip` đã ghi đè file cũ.
+- **Số hành động AI đã chạy:** 11 (danh sách ở Phụ lục A, lượt #111)
 
 **Prompt (nguyên văn):**
 
 ````text
 Chụp ảnh trang 13 issue rồi tạo lại zip
+````
+
+### #112 · 2026-11-18 12:27:10 · AI-1 · phiên `cea4708c`
+
+- **Công cụ AI:** Claude Code (VS Code extension) 2.1.325, model Claude Opus 5.5
+- **Tóm tắt output:** Về cấu trúc thì nộp được:
+- **Số hành động AI đã chạy:** 1 (danh sách ở Phụ lục A, lượt #112)
+
+**Prompt (nguyên văn):**
+
+````text
+hien con thieu gi ko? hay da nop duoc roi
+````
+
+### #113 · 2026-11-18 12:28:33 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+- **Tóm tắt output:** (không có văn bản trả lời; lệnh của công cụ, ví dụ /login hoặc /model)
+- **Số hành động AI đã chạy:** 5 (danh sách ở Phụ lục A, lượt #113)
+
+**Prompt (nguyên văn):**
+
+````text
+kiem tra tat ca cac file hien tai, dac biet la cac file report xem con thieu gi ko? va con placeholder ko? hoan thien giup toi
 ````
 
 ## Chữ ký

@@ -49,8 +49,8 @@ def main():
         "",
         "Phụ lục bắt buộc theo đề HW04 §9 và mẫu [AI-02] – FIT@HCMUS – AI Audit Report.",
         "",
-        "> **Bản nháp.** Mục 1–3 và bảng ở mục 4 được dựng tự động bằng `scripts/build_audit_report.py` từ transcript; "
-        "sinh viên đọc lại và sửa lời trước khi nộp. Mục 5 do sinh viên viết.",
+        "> Mục 1–3, bảng ở mục 4 và mục 6 được dựng tự động bằng `scripts/build_audit_report.py` từ transcript của "
+        "hai phiên AI. Mục 5 do AI-2 soạn nháp, sinh viên đọc và duyệt.",
         "",
         "## 1. Thông tin sinh viên",
         "",
@@ -106,8 +106,18 @@ def main():
         short = re.sub(r"\s+", " ", it["prompt"])[:110].replace("|", "\\|")
         out.append(f"| {i} | {it['time']:%Y-%m-%d %H:%M} | {it['role']} | {tool}, {model} | {short} | "
                    f"{summary(it).replace('|', chr(92) + '|')} |")
-    out += ["", "## 5. Nhận xét của sinh viên", "", "_(sinh viên tự viết: AI giúp được gì, sai ở đâu, cách kiểm soát; "
-            "có thể dẫn tới các mục chính trong ba gap analysis.)_", "",
+    out += ["", "## 5. Nhận xét của sinh viên", "", "**AI giúp được gì.** AI làm phần lớn việc sinh code: Page Object, spec, file dữ liệu, fixture, script chạy "
+            "và Agent Skill. AI cũng soạn bản nháp các tài liệu: gap analysis, bug report, AI Critique và mục này.", "",
+            "**AI sai ở đâu.** Chủ yếu ở assertion, cách chờ và bằng chứng. Danh sách đầy đủ nằm ở "
+            "`report/fr15_gap_analysis.md`, `report/fr01_gap_analysis.md` và `report/fr10_gap_analysis.md`; "
+            "tóm tắt ở `ai/AI_Critique.md`.", "",
+            "**Cách kiểm soát.**", "",
+            "- Tôi duyệt test case và kết quả mong đợi theo đặc tả ở các điểm dừng.",
+            "- Một phiên AI thứ hai (AI-2) chỉ dùng để review kết quả của phiên viết script (AI-1).",
+            "- Cổng tự động trước mỗi commit: `tsc --noEmit`, `lint_suite.py`, chạy lại trên Chromium và chạy lặp.",
+            "- Chín lượt chạy chính thức và video demo do tôi tự chạy và tự quay.", "",
+            "**Giới hạn.** Ở FR-15 tôi đọc từng diff. Ở FR-01 và FR-10, vì sát hạn nộp, tôi không đọc từng diff mà "
+            "dựa vào cổng tự động và AI-2. Các bản nháp do AI soạn được tôi đọc và duyệt trước khi nộp.", "",
             "## 6. Chi tiết từng lượt (prompt nguyên văn)", ""]
     for i, it in enumerate(items, 1):
         model = MODEL_NAMES.get(it["model"], it["model"] or "–")

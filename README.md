@@ -50,8 +50,8 @@ Chín lượt chạy ngày 2026-11-18 từ 04:33 tới 04:58 UTC (11:33–11:58 
 | Gap analysis script do AI sinh | `report/fr15_gap_analysis.md`, `report/fr01_gap_analysis.md`, `report/fr10_gap_analysis.md` |
 | Bug report | `bugs/Bug_Report.md` |
 | AI Audit Report | `ai/AI_Audit_Report.md` (Phụ lục A: `ai/prompt_log.md`) |
-| AI Critique | `ai/AI_Critique.md` (sinh viên tự viết) |
-| PDF của báo cáo chính, AI Audit Report, AI Critique | `pdf/` (xuất bằng `scripts/build_pdf.sh`) |
+| AI Critique | `ai/AI_Critique.md` (AI-2 soạn nháp, sinh viên đọc và duyệt) |
+| PDF của báo cáo chính, ba gap analysis, AI Audit Report, AI Critique | `pdf/` (xuất bằng `scripts/build_pdf.sh`) |
 | Git commit log | `git_commit_log.txt` |
 | HTML report | `reports/<feature>-<browser>/index.html` |
 | Agent Skill | `.claude/skills/data-driven-web-automation/` |

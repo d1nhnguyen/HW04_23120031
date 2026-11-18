@@ -129,14 +129,14 @@ Video dùng skill: không quay; chỉ nộp skill.
 ## 8. Sử dụng AI
 
 - **AI Audit Report:** `ai/AI_Audit_Report.md`; Phụ lục A, prompt và output nguyên văn: `ai/prompt_log.md`.
-- **AI Critique:** `ai/AI_Critique.md` _(sinh viên tự viết, 200–300 từ)_.
+- **AI Critique:** `ai/AI_Critique.md` (287 từ; AI-2 soạn nháp, sinh viên đọc và duyệt).
 - **PDF:** `scripts/build_pdf.sh` xuất PDF cho báo cáo chính, AI Audit Report và AI Critique vào `pdf/`.
 
 ## 9. Hạn chế và việc còn lại
 
 - FR-10 không dọn được đơn test; bảng đơn dài thêm qua mỗi lượt.
 - Giả định A1 của FR-10 (Admin có hủy được đơn `shipping` không) cần hỏi trợ giảng.
-- Hai quan sát về SUT chưa báo: app xóa token khi yêu cầu kiểm phiên bị hủy; doanh thu Dashboard (FR-13) lệch. Ghi ở `TODO_thu_cong.md`.
+- Hai quan sát về SUT chưa báo: app xóa token khi yêu cầu kiểm phiên bị hủy; doanh thu Dashboard (FR-13) lệch.
 
 ## Phụ lục
 

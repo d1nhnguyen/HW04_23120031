@@ -1,6 +1,6 @@
 # Phụ lục A — Prompt log HW04 (trích tự động từ transcript Claude Code)
 
-> Sinh bởi `scripts/export_prompt_log.py` lúc 2026-11-18 12:26 (GMT+7). Prompt và output của AI được giữ **nguyên văn**. Không đưa vào: phần suy luận ẩn của model, nội dung file / kết quả lệnh mà AI đọc được (chỉ liệt kê tên hành động).
+> Sinh bởi `scripts/export_prompt_log.py` lúc 2026-11-18 12:29 (GMT+7). Prompt và output của AI được giữ **nguyên văn**. Không đưa vào: phần suy luận ẩn của model, nội dung file / kết quả lệnh mà AI đọc được (chỉ liệt kê tên hành động).
 > **AI-1** = phiên viết script (Claude Code, VS Code extension); **AI-2** = phiên review (Claude Code CLI).
 
 | # | Thời gian (GMT+7) | Vai trò | Phiên | Model | Prompt (rút gọn) |
@@ -116,6 +116,8 @@
 | 109 | 2026-11-18 12:18 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | draft AI Critique cho toi, chinh lai cac placeholder va tu cham cho toi, toi se doc va duy |
 | 110 | 2026-11-18 12:19 | AI-1 | `cea4708c` | Claude Opus 5.5 | Tôi đã duyệt ai/AI_Critique.md, report/main_report.md và cột tự chấm trong README (tổng 87 |
 | 111 | 2026-11-18 12:23 | AI-1 | `cea4708c` | Claude Opus 5.5 | Chụp ảnh trang 13 issue rồi tạo lại zip |
+| 112 | 2026-11-18 12:27 | AI-1 | `cea4708c` | Claude Opus 5.5 | hien con thieu gi ko? hay da nop duoc roi |
+| 113 | 2026-11-18 12:28 | AI-2 | `7ed1ce04` | Claude Fable 5.2 | kiem tra tat ca cac file hien tai, dac biet la cac file report xem con thieu gi ko? va con |
 
 ## #1 · 2026-11-15 21:37:14 · AI-1 · phiên `843d9cd5`
 
@@ -8904,9 +8906,32 @@ Chụp ảnh trang 13 issue rồi tạo lại zip
 
 ````markdown
 Trước khi chụp, kiểm hai điều: repo `d1nhnguyen/eshop-sut` có công khai không (nếu không thì cần đăng nhập mới mở được trang issue), và cách HW02 đã chụp trang issue (`scripts/issue_shots.mjs`).
+
+Đã push hai commit `fc9f5ad` và `967d977`. Tạo lại zip từ HEAD, đè lên file cũ đúng như bạn yêu cầu, rồi kiểm dung lượng và nội dung:
+
+File zip mới `HW04/23120031_HW04_AI_Automation_087.zip` đã ghi đè file cũ. Zip có 455 file, nặng 19,19 MB (18,30 MiB), vẫn dưới giới hạn 20 MB nhưng chỉ còn dư khoảng 0,8 MB.
+
+**Ảnh trang issue**
+- Đã chụp đủ 13 trang: #15, #16, #18, #19, #20, #21, #24, #25, #26, #27, #87, #30, #31. Ảnh nằm trong `bugs/issue_shots/`, chèn vào `bugs/Bug_Report.md` thành mục 3 mới; mục "Việc còn lại" chuyển thành mục 4.
+- Ảnh được chụp bằng script mới `scripts/issue_shots.mjs`, không cần đăng nhập vì repo tracker công khai.
+- Tôi đã mở xem: tấm ghép của cả 13 trang, trang #30 ở kích thước thật, và một đoạn của #15 ở bản nén cuối. Trang nào cũng có đủ tiêu đề, trạng thái và phần thân, ảnh bằng chứng trong issue đã tải xong. Năm issue FR-15 có thêm bình luận ngày 17/11 kèm ảnh bảng sản phẩm.
+- Ảnh lưu dạng JPEG chất lượng 65 để vừa giới hạn dung lượng. Ở chất lượng 85, zip sẽ khoảng 20,7 MB; ở 65, chữ trong ảnh vẫn đọc rõ.
+- Không chụp các issue trùng nội dung của thành viên khác (#110–#113, #115), vì bạn yêu cầu 13 issue.
+
+**Commit**
+- `fc9f5ad`: ảnh trang issue, script chụp và bug report.
+- `967d977`: chạy lại ba script xuất log (prompt log và AI Audit Report giờ có 111 lượt) và xuất lại ba PDF.
+- Cả hai đã push lên `origin/main`. Zip được tạo từ commit `967d977`.
+
+**Kiểm zip**
+- Có đủ 9 report, 3 PDF, 13 ảnh trang issue.
+- Không lọt `node_modules`, `test-results`, `playwright-report`, `TODO_thu_cong.md` hay `__pycache__`.
+- Commit log trong zip có 42 commit, 15 commit sửa `.spec.ts`, và dừng ở `fc9f5ad`: file log không tự liệt kê được commit `967d977` chứa chính nó.
+
+Mọi mục ở phần 14 của đề giờ đều có trong zip, kể cả mục còn thiếu lần trước là ảnh bug trên trang GitHub Issues.
 ````
 
-<details><summary>Hành động AI đã thực hiện (10)</summary>
+<details><summary>Hành động AI đã thực hiện (11)</summary>
 
 1. `Bash` — Check the tracker repo visibility and read the HW02 issue screenshot script
 2. `Bash` — Write the HW04 issue screenshot script and capture the 13 issue pages
@@ -8918,5 +8943,81 @@ Trước khi chụp, kiểm hai điều: repo `d1nhnguyen/eshop-sut` có công k
 8. `Bash` — Set JPEG quality 65 in the script and recapture the 13 issue pages
 9. `Bash` — Add the 13 issue-page screenshots to the bug report and verify every link resolves
 10. `Bash` — Commit the issue screenshots, regenerate logs and PDFs, commit again and push
+11. `Bash` — Rebuild the submission zip from HEAD and verify size, issue screenshots and exclusions
+
+</details>
+
+## #112 · 2026-11-18 12:27:10 · AI-1 · phiên `cea4708c`
+
+- **Công cụ AI:** Claude Code (VS Code extension) 2.1.325, model Claude Opus 5.5
+
+**Prompt (nguyên văn):**
+
+````text
+hien con thieu gi ko? hay da nop duoc roi
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+Tôi kiểm nhanh thay vì trả lời theo trí nhớ. Hai chỗ cần soát: các chỗ trống hoặc ghi chú "bản nháp" còn sót trong tài liệu nộp, và những việc chưa đánh dấu xong trong `TODO_thu_cong.md`.
+
+Về cấu trúc thì nộp được: zip có đủ mọi mục trong phần 14 của đề, dưới 20 MB, và đúng tên file. Nhiều dòng `[ ]` trong `TODO_thu_cong.md` thật ra đã xong (chín lượt chạy, AI Critique, ảnh issue, zip…), chỉ là file đó chưa được đánh dấu lại.
+
+Nhưng bên trong file nộp vẫn còn vài chỗ lộ ra là bản nháp. Nên sửa trước khi nộp:
+
+**Nên sửa (trong zip, người chấm sẽ thấy):**
+1. **`ai/AI_Audit_Report.md`** (và bản PDF):
+   - Dòng 5 còn ghi chú "**Bản nháp.** … sinh viên đọc lại và sửa lời trước khi nộp".
+   - Mục 5 "Nhận xét của sinh viên" vẫn chỉ có dòng nhắc _(sinh viên tự viết…)_.
+   - Dòng chữ ký ở cuối còn để trống `______`.
+
+   Cách xử lý: viết mục 5 (vài câu, hoặc trỏ sang AI Critique) và điền ngày ký; ghi chú "Bản nháp" thì tôi bỏ khỏi script dựng file.
+2. **`bugs/Bug_Report.md`, mục 4 "Việc còn lại":** còn dòng `[ ] Đọc lại và viết lại mục 2.6–2.12 bằng lời của bạn (AI-1 soạn)` và chữ "(bản nháp)". Nên xóa hẳn mục 4 khỏi bản nộp.
+
+**Bạn tự quyết (liên quan thỏa thuận AI-01, nội dung bug và phân tích do sinh viên viết):**
+- Cột "Vì sao AI sai" trong ba gap analysis vẫn là lời AI tự nhận xét. TODO còn ghi các ô G6, G8, G16 của FR-15 phải sửa.
+- Mục bug 2.6–2.12 do AI soạn, và mức độ của BUG-41 vẫn ghi "Major (tôi đề xuất)".
+
+Bạn nói đã duyệt báo cáo chính và AI Critique, nhưng chưa nhắc tới hai phần này.
+
+**Tôi không kiểm được, bạn tự xác nhận:**
+- Video YouTube để ở chế độ **unlisted**, dài **ít nhất 5 phút**, thuyết minh bằng giọng của bạn.
+- Video có face-cam, hoặc terminal chạy `whoami` và `hostname`.
+
+**Không bắt buộc:** sửa lời năm bình luận đã đăng trên GitHub; các câu hỏi cho trợ giảng.
+
+Nếu bạn đồng ý, tôi sửa ngay phần việc của tôi: bỏ ghi chú "Bản nháp" khỏi script dựng AI Audit Report, và xóa mục "Việc còn lại" trong bug report. Sau đó bạn viết mục 5 và điền ngày ký, tôi xuất lại PDF, commit, push và tạo lại zip. Toàn bộ chỉ mất vài phút.
+````
+
+<details><summary>Hành động AI đã thực hiện (1)</summary>
+
+1. `Bash` — Scan submission docs for leftover placeholders and list unchecked TODO items
+
+</details>
+
+## #113 · 2026-11-18 12:28:33 · AI-2 · phiên `7ed1ce04`
+
+- **Công cụ AI:** Claude Code CLI 2.1.326, model Claude Fable 5.2
+
+**Prompt (nguyên văn):**
+
+````text
+kiem tra tat ca cac file hien tai, dac biet la cac file report xem con thieu gi ko? va con placeholder ko? hoan thien giup toi
+````
+
+**Output AI (nguyên văn):**
+
+````markdown
+(không có văn bản trả lời)
+````
+
+<details><summary>Hành động AI đã thực hiện (5)</summary>
+
+1. `Bash` — Scan all deliverable documents for placeholders
+2. `Bash` — Read the sections that still contain draft notes
+3. `Bash` — Check generator template, image links and the existing zip
+4. `Bash` — Read generator scripts usage, README body and gap analysis headers
+5. `Bash` — Fix remaining placeholders, regenerate audit files and PDFs
 
 </details>
