@@ -1,6 +1,6 @@
 Git commit log – HW04 23120031 – repo https://github.com/d1nhnguyen/HW04_23120031
-Xuất lúc 2026-11-18 12:36:37 +0700 bằng scripts/export_commit_log.sh
-Tổng: 46 commit; có sửa .spec.ts: 15 (ngưỡng của đề: 8)
+Xuất lúc 2026-11-18 12:38:57 +0700 bằng scripts/export_commit_log.sh
+Tổng: 48 commit; có sửa .spec.ts: 15 (ngưỡng của đề: 8)
 
 spec | hash    | thời gian                 | tác giả     | thông điệp
      | 5b5e184 | 2026-11-16 13:41:48 +0700 | d1nhnguyen | [setup] Khởi tạo dự án Playwright Test (Chromium, Firefox, WebKit)
@@ -49,6 +49,8 @@ spec | hash    | thời gian                 | tác giả     | thông điệp
      | b408477 | 2026-11-18 12:30:09 +0700 | d1nhnguyen | [report] Hoàn thiện bản nộp: bỏ ghi chú bản nháp, mục 5 của AI Audit Report, PDF ba gap analysis, xuất lại prompt log và audit report
      | 20ec299 | 2026-11-18 12:30:10 +0700 | d1nhnguyen | [report] Xuất lại git_commit_log.txt trước khi đóng gói
      | 8bc2a82 | 2026-11-18 12:36:37 +0700 | d1nhnguyen | [report] AI Audit Report: điền chữ ký sinh viên, xuất lại PDF
+     | 35beb6d | 2026-11-18 12:36:38 +0700 | d1nhnguyen | [report] Xuất lại git_commit_log.txt trước khi đóng gói
+     | c6ca542 | 2026-11-18 12:38:57 +0700 | d1nhnguyen | [report] FR-10 gap analysis: bỏ tham chiếu tới file việc nội bộ không nằm trong bài nộp
 
 ===== Chi tiết (git log --stat) =====
 commit 5b5e184bc61179b6ce0bc6244523b08dc253bb98
@@ -1054,3 +1056,24 @@ Date:   2026-11-18 12:36:37 +0700
  pdf/AI_Audit_Report.pdf       | Bin 1138433 -> 1138532 bytes
  scripts/build_audit_report.py |   2 +-
  3 files changed, 350 insertions(+), 350 deletions(-)
+
+commit 35beb6d95bc4cda97b073dfb4959993489557783
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 12:36:38 +0700
+
+    [report] Xuất lại git_commit_log.txt trước khi đóng gói
+
+ git_commit_log.txt | 28 ++++++++++++++++++++++++++--
+ 1 file changed, 26 insertions(+), 2 deletions(-)
+
+commit c6ca542042d2ae560e2d56a45e0e9939d23676ae
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 12:38:57 +0700
+
+    [report] FR-10 gap analysis: bỏ tham chiếu tới file việc nội bộ không nằm trong bài nộp
+    
+    Co-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>
+
+ pdf/fr10_gap_analysis.pdf   | Bin 146042 -> 145585 bytes
+ report/fr10_gap_analysis.md |   2 +-
+ 2 files changed, 1 insertion(+), 1 deletion(-)
