@@ -112,6 +112,8 @@ type Context = {
   setupAccount?: NewAccount;
   /** Danh sách tài khoản phía server ngay trước thao tác (sau setup). */
   usersBefore: User[];
+  /** Để đính bằng chứng vào report. */
+  testInfo: TestInfo;
 };
 
 type ActResult = {
@@ -145,7 +147,15 @@ async function arrange(c: Case, page: Page, api: UsersApi, testInfo: TestInfo): 
   const reg = new RegisterPage(page);
   await reg.open();
 
-  return { c, reg, api, input: { name: c.input.name, email, password: c.input.password }, setupAccount, usersBefore };
+  return {
+    c,
+    reg,
+    api,
+    input: { name: c.input.name, email, password: c.input.password },
+    setupAccount,
+    usersBefore,
+    testInfo,
+  };
 }
 
 /** ACT: điền form, bấm Đăng Ký một lần, chờ trang ổn định. */
@@ -161,6 +171,12 @@ async function act(ctx: Context): Promise<ActResult> {
   if (c.input.confirm !== undefined && (await reg.confirmInput.count()) === 1) {
     await reg.confirmInput.fill(c.input.confirm);
   }
+
+  // Bằng chứng: form đúng như lúc bấm (dữ liệu đã nhập, ô nào có / không có). Sau khi bấm, trang có thể
+  // chuyển sang Đăng nhập và mất dấu dữ liệu đã nhập.
+  const formShot = ctx.testInfo.outputPath('form-truoc-khi-bam.png');
+  await reg.main.screenshot({ path: formShot });
+  await ctx.testInfo.attach('Form trước khi bấm Đăng Ký', { path: formShot, contentType: 'image/png' });
 
   const writesBefore = reg.writes.length;
   await reg.resetProbe();
@@ -261,6 +277,13 @@ async function assertServer(ctx: Context, result: ActResult) {
   const usersAfter = await api.list();
   const idsBefore = new Set(usersBefore.map((user) => user.id));
   const created = usersAfter.filter((user) => !idsBefore.has(user.id));
+
+  // Bằng chứng phía server, đính TRƯỚC các expect cứng để report vẫn có khi test dừng giữa chừng.
+  // Ảnh trang Đăng nhập không cho thấy SUT đã tạo tài khoản gì; danh sách này thì có.
+  await ctx.testInfo.attach('Tài khoản mới phía server sau thao tác', {
+    body: JSON.stringify(created, null, 2),
+    contentType: 'application/json',
+  });
 
   expect(
     created.map((user) => `${user.name} <${user.email}>`),
