@@ -24,7 +24,7 @@
       "expected.server.loginWithInput": "Đăng nhập qua API bằng email + mật khẩu vừa nhập phải thành công. Suy ra từ \"đăng ký thành công\" (S5); đặc tả không viết thành câu.",
       "expected.server.othersUnchanged": "Mọi tài khoản có từ trước thao tác giống hệt bản chụp GET /api/admin/users trước thao tác.",
       "expected.server.setupLoginStillWorks": "Tài khoản tạo ở setup vẫn đăng nhập được bằng mật khẩu của chính nó.",
-      "bug": "Bug mà case được kỳ vọng làm lộ ra, theo mã trong tiêu đề issue ở d1nhnguyen/eshop-sut; số issue ở meta.bugIssues. Danh sách rỗng = kỳ vọng pass. Sẽ đối chiếu lại với tracker ở B8.",
+      "bug": "Bug mà case làm lộ ra ở SUT hiện tại, dạng \"BUG-xx (#số issue, trùng nội dung: #số issue BUG-yy)\". Mã BUG trong tiêu đề issue có thể khác số issue, và cùng một mã có thể bị hai người dùng cho hai issue khác nhau, nên luôn ghi kèm số issue. Danh sách rỗng = kỳ vọng pass. Đối chiếu với d1nhnguyen/eshop-sut ở B8, xem meta.bugIssues.",
       "addedInHW04": "true = case bổ sung ở HW04, không có trong bộ test case của HW02."
     },
     "assumptions": {
@@ -46,12 +46,74 @@
       "Quan sát ở B2: ô bắt buộc bỏ trống bị trình duyệt chặn (thuộc tính required), không có thông báo của trang."
     ],
     "bugIssues": {
-      "BUG-15": "#15 Form Đăng ký báo \"Mật khẩu quá yếu\" với mọi mật khẩu hợp lệ (cùng nội dung: #110 của thành viên khác)",
-      "BUG-16": "#16 Form Đăng ký thiếu ô Xác nhận mật khẩu (cùng nội dung: #113)",
-      "BUG-18": "#18 API đăng ký chấp nhận email sai định dạng",
-      "BUG-19": "#19 API đăng ký chấp nhận mật khẩu không đủ mạnh",
-      "BUG-20": "#20 Cho đăng ký bằng email đã tồn tại (cùng nội dung: #112)",
-      "BUG-21": "#21 Ô Email dùng type=\"text\", không kiểm tra định dạng (cùng nội dung: #111)"
+      "checkedAt": "2026-11-18, B8. Tìm trên d1nhnguyen/eshop-sut, cả issue mở lẫn đóng (tracker hiện không có issue đóng), bằng các từ khóa: FR-01, đăng ký, register, mật khẩu, password, xác nhận, khoảng trắng, email, trùng.",
+      "BUG-15 (#15)": {
+        "title": "Form Đăng ký trên Web báo \"Mật khẩu quá yếu\" với mọi mật khẩu hợp lệ có ký tự đặc biệt; phần phân tích ghi form chỉ coi dấu cách là ký tự đặc biệt",
+        "duplicates": [
+          "#110 BUG-64 (UngDuong125): mật khẩu mạnh bị từ chối, mật khẩu có khoảng trắng lại được chấp nhận"
+        ],
+        "cases": [
+          "FR01-DT-01",
+          "FR01-BV-04",
+          "FR01-BV-14",
+          "FR01-DT-11",
+          "FR01-DT-17",
+          "FR01-DT-29",
+          "FR01-DT-27"
+        ]
+      },
+      "BUG-16 (#16)": {
+        "title": "Form Đăng ký thiếu ô Xác nhận mật khẩu",
+        "duplicates": [
+          "#113 BUG-67 (UngDuong125)"
+        ],
+        "cases": [
+          "FR01-DT-27"
+        ]
+      },
+      "BUG-18 (#18)": {
+        "title": "API đăng ký chấp nhận email sai định dạng",
+        "duplicates": [],
+        "related": [
+          "#44 BUG-44 [FR-20] (UngDuong125): cùng triệu chứng trên Mobile"
+        ],
+        "cases": [
+          "FR01-WA-11"
+        ]
+      },
+      "BUG-19 (#19)": {
+        "title": "API đăng ký chấp nhận mật khẩu không đủ mạnh (bước tái hiện có Abcdef1␣)",
+        "duplicates": [],
+        "related": [
+          "#46 BUG-46 [FR-20] (UngDuong125): mật khẩu có ký tự ngoài tập trên Mobile"
+        ],
+        "cases": [
+          "FR01-DT-29"
+        ]
+      },
+      "BUG-20 (#20)": {
+        "title": "Cho đăng ký bằng email đã tồn tại, tạo tài khoản trùng",
+        "duplicates": [
+          "#112 BUG-66 (UngDuong125)"
+        ],
+        "related": [
+          "#45 BUG-45 [FR-20] (UngDuong125): cùng triệu chứng trên Mobile"
+        ],
+        "cases": [
+          "FR01-WA-17"
+        ]
+      },
+      "BUG-21 (#21)": {
+        "title": "Ô Email dùng type=\"text\", không kiểm tra định dạng email",
+        "duplicates": [
+          "#111 BUG-65 (UngDuong125)"
+        ],
+        "cases": [
+          "FR01-WA-11"
+        ]
+      },
+      "noNewBug": "Cả 9 case fail đều khớp issue đã có; không có bug mới cần soạn.",
+      "codeCollisions": "Mã BUG trong tiêu đề không duy nhất trên tracker, ví dụ: BUG-43 là #43 và #89, BUG-44 là #44 và #90, BUG-45 là #45 và #91, BUG-46 là #46 và #92, BUG-01 là #1 và #47. Vì vậy trường bug ghi cả số issue."
     }
   },
   "cases": [
@@ -59,7 +121,7 @@
       "id": "FR01-DT-01",
       "title": "Đăng ký thành công với dữ liệu hợp lệ điển hình, Mật khẩu đúng 8 ký tự",
       "op": "register",
-      "bug": ["BUG-15"],
+      "bug": ["BUG-15 (#15, trùng nội dung: #110 BUG-64)"],
       "setup": null,
       "input": { "name": "Nguyen Van A", "email": "fr01.dt01.{uid}@example.com", "password": "Abcdef1@" },
       "expected": {
@@ -73,7 +135,7 @@
       "id": "FR01-BV-04",
       "title": "Đăng ký thành công khi Mật khẩu dài 9 ký tự",
       "op": "register",
-      "bug": ["BUG-15"],
+      "bug": ["BUG-15 (#15, trùng nội dung: #110 BUG-64)"],
       "setup": null,
       "input": { "name": "Nguyen Van A", "email": "fr01.bv04.{uid}@example.com", "password": "Abcdefg1@" },
       "expected": {
@@ -87,7 +149,7 @@
       "id": "FR01-BV-14",
       "title": "Đăng ký thành công khi Họ Tên dài 1 ký tự",
       "op": "register",
-      "bug": ["BUG-15"],
+      "bug": ["BUG-15 (#15, trùng nội dung: #110 BUG-64)"],
       "setup": null,
       "input": { "name": "A", "email": "fr01.bv14.{uid}@example.com", "password": "Abcdef1@" },
       "expected": {
@@ -146,7 +208,7 @@
       "id": "FR01-DT-11",
       "title": "Đăng ký bị từ chối khi Email thiếu ký tự @",
       "op": "register",
-      "bug": ["BUG-15"],
+      "bug": ["BUG-15 (#15, trùng nội dung: #110 BUG-64)"],
       "note": "BUG-15 chặn form vì mật khẩu trước khi email được kiểm, nên case này đỏ ở assertion lý do từ chối. Phần kiểm email trên SUT hiện tại do FR01-WA-11 đảm nhận.",
       "setup": null,
       "input": { "name": "Nguyen Van A", "email": "fr01.dt11.{uid}example.com", "password": "Abcdef1@" },
@@ -161,7 +223,7 @@
       "id": "FR01-DT-17",
       "title": "Đăng ký bị từ chối khi Email đã tồn tại",
       "op": "register",
-      "bug": ["BUG-15"],
+      "bug": ["BUG-15 (#15, trùng nội dung: #110 BUG-64)"],
       "note": "Khác HW02: không dùng tài khoản seed test@eshop.com mà đăng ký trùng với một tài khoản tạo ở setup. BUG-15 chặn form vì mật khẩu trước khi tính duy nhất được kiểm; phần đó trên SUT hiện tại do FR01-WA-17 đảm nhận.",
       "setup": { "account": { "name": "Tai khoan co san", "email": "fr01.dt17.seed.{uid}@example.com", "password": "Seedpass1@" } },
       "input": { "name": "Nguyen Van A", "email": { "ref": "setup" }, "password": "Newpass1@" },
@@ -246,7 +308,7 @@
       "id": "FR01-DT-29",
       "title": "Đăng ký bị từ chối khi ký tự đặc biệt duy nhất của Mật khẩu là dấu cách",
       "op": "register",
-      "bug": ["BUG-15", "BUG-19"],
+      "bug": ["BUG-15 (#15, trùng nội dung: #110 BUG-64)", "BUG-19 (#19)"],
       "setup": null,
       "input": { "name": "Nguyen Van A", "email": "fr01.dt29.{uid}@example.com", "password": "Abcdef1 " },
       "expected": {
@@ -260,7 +322,7 @@
       "id": "FR01-DT-27",
       "title": "Đăng ký bị từ chối khi Xác nhận mật khẩu khác Mật khẩu",
       "op": "register",
-      "bug": ["BUG-16"],
+      "bug": ["BUG-16 (#16, trùng nội dung: #113 BUG-67)", "BUG-15 (#15, trùng nội dung: #110 BUG-64)"],
       "setup": null,
       "input": { "name": "Nguyen Van A", "email": "fr01.dt27.{uid}@example.com", "password": "Abcdef1@", "confirm": "Abcdef2@" },
       "expected": {
@@ -276,7 +338,7 @@
       "op": "register",
       "addedInHW04": true,
       "variantOf": "FR01-DT-11",
-      "bug": ["BUG-21", "BUG-18"],
+      "bug": ["BUG-21 (#21, trùng nội dung: #111 BUG-65)", "BUG-18 (#18)"],
       "note": "Case bổ sung so với HW02. Giới hạn: (1) mật khẩu \"Abcdef1 \" không hợp lệ theo S3, nên một hệ thống đúng có thể từ chối vì mật khẩu; vì vậy case KHÔNG assert lý do từ chối, chỉ assert bị từ chối và không tạo tài khoản. (2) Case đỏ chứng minh SUT đã nhận một lượt đăng ký có email sai định dạng; case xanh KHÔNG chứng minh email được kiểm. (3) Mật khẩu chọn theo quan sát ở B2, không theo đặc tả. Khi BUG-15 được sửa, case này hết tác dụng và FR01-DT-11 thay thế nó.",
       "setup": null,
       "input": { "name": "Nguyen Van A", "email": "fr01.wa11.{uid}example.com", "password": "Abcdef1 " },
@@ -293,7 +355,7 @@
       "op": "register",
       "addedInHW04": true,
       "variantOf": "FR01-DT-17",
-      "bug": ["BUG-20"],
+      "bug": ["BUG-20 (#20, trùng nội dung: #112 BUG-66)"],
       "note": "Case bổ sung so với HW02. Giới hạn giống FR01-WA-11: mật khẩu \"Newpass1 \" không hợp lệ theo S3 nên không assert lý do từ chối; case đỏ chứng minh SUT đã tạo tài khoản trùng email, case xanh không chứng minh tính duy nhất được kiểm; mật khẩu chọn theo quan sát ở B2. Khi BUG-15 được sửa, FR01-DT-17 thay thế case này.",
       "setup": { "account": { "name": "Tai khoan co san", "email": "fr01.wa17.seed.{uid}@example.com", "password": "Seedpass1@" } },
       "input": { "name": "Nguyen Van A", "email": { "ref": "setup" }, "password": "Newpass1 " },
