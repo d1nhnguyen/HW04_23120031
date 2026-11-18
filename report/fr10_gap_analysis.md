@@ -53,7 +53,7 @@ Sửa: mở trang Hồ sơ bằng link "Chào, …" trên thanh điều hướng
 | W3 | Để có trace khi gỡ lỗi, AI-1 chạy lượt lặp bằng `npx playwright test` thay vì `run_matrix.py` | Không có `REPORT_DIR` nên trace bật; trace làm mỗi bước chậm đủ để yêu cầu kịp xong, lỗi biến mất: 45 / 45 pass là yên tâm giả | Lượt lặp kiểm độ ổn định phải chạy với trace tắt (đã thêm vào `review-checklist.md` của skill) | AI-1, khi so trace tắt và trace bật | AI coi trace là công cụ quan sát trung lập, không tính tới việc nó đổi thời gian |
 | W4 | Hai giả thuyết đầu: token chưa kịp ghi lúc chuyển trang; WebKit đưa mã 304 thẳng cho XHR | Cả hai sai, đã bác bỏ bằng thí nghiệm | Kiểm từng giả thuyết bằng thí nghiệm trước khi sửa | AI-1 | – (đây là cách làm đúng: không sửa theo giả thuyết chưa kiểm) |
 
-**Hành vi của SUT chưa báo:** app xóa token khi yêu cầu kiểm phiên bị hủy. Người dùng Safari tải lại trang ngay sau đăng nhập có thể bị đăng xuất. Chưa tìm trên tracker, chưa báo; ghi ở `TODO_thu_cong.md`.
+**Hành vi của SUT chưa báo:** app xóa token khi yêu cầu kiểm phiên bị hủy. Người dùng Safari tải lại trang ngay sau đăng nhập có thể bị đăng xuất. Chưa tìm trên tracker và chưa báo.
 
 ## 3. Các điểm sai hoặc thiếu khác
 
