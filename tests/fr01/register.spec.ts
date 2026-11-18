@@ -164,10 +164,8 @@ async function act(ctx: Context): Promise<ActResult> {
 
   await reg.fillForm(ctx.input);
 
-  if (c.expected.ui.confirmField) {
-    await soft(reg.confirmInput, 'form phải có ô Xác nhận mật khẩu (S4)').toHaveCount(1, UI_SETTLED);
-  }
   // Chỉ điền khi ô có thật: fill trên ô không tồn tại sẽ chờ hết thời gian của test.
+  // Đây là đếm để quyết định thao tác, không phải assertion; việc form phải có ô này được assert trong assertUi.
   if (c.input.confirm !== undefined && (await reg.confirmInput.count()) === 1) {
     await reg.confirmInput.fill(c.input.confirm);
   }
@@ -223,6 +221,11 @@ async function assertUi(ctx: Context, result: ActResult) {
     await soft(reg.forgotPasswordLink, 'trang Đăng nhập phải hiện link Quên mật khẩu').toBeVisible(after);
   } else {
     await soft(reg.heading, 'form Đăng ký vẫn đang hiển thị').toBeVisible(after);
+  }
+
+  // S4: form phải có ô Xác nhận mật khẩu. Ô nằm trong form tĩnh, nên kiểm sau thao tác cũng đúng như trước.
+  if (ui.confirmField) {
+    await soft(reg.confirmInput, 'form phải có ô Xác nhận mật khẩu (S4)').toHaveCount(1, after);
   }
 
   // Form bị trình duyệt chặn: đúng ô bắt buộc nhận sự kiện `invalid` và form không được submit.
