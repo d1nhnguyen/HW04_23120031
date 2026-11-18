@@ -15,7 +15,14 @@ Bản thô AI sinh ở bước B4 được lưu nguyên văn trong `raw/fr15/` (
 | Firefox  | 7    | 8    | 1,5 phút  | `reports/fr15-firefox/`  |
 | WebKit   | 7    | 8    | 1,2 phút  | `reports/fr15-webkit/`   |
 
-Tám test fail đều do bug của SUT (mục 4), không do script: mỗi case có cùng một bộ assertion fail trên cả ba browser. Bảy case kỳ vọng pass được chạy lặp 5 lần trên Firefox và WebKit, kết quả 35 / 35 pass ở mỗi browser.
+Tám test fail đều do bug của SUT (mục 4), không do script: mỗi case có cùng một bộ assertion fail trên cả ba browser.
+
+Bảy case kỳ vọng pass được lặp 5 lần trên Firefox và WebKit, hai lượt:
+
+| Lượt lặp | Trace | Firefox | WebKit | Ghi chú |
+| --- | --- | --- | --- | --- |
+| 2026-11-17 13:00 | **Bật** | 35 / 35 pass | 35 / 35 pass | Lúc đó cấu hình đặt `trace: 'retain-on-failure'` cho mọi lượt (trace được ghi trong mọi test, chỉ bị bỏ khi test pass). Trace làm mỗi bước chậm đi và có thể che lỗi tranh chấp thời gian (xem mục 2 của `report/fr10_gap_analysis.md`), nên lượt này không đủ làm bằng chứng về độ ổn định |
+| 2026-11-18 | **Tắt** | 35 / 35 pass | 35 / 35 pass | Chạy lại bằng `run_matrix.py fr15 --repeat-each 5` (đặt `REPORT_DIR`, nên trace tắt như lượt chính thức). Đây là số dùng trong báo cáo |
 
 ## 2. AI sai hoặc thiếu ở đâu
 
