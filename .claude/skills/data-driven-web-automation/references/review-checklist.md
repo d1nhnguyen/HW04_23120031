@@ -9,7 +9,7 @@ Tám mục dưới đây đến từ những lỗi đã gặp thật khi tự đ
 | 1. Expected theo đặc tả | Mỗi test case có `expected` | Expected có đúng với câu đặc tả không |
 | 2. Assertion đỏ được khi SUT sai | Số kiểu assertion so với ngưỡng | Từng assertion có fail khi SUT làm sai không |
 | 3. Giao diện lẫn server | Có tải lại trang trong test không | Mỗi case có đủ hai tầng không |
-| 4. Không chờ cố định | `waitForTimeout`, `setTimeout`, `sleep`, `waitFor…().catch()`, timeout ghi số không có chú thích | Căn cứ của chú thích có thật không |
+| 4. Không chờ cố định | `waitForTimeout`, `setTimeout`, `sleep`, `waitFor…().catch()`, timeout ghi số không có chú thích | Căn cứ của chú thích có thật không; lượt lặp kiểm độ ổn định có chạy với trace tắt không |
 | 5. Dọn theo id trong fixture | Có fixture (`await use`) | Việc dọn có theo id và có trả SUT về như cũ không |
 | 6. Kiểm môi trường | `globalSetup` được khai báo và có kiểm dịch vụ | Thử làm sai một địa chỉ để thấy nó dừng thật |
 | 7. Tìm trên tracker | – | Toàn bộ |
@@ -61,8 +61,11 @@ Ngoài tám mục, linter còn kiểm: giá trị test và giá trị riêng c�
 - Biết "đã xong" bằng trạng thái quan sát được: số yêu cầu đang chờ trong trang về 0, phần tử đổi trạng thái.
 - Rút ngắn timeout của assertion chỉ khi đã có căn cứ rằng trang ở trạng thái cuối, và ghi căn cứ đó trong code.
 - Đo thời gian: test fail không được chậm hơn test pass nhiều lần.
+- **Lượt lặp kiểm độ ổn định phải chạy với trace tắt**, đúng như lượt chính thức: dùng `run_matrix.py` (đặt `REPORT_DIR` nên trace tắt), không dùng `npx playwright test` trần (không có `REPORT_DIR` nên trace bật). Trace làm mỗi bước chậm đi, đủ để che một lỗi tranh chấp thời gian giữa script và trang.
 
 **Lỗi đã gặp:** `SETTLE_MS = 3000` với `waitForResponse(...).catch`. Case không gửi yêu cầu luôn chờ đủ 3 giây, và mỗi test fail mất 16 giây vì ba assertion giao diện chờ hết 5 giây. Sau khi chuyển sang đếm yêu cầu đang chờ ngay trong trang, lượt chạy giảm từ 2,4 phút xuống 54 giây.
+
+**Lỗi đã gặp (trace che lỗi):** ở FR-10, script mở trang Hồ sơ bằng `page.goto` ngay sau khi đăng nhập. Lệnh đó tải lại trang và hủy yêu cầu kiểm phiên đang chạy; trên WebKit, app xử lý yêu cầu bị hủy như lỗi và xóa token, nên 5 case Hồ sơ fail. Lỗi chỉ hiện trong `run_matrix` (trace tắt). Lượt lặp 5 lần chạy bằng `npx playwright test` (trace bật) cho 45 / 45 pass, tức là cho một sự yên tâm giả. Chạy riêng một case: trace tắt fail 3 / 4, trace bật pass 4 / 4. Sửa bằng cách điều hướng trong SPA (bấm link), không thêm chờ hay retry; sau đó lặp lại với trace tắt mới được tính.
 
 ## 5. Dọn dữ liệu theo id, trong fixture
 
