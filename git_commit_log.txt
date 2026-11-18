@@ -1,0 +1,478 @@
+Git commit log – HW04 23120031 – repo https://github.com/d1nhnguyen/HW04_23120031
+Xuất lúc 2026-11-18 10:51:02 +0700 bằng scripts/export_commit_log.sh
+Tổng: 34 commit; có sửa .spec.ts: 15 (ngưỡng của đề: 8)
+
+spec | hash    | thời gian                 | tác giả     | thông điệp
+     | 5b5e184 | 2026-11-16 13:41:48 +0700 | d1nhnguyen | [setup] Khởi tạo dự án Playwright Test (Chromium, Firefox, WebKit)
+     | a5f4b0a | 2026-11-17 10:58:09 +0700 | d1nhnguyen | [setup] Cấu hình Playwright: chạy tuần tự 1 worker, report riêng theo REPORT_DIR, tiêu đề Run by: 23120031
+     | de77770 | 2026-11-17 11:02:14 +0700 | d1nhnguyen | [setup] Thêm scripts/sut.sh: start / stop / reset / status cho SUT EShop
+  x  | e829452 | 2026-11-17 12:15:31 +0700 | d1nhnguyen | [FR-15][B4-raw] Bản thô AI sinh: Page Object, spec data-driven 15 test case, dữ liệu JSON, fixture API
+  x  | f95fd9d | 2026-11-17 12:26:38 +0700 | d1nhnguyen | [FR-15][B6-assert] Sửa assertion yếu: chứng minh form bị trình duyệt chặn bằng sự kiện invalid/submit, assert status phản hồi cho case accept và reject
+  x  | 06204a8 | 2026-11-17 12:28:07 +0700 | d1nhnguyen | [FR-15][B6-wait] Bỏ SETTLE_MS: ghi yêu cầu ghi bằng page.on('request'), chờ theo trạng thái XHR trong trang, rút thời gian thử lại của assertion giao diện sau khi trang đã ổn định
+  x  | 4f4cb94 | 2026-11-17 12:32:08 +0700 | d1nhnguyen | [FR-15][B6-readability] Thông điệp tiếng Việt cho assertion giao diện, trường bug nhận danh sách, tách arrange / act / assertUi / assertServer, so bảng không phụ thuộc thứ tự
+  x  | 809096e | 2026-11-17 13:06:28 +0700 | d1nhnguyen | [FR-15][B7] await probe trước goto, đổi tên trường validation
+     | 5d6bbaf | 2026-11-17 13:06:28 +0700 | d1nhnguyen | [setup] thêm TypeScript và tsconfig.json
+     | fe3c1f5 | 2026-11-17 17:23:01 +0700 | d1nhnguyen | [FR-15][report] Gắn BUG-41 cho ba case Sửa, tắt trace ở lượt chính thức, HTML report ba browser
+     | dc91996 | 2026-11-17 17:29:05 +0700 | d1nhnguyen | [setup] global-setup kiểm tra backend và hai frontend trước khi chạy, dừng ngay nếu thiếu dịch vụ
+  x  | 328221b | 2026-11-17 18:01:11 +0700 | d1nhnguyen | [FR-15][B8] Chụp riêng bảng sản phẩm sau thao tác và đính vào report làm bằng chứng
+     | 36d05a2 | 2026-11-17 18:25:57 +0700 | d1nhnguyen | [FR-15][report] Gap analysis, bug report và ảnh bảng sản phẩm của 5 bug
+  x  | 4ed15ac | 2026-11-17 19:42:15 +0700 | d1nhnguyen | [FR-15][refactor] Tách phần dùng chung khỏi FR-15: tham số trong automation.config.json, probe, API client, AdminShell
+     | 411913d | 2026-11-17 19:42:15 +0700 | d1nhnguyen | [skill] Thêm Agent Skill data-driven-web-automation: 9 bước sinh và bảo trì script test data-driven, đa browser
+     | da9cf02 | 2026-11-17 20:13:29 +0700 | d1nhnguyen | [skill] Nâng cấp skill: lint_suite, run_matrix, ba chế độ và ba điểm dừng bắt buộc
+     | 0100901 | 2026-11-17 20:49:37 +0700 | d1nhnguyen | [skill] lint_suite: không coi giá trị của khóa ref là dữ liệu test
+     | 0278272 | 2026-11-17 20:49:37 +0700 | d1nhnguyen | [FR-01][refactor] Tách ProbedPage khỏi AdminShell, bộ ghi dấu vết ghi thêm nhãn của ô bị chặn
+  x  | 3572a33 | 2026-11-17 20:49:37 +0700 | d1nhnguyen | [FR-01][B4-raw] Bản thô AI sinh: Page Object, spec data-driven 17 test case, dữ liệu JSON, fixture API
+  x  | 74c441c | 2026-11-18 09:16:12 +0700 | d1nhnguyen | [FR-01][B6-assert] Ba case bỏ trống ô bắt buộc kiểm thêm form không bắn submit và không gửi yêu cầu đăng ký
+  x  | 6ccdde6 | 2026-11-18 09:20:33 +0700 | d1nhnguyen | [FR-01][B6-wait] Chỉ assertion URL đầu tiên được chờ; khi URL sai, assertion giao diện sau nó kiểm một lần, không chờ lại
+  x  | f0e9cab | 2026-11-18 09:22:03 +0700 | d1nhnguyen | [FR-01][B6-evidence] Chụp form ngay trước khi bấm Đăng Ký; đính danh sách tài khoản mới phía server vào report trước các expect cứng
+  x  | b8f825e | 2026-11-18 09:23:18 +0700 | d1nhnguyen | [FR-01][B6-readability] Chuyển assertion ô Xác nhận mật khẩu từ act sang assertUi; act chỉ còn đếm để quyết định có điền hay không
+     | 7bf5424 | 2026-11-18 09:32:53 +0700 | d1nhnguyen | [FR-01][B8] Đối chiếu 9 case fail với tracker: trường bug ghi mã BUG kèm số issue và các issue trùng nội dung; DT-27 thêm BUG-15
+  x  | 3c078fc | 2026-11-18 09:53:44 +0700 | d1nhnguyen | [FR-10][B4-raw] Bản thô AI sinh: Page Object Web Admin mục Đơn hàng và trang Hồ sơ, spec data-driven 13 test case, dữ liệu JSON, API tạo đơn
+  x  | 5784980 | 2026-11-18 09:56:21 +0700 | d1nhnguyen | [FR-10][B6-assert] Case accept thiếu nút: assert trên locator (toHaveCount) thay cho so sánh hằng số, thông báo nêu đúng đơn và nút
+  x  | 52d5cca | 2026-11-18 09:58:21 +0700 | d1nhnguyen | [FR-10][B6-evidence] Chụp riêng từng dòng đơn của test trước và sau thao tác thay cho ảnh cả bảng (bảng trong khung cuộn bị cắt mất phần dưới)
+     | 42d2a67 | 2026-11-18 10:00:59 +0700 | d1nhnguyen | [FR-10][B6-readability] Gom escapeRegExp về support/regexp.ts, dùng chung cho WebShell, OrderTable và trang Đăng ký
+     | 8cf7656 | 2026-11-18 10:21:16 +0700 | d1nhnguyen | [FR-10][B8] Đối chiếu 4 case fail với tracker: BUG-30 (#30), BUG-31 (#31, trùng nội dung #115 BUG-69); không có bug mới
+     | 4ba7051 | 2026-11-18 10:29:24 +0700 | d1nhnguyen | [FR-10][B7-webkit] Mở trang Hồ sơ bằng link trên thanh điều hướng thay cho page.goto: goto hủy GET /users/me đang chạy và trên WebKit app xóa token, trang hiện 'Vui lòng đăng nhập'
+     | afb0a2e | 2026-11-18 10:47:02 +0700 | d1nhnguyen | [report] Thêm vào review-checklist của skill: lượt lặp kiểm độ ổn định phải chạy với trace tắt (bài học lỗi WebKit của FR-10)
+     | 0574198 | 2026-11-18 10:48:54 +0700 | d1nhnguyen | [report] Gap analysis FR-01 và FR-10 (bản nháp): cách kiểm bằng cổng tự động và AI-2, lỗi WebKit và trace che lỗi là mục chính của FR-10
+     | 048a1ae | 2026-11-18 10:49:49 +0700 | d1nhnguyen | [report] Bug report: thêm BUG-15, 16, 18, 19, 20, 21 (FR-01) và BUG-30, 31 (FR-10), ảnh chờ lượt chính thức
+     | b730c97 | 2026-11-18 10:50:58 +0700 | d1nhnguyen | [report] README: bảng tự chấm (để trống điểm), bảng tổng hợp test (pass / fail chờ lượt chính thức), link repo, cấu trúc và cách chạy
+
+===== Chi tiết (git log --stat) =====
+commit 5b5e184bc61179b6ce0bc6244523b08dc253bb98
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-16 13:41:48 +0700
+
+    [setup] Khởi tạo dự án Playwright Test (Chromium, Firefox, WebKit)
+
+ .gitignore            |  8 ++++++
+ package-lock.json     | 79 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ package.json          | 14 +++++++++
+ playwright.config.ts  | 79 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ tests/example.spec.ts | 18 ++++++++++++
+ 5 files changed, 198 insertions(+)
+
+commit a5f4b0a06784e101dc3e32cc77b6f26bcf81e0e6
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 10:58:09 +0700
+
+    [setup] Cấu hình Playwright: chạy tuần tự 1 worker, report riêng theo REPORT_DIR, tiêu đề Run by: 23120031
+
+ playwright.config.ts  | 25 ++++++++++++++++---------
+ tests/example.spec.ts | 18 ------------------
+ 2 files changed, 16 insertions(+), 27 deletions(-)
+
+commit de7777074d109cedad56926d7c2139ec3158e7b8
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 11:02:14 +0700
+
+    [setup] Thêm scripts/sut.sh: start / stop / reset / status cho SUT EShop
+
+ scripts/sut.sh | 105 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 105 insertions(+)
+
+commit e829452094776abf2c3c10d48323cfd3cdf9cbde
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 12:15:31 +0700
+
+    [FR-15][B4-raw] Bản thô AI sinh: Page Object, spec data-driven 15 test case, dữ liệu JSON, fixture API
+
+ data/fr15.products.json                   | 423 ++++++++++++++++++++++++++++++
+ global-setup.ts                           |  12 +
+ pages/admin-products.page.ts              | 108 ++++++++
+ playwright.config.ts                      |   1 +
+ raw/fr15/B4_v1_admin-products.page.ts.txt | 108 ++++++++
+ raw/fr15/B4_v1_global-setup.ts.txt        |  12 +
+ raw/fr15/B4_v1_products-api.ts.txt        |  56 ++++
+ raw/fr15/B4_v1_products.spec.ts.txt       | 273 +++++++++++++++++++
+ report/fr15_testcases.md                  |  67 +++++
+ support/products-api.ts                   |  56 ++++
+ tests/fr15/products.spec.ts               | 273 +++++++++++++++++++
+ 11 files changed, 1389 insertions(+)
+
+commit f95fd9d668a40d109e65385952f8ce6a771e88f9
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 12:26:38 +0700
+
+    [FR-15][B6-assert] Sửa assertion yếu: chứng minh form bị trình duyệt chặn bằng sự kiện invalid/submit, assert status phản hồi cho case accept và reject
+
+ pages/admin-products.page.ts | 37 +++++++++++++++++++++++++++++++++++--
+ tests/fr15/products.spec.ts  | 24 ++++++++++++++++++++++--
+ 2 files changed, 57 insertions(+), 4 deletions(-)
+
+commit 06204a8cdbf62163ee1025587bfc9f8ef2feee8f
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 12:28:07 +0700
+
+    [FR-15][B6-wait] Bỏ SETTLE_MS: ghi yêu cầu ghi bằng page.on('request'), chờ theo trạng thái XHR trong trang, rút thời gian thử lại của assertion giao diện sau khi trang đã ổn định
+
+ pages/admin-products.page.ts | 40 ++++++++++++++++++++++++++++--
+ tests/fr15/products.spec.ts  | 59 +++++++++++++++++++++++++-------------------
+ 2 files changed, 72 insertions(+), 27 deletions(-)
+
+commit 4f4cb94077a48c4ae4af7979688ec33d82f05436
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 12:32:08 +0700
+
+    [FR-15][B6-readability] Thông điệp tiếng Việt cho assertion giao diện, trường bug nhận danh sách, tách arrange / act / assertUi / assertServer, so bảng không phụ thuộc thứ tự
+
+ data/fr15.products.json      |  32 +--
+ pages/admin-products.page.ts |  16 +-
+ tests/fr15/products.spec.ts  | 474 +++++++++++++++++++++++++------------------
+ 3 files changed, 303 insertions(+), 219 deletions(-)
+
+commit 809096e7d4ad1e6f2bcd17447c5260a0caca6efc
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 13:06:28 +0700
+
+    [FR-15][B7] await probe trước goto, đổi tên trường validation
+
+ data/fr15.products.json      |  6 ++--
+ pages/admin-products.page.ts | 72 ++++++++++++++++++++++++++------------------
+ tests/fr15/products.spec.ts  |  2 +-
+ 3 files changed, 47 insertions(+), 33 deletions(-)
+
+commit 5d6bbaf0f56681afb9bd3ba74e7256302e70bee6
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 13:06:28 +0700
+
+    [setup] thêm TypeScript và tsconfig.json
+
+ package-lock.json | 378 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ package.json      |   3 +-
+ tsconfig.json     |  15 +++
+ 3 files changed, 394 insertions(+), 2 deletions(-)
+
+commit fe3c1f507055c41c5baa631db7e066c5b5f4f75e
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 17:23:01 +0700
+
+    [FR-15][report] Gắn BUG-41 cho ba case Sửa, tắt trace ở lượt chính thức, HTML report ba browser
+
+ data/fr15.products.json                            |   8 +-
+ playwright.config.ts                               |   4 +-
+ .../0dcb981b7250ce403f094924dd0fcc1eb030f11e.md    | 332 ++++++++++++++++++
+ .../10dc959b2b19dc160f5c3c19c60967b59ebe29db.md    | 380 +++++++++++++++++++++
+ .../2488a81524673ce3300a80b123fd4954ab06db0b.png   | Bin 0 -> 50762 bytes
+ .../267e1b4c79b86e665dd3de10320b9bc7c5f2102a.png   | Bin 0 -> 66184 bytes
+ .../280d4a19b01adc02eeebd9507a94158cbe678cd3.md    | 328 ++++++++++++++++++
+ .../362b833187e96b3db59e5280d3154c971ab96992.png   | Bin 0 -> 55785 bytes
+ .../3750f67ab6c4b0f67ea544bb52ad56bc3278898b.md    | 332 ++++++++++++++++++
+ .../6a7524650b67af80801960d304140d7d1e78b12a.png   | Bin 0 -> 55811 bytes
+ .../85f174f85cf1bfe72986c19e2ef696c4a4b3f8be.md    | 339 ++++++++++++++++++
+ .../86bc73806d2367395e972a995e5f7f124764bf7a.png   | Bin 0 -> 65933 bytes
+ .../86e3c718640bdccbea0a834122d78944029d7d87.png   | Bin 0 -> 55435 bytes
+ .../adb713868e3b1d25c9dd1158a13db58bfca3171b.md    | 380 +++++++++++++++++++++
+ .../bcc4450ea672708bd40eb92b9245f4cb576817db.png   | Bin 0 -> 70121 bytes
+ .../dd6ed0df69d36aae8f8e254b36ba3361bed81b87.md    | 332 ++++++++++++++++++
+ .../eafecf033bb8d6d0167265f8bd6c4a8dd0db9a0d.png   | Bin 0 -> 55813 bytes
+ .../f1169667531e7091e2c0ff55a44c50bc23ad6f8f.md    | 329 ++++++++++++++++++
+ reports/fr15-chromium/index.html                   |  49 +++
+ .../11568942b775a16f781f5f279fe71e9969fd23bd.md    | 380 +++++++++++++++++++++
+ .../3d95f04d1d470156878a45956652bf69f5f3b74e.png   | Bin 0 -> 76115 bytes
+ .../450ce3b06920af7e7adfc6747c6863283f034ed8.png   | Bin 0 -> 61475 bytes
+ .../5865ba094b09173bfc419e13df3adeef77030870.png   | Bin 0 -> 79801 bytes
+ .../7d1555092511863556e76d4222cbd436de428c31.md    | 329 ++++++++++++++++++
+ .../8940d6a4f51c878a0d58db9c4c27e01d465269a5.md    | 380 +++++++++++++++++++++
+ .../8d0c3bbe1110ff57583cc60b68c28be17cc3c8a9.png   | Bin 0 -> 67222 bytes
+ .../8e92cbb06fa58efdaf6a5002c41229ecde4790b2.png   | Bin 0 -> 66802 bytes
+ .../9a2db606a8c013a53344c5094d9477a758a68e89.md    | 339 ++++++++++++++++++
+ .../9bc847e500b60eccf487f83f6d17ef00e1caffdd.png   | Bin 0 -> 67170 bytes
+ .../cfea33ba428ef22786cf3fadb61182021630e7fa.png   | Bin 0 -> 77501 bytes
+ .../d35c29b0ab7ca9d203d49bba0a614a8acd1126ff.md    | 332 ++++++++++++++++++
+ .../dc884d171e9bd83ad09e03d98384854394e740c4.md    | 328 ++++++++++++++++++
+ .../e4e7d6dea269145e1d0b6c670ede85ccb71e0e71.png   | Bin 0 -> 66996 bytes
+ .../f4b2e3c35d23124555787c12eb4c3e5d42a5febb.md    | 332 ++++++++++++++++++
+ .../f72231ab338de098773c78f77b0e8a45830300b0.md    | 332 ++++++++++++++++++
+ reports/fr15-firefox/index.html                    |  49 +++
+ .../196679d48dc7b47497ec38e6c0d344dadf15d4f0.png   | Bin 0 -> 190946 bytes
+ .../28feb5c32929a1cd7ab3a420262943428684f823.md    | 332 ++++++++++++++++++
+ .../29f570abd3dbd7bc0c06cfd70874bf00d65c4690.md    | 328 ++++++++++++++++++
+ .../36aefe5b411d9f0e6214136ed3d22bc1c3e42857.md    | 332 ++++++++++++++++++
+ .../4620db9f76df6d473d010fcb46b448c3dab79238.png   | Bin 0 -> 202747 bytes
+ .../6031b5a980eaa3f505415b4afaa4a44ddf16858a.png   | Bin 0 -> 139337 bytes
+ .../654118d98db88966c79cf5b2aa47fbac4c502335.png   | Bin 0 -> 129975 bytes
+ .../67f1fa7b0e9e86ebfa3139e9ed41de889f61b7af.md    | 329 ++++++++++++++++++
+ .../75272c85392f0e3d206fea5447cbe5b4ea2641e1.md    | 339 ++++++++++++++++++
+ .../867aefc478b129bf0c4ce0fa1f683f737fead324.png   | Bin 0 -> 139302 bytes
+ .../8a0aadf94828897ecb06101d6e4676742d5c07e0.png   | Bin 0 -> 139501 bytes
+ .../a01bfb29bac3e215de2cb7857a7be263fb2c41f5.png   | Bin 0 -> 187268 bytes
+ .../b1a95e2bed0f7cfa45c5dc3535f44273c7b8e433.png   | Bin 0 -> 138607 bytes
+ .../bd29b0cf9927a4ebe6f2bd7a6c162059297d670b.md    | 332 ++++++++++++++++++
+ .../dafe1e21e7229561517440f9c4e66551ff88b672.md    | 380 +++++++++++++++++++++
+ .../e481ef3fed2be7761df2ec6110e6788be6bd0295.md    | 380 +++++++++++++++++++++
+ reports/fr15-webkit/index.html                     |  49 +++
+ 53 files changed, 8410 insertions(+), 5 deletions(-)
+
+commit dc91996798bc1956da5d577e88c48971bc56c80a
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 17:29:05 +0700
+
+    [setup] global-setup kiểm tra backend và hai frontend trước khi chạy, dừng ngay nếu thiếu dịch vụ
+
+ global-setup.ts | 41 +++++++++++++++++++++++++++++++++++------
+ 1 file changed, 35 insertions(+), 6 deletions(-)
+
+commit 328221b59cf715026c16679300b0fe824e935107
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 18:01:11 +0700
+
+    [FR-15][B8] Chụp riêng bảng sản phẩm sau thao tác và đính vào report làm bằng chứng
+
+ pages/admin-products.page.ts | 3 +++
+ tests/fr15/products.spec.ts  | 6 ++++++
+ 2 files changed, 9 insertions(+)
+
+commit 36d05a2fcedd056e645124bf0e5cdb533c26251a
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 18:25:57 +0700
+
+    [FR-15][report] Gap analysis, bug report và ảnh bảng sản phẩm của 5 bug
+
+ bugs/Bug_Report.md                                 | 101 +++++++++++++++++++++
+ .../BUG-24_FR15-DT-08_chromium_table.png           | Bin 0 -> 41699 bytes
+ .../BUG-25_FR15-DT-10_chromium_table.png           | Bin 0 -> 41414 bytes
+ .../BUG-26_FR15-BV-05_chromium_table.png           | Bin 0 -> 24340 bytes
+ .../BUG-27_FR15-DT-06_chromium_table.png           | Bin 0 -> 38605 bytes
+ .../BUG-41_FR15-DT-15_chromium_table.png           | Bin 0 -> 46492 bytes
+ report/fr15_gap_analysis.md                        |  86 ++++++++++++++++++
+ 7 files changed, 187 insertions(+)
+
+commit 4ed15ac259276a75d22d3e7bdd1ee89c630e90a2
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 19:42:15 +0700
+
+    [FR-15][refactor] Tách phần dùng chung khỏi FR-15: tham số trong automation.config.json, probe, API client, AdminShell
+
+ automation.config.json       |  25 +++++++++
+ data/fr15.products.json      |   1 -
+ global-setup.ts              |  29 +++++-----
+ pages/admin-products.page.ts | 127 +++----------------------------------------
+ pages/admin-shell.page.ts    |  77 ++++++++++++++++++++++++++
+ playwright.config.ts         |   3 +-
+ scripts/sut.sh               |   6 +-
+ support/api-client.ts        |  38 +++++++++++++
+ support/env.ts               |  61 +++++++++++++++++++++
+ support/form-probe.ts        |  87 +++++++++++++++++++++++++++++
+ support/products-api.ts      |  31 +++--------
+ tests/fr15/products.spec.ts  |  23 +++++---
+ 12 files changed, 339 insertions(+), 169 deletions(-)
+
+commit 411913de2a37189d94a42f707c9cf0c0ba50ef57
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 19:42:15 +0700
+
+    [skill] Thêm Agent Skill data-driven-web-automation: 9 bước sinh và bảo trì script test data-driven, đa browser
+
+ .claude/skills/data-driven-web-automation/SKILL.md | 159 +++++++++++++++++++++
+ .../references/review-checklist.md                 |  90 ++++++++++++
+ 2 files changed, 249 insertions(+)
+
+commit da9cf02d56679217bc329e21a63f8d61d3cdf5d7
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 20:13:29 +0700
+
+    [skill] Nâng cấp skill: lint_suite, run_matrix, ba chế độ và ba điểm dừng bắt buộc
+
+ .claude/skills/data-driven-web-automation/SKILL.md | 127 ++++---
+ .../references/review-checklist.md                 |  15 +
+ .../scripts/lint_suite.py                          | 384 +++++++++++++++++++++
+ .../scripts/run_matrix.py                          | 204 +++++++++++
+ automation.config.json                             |   1 +
+ playwright.config.ts                               |   2 +
+ support/env.ts                                     |   2 +
+ 7 files changed, 681 insertions(+), 54 deletions(-)
+
+commit 0100901498cfb24c6f5947d61c1461678f1bbfaf
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 20:49:37 +0700
+
+    [skill] lint_suite: không coi giá trị của khóa ref là dữ liệu test
+
+ .../skills/data-driven-web-automation/scripts/lint_suite.py   | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+commit 02782721dc0c457b7b2f41c8929cd402f6a081a6
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 20:49:37 +0700
+
+    [FR-01][refactor] Tách ProbedPage khỏi AdminShell, bộ ghi dấu vết ghi thêm nhãn của ô bị chặn
+
+ pages/admin-shell.page.ts | 39 ++++-------------------------------
+ pages/probed-page.ts      | 52 +++++++++++++++++++++++++++++++++++++++++++++++
+ support/form-probe.ts     | 25 ++++++++++++++++++++---
+ 3 files changed, 78 insertions(+), 38 deletions(-)
+
+commit 3572a330214edc5659c6f51f969a87451e58ead2
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-17 20:49:37 +0700
+
+    [FR-01][B4-raw] Bản thô AI sinh: Page Object, spec data-driven 17 test case, dữ liệu JSON, fixture API
+
+ data/fr01.register.json                | 304 +++++++++++++++++++++++++++++++++
+ pages/register.page.ts                 |  95 +++++++++++
+ raw/fr01/B4_v1_admin-shell.page.ts.txt |  46 +++++
+ raw/fr01/B4_v1_form-probe.ts.txt       | 106 ++++++++++++
+ raw/fr01/B4_v1_fr01.register.json.txt  | 304 +++++++++++++++++++++++++++++++++
+ raw/fr01/B4_v1_probed-page.ts.txt      |  52 ++++++
+ raw/fr01/B4_v1_register.page.ts.txt    |  95 +++++++++++
+ raw/fr01/B4_v1_register.spec.ts.txt    | 299 ++++++++++++++++++++++++++++++++
+ raw/fr01/B4_v1_users-api.ts.txt        |  48 ++++++
+ report/fr01_testcases.md               |  82 +++++++++
+ support/users-api.ts                   |  48 ++++++
+ tests/fr01/register.spec.ts            | 299 ++++++++++++++++++++++++++++++++
+ 12 files changed, 1778 insertions(+)
+
+commit 74c441c8dcec835dc554fa9b3453b487a76cc692
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 09:16:12 +0700
+
+    [FR-01][B6-assert] Ba case bỏ trống ô bắt buộc kiểm thêm form không bắn submit và không gửi yêu cầu đăng ký
+
+ data/fr01.register.json     | 10 +++++++---
+ tests/fr01/register.spec.ts | 15 ++++++++++++++-
+ 2 files changed, 21 insertions(+), 4 deletions(-)
+
+commit 6ccdde66f33697b629573d6c8674baa947a6cefc
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 09:20:33 +0700
+
+    [FR-01][B6-wait] Chỉ assertion URL đầu tiên được chờ; khi URL sai, assertion giao diện sau nó kiểm một lần, không chờ lại
+
+ tests/fr01/register.spec.ts | 25 ++++++++++++++++++++-----
+ 1 file changed, 20 insertions(+), 5 deletions(-)
+
+commit f0e9cabdf683b2b129d069327954d5b1b6e66209
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 09:22:03 +0700
+
+    [FR-01][B6-evidence] Chụp form ngay trước khi bấm Đăng Ký; đính danh sách tài khoản mới phía server vào report trước các expect cứng
+
+ tests/fr01/register.spec.ts | 25 ++++++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
+
+commit b8f825e84ef27d46c959cb64093ac78774e7c037
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 09:23:18 +0700
+
+    [FR-01][B6-readability] Chuyển assertion ô Xác nhận mật khẩu từ act sang assertUi; act chỉ còn đếm để quyết định có điền hay không
+
+ tests/fr01/register.spec.ts | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+commit 7bf5424c3f5580a1eff166f659ca51da3d3c50ed
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 09:32:53 +0700
+
+    [FR-01][B8] Đối chiếu 9 case fail với tracker: trường bug ghi mã BUG kèm số issue và các issue trùng nội dung; DT-27 thêm BUG-15
+
+ data/fr01.register.json | 94 ++++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 78 insertions(+), 16 deletions(-)
+
+commit 3c078fcec1e8fab999de8f336027e71098e89d29
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 09:53:44 +0700
+
+    [FR-10][B4-raw] Bản thô AI sinh: Page Object Web Admin mục Đơn hàng và trang Hồ sơ, spec data-driven 13 test case, dữ liệu JSON, API tạo đơn
+
+ data/fr10.orders.json                   | 248 +++++++++++++++++++++++++
+ pages/admin-orders.page.ts              |  22 +++
+ pages/order-table.ts                    |  61 ++++++
+ pages/profile.page.ts                   |  26 +++
+ pages/web-shell.page.ts                 |  34 ++++
+ raw/fr10/B4_v1_admin-orders.page.ts.txt |  22 +++
+ raw/fr10/B4_v1_fr10.orders.json.txt     | 248 +++++++++++++++++++++++++
+ raw/fr10/B4_v1_order-table.ts.txt       |  61 ++++++
+ raw/fr10/B4_v1_orders-api.ts.txt        |  53 ++++++
+ raw/fr10/B4_v1_orders.spec.ts.txt       | 316 ++++++++++++++++++++++++++++++++
+ raw/fr10/B4_v1_profile.page.ts.txt      |  26 +++
+ raw/fr10/B4_v1_web-shell.page.ts.txt    |  34 ++++
+ report/fr10_testcases.md                |  67 +++++++
+ support/orders-api.ts                   |  53 ++++++
+ tests/fr10/orders.spec.ts               | 316 ++++++++++++++++++++++++++++++++
+ 15 files changed, 1587 insertions(+)
+
+commit 5784980274cf549380c5881e466349354149e9ec
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 09:56:21 +0700
+
+    [FR-10][B6-assert] Case accept thiếu nút: assert trên locator (toHaveCount) thay cho so sánh hằng số, thông báo nêu đúng đơn và nút
+
+ tests/fr10/orders.spec.ts | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+commit 52d5ccaf95c1fcffba0369ebffcf336d51509e68
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 09:58:21 +0700
+
+    [FR-10][B6-evidence] Chụp riêng từng dòng đơn của test trước và sau thao tác thay cho ảnh cả bảng (bảng trong khung cuộn bị cắt mất phần dưới)
+
+ tests/fr10/orders.spec.ts | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+commit 42d2a6755bd104e6213f40bf1f65075069667f44
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 10:00:59 +0700
+
+    [FR-10][B6-readability] Gom escapeRegExp về support/regexp.ts, dùng chung cho WebShell, OrderTable và trang Đăng ký
+
+ pages/order-table.ts    | 6 ------
+ pages/register.page.ts  | 5 +----
+ pages/web-shell.page.ts | 2 +-
+ support/regexp.ts       | 4 ++++
+ 4 files changed, 6 insertions(+), 11 deletions(-)
+
+commit 8cf765641a2f51767e7066ee58563a52866ecc6c
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 10:21:16 +0700
+
+    [FR-10][B8] Đối chiếu 4 case fail với tracker: BUG-30 (#30), BUG-31 (#31, trùng nội dung #115 BUG-69); không có bug mới
+
+ data/fr10.orders.json | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+commit 4ba7051b6511cef7bf4e3154b5b292fd46ae8582
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 10:29:24 +0700
+
+    [FR-10][B7-webkit] Mở trang Hồ sơ bằng link trên thanh điều hướng thay cho page.goto: goto hủy GET /users/me đang chạy và trên WebKit app xóa token, trang hiện 'Vui lòng đăng nhập'
+
+ pages/profile.page.ts | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+commit afb0a2ea1ef95b41a1a50d8ed6d3307d30624662
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 10:47:02 +0700
+
+    [report] Thêm vào review-checklist của skill: lượt lặp kiểm độ ổn định phải chạy với trace tắt (bài học lỗi WebKit của FR-10)
+
+ .../skills/data-driven-web-automation/references/review-checklist.md | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit 0574198e553e30997c9c66ddc647a16ae0566df4
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 10:48:54 +0700
+
+    [report] Gap analysis FR-01 và FR-10 (bản nháp): cách kiểm bằng cổng tự động và AI-2, lỗi WebKit và trace che lỗi là mục chính của FR-10
+
+ report/fr01_gap_analysis.md | 85 +++++++++++++++++++++++++++++++++++++++++++++
+ report/fr10_gap_analysis.md | 85 +++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 170 insertions(+)
+
+commit 048a1ae1ea3363fd3893058f9bf3150dbbb895ab
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 10:49:49 +0700
+
+    [report] Bug report: thêm BUG-15, 16, 18, 19, 20, 21 (FR-01) và BUG-30, 31 (FR-10), ảnh chờ lượt chính thức
+
+ bugs/Bug_Report.md | 89 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 88 insertions(+), 1 deletion(-)
+
+commit b730c97a29d320a438ffa5eebf951d7d8da6c601
+Author: d1nhnguyen <dinhnguyen7205@gmail.com>
+Date:   2026-11-18 10:50:58 +0700
+
+    [report] README: bảng tự chấm (để trống điểm), bảng tổng hợp test (pass / fail chờ lượt chính thức), link repo, cấu trúc và cách chạy
+
+ README.md | 92 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 92 insertions(+)
